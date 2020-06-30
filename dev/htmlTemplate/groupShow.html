@@ -1,0 +1,224 @@
+<div class="containerGroupAll">
+    <div class="containerGroup">
+        <div class="coverPhoto"><img src="" style="width: 100%;
+                    max-height:450px;"></div>
+        <a href="#"><img src="./images/openGroup.png" id="btnOpen"></a>
+        <div id="myModal" class="modal">
+            <div id="openGroup" class="openGroup">
+                <div class="groupTitle">開啟揪團</div>
+                <form>
+                    <table>
+                        <label>選擇一個行程:</label>
+                        <select>
+                                <option>台北行</option>
+                                <option>九份2日遊</option>
+                            </select>
+                        <br>
+                        <label>還沒有行程:</label>
+                        <a href="#">排行程</a>
+                        <br>
+                        <label>請選擇一張美麗的封面照片:</label>
+                        <input type="file"></input>
+                        <br>
+                        <div class="coverImg"><img src=""></div>
+            </div>
+            <br>
+            <label>設定參團條件</label>
+            <tr>
+                <td><label>報名期限:</label><select></select></td>
+                <td><label>性別期限:</label><select></select></td>
+            </tr>
+            <tr>
+                <td><label>出發日期:</label><select></select></td>
+                <td><label>年紀限制:</label><select></select></td>
+            </tr>
+            <tr>
+                <td><label>人數上限:</label><select></select></td>
+                <td><label>預估費用:</label><select></select></td>
+            </tr>
+            <tr>
+                <td><label>人數下限:</label><select></select></td>
+            </tr>
+            </table>
+            <div class="btnForm">
+                <button>發布</button>
+                <button>儲存</button>
+                <button id="btnClose">取消</button>
+            </div>
+            </form>
+
+
+        </div>
+    </div>
+    <div class="tabAll">
+        <div class="tab">
+            <button class="tabs" onclick="openCity(event, 'activity')">活動說明</button>
+            <button class="tabs" onclick="openCity(event, 'chat')">留言板</button>
+        </div>
+        <div id="activity" class="tabcontent" style="display:block;">
+            <div class="actAll">
+                <aside class="actCont">
+                    <h3>活動說明</h3>
+                    <p>London is the capital city of England.</p>
+                </aside>
+                <aside class="btnsAct">
+                    <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')"><img
+                            src="#">我要報名</button>
+                    <button><img src="#">分享此團</button>
+                    <button><img src="#">收藏此團</button>
+                </aside>
+            </div>
+            <hr>
+            <div class="joinList">
+                <p>目前團員名單</p>
+                <table class="joinMem">
+                    <tr>
+                        <td><img src="./images/profile.jpg">派大星</td>
+                        <td><img src="./images/profile.jpg">愛旅遊</td>
+                        <td><img src="./images/profile.jpg">狠愛吃</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="chat" class="tabcontent" style="display: none;">
+            <h3>留言板</h3>
+            <div class="chatCont">
+                <table>
+                    <tr>
+                        <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
+                        <td>
+                            <span>愛旅遊</span>
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                    </tr>
+                    <tr>
+                        <td class="replies">答覆：約落在2萬～3萬左右！
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
+                        <td>
+                            <span>愛旅遊</span>
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                    </tr>
+                    <tr>
+                        <td class="replies">答覆：約落在2萬～3萬左右！
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
+                        <td>
+                            <span>愛旅遊</span>
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                    </tr>
+                    <tr>
+                        <td class="replies">答覆：約落在2萬～3萬左右！
+                            <time>2020/05/09 10:24</time>
+                        </td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
+                        <td>
+                            <span>中央劉德華</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text"><input class="btnSend" type="submit" value="">
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function openCity(evt, cityName) {
+
+        var i, tabcontent, tablinks;
+
+
+        tabcontent = document.getElementsByClassName(" tabcontent ");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none ";
+        }
+
+        tabs = document.getElementsByClassName("tabs ");
+        for (i = 0; i < tabs.length; i++) {
+            tabs[i].className = tabs[i].className.replace(" active ", " ");
+        }
+
+        document.getElementById(cityName).style.display = "block ";
+        evt.currentTarget.className += " active ";
+    }
+
+    //lightbox
+    var modal = document.getElementById("myModal");
+    var btnOpen = document.getElementById("btnOpen");
+    var btnClose = document.getElementById("btnClose");
+    btnOpen.onclick = function() {
+        myModal.style.display = "block ";
+    }
+    btnClose.onclick = function() {
+        myModal.style.display = "none ";
+    }
+
+    function openCity(evt, cityName) {
+
+        var i, tabcontent, tablinks;
+
+
+        tabcontent = document.getElementsByClassName("tabcontent ");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none ";
+        }
+
+        tabs = document.getElementsByClassName("tabs ");
+        for (i = 0; i < tabs.length; i++) {
+            tabs[i].className = tabs[i].className.replace(" active ", " ");
+        }
+
+        document.getElementById(cityName).style.display = "block ";
+        evt.currentTarget.className += " active ";
+    }
+
+    //lightbox
+    var modal = document.getElementById("myModal ");
+    var btnOpen = document.getElementById("btnOpen ");
+    var btnClose = document.getElementById("btnClose ");
+    btnOpen.onclick = function() {
+        myModal.style.display = "block ";
+    }
+    btnClose.onclick = function() {
+        myModal.style.display = "none ";
+    }
+</script>

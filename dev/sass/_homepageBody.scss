@@ -1,0 +1,816 @@
+.homepageBody {
+    margin: 0;
+    // position: relative;
+}
+
+.homepageBody576 {
+    display: none;
+}
+
+.select1of3 {
+    // border: 1px solid red;
+    width: 730px;
+    margin-left: 50%;
+    margin-top: 450px;
+    transform: translateX(-50%);
+    position: absolute;
+    white-space: nowrap;
+
+    ul.selectArea {
+        /* border: 1px solid red; */
+        list-style: none;
+        padding: 0;
+        display: inline-block;
+        box-sizing: border-box;
+
+        li.selectbox {
+            // border: 1px solid red;
+            width: 220px;
+            height: 220px;
+            display: inline-block;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            font-size: $content;
+        }
+    }
+}
+
+.zoomLens:hover {
+    cursor: pointer;
+}
+
+// 第一屏的三個選擇box
+.selectbox1 {
+    background-color: rgba(255, 255, 255, .8);
+    color: $colorMain1;
+}
+
+.selectbox1>p {
+    color: $colorMain1;
+    font-size: $title;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.selectbox2 {
+    background-color: rgba(216, 86, 126, .8);
+    color: $colorSecondary2;
+}
+
+.selectbox2>p {
+    color: $colorSecondary2;
+    font-size: $title;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.selectbox3 {
+    background-color: rgba(188, 38, 84, .8);
+    color: $colorSecondary2;
+}
+
+.selectbox3>p {
+    color: $colorSecondary2;
+    font-size: $title;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+// -------------------
+#sanjay {
+    /* border: 1px solid red; */
+    background-image: url(../images/homepage.jpg);
+    margin: 0;
+    margin-bottom: 4000px;
+    width: 100%;
+    height: 100vh;
+    min-height: 800px;
+
+    .firstScreen {
+        p {
+            width: 655px;
+            /* border: 1px solid red; */
+            font-size: 90px;
+            letter-spacing: 20px;
+            display: inline-block;
+            margin-left: 50%;
+            transform: translateX(-47%);
+            margin-top: 20vh;
+            margin-bottom: 0;
+            font-weight: 300;
+        }
+
+        pre {
+            /* border: 1px solid red; */
+            font-size: $subtitle;
+            color: $colorSecondary2;
+            display: inline-block;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .scroll-down-button {
+        /* border: 1px solid red; */
+        transform: translateY(360px);
+
+        img.scroll {
+            width: 60px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            animation: jump 2s infinite;
+            margin-bottom: 80px;
+        }
+
+        @keyframes jump {
+            0% {
+                transform: translate(-50%, 0px);
+            }
+
+            50% {
+                transform: translate(-50%, -9px);
+            }
+
+            100% {
+                transform: translate(-50%, 0px);
+            }
+        }
+    }
+
+    .secondScreen_mainBody {
+        // border: 1px solid red;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        transform: translateY(-537px);
+    }
+
+    .right-background {
+        // border: 1px solid red;
+        width: 70%;
+        height: 110%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $colorMain1;
+    }
+
+    .right-background-content {
+        // border: 1px solid red; 
+        display: inline-block;
+        width: 25%;
+        margin: 3%;
+        // margin-top: 180px;
+        margin-top: 15%;
+
+        p {
+            display: inline-block;
+            margin-top: 0px;
+            font-size: 28px;
+            color: $colorMain1;
+            margin-bottom: 80%;
+        }
+
+        button {
+            @include button(160px, 60px, $colorSecondary2, $colorMain1, $colorMain1);
+            padding: 10px;
+            font-size: $content;
+        }
+    }
+
+    .left-background {
+        // border: 1px solid red;
+        width: 70%;
+        height: 110%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background-color: $colorSecondary2;
+        padding: 250px;
+
+        //add for card start
+        .firstPageGroupCardsPart {
+            position: relative;
+
+            .cardOriginalTem:first-child {
+                position: absolute;
+                left: 350px;
+            }
+        }
+
+        //add for card end
+    }
+
+    .left-background-content {
+        /* border: 1px solid red; */
+        position: absolute;
+        display: inline-block;
+        width: 25%;
+        // margin-top: 180px;
+        margin-top: 15%;
+        right: 2.5%;
+
+        p {
+            display: inline-block;
+            margin-top: 0px;
+            font-size: 28px;
+            color: $colorSecondary2;
+            // margin-bottom: 400px;
+            margin-bottom: 80%;
+        }
+
+        button {
+            @include button(160px, 60px, $colorMain1, $colorSecondary2, $colorSecondary2);
+            padding: 10px;
+            font-size: $content;
+        }
+    }
+
+    .right-background2 {
+        // border: 1px solid red;
+        width: 70%;
+        height: 110%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $colorMain1;
+        z-index: 3;
+        padding: 250px;
+
+        //add for card start
+
+        .firstPageSpotCardsPart {
+            position: relative;
+
+            .cardOriginalTem:first-child {
+                position: absolute;
+                left: 350px;
+            }
+        }
+
+        //add for card end
+    }
+
+    .right-background2-content {
+        // border: 1px solid red; 
+        display: inline-block;
+        width: 25%;
+        margin: 5%;
+        // margin-top: 180px;
+        margin-top: 15%;
+        z-index: 3;
+        background-color: $colorSecondary2;
+        position: absolute;
+
+        p {
+            display: inline-block;
+            margin-top: 0;
+            font-size: 28px;
+            color: $colorMain1;
+            // margin-bottom: 400px;
+            margin-bottom: 80%;
+        }
+
+        button {
+            @include button(160px, 60px, $colorSecondary2, $colorMain1, $colorMain1);
+            padding: 10px;
+            font-size: $content;
+        }
+    }
+}
+
+
+// rwd 769-992
+@media (min-width: 769px) and (max-width: 992px) {
+    #sanjay {
+        /* border: 1px solid red; */
+        background-image: url(../images/homepage.jpg);
+        margin: 0;
+        margin-bottom: 4000px;
+        width: 100%;
+        height: 100vh;
+        min-height: 800px;
+
+        .right-background {
+            // border: 1px solid blue; 
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorMain1;
+        }
+
+        .right-background-content {
+            // border: 1px solid blue; 
+            display: inline-block;
+            width: 400px;
+            margin: 2.5%;
+            margin-top: 180px;
+
+            p {
+                // border: 1px solid blue; 
+                display: inline-block;
+                margin-top: 0px;
+                font-size: 28px;
+                background-color: rgba(255, 255, 255, .5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorMain1;
+                // color: black;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(140px, 55px, $colorSecondary2, $colorMain1, $colorMain1);
+                padding: 10px;
+                font-size: $content;
+                margin-left: 30px;
+            }
+        }
+
+        .left-background {
+            /* border: 1px solid red; */
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background-color: $colorSecondary2;
+        }
+
+        .left-background-content {
+            // border: 1px solid red;
+            position: absolute;
+            display: inline-block;
+            width: 400px;
+            margin-top: 180px;
+            right: 2.5%;
+            z-index: 2;
+
+            p {
+                // border: 1px solid blue;
+                display: inline-block;
+                margin-top: 0px;
+                font-size: 28px;
+                background-color: rgba(248, 32, 96, 0.5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorSecondary2;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(150px, 55px, $colorMain1, $colorSecondary2, $colorSecondary2);
+                padding: 10px;
+                font-size: $content;
+                margin-left: 200px;
+            }
+        }
+
+        .right-background2 {
+            // border: 1px solid red;
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorMain1;
+            z-index: 3;
+        }
+
+        .right-background2-content {
+            // border: 1px solid red; 
+            display: inline-block;
+            width: 400px;
+            margin: 120px;
+            margin-top: 180px;
+            z-index: 3;
+            background-color: transparent;
+            position: absolute;
+
+            p {
+                // border: 1px solid red;
+                display: inline-block;
+                margin-top: 0;
+                font-size: 28px;
+                background-color: rgba(245, 245, 245, 0.5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorMain1;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(150px, 55px, $colorSecondary2, $colorMain1, $colorMain1);
+                padding: 10px;
+                font-size: $content;
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+// rwd 577-768
+@media (min-width: 577px) and (max-width: 768px) {
+    .select1of3 {
+        // border: 1px solid red;
+        width: 580px;
+        margin-left: 50%;
+        margin-top: 450px;
+        transform: translateX(-50%);
+        position: absolute;
+        white-space: nowrap;
+
+        ul.selectArea {
+            // border: 1px solid red;
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+            box-sizing: border-box;
+
+            li.selectbox {
+                // border: 1px solid red;
+                width: 180px;
+                height: 180px;
+                display: inline-block;
+                box-sizing: border-box;
+                border-radius: 10px;
+                margin: 5px;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+
+    .zoomLens:hover {
+        cursor: pointer;
+    }
+
+    // 第一屏的三個選擇box
+    .selectbox1 {
+        background-color: rgba(255, 255, 255, .8);
+        color: $colorMain1;
+    }
+
+    .selectbox1>p {
+        color: $colorMain1;
+        font-size: $title;
+        // margin-bottom: 40px;
+        // margin-top: 30px;
+        margin: 25px;
+    }
+
+    .selectbox2 {
+        background-color: rgba(216, 86, 126, .8);
+        color: rgb(255, 255, 255);
+    }
+
+    .selectbox2>p {
+        color: rgb(255, 255, 255);
+        font-size: $title;
+        // margin-bottom: 40px;
+        // margin-top: 30px;
+        margin: 25px;
+    }
+
+    .selectbox3 {
+        background-color: rgba(188, 38, 84, .8);
+        color: rgb(255, 255, 255);
+    }
+
+    .selectbox3>p {
+        color: rgb(255, 255, 255);
+        font-size: $title;
+        // margin-bottom: 40px;
+        // margin-top: 30px;
+        margin: 25px;
+    }
+
+    // -------------------
+    #sanjay {
+        /* border: 1px solid red; */
+        background-image: url(../images/homepage.jpg);
+        margin: 0;
+        margin-bottom: 4000px;
+        width: 100%;
+        height: 100vh;
+        min-height: 800px;
+
+        .firstScreen {
+            p {
+                width: 575px;
+                // border: 1px solid red; 
+                font-size: 80px;
+                letter-spacing: 20px;
+                display: inline-block;
+                margin-left: 50%;
+                transform: translateX(-47%);
+                margin-top: 20vh;
+                margin-bottom: 0;
+                font-weight: 300;
+            }
+
+            pre {
+                /* border: 1px solid red; */
+                font-size: $subtitle;
+                color: $colorSecondary2;
+                display: inline-block;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .right-background {
+            // border: 1px solid blue; 
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorMain1;
+        }
+
+        .right-background-content {
+            // border: 1px solid blue; 
+            display: inline-block;
+            width: 400px;
+            margin: 2.5%;
+            margin-top: 180px;
+
+            p {
+                // border: 1px solid blue; 
+                display: inline-block;
+                margin-top: 0px;
+                font-size: 28px;
+                background-color: rgba(255, 255, 255, .5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorMain1;
+                // color: black;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(140px, 55px, $colorSecondary2, $colorMain1, $colorMain1);
+                padding: 10px;
+                font-size: $content;
+                margin-left: 5px;
+            }
+        }
+
+        .left-background {
+            /* border: 1px solid red; */
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background-color: $colorSecondary2;
+        }
+
+        .left-background-content {
+            // border: 1px solid red;
+            position: absolute;
+            display: inline-block;
+            width: 400px;
+            margin-top: 180px;
+            right: 2.5%;
+            z-index: 2;
+
+            p {
+                // border: 1px solid blue;
+                display: inline-block;
+                margin-top: 0px;
+                font-size: 28px;
+                background-color: rgba(248, 32, 96, 0.5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorSecondary2;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(150px, 55px, $colorMain1, $colorSecondary2, $colorSecondary2);
+                padding: 10px;
+                font-size: $content;
+                margin-left: 245px;
+            }
+        }
+
+        .right-background2 {
+            // border: 1px solid red;
+            width: 70%;
+            height: 110%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $colorMain1;
+            z-index: 3;
+        }
+
+        .right-background2-content {
+            // border: 1px solid red; 
+            display: inline-block;
+            width: 400px;
+            margin: 120px;
+            margin-top: 180px;
+            z-index: 3;
+            background-color: transparent;
+            position: absolute;
+
+            p {
+                // border: 1px solid red;
+                display: inline-block;
+                margin-top: 0;
+                font-size: 28px;
+                background-color: rgba(245, 245, 245, 0.5);
+                border-radius: 5px;
+                padding: 5px 15px 5px;
+                color: $colorMain1;
+                margin-bottom: 400px;
+            }
+
+            button {
+                @include button(150px, 55px, $colorSecondary2, $colorMain1, $colorMain1);
+                padding: 10px;
+                font-size: $content;
+                margin-left: -15px;
+            }
+        }
+    }
+}
+
+// rwd 576以下
+@media screen and (max-width: 576px) {
+    body {
+        height: fit-content !important;
+    }
+
+    .homepageBody {
+        display: none;
+    }
+
+    .homepageBody576 {
+        display: block;
+    }
+
+    .firstScreen576 {
+        // border: 1px solid red;
+        padding-top: 30%;
+        width: 100%;
+        height: 100vh;
+        background-image: url(../images/homepage.jpg);
+
+        p.taiwanTitle {
+            // border: 1px solid red;
+            font-size: 50px;
+            letter-spacing: 5px;
+            font-weight: 300;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            width: 280px;
+        }
+
+        pre.taiwan576 {
+            // border: 1px solid red;
+            font-size: 18px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            color: $colorSecondary2;
+            width: 280px;
+        }
+
+        ul {
+            // border: 1px solid red;
+            width: 95%;
+            margin-top: 35px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+
+            li.selectbox576 {
+                // border: 1px solid red;
+                width: 50%;
+                margin-bottom: 10px;
+                padding: 15px;
+                margin-left: 50%;
+                transform: translateX(-50%);
+                font-size: 18px;
+                border-radius: 5px;
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+        img.scroll {
+            width: 40px;
+            margin-top: 35px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            animation: jump 2s infinite;
+        }
+
+        @keyframes jump {
+            0% {
+                transform: translate(-50%, 0px);
+            }
+
+            50% {
+                transform: translate(-50%, -9px);
+            }
+
+            100% {
+                transform: translate(-50%, 0px);
+            }
+        }
+    }
+
+    // 第一屏的三個選擇box
+    .selectbox1576 {
+        background-color: rgba(255, 255, 255, .8);
+        color: $colorMain1;
+    }
+
+    .selectbox1576>p {
+        color: $colorMain1;
+    }
+
+    .selectbox2576 {
+        background-color: rgba(216, 86, 126, .8);
+        color: $colorSecondary2;
+    }
+
+    .selectbox2576>p {
+        color: $colorSecondary2;
+    }
+
+    .selectbox3576 {
+        background-color: rgba(188, 38, 84, .8);
+        color: $colorSecondary2;
+    }
+
+    .selectbox3576>p {
+        color: $colorSecondary2;
+    }
+
+    .secondScreen576 {
+        text-align: center;
+
+        .thirdScreen576_p {
+            // border: 1px solid red;
+            text-align: center;
+            padding: 30px;
+            color: $colorMain1;
+            font-size: 18px;
+        }
+
+        button {
+            margin: 20px;
+        }
+    }
+
+    .thirdScreen576 {
+        text-align: center;
+        background-color: $colorMain1;
+
+        p {
+            // border: 1px solid red;
+            text-align: center;
+            padding: 30px;
+            color: $colorSecondary2;
+            font-size: 18px;
+        }
+
+        button {
+            margin: 20px;
+            @include button(100px, 40px, $colorMain1, $colorSecondary2, $colorSecondary2);
+        }
+    }
+
+    .forthScreen576 {
+        text-align: center;
+
+        p {
+            // border: 1px solid red;
+            text-align: center;
+            padding: 30px;
+            color: $colorMain1;
+            font-size: 18px;
+        }
+
+        button {
+            margin: 20px;
+        }
+    }
+}

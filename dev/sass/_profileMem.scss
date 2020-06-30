@@ -1,0 +1,35 @@
+// @import "./variables";
+.profileMemnamea{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1 0;
+    font-weight: 500;
+}
+.profileMemcont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+    padding: 5px;
+}
+.profileMemtitle{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.profilephoto{
+    width: 100px;
+    height: 100px;
+    border: solid $colorMain1;
+    border-radius: 50%;
+    margin: 0 auto; 
+}
+.profileinfo{
+    text-align: left; 
+}
+.profileconfirm{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+}
+.profileMemall{
+    width: 250px;
+    color: $colorSecondary3;
+}

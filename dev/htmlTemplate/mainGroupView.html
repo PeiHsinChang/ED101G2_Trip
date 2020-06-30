@@ -1,0 +1,458 @@
+<div class="container">
+    <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
+        <a href="">
+            <img src="./images/openNewGroup.png" alt="" class="d-md-block" />
+        </a>
+    </div>
+    <!-- search bar -->
+    <div class="groupViewSearchBar row">
+        <input type="text" placeholder="來看看有哪些揪團" class="col col-md-5" />
+        <button>
+            <img src="./images/iconSearch.png" alt="" />
+        </button>
+    </div>
+    <hr />
+    <div class="chooseBlock row">
+        <button class="groupFBtn col-3 col-md-2 ">
+            最新刊登 &darr;
+        </button>
+        <button class="groupFBtn col-3 col-md-2 ">
+            最高評價 &darr;
+        </button>
+
+        <!-- 手機版篩選器開始 -->
+        <div class="d-flex mobileFilter col-3 col-md-3 col-lg-1 d-none d-sm-block d-md-none">
+            <div class="dropdown mr-1">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                    篩選
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" href="#">ppl</a>
+                    <a class="dropdown-item" href="#">location</a>
+                    <a class="dropdown-item" href="#">sex</a>
+                    <a class="dropdown-item" href="#">days</a>
+                    <a class="dropdown-item" href="#">month</a>
+                </div>
+            </div>
+        </div>
+        <!-- 手機版篩選器結尾 -->
+    </div>
+    <div class="mainGroupView row d-flex ">
+        <div class="groupViewLeft col-sm-3 d-none d-sm-none d-md-block">
+            <!-- fliter Start -->
+            <div class="fliterBlock">
+                <table>
+                    <tr>
+                        <th colspan="2">縮小範圍顯示</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fliterBlock_p">團員人數：</p>
+                        </td>
+                        <td>
+                            <select name="groupView_FliterPpl">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                                <option value="">6</option>
+                                <option value="">7</option>
+                                <option value="">8</option>
+                                <option value="">9</option>
+                                <option value="">10</option>
+                                <option value="">10人以上</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fliterBlock_p">地區:</p>
+                        </td>
+                        <td>
+                            <select name="groupView_FliterArea">
+                                <option value="1" selected>北區</option>
+                                <option value="2">中區</option>
+                                <option value="3">南區</option>
+                                <option value="">東區</option>
+                                <option value="">外島</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fliterBlock_p">性別限制:</p>
+                        </td>
+                        <td>
+                            <select name="groupView_FliterSex">
+                                <option value="1" selected>限男</option>
+                                <option value="2">限女</option>
+                                <option value="3">不限制</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fliterBlock_p">旅遊天數:</p>
+                        </td>
+                        <td>
+                            <select name="groupView_FliterDay">
+                                <option value="1" selected>1</option>
+                                <option value="2">1~5</option>
+                                <option value="3">5~10</option>
+                                <option value="">10以上</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fliterBlock_p">出發月份:</p>
+                        </td>
+                        <td>
+                            <select name="groupView_FliterMonth">
+                                <option value="1" selected>一月</option>
+                                <option value="2">二月</option>
+                                <option value="3">三月</option>
+                                <option value="">四月</option>
+                                <option value="">五月</option>
+                                <option value="">六月</option>
+                                <option value="">七月</option>
+                                <option value="">八月</option>
+                                <option value="">九月</option>
+                                <option value="">十月</option>
+                                <option value="">十一月</option>
+                                <option value="">十二月</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn1111">篩選</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Fliter End -->
+            <!-- Hot Schedule Start -->
+            <div class="hotScheBlock d-none d-md-block">
+                <table>
+                    <tr>
+                        <th>熱搜行程</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Hot Schedule End -->
+        </div>
+        <div class="groupViewRight col-9 d-block ">
+            <!-- Group Main Start -->
+            <!-- pc version start  -->
+            <div class="groupViewPCcardBlock d-md-flex d-none">
+                <!-- 揪團卡片 -->
+                <div class="card cardOriginalTem cardGroup " style="">
+                    <a href="">
+                        <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                        <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                            <h5 class="card-title cardTitleWebUse">揪團</h5>
+                            <div class="mask">
+                                <p class="card-text cardTextWebUse">日月潭<br><span
+                                        style="font-weight: 300;">九族文化村和健行步道</span></p>
+                            </div>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                        <div>
+                            <div class="cardGroupContent">
+                                <p>團主：愛旅行</p>
+                                <div>
+                                    <p>團主評價：
+                                        <img src="./images/good.png" alt="">
+                                    </p>
+
+                                </div>
+                                <p>出團日期：2020/06/30</p>
+                                <div>
+                                    <p>報名截止：2020/06/30</p>
+                                    <a href="">
+                                        <img src="./images/heart.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- 揪團卡片 -->
+                <div class="card cardOriginalTem cardGroup " style="">
+                    <a href="">
+                        <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                        <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                            <h5 class="card-title cardTitleWebUse">揪團</h5>
+                            <div class="mask">
+                                <p class="card-text cardTextWebUse">日月潭<br><span
+                                        style="font-weight: 300;">九族文化村和健行步道</span></p>
+                            </div>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                        <div>
+                            <div class="cardGroupContent">
+                                <p>團主：愛旅行</p>
+                                <div>
+                                    <p>團主評價：
+                                        <img src="./images/good.png" alt="">
+                                    </p>
+
+                                </div>
+                                <p>出團日期：2020/06/30</p>
+                                <div>
+                                    <p>報名截止：2020/06/30</p>
+                                    <a href="">
+                                        <img src="./images/heart.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+
+
+            </div>
+            <!-- pc version end -->
+            <!-- phone vision start -->
+            <div class="groupPhoneCardCarousel d-xl-none d-lg-none d-md-none">
+                <div id="carouselPhoneGroupControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner innerCardScheGroupPhoneSlide">
+                        <div class="carousel-item active ">
+                            <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span>
+                                            </p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardGroupContent">
+                                            <p>團主：愛旅行</p>
+                                            <div>
+                                                <p>團主評價：
+                                                    <img src="./images/good.png" alt="">
+                                                </p>
+
+                                            </div>
+                                            <p>出團日期：2020/06/30</p>
+
+                                            <div>
+                                                <p>報名截止：2020/06/30</p>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card cardOriginalTem cardGroup d-block " style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span>
+                                            </p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardGroupContent">
+                                            <p>團主：愛旅行</p>
+                                            <div>
+                                                <p>團主評價：
+                                                    <img src="./images/good.png" alt="">
+                                                </p>
+
+                                            </div>
+                                            <p>出團日期：2020/06/30</p>
+
+                                            <div>
+                                                <p>報名截止：2020/06/30</p>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span>
+                                            </p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardGroupContent">
+                                            <p>團主：愛旅行</p>
+                                            <div>
+                                                <p>團主評價：
+                                                    <img src="./images/good.png" alt="">
+                                                </p>
+
+                                            </div>
+                                            <p>出團日期：2020/06/30</p>
+
+                                            <div>
+                                                <p>報名截止：2020/06/30</p>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselPhoneGroupControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon groupCarouselIcon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselPhoneGroupControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon groupCarouselIcon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="groupPhoneCardCarousel d-xl-none d-lg-none d-md-none">
+                <div id="carouselPhoneScheControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner innerCardSchePhoneSlide">
+                        <div class="carousel-item active fixHeight4others">
+                            <div class="card  cardOriginalTem cardSchedule" style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">行程</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardScheduleContent">
+                                            <p>319人氣</p>
+                                            <div>
+                                                <a href="">
+                                                    <p>+加入行程</p>
+                                                </a>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card  cardOriginalTem cardSchedule" style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">行程</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardScheduleContent">
+                                            <p>319人氣</p>
+                                            <div>
+                                                <a href="">
+                                                    <p>+加入行程</p>
+                                                </a>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card cardOriginalTem cardSchedule" style="width: 18rem;">
+                                <a href="">
+                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">行程</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br><span
+                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    </div>
+                                    <div>
+                                        <div class="cardScheduleContent">
+                                            <p>319人氣</p>
+                                            <div>
+                                                <a href="">
+                                                    <p>+加入行程</p>
+                                                </a>
+                                                <a href="">
+                                                    <img src="./images/heart.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselPhoneScheControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon groupCarouselIcon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselPhoneScheControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon groupCarouselIcon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <!-- phone version end -->
+            <!-- Group Main End -->
+        </div>
+    </div>
+</div>

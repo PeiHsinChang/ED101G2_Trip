@@ -1,0 +1,71 @@
+<div class="mainBody">
+  <div class="subBody">
+    <div class="writeBlog container">
+      <div class="pageTitle">撰寫遊記</div>
+      <div class="blogTop row">
+        <div class="blogTopLeft col-lg-6 col-md-12 col-12">
+          <label class="blogSubTitle" for="blogTitle">遊記標題：</label>
+          <input type="text" name="blogTitle" id="blogTitle" value=""><br>
+          <label class="blogSubTitle" for="">出發日期：<select name="area" id=""></select></label>
+          <label class="blogSubTitle" for="">旅遊天數：<select name="area" id=""></select></label>  
+        </div>
+        <div class="blogTopRight col-lg-6 col-md-12 col-12">
+          <div class="mainPhoto">
+            <img id="blogMainPhoto" src="" alt="">
+          </div>
+          <label class="btnMid">
+            選擇檔案
+            <input id="selectBlogMainPhoto" style="display: none;" class="btnMid" type="file">
+          </label>
+        </div>
+      </div>
+      <hr>
+      <div class="blogBottom ">
+        <label class="blogSubTitle" for="blogTitle">遊記內文：</label>
+        <div class="writeBlogContent">
+          <div id="summernote"></div>
+          <div class="writeBlogBtnRow">
+            <button class="btnMid">發布</button>
+            <button class="btnMid">儲存</button>
+            <button class="btnMid">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $('#summernote').summernote({
+    placeholder: 'Hello stand alone ui',
+    tabsize: 2,
+    height: 300,
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'video']],
+      ['view', ['fullscreen', 'codeview', 'help']]
+    ]
+  });
+
+
+
+document.getElementById('selectBlogMainPhoto').onchange = fileChange;
+function fileChange(){
+    let file = document.getElementById('selectBlogMainPhoto').files[0];
+    let readFile = new FileReader();
+    readFile.readAsDataURL(file);
+    readFile.addEventListener('load',function(e){  
+      let putBlogPhoto = document.getElementsByClassName("mainPhoto")[0];
+      let image = document.getElementById('blogMainPhoto');
+      image.src  = this.result;
+      image.style.maxWidth = window.getComputedStyle(putBlogPhoto,).getPropertyValue("width");
+      image.style.maxHeight = window.getComputedStyle(putBlogPhoto,).getPropertyValue("height");
+    });
+}
+
+</script>

@@ -1,0 +1,540 @@
+* {
+  box-sizing: border-box;
+  border: 0;
+}
+*:focus {
+  outline: none;
+}
+hr{
+  border-top: 1px solid rgb(112,112,112);
+}
+ul,ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.col-lg-4 {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  height:853px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,.58);
+
+}
+.col-lg-8 {
+  height: 853px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.planIconBtn {  
+  img {
+    height:23px;
+    margin: 6px;
+  }
+}
+.transWay {
+  display: flex;
+  align-self: center;
+  color: $colorMain1;
+  padding: 5px;
+  img {
+    height: 25px;
+    margin: 0 5px;
+  }
+}
+.transWayClick {
+  display: flex;
+  align-self: center;
+  padding: 5px;
+  color: $colorSecondary2;
+  background-color: $colorMain1;
+  img {
+    height: 25px;
+    margin: 0 5px;
+  }
+}
+.planOpen {
+  display: none;
+}
+
+.planDateCross{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;       
+  img{
+    width:15px;
+    padding: 0;
+    margin: 2px;
+  }
+}
+
+.planA {
+  width: calc(100%-100px);
+  padding:5px;
+  div {
+    #planName {
+      border: 0;
+      width:100%;
+      font-size: $subtitle;
+      background-color: $colorMain2;
+    }
+    .planIconBtn {
+      width: 75px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    .planDuring {
+      input {
+        background-color: $colorMain2;
+        width:100px;
+        margin: 5px;
+        font-size: $s_content;
+        text-align: center;
+        display: flex;
+      }  
+      [type="date"]::-webkit-inner-spin-button {
+        display: none;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+    }   
+  }
+}
+.timeforSpot {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.planB {
+  background-color: $colorSecondary2;
+  box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  height:80px;
+  display: flex;
+  align-items: center;
+  .planArrow{
+    padding: 25px 5px;
+    height: 80px;
+    box-shadow: 1px 0px 0px rgba(112,112,112,.16);
+    img{
+      width:10px;
+    }
+  }
+  .planDate {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    width:100%;
+    align-items: center;
+    overflow: hidden;
+    .sliderInnerblock{
+      position: absolute;
+      // border: 1px solid green;
+      left: 0;
+      display: flex;
+      height:80px;
+      .dateBlock {
+        flex: 0 0 80px;
+        padding: 5px 0;
+        text-align: center;
+        box-shadow: 1px 0px 0px rgba(112,112,112,.16);      
+        .planDateCross{
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;       
+          img{
+            width:15px;
+            padding: 0;
+            margin: 2px;
+          }
+        }
+        img{
+          width: 20px;
+          padding: 20px 0;
+        }      
+      }
+    }     
+    
+
+  }
+}
+.planSpotList {
+  .planSpotCard {
+    width: 100%;
+    padding: 10px;
+    background-color: $colorSecondary2;
+    box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+    .planSpot {
+      display: flex;
+      justify-content: space-around;
+      font-size: $content;
+      align-items: center;
+      height: 129px;
+      .planSpotImg {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .planSpotCon {
+        width: calc( 100% - 110px);
+        text-overflow: ellipsis;
+        li{
+          padding:0;
+          text-overflow: ellipsis;
+
+        }
+        li:nth-child(1) {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          .timeforSpot{
+            img {
+              height: 20px;
+            }
+          }
+        }
+      } 
+    }
+    .spotRecom {
+      position: relative;
+      display: flex;
+      align-self: flex-end ;
+      align-items: flex-end;
+      justify-content: space-around;
+      background-color: $colorSecondary2;
+      box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+      border-radius: 5px;
+      height: 120px;
+        p {
+          position: absolute;
+          top: -10px;
+          left: 0;
+          color: $colorMain1;
+          font-size: $s_content;
+          margin: 0;
+        }
+        div {
+          margin: 5px;
+          display: flex;
+          justify-content: space-around;
+          .spotRecomPhoto {
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            position: relative;
+            div{
+              width: 110%;
+              height: 30px;
+              background-color: rgba(0,0,0,.54);
+              position: absolute;
+              bottom: -5px;
+              font-size: 9px;
+              color: $colorSecondary2;
+              padding: 0;
+              margin: 0;
+            }
+            img { 
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+  }
+  .trans {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    .transSelect {
+      width: 85%;
+      padding: 15px;
+      margin: 5px;
+      display: flex;
+      background-color: $colorSecondary2;
+      justify-content: space-around;     
+    }
+  }
+}
+.planE {
+  height: 68px;
+  margin: 5px;
+  background-color: $colorSecondary2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  div{
+    cursor: pointer;
+    img{
+      height:20px;
+    }
+  }
+}
+.planRightBar{
+  background-color: $colorSecondary2;
+  margin: 0;
+  width:100%;
+  height: 38px;
+  box-shadow: 2px 0 6px rgba(0,0,0,.16);
+  .planSearchBar{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    padding-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    input {
+      margin-top: 0;
+      margin-left: 5px;
+      width: 30px;
+      background-color: rgba(98,98,98,.11);
+      border-radius: 5px 0px 0px 5px;
+    }
+    button {
+      width: 30px;
+      padding: 0;
+      margin: 0;
+      background-color: rgba(98,98,98,.11);
+      border-radius: 0px 5px 5px 0px;
+      font-size: $s_content;
+      img {
+        width: 25px;
+      }      
+    }
+    .planminus{
+      background-color: $colorSecondary2;      
+    }
+  }   
+}
+
+.planWall {
+  position: relative;
+  width: 100%;
+  height: 815px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  background-color: $colorMain2;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  // border: 1px solid green;
+  overflow: hidden;
+  
+  .planFilter{
+    padding: 10px;
+    text-align: center;
+  }
+  hr{
+    margin-top: 0;
+    width: 95%;
+  }
+
+  .planDragWall{
+    width: 100%;
+    margin-right: 0;
+    // padding: 0;
+    // border: 1px solid red;
+    overflow-x: auto;
+    // border:1px solid red;
+    padding: 60px;
+    height: calc(815px - 90px);
+    .planDragScheZone{
+      width: 100%;
+      display: flex;
+      padding: 10px;
+    }
+    .row{
+      margin-left: 0;
+      margin-right: 0;
+    }
+    hr{
+      margin-top: 10px;
+    }
+    .planDragAttraZone{
+    
+      display: flex;
+      height: 1500px;
+
+    }
+  }
+  
+  .planKeepRoll{
+    width:100%;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    .planRollicon {
+      width: 43px;
+      height: 222px;
+      img{
+        width:43px;
+      }
+    }
+    .planKeepWall{
+      display: flex;
+      align-self: center;
+      width: 100%;
+      height: 191px; 
+      text-align: center;
+      .planKeepArrow{
+        padding: 70px 0;
+        width: 30px;
+        height: 191px;
+        background-color: $colorSecondary2;
+        img{
+          width: 14px;
+        }
+      }
+      .planKeepCardBlock{
+        width: calc(100% - 60px);
+        display: flex;
+        overflow: hidden;     
+        background-color: rgb(235,207,215);
+        .planKeepAttrac{
+          // border: 1px solid red;
+          flex: 0 0 155px;
+          height: 180px;
+          margin: 5px 5px;
+          .planKeepAttracPic {
+            width: 155px;
+            height: 155px;
+            overflow: hidden;
+            position: relative;
+            .planDateCross{
+              position: absolute;
+              top: 0;
+              img{
+                width:15px;
+                padding: 0;
+                margin: 2px;
+              }
+            }
+            img{
+              width: 100%;
+            }
+            .planKeepAttracCon{
+              width: 100%;
+              position: absolute;
+              text-align: left;
+              background-color: rgba(0,0,0,.16);
+              height:50px;
+              bottom: 0;
+              color: $colorSecondary2;
+            }
+         }
+        // .planKeepAttracCon{
+
+        // }
+
+        }
+      }
+      .planKeepArrow:last-child{
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+
+}
+
+.planAndSearchtab {
+  display: none;
+
+}
+
+@media (max-width: $breakpoint-sm){
+  .planSpotList {
+    .planSpotCard {
+      width: 100%;
+      padding: 10px;
+      .planSpot {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;    
+        .planSpotImg {
+          width: 90px;
+          height: 90px;
+        }
+        .planSpotCon {
+          width: calc( 100% - 110px);
+          li{
+            padding:0;
+          }
+          li:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;     
+          }
+        } 
+      }
+      .spotRecom {
+        position: relative;
+        display: flex;
+        align-self: flex-end ;
+        align-items: flex-end;
+        justify-content: space-around;
+        background-color: $colorSecondary2;
+        box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+        border-radius: 5px;
+        height: 110px;
+        p {
+          position: absolute;
+          top: -10px;
+          left: 0;
+          color: $colorMain1;
+          font-size: $s_content;
+          margin: 0;
+        }
+        div {
+          margin: 5px;
+          display: flex;
+          justify-content: space-around;
+          .spotRecomPhoto {
+            width: 90px;
+            height: 90px;
+            overflow: hidden;           
+            img{
+              width: 100%;
+            }
+          }
+          .spotRecomPhoto:nth-child(3){
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: $breakpoint-lg) {
+  
+  .col-lg-8{
+    display: none;
+  }
+  .planAndSearchtab {
+    display: block;
+    width: 100%;
+    height: 40px;
+    button {
+    width: 100%;
+    height: 40px;   
+    }
+  }
+  
+  .planSpotList {
+    .planSpotCard {
+      width: 100%;
+      padding: 10px;     
+      .spotRecom {
+        justify-content: flex-start;          
+      }
+    }
+  }
+
+}

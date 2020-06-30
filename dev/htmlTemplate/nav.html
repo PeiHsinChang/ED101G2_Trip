@@ -1,0 +1,105 @@
+<div class="mainBody">
+  <div class="navBg">   
+    <nav class="nav">
+      <div class="navLeft">
+        <a class="nav-link" href="#">
+          <img src="./images/logo.png" alt="">
+          <div class="daijoubu">
+            <div class="daijoubuMd">自助大丈夫</div>
+            <div class="daijoubuEn">Easy Planning Trip</div>
+          </div>
+        </a>
+      </div>
+      <div class="navCenter">
+        <a class="nav-link active" href="plan.html">排行程</a>
+        <a class="nav-link" href="groupView.html">揪團</a>
+        <a class="nav-link" href="blogView.html">遊記</a>
+        <a class="nav-link" href="member.html">會員專區</a>
+      </div>
+      <div class="navRight">
+        <a class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
+        <a class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
+      </div>
+    </nav>
+    <div class="navSmall">
+      <div class="navSmallLeft">
+                <button class="hamburger hamburger--collapse " type="button">
+                    <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                    </span>
+        </button>
+        <div id="panel">		
+          <a href="plan.html">排行程</a> 
+          <a href="groupView.html">揪團</a>
+          <a href="blogView.html">遊記</a>
+          <a href="member.html">會員專區</a>
+        </div>
+      </div>
+      <a class="nav-link, navSmallCenter" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt=""></a>
+    </div>
+    <div class="container">
+      <div class="modal fade" id="loginForm" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <form action="#" method="get" class="loginform">
+                <div class="loginall">
+                <div class="loginnamea">
+                    <div class="logintitle">會員登入</div>
+                </div>    
+                    <div class="logincont">           
+                        <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" style="margin: 1px;"></div>
+                        <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" style="margin: 1px;"></div>
+                        <div class="logintwobtn">
+                        <button type="submit" value="Submit" class="loginleftbutton">送出</button>
+                        <button type="reset" value="Reset" class="loginrightbutton" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerForm" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form action="#" method="get" class="enrollfrom">
+              <div class="enrollall">
+              <div class="enrollnamea">
+                  <div class="enrolltitle">會員註冊</div>
+              </div>    
+                  <div class="enrollcont">           
+                      <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" name="enrollname" size="10" style="margin: 1px;"></div>
+                      <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" name="enrollacc" size="10" style="margin: 1px;"></div>
+                      <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox"name="enrollpsdw" size="10" style="margin: 1px;"></div>
+                      <div class="psdwconf">確認密碼：<input type="text" class="accconbox"name="psdwconf" size="10" style="margin: 1px;"></div>
+                      <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
+                          <label for="male" class="malelab">
+                              <input type="radio" id="male" name="gender" value="male">男
+                          </label>
+                          <label for="female" class="femalelab">    
+                            <input type="radio" id="female" name="gender" value="female">女
+                          </label>
+                          <label for="other" class="otherlab">
+                              <input type="radio" id="other" name="gender" value="other">其他            
+                          </label>
+                      </div>
+                      <div class="enrollmail">信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" class="emailbox" name="enrollmail" size="10" style="margin: 1px;"></div>
+                      <div class="enrollbirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" class="birthbox" placeholder="YYYY/MM/DD" name="enrollbirth" size="10"></div>
+                      <div class="enrollphone">聯絡方式：
+                          <textarea class="moreinfo" placeholder="留下更多聯絡方式，在揪團時能更容易聯絡團員們喔！" style="width:177px;height:200px;vertical-align:top;"></textarea>
+                      </div>    
+                      <div class="enrolltwobtn">
+                      <button type="submit" value="Submit" class="enrollleftbutton">送出</button>
+                      <button type="reset" value="Reset" class="enrollrightbutton loginrightbutton" data-dismiss="modal">取消</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>   
+</div> 

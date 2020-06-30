@@ -1,0 +1,49 @@
+// @import "./variables";
+.loginnamea{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1 0;
+    font-weight: 500;
+}
+.logincont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+    padding: 5px;
+}
+.logintitle{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.loginacc .loginpsdw{
+    border-color: white;
+     font-size: $content;
+     margin-top: 20px;
+     }  
+.loginrightbutton{
+    @include button(88px, 33px, $colorMain1, $colorSecondary2, $colorMain1);
+    margin-left: 25px;
+    cursor: pointer;
+}
+.loginleftbutton{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+}
+.logintwobtn{
+    text-align: center;
+    margin: 20px;
+}
+.loginall{
+    width: 500px;
+    color: $colorSecondary3;
+}
+
+@media screen and (max-width: $breakpoint-sm){
+    .loginall{
+        width: 100%;
+    }
+    .logintwobtn{
+        text-align: center;
+        margin: 10px;
+    }
+}

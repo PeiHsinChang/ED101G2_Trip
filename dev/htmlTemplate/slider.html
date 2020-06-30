@@ -1,0 +1,173 @@
+<!-- ------992px以上------- -->
+<div class="container1">
+  <div class="carousel1">
+    <div class="item a" id="a">
+      <span class="mask">
+        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
+          一日遊 觀光客首選行程</p>
+      </span>
+      <img src="./images/a-lin_back.jpg">
+    </div>
+    <div class="item b" id="b">
+      <span class="mask">
+        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
+          一日遊 觀光客首選行程</p>
+      </span>
+      <img src="./images/alin.jpg">
+    </div>
+    <div class="item c" id="c">
+      <span class="mask">
+        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
+          一日遊 觀光客首選行程</p>
+      </span>
+      <img src="./images/blind3.jpg">
+    </div>
+    <div class="item d" id="d">
+      <span class="mask">
+        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
+          一日遊 觀光客首選行程</p>
+      </span>
+      <img src="./images/eric.jpg">
+    </div>
+    <div class="item e" id="e">
+      <span class="mask">
+        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
+          一日遊 觀光客首選行程</p>
+      </span>
+      <img src="./images/iu_back.jpg">
+    </div>
+  </div>
+  <div class="boxes">
+    <!-- <div class="box box1"></div>
+      <div class="box box2"></div>
+      <div class="box box3"></div>
+      <div class="box box4"></div>
+      <div class="box box5"></div> -->
+  </div>
+  <img class="prev" src="./images/leftnext.png" alt="">
+  <img class="next" id="next" src="./images/rightnext.png" alt="">
+</div>
+
+<!-- --------992px以下-------- -->
+<div id="carouselExampleCaptions" class="carousel slide slideAdjust" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="bb carousel-item active" style="height: 500px;">
+      <img src="./images/a-lin_back.jpg" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>阿里山五日遊</h5>
+        <p>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食一日遊 觀光客首選行程</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="height: 500px;">
+      <img src="./images/alin.jpg" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="height: 500px;">
+      <img src="./images/blind3.jpg" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="height: 500px;">
+      <img src="./images/eric.jpg" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="carousel-item" style="height: 500px;">
+      <img src="./images/iu2b.jpg" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- --------js--------- -->
+<script>
+  let carousel = $(".carousel1"),
+    currdeg = 0;
+
+  $(".next").on("click", {
+    d: "n"
+  }, rotate); //按下next鍵觸發rotate事件
+  $(".prev").on("click", {
+    d: "p"
+  }, rotate); //按下prev鍵觸發rotate事件
+
+  function rotate(e) {
+    if (e.data.d == "n") {
+      currdeg = currdeg + 72;
+    }
+    if (e.data.d == "p") {
+      currdeg = currdeg - 72;
+    }
+    carousel.css({
+      "transform": "rotateY(" + currdeg + "deg)"
+    });
+  }
+
+  //每五秒自動輪播一次
+  setInterval(function () {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    document.getElementById("next").dispatchEvent(e);
+  }, 5000);
+</script>
+<script>
+  $(document).ready(function () {
+    let imgCount = $('.carousel1 div').length;
+    //依照div數量產生長方形
+    for (let i = 0; i < imgCount; i++) {
+      $('.boxes').append(`<div class="box${i}"></div>`);
+    }
+    $('.boxes div').addClass('box');
+    $('.boxes div:nth-child(1)').addClass('clickMe');
+  });
+
+  let count = 0;
+  $('.next').click(function () {
+    if (count < 4) {
+      $('.boxes div').removeClass('clickMe');
+      count += 1;
+      $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+    } else {
+      $('.boxes div').removeClass('clickMe');
+      count = 0;
+      $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+    }
+  });
+  $('.prev').click(function () {
+    if (count > 0) {
+      $('.boxes div').removeClass('clickMe');
+      count -= 1;
+      $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+    } else {
+      $('.boxes div').removeClass('clickMe');
+      count = 4;
+      $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+    }
+  });
+</script>

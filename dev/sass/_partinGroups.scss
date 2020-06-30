@@ -1,0 +1,38 @@
+// @import "./variables";
+.mypartingroups{
+    background-color: $colorSecondary1;
+    font-size: $subtitle;
+    font-weight: 500;
+}
+.mygcont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+}
+.mypartingroupst{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.mypartinc{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.oneconf{
+    text-align: center;
+    margin: 10px;
+}
+.partingroups{
+    width: 500px;
+    color: $colorSecondary3;
+}
+@media screen and (max-width: $breakpoint-sm){
+    .partingroups{
+        width: 100%;
+    }
+    .twoost{
+        text-align: center;
+        margin: 10px;
+    }
+}

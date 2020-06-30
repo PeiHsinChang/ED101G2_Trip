@@ -1,0 +1,466 @@
+//card
+.cardOriginalTem {
+    width: 290px;
+    // min-width: 290px;
+    height: 353px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px lightgray;
+}
+
+//card
+.cardOriginalTem :hover {
+    text-decoration: none;
+}
+
+//card
+.cardOriginalTem img {
+    max-width: 268px;
+    height: 290px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+    /* border: 1px solid blue; */
+
+}
+
+//card-text
+.cardTextWebUse {
+    margin-top: 214px;
+    padding: 10px;
+    color: white;
+    /* background-color: orange; */
+    height: 74px;
+    text-overflow: ellipsis;
+}
+
+//card-title
+.cardTitleWebUse {
+    color: $colorSecondary2;
+    opacity: 0.8;
+    font-size: 35px;
+    /* border:1px solid firebrick; */
+    position: absolute;
+    text-overflow: ellipsis;
+
+}
+
+//card-img-overlay
+.cardImgOverlayWebUse {
+    width: 268px;
+    height: 290px;
+    margin: 10px auto;
+    /* border: 1px solid orange; */
+    padding: 0px;
+}
+
+.mask {
+    background-color: rgba(10, 26, 22, 0.3);
+    margin-left: 1px;
+}
+
+.cardStar {
+    /* border: 1px solid green; */
+    height: 20px;
+    padding: 0;
+
+    margin-left: 10px;
+}
+
+.cardStar img {
+    width: 20px;
+    height: auto;
+    margin: 0;
+}
+
+.cardLike {
+    display: flex;
+    /* border: 1px solid red; */
+    /* height: 32px; */
+    margin-top: 2px;
+    margin-left: 12px;
+    font-size: 14px;
+    padding: 0;
+    color: $colorSecondary3;
+}
+
+.cardLike>a>p {
+    color: $colorSecondary3;
+    text-overflow: ellipsis;
+}
+
+.cardLike img {
+    width: 20px;
+    height: 20px;
+    /* border: 1px solid blue; */
+    margin-left: 165px;
+    bottom: 7px;
+}
+
+.cardStar>p {
+    color: $colorSecondary3;
+    margin-left: 210px;
+    margin-top: 2px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+
+}
+
+.cardLike>a>p {
+    color: $colorMain1;
+    font-size: 16px;
+
+}
+
+/* 揪團 */
+
+.cardGroup {
+    min-width: 290px;
+    height: 440px;
+}
+
+.cardGroupContent {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    /* border: 1px solid red; */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(../images/group_bg.jpg);
+    background-size: 150px;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+.cardGroupContent p:first-child {
+    margin-top: 4px;
+}
+
+.cardGroupContent p {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+.cardGroupContent div>p>img {
+    /* border: 1px solid orange; */
+    margin-top: -2px;
+}
+
+.cardGroupContent div {
+    display: flex;
+    margin-top: -8px;
+    height: 30px;
+    /* border: 1px solid blue; */
+}
+
+.cardGroupContent div img {
+    width: 20px;
+    height: 20px;
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-top: 7px;
+}
+
+.cardGroupContent>div>a>img {
+    /* border: 1px solid blue; */
+    left: 75px;
+}
+
+
+/* 遊記 */
+.cardBlog {
+    min-width: 290px;
+    height: 417px;
+    font-size: 16px;
+}
+
+.cardBlog a {
+    color: black;
+}
+
+.cardBlogContent {
+    /* border: 1px solid orange; */
+    margin-right: 10px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(../images/card_blog_bg.png);
+    background-position: right;
+    background-size: 38%;
+    background-repeat: no-repeat;
+
+}
+
+
+.cardBlogContent p {
+    /* border: 1px solid red; */
+    margin-left: 19px;
+    margin-bottom: 0;
+    margin-top: 6px;
+    text-overflow: ellipsis;
+}
+
+.cardBlogContent img {
+    width: 20px;
+    height: 20px;
+}
+
+.cardBlogContent>div {
+    /* border: 1px solid red; */
+    display: flex;
+    margin-top: 12px;
+}
+
+.cardBlogContent>div>a>img {
+    /* border: 1px solid blue; */
+    left: 160px;
+}
+
+.cardBlogContent>div>a>p {
+    /* border:1px solid  blueviolet; */
+    color: $colorSecondary3;
+    text-overflow: ellipsis;
+}
+
+/* 行程 */
+
+.cardSchedule {
+    min-width: 275px;
+    height: 360px;
+    font-size: 16px;
+    box-shadow: 6px 6px white, 7px 7px 5px lightgray, 12px 12px white, 12px 12px 4px lightgray;
+}
+
+.cardSchedule>a>img {
+    width: 254px;
+    height: 273px;
+    // margin-left: 16px;
+    margin-top: 15px;
+}
+
+.cardSchedule>a>div>h5 {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.cardSchedule .mask {
+    /* border: 1px solid red; */
+    width: 254px;
+    height: 70px;
+    margin-left: 7px;
+    margin-top: -6px;
+}
+
+.cardSchedule .cardLike {
+    /* border: 1px solid orange; */
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 15px;
+}
+
+.cardSchedule .cardLike p {
+    /* border: 1px solid orange;  */
+    width: 100px;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+
+.cardSchedule .cardLike img {
+    /* border: 1px solid blue; */
+    margin-left: 130px;
+}
+
+.cardScheduleContent {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid orange; */
+}
+
+.cardScheduleContent img {
+    width: 20px;
+    height: 20px;
+    margin-left: 140px;
+    top: -9px
+}
+
+.cardScheduleContent>div {
+    display: flex;
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-left: 13px;
+}
+
+.cardScheduleContent>div>a>p {
+    color: $colorMain1;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+}
+
+.cardScheduleContent>a>p {
+    /* border: 1px solid blue; */
+    color: $colorSecondary3;
+    width: 90px;
+    margin-left: 210px;
+    margin-top: 5px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+
+.cardMemberSchedule .cardScheduleContent>div>a>p {
+    color: $colorSecondary3;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+
+.cardMemberSchedule .cardScheduleContent {
+    /* border: 1px solid red; */
+    margin-top: 30px;
+}
+
+.cardMemberSchedule .cardScheduleContent img {
+    /* border: 1px solid red; */
+    margin-left: 170px;
+}
+
+//景點
+.cardSpot {
+    min-width: 290px;
+    // border: 10px solid blue;
+}
+
+
+//頁面調整
+//首頁
+.cardGroupRWDindex {
+    // border: 1px solid red;
+    position: relative;
+    margin: 0 auto;
+
+    a {
+        .mask {
+            position: relative;
+            // border: 1px solid green;
+            background-color: rgba(10, 26, 22, 0.3);
+            z-index: 1;
+            top: 215px;
+            height: 74px;
+
+            .cardTextWebUse {
+                // border: 1px solid red;
+                margin: 0;
+                position: absolute;
+                bottom: 15px;
+                text-align: left;
+                z-index: 2;
+                left: -20px;
+                font-size: 1rem;
+            }
+        }
+
+
+
+        img {
+            position: absolute;
+            left: -2px;
+            // display: none;
+        }
+
+        .cardImgOverlayWebUse {
+            // border: 1px solid red;
+            left: -3px;
+        }
+    }
+}
+
+
+.cardGroupRWDindex>div>.cardGroupContent {
+    position: absolute;
+    // border: 1px solid red;
+    top: 310px;
+    margin: 0 auto;
+    background-size: 150px;
+    left: 5px;
+
+    div>p>img {
+        // border: 1px solid red;
+        left: 85px;
+        top: 36px;
+    }
+
+    div>a>img {
+        // border: 1px solid blue;
+        left: 250px;
+        bottom: 2px;
+    }
+
+    p {
+
+        color: black;
+        padding: 0;
+        text-align: left;
+        left: 10px;
+    }
+}
+
+.cardSpotRWDindex {
+    // border: 1px solid red;
+    position: relative;
+    margin: 0 auto;
+
+    a {
+        .mask {
+            position: relative;
+            // border: 1px solid green;
+            background-color: rgba(10, 26, 22, 0.3);
+            z-index: 1;
+            top: 215px;
+            height: 74px;
+        }
+
+
+        img {
+            position: absolute;
+            left: -1px;
+            // display: none;
+        }
+    }
+
+    .cardStar>p {
+        position: absolute;
+        color: $colorSecondary3;
+        // top: 20px;
+        font-size: 14px;
+        // border: 1px solid red;
+        padding: 0;
+        margin: 0;
+        left: 226px;
+        top: 300px;
+
+    }
+
+    .cardLike>a>img {
+        // border: 1px solid red;
+        left: 90px;
+    }
+
+    .cardLike>a>p {
+        position: absolute;
+        // border: 1px solid red;
+        margin: 0;
+        padding: 0;
+        top: 320px;
+    }
+
+    .cardTextWebUse {
+        color: $colorMain2;
+        text-align: left;
+        padding: 0;
+        position: absolute;
+        margin: 0;
+        left: 10px;
+        top: 15px;
+        font-size: 1rem;
+
+    }
+}

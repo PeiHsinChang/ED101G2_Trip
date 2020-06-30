@@ -1,0 +1,98 @@
+// @import "./variables";
+.startgroupa{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1 0;
+    font-weight: 500;
+}
+.startgroupcont{
+    background-color: $colorMain2;
+    padding: 20px 0px 0px 35px;
+    font-size: $content;
+}
+.startgtitle{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+
+.schedulename{
+    width: 150px;
+}
+.gotosetup{
+    color: #5f5f5f;
+}
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.custom-file-upload {
+    border: 1px solid $colorMain1;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: $colorMain1;
+}
+.plusfile{
+    border: 1px solid $colorMain1;
+    margin-top: 20px;
+    width: 420px;
+    height: 250px;
+    background-color: #fff;
+}
+.selectreq{
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 24px;
+}
+.noticetxthere{
+    resize : none;
+    width:430px;
+    height:80px;
+    vertical-align:top;
+    margin-top:10px;
+  } 
+.startgroupall{
+    width: 500px;
+    color: $colorSecondary3;
+}
+.setgroupadd .setgroupsave .setgroupcancel{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+}
+.threestatus{
+    margin-left: 150px;
+    margin-top: 30px;
+    padding: 5px;
+}
+@media screen and (max-width: $breakpoint-sm){
+    .startgroupall{
+        width: 100%;
+    }
+    .plusfile{
+        width: 87%;
+    }
+    .noticetxthere {
+        width:87%;
+      } 
+    .selectreq2{
+        width: 100%;
+        margin: 0px;
+    }
+    .threestatus{
+        margin: 0px 120px 0px 0px;
+        width: 85%;
+    }
+    .setgroupadd .setgroupsave .setgroupcancel {
+        display: block;
+        width:100%;
+    }
+}
+

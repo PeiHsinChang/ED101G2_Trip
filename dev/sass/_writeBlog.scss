@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+hr {
+  border-top: 1px solid rgb(112,112,112);
+}
+.pageTitle {
+  font-size: $title;
+}
+.blogSubTitle {
+  font-size: $subtitle;
+}
+.writeBlogContent {
+  width:100%;
+  height:700px;
+}
+.mainBody { 
+  color: $colorSecondary3;
+  .subBody {
+    .writeBlog {
+      // border: 1px solid red;
+      padding-top: 80px;
+      margin: 0 auto;
+      width: 960px;
+      .blogTop {
+        padding: 20px 0px 10px 0px;
+        display: flex;
+        .blogTopLeft {
+          input {
+            margin:10px;
+            height: 28px;    
+          }
+        }
+        .blogTopRight {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .mainPhoto {
+            background-color: rgb(159,159,159);
+            height: 320px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+          }
+          label {
+            text-align: center;
+            line-height: 40px;
+          }
+        }
+      }
+      .blogBottom {
+        .writeBlogContent {
+          #summernote {
+            margin:10px 0;
+          }
+          .writeBlogBtnRow {
+            display: flex;
+            margin:10px 0;
+            justify-content: flex-end;
+            .btnMid {
+              margin: 10px;
+            }
+          }
+        }
+      }  
+    }    
+  }
+}
+@media screen and (max-width: $breakpoint-md){
+  .mainBody{ 
+    .subBody{
+      padding: 10px;
+      .writeBlog{
+        .blogTop{
+          .blogTopLeft{            
+            input{
+              width: 100% ;
+              margin: 10px 0;
+            }  
+          }
+          .blogTopRight{
+            .mainPhoto{
+              width: 100%;
+              margin-bottom: 10px;
+              img {
+                width: 100%;
+              }
+            }
+            label {
+              line-height: 30px;
+            }
+          }
+        }
+      }         
+    }
+  }
+}

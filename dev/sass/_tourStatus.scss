@@ -1,0 +1,48 @@
+// @import "./variables";
+.mytourst{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1px -1px;
+    font-size: $subtitle;
+    font-weight: 500;
+}
+.tourstcont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+}
+.tourst{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.statusq{
+    margin-left: 15px;
+}
+.finish{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    margin-left: 25px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.notfinish{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.twoost{
+    text-align: center;
+    margin: 10px;
+}
+.statusconf{
+    width: 500px;
+    color: $colorSecondary3;
+}
+@media screen and (max-width: $breakpoint-sm){
+    .statusconf{
+        width: 100%;
+    }
+    .twost{
+        text-align: center;
+        margin: 10px;
+    }
+}

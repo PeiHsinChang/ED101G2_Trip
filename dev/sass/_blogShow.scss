@@ -1,0 +1,119 @@
+// @import "./variables";
+* {
+    box-sizing: border-box;
+    // background-color: lightgray;
+}
+
+body {
+    background-color: $colorMain2;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.containerBlog {
+    a {
+        position: fixed;
+        right: 5px;
+        top: 350px;
+    }
+    .coverPhoto {
+        width: 100%;
+        margin: 0 auto;
+        // border: 1px solid green;
+        min-height: 40vh;
+        background-image: url(../images/coverBlog.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+    .writerBlog {
+        // border: 1px solid black;
+        width: 80%;
+        min-height: 15vh;
+        margin: 0 auto;
+        // display: flex;
+        .boxWriter {
+            // border: 1px solid green;
+            width: 70%;
+        }
+        .profileAuthor {
+            // border: 1px solid red;
+            min-width: 100px;
+            min-height: 100px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            background-image: url(../images/profile.jpg);
+            background-size: cover;
+        }
+        table {
+            // border: 1px solid red;
+            min-width: 100px;
+            min-height: 50%;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        button {
+            float: right;
+            margin-top: 10px;
+        }
+    }
+    .blogContent {
+        // border: 1px solid blue;
+        width: 80%;
+        // height: 100vh;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        .blogCont {
+            // border: 1px solid red;
+            // min-height: 120vh;
+            width: 70%;
+            margin-right: 5px;
+            // background-color: white;
+            span {
+                display: block;
+                font-weight: bold;
+            }
+            #imgSets {
+                // border: 1px solid red;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden
+            }
+            img {
+                max-width: 100%;
+                // flex-shrink: 0;
+            }
+        }
+        .popular {
+            // border: 1px solid green;
+            // max-height: 60vh;
+            width: (100% - 70% -0.5%);
+            margin: 0;
+            .popTitle {
+                text-align: center;
+                background-color: $colorMain1;
+            }
+            .blogAds {
+                position: relative;
+                margin: 0 auto;
+                .adsMask {
+                    position: absolute;
+                    bottom: 0;
+                    background: rgb(0, 0, 0);
+                    background: rgba(0, 0, 0, 0.5);
+                    color: #f1f1f1;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}

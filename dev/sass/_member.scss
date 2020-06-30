@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+hr{
+  border-top: 1px solid rgb(112,112,112);
+}
+
+.changePhoto {
+  color: $colorMain1;
+}
+td {
+  padding: 5px;
+}
+.subTab{
+  @include button(90px, 35px, $colorMain1, $colorSecondary2, $colorMain1);
+}
+.subTabFocus {
+  @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+
+  // background-color: $colorMain1;
+  // color: $colorSecondary2;
+}
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+.tabButton {
+  background-color: rgb(211,211,211);
+  color: rgb(134,134,134);
+  width: 100px;
+  height: 40px;
+  border: 0;
+}
+.tabButtonFocus {
+  background-color: $colorSecondary2;
+  color: $colorSecondary3;
+  width: 100px;
+  height: 40px;
+  border: 0;
+}
+.tabButtonFirst {
+border-radius: 5px 0 0 0;
+}
+.tabButtonForth {
+  border-radius: 0 5px 0 0;
+  }
+.filterBtn {
+  border: 0;
+  background-color: $colorSecondary2;
+}
+.filterBtn:focus{
+  color: $colorMain1;
+}
+// .filterBtn::after {
+//   content: url(../images/blackdown.png);
+//   width: 20px;
+//   height: 20px;
+// }
+// .filterBtn:focus::after {
+//   content: url(../images/pinkdown.png);
+//   width: 20px;
+//   height: 20px;
+
+// }
+
+.memRightContainer{
+  background-color: $colorSecondary2;
+  padding: 10px;
+  padding-top: 30px;
+
+}
+// .keepContainer{
+
+// }
+
+.keepfilter_1 {
+  padding: 10px;
+  text-align: center;
+}
+
+.keepfilter_2 {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+}
+.keepAllWall{
+  padding: 15px;
+  display: flex;
+}
+.memRightWall{
+  padding: 15px;
+  display: flex;
+
+}
+.mainBody{
+  width: 100%;
+  max-width: 1920px;
+  background-color :$colorMain2;
+  .subBody{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 50px;
+    margin-top: 80px;
+
+    .memLeft{
+      margin-top: 40px; 
+      border: $borderLine 1px solid;
+      background-color: $colorSecondary2;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      .memInfoTitle{
+        height: 50px;
+        line-height: 50px;
+        font-size: 24px;
+        background-color: $colorSecondary1;
+        border-bottom: $borderLine 1px solid;
+        color: $colorMain1;
+        text-align: center;
+      }
+      .memInfo{
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .memPhoto{
+          border-radius: 50%;
+          margin: 10px;
+          width:118px;
+          height: 118px;
+          overflow: hidden;
+          img{  
+            width:100%;
+          }
+        }
+        table {
+          margin: 10px;
+        }
+        .divforBtn{
+          width: 100%;
+          display: flex;
+          margin: 10px;
+          justify-content: space-around;
+        }
+      }
+    }
+    .memRight{
+      margin-left: 10px;
+      .tab{
+        display: flex;
+      }
+    }
+  }
+}

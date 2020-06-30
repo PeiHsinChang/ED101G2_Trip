@@ -1,0 +1,59 @@
+// @import "./variables";
+.enrollnamea{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1 0;
+    font-weight: 500;
+}
+.enrollcont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+    padding: 5px;
+}
+.enrolltitle{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.textbox .accbox .psdwbox .accconbox{
+    border-color: white;
+    font-size: $content;
+    margin-top: 20px;
+    }
+.enrollgend{
+    margin-right: 43px;
+} 
+.moreinfo {
+resize:none; 
+box-shadow:2px 2px 1px white inset;       
+}
+.enrollphone{
+    margin-top: 21px;
+}    
+.enrollrightbutton{
+    @include button(88px, 33px, $colorMain1, $colorSecondary2, $colorMain1);
+    margin-left: 25px;
+    cursor: pointer;
+}
+.enrollleftbutton{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+}
+.enrolltwobtn{
+    text-align: center;
+    margin: 20px;
+}
+.enrollall{
+    width: 500px;
+    color: $colorSecondary3;
+}
+
+@media screen and (max-width: $breakpoint-sm){
+    .enrollall{
+        width: 100%;
+    }
+    .enrolltwobtn{
+        text-align: center;
+        margin: 10px;
+    }
+}

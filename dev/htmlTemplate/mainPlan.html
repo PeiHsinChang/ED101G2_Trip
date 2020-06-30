@@ -1,0 +1,352 @@
+
+<div class="mainBody container">
+  <div class="subBody row">  
+    <div class="col-lg-4 px-lg-0">
+      
+      <div class="planA">
+        <div>
+          <input id="planName" type="text" value="行程名稱">
+          <div class="planIconBtn">
+            <img src="./images/icon/save.png" alt="">
+            <img src="./images/icon/trash.png" alt="">
+          </div>
+        </div>
+        <div>
+          <div class="planDuring">
+            <input type="date" class="planStart" value="2020-07-08"> -
+            <input type="date" class="planEnd" value="2020-10-15">
+          </div>
+        </div>        
+      </div>
+      <div class="planB">
+        <div onclick="goRight()" class="planArrow"><img src="./images/icon/arrow_left.png" alt=""></div>
+        <ul class="planDate">
+          <div class="sliderInnerblock">
+            <li class="dateBlock">
+              <div class="planDateCross">
+                <img src="./images/icon/cross_d_red.png" alt="">
+              </div>
+              <div class="dateBlockCon">
+                5/19 (二) <br>
+                第1天
+              </div>
+            </li>
+            <li class="dateBlock">
+              <div class="planDateCross">
+                <img src="./images/icon/cross_d_red.png" alt="">
+              </div>
+              <div class="dateBlockCon">
+                5/19 (二) <br>
+                第2天
+              </div>
+            </li>
+            <li class="dateBlock">
+              <div class="planDateCross">
+                <img src="./images/icon/cross_d_red.png" alt="">
+              </div>
+              <div class="dateBlockCon">
+                5/19 (二) <br>
+                第3天
+              </div>
+            </li>
+            <li class="dateBlock">
+              <div class="planDateCross">
+                <img src="./images/icon/cross_d_red.png" alt="">
+              </div>
+              <div class="dateBlockCon">
+                5/19 (二) <br>
+                第4天
+              </div>
+            </li>
+            <li class="dateBlock">
+              <div class="planDateCross">
+                <img src="./images/icon/cross_d_red.png" alt="">
+              </div>
+              <div class="dateBlockCon">
+                5/19 (二) <br>
+                第5天
+              </div>
+            </li>                    
+            <li class="dateBlock">
+              <img src="./images/icon/cross.png" alt=""> 
+            </li>
+          </div>
+          
+        </ul>
+        <div onclick="goLeft()" class="planArrow"><img src="./images/icon/arrow_right.png" alt=""></div>
+      </div>
+      <div class="planE">
+        <div id="openPlanWall" onclick="openPlanWall();"><img src="./images/icon/grey_search.png" alt="">搜尋景點</div>
+      </div>
+      <ul class="planSpotList">
+        <li class="planSpotCard">
+          <div class="planSpot">
+            <div class="planSpotImg"><img src="./images/1.png" alt=""></div>
+            <ul class="planSpotCon">
+              <li>
+                <div>日月潭</div>
+                <div class="timeforSpot"><img src="./images/icon/clock3px.png" alt=""> 2hr30min</div>
+              </li>
+              <li>九族文化村</li>
+              <li class="timeforSpot">
+                <div>8:00-10:30</div>
+                <div class="planIconBtn"><img src="./images/icon/trash.png" alt="">   </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <div class="trans">
+          <div class="transSelect">
+            <div onclick="changeTransWay(0)" class="transWayClick"><img id="car" src="./images/icon/car_w.png" alt="">30min</div>
+            <div onclick="changeTransWay(1)" class="transWay"><img id="train" src="./images/icon/train.png" alt="">30min</div>
+            <div onclick="changeTransWay(2)" class="transWay"><img id="walking" src="./images/icon/walking.png" alt="">30min</div>
+          </div>         
+        </div> 
+        <li class="planSpotCard">
+          <div class="planSpot">
+            <div class="planSpotImg"><img src="./images/1.png" alt=""></div>
+            <ul class="planSpotCon">
+              <li>
+                <div>日月潭</div>
+                <div class="timeforSpot"><img src="./images/icon/clock3px.png" alt=""> 2hr30min</div>
+              </li>
+              <li>九族文化村</li>
+              <li class="timeforSpot">
+                <div>8:00-10:30</div>
+                <div class="planIconBtn"><img src="./images/icon/trash.png" alt="">   </div>
+              </li>
+            </ul>
+          </div>
+          <div class="spotRecom">
+            <p class="spotRecomWord">其他人也去了...</p>
+            <div>
+              <div class="spotRecomPhoto"><img src="./images/1.png" alt=""><div>深坑老街一日遊</div> </div>
+              <div class="spotRecomPhoto"><div>深坑老街一日遊</div><img src="./images/1.png" alt=""></div>
+              <div class="spotRecomPhoto"><div>深坑老街一日遊</div><img src="./images/2.png" alt=""></div>
+            </div>
+          </div>
+        </li>
+      </ul>       
+    </div>
+    
+    <div class="col-lg-8">
+      <div class="planRightBar container">
+        <div class="planSearchBar row px-log-0">
+          <input type="text" placeholder="搜尋想前往的景點" class="col col-md-5">
+          <button>
+              <img src="./images/iconSearch.png" alt="">
+          </button>
+          <button  class="planminus" onclick="openPlanWall()">一</button>
+        </div>
+      </div>
+      <div class="planWall">
+        <div class="planFilter">
+          縮小範圍顯示  
+          <label for="planArea">地區：<select name="planArea" id="planArea"></select></label>
+          <label for="planType">類型：<select name="planType" id="planType"></select></label>
+        </div>
+        <hr>
+        <div class="container planDragWall">
+          <div class="planDragScheZone row">
+            <!-- 行程 -->
+<div class="card cardSchedule cardOriginalTem " style="width: 18rem;">
+  <a href="">
+      <img src="./images/lake.jpg" class="card-img-top" alt="...">
+      <div class="card-body card-img-overlay cardImgOverlayWebUse">
+          <h5 class="card-title cardTitleWebUse">行程</h5>
+          <div class="mask">
+              <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span></p>
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+      <div>
+          <div class="cardScheduleContent">
+              <p>319人氣</p>
+              <div>
+                  <a href="">
+                      <p>+加入行程</p>
+                  </a>
+                  <a href="">
+                      <img src="./images/heart.png" alt="">
+                  </a>
+              </div>
+          </div>
+      </div>
+  </a>
+</div>
+<!-- 行程end -->
+          </div>
+          <hr>
+          <div class="row planDragAttraZone">
+            <!-- 景點卡片 -->
+<div class="card cardSpot cardOriginalTem " style="width: 18rem;">
+  <a href="">
+      <img src="./images/lake.jpg" class="card-img-top" alt="...">
+      <div class="card-body card-img-overlay cardImgOverlayWebUse">
+          <h5 class="card-title cardTitleWebUse">景點</h5>
+          <div class="mask">
+              <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span></p>
+          </div>
+      </div>
+      <div>
+          <div class="cardStar">
+              <p>人氣319</p>
+          </div>
+          <div class="cardLike">
+              <a href="">
+                  <p>+加入行程</p>
+              </a>
+              <a href="">
+                  <img src="./images/heart.png" alt="">
+              </a>
+          </div>
+      </div>
+  </a>
+</div>
+<!-- 景點卡片end -->
+          </div>
+          
+        </div>
+        <!-- keep box start-->
+        <div class="planKeepRoll">
+          <div onclick="openPlanKeepWall()" class="planRollicon">
+            <img src="./images/icon/roll.png" alt="">
+          </div>
+          <div class="planKeepWall">
+            <div class="planKeepArrow"><img src="./images/icon/arrow_left.png" alt=""></div>
+            <div class="planKeepCardBlock">
+              <div class="planKeepAttrac">
+                <div class="planKeepAttracPic">
+                  <div class="planDateCross"><img src="./images/icon/cross_d_white.png" alt=""></div>
+                  <img src="./images/2.png" alt="">
+                  <div class="planKeepAttracCon">
+                    深坑老街一日遊
+                  </div>
+                </div>
+                <p>+加入行程</p>
+              </div>
+              <div class="planKeepAttrac"></div>
+              <div class="planKeepAttrac"></div>
+              <div class="planKeepAttrac"></div>
+            </div>
+            <div class="planKeepArrow"><img src="./images/icon/arrow_right.png" alt=""></div>
+         
+          </div>
+        </div>
+        <!-- keep box end-->
+
+      </div>
+      
+    </div>   
+  </div>
+  
+</div>
+<div class="planAndSearchtab">
+  <button id="changePlanAndSearch" onclick="changePlanAndSearch();">搜尋</button>
+</div> 
+<script>
+col_lg_8 = document.getElementsByClassName("col-lg-8")[0];
+col_lg_4 = document.getElementsByClassName("col-lg-4")[0];
+function myFunction(){
+  if(window.innerWidth < 992){
+    col_lg_8.style.display = "none";
+    col_lg_4.style.display = "block";
+  } else {
+    col_lg_8.style.display = "block";
+    col_lg_4.style.display = "block";
+  }
+}
+    
+function changePlanAndSearch() {
+  mybutton = document.getElementById("changePlanAndSearch");
+  mybuttonText = mybutton.innerText;
+  if(mybuttonText =="搜尋") {
+    mybutton.innerText = "排行程";
+    col_lg_8.style.display ="block";
+    col_lg_4.style.display = "none";
+  } else {
+    mybutton.innerText = "搜尋";
+    col_lg_8.style.display = "none";
+    col_lg_4.style.display = "block";
+  }
+}
+window.addEventListener("resize", myFunction); 
+
+let isOpenPlanWall = true;
+function openPlanWall(){
+  if(isOpenPlanWall == true){
+    document.getElementsByClassName("planWall")[0].style.display = "none";
+    document.getElementById("openPlanWall").innerHTML = `<img src='./images/icon/global.png' alt=''>查看地圖`
+    document.getElementsByClassName("planminus")[0].innerText = `+`;
+    return isOpenPlanWall=false;
+  } else{
+    document.getElementsByClassName("planWall")[0].style.display = "block";
+    document.getElementById("openPlanWall").innerHTML = `<img src='./images/icon/grey_search.png' alt=''>搜尋景點`
+    document.getElementsByClassName("planminus")[0].innerText = `-`;
+    return isOpenPlanWall=true;
+  }
+} 
+
+function changeTransWay(index){
+  transSelect = document.getElementsByClassName("transSelect")[0];
+  transWayClick = document.getElementsByClassName("transWayClick")[0];
+  if(index == 0){
+    document.getElementById("car").src = "./images/icon/car_w.png";
+  }else if(index == 1){
+    document.getElementById("train").src = "./images/icon/train_w.png";
+  }else{
+    document.getElementById("walking").src = "./images/icon/walking_w.png";
+  }
+  transWayIconUrl = document.getElementsByClassName("transWayClick")[0].childNodes[0].src;
+  transWayIconUrl = transWayIconUrl.replace(/_w/,"");
+  transWayClick.childNodes[0].src = transWayIconUrl;
+  transWayClick.className="transWay";
+  transSelect.children[index].className ="transWayClick";
+}
+
+isPlanKeepWall = false;
+keepWall = document.getElementsByClassName("planKeepWall")[0]
+function openPlanKeepWall(){
+  if(isOpenPlanWall == true){
+    keepWall.style.display ="none";
+    isOpenPlanWall=false;
+  } else{
+    keepWall.style.display ="flex";
+    isOpenPlanWall=true;
+  }
+  console.log(isOpenPlanWall);
+  return isOpenPlanWall;
+}
+
+
+let left = 0;
+dateWall = document.getElementsByClassName('planDate')[0];
+dateWallWidth = window.getComputedStyle(dateWall,null).getPropertyValue("width");
+dateBlock = document.getElementsByClassName('dateBlock')[0];
+datedateBlock = parseInt(window.getComputedStyle(dateBlock,null).getPropertyValue("width"));
+datedateBlockLenght = document.getElementsByClassName('dateBlock').length;
+dateRedpixelWidth = datedateBlockLenght * datedateBlock;
+document.getElementsByClassName("sliderInnerblock")[0].style.width = dateRedpixelWidth;
+sliderInnerblock = document.getElementsByClassName("sliderInnerblock")[0];
+function goRight(){  
+if(parseInt(dateWallWidth) > parseInt(dateRedpixelWidth)){
+  left=0;
+}else{
+  if(left==0){
+    left =0;
+  }else {
+    left+=20;
+    sliderInnerblock.style.left = left + "px";
+  }      
+}
+}
+function goLeft(){
+  if(parseInt(dateWallWidth) > parseInt(dateRedpixelWidth)){
+    left=0;
+  }else {
+    left-=20;
+    sliderInnerblock.style.left = left + "px";
+  }
+}
+
+</script>

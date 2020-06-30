@@ -1,0 +1,49 @@
+// @import "./variables";
+.setupname{
+    background-color: $colorSecondary1;
+    margin: 0 0 -1 0;
+    font-weight: 500;
+}
+.setupcont{
+    background-color: $colorMain2;
+    text-align: center;
+    font-size: $content;
+}
+.setuptitle{
+    color: $colorMain1;
+    font-size: $subtitle;
+    text-align: center;
+}
+.setupninput{
+     border-color: white;
+     cursor:auto;
+     font-size: $content;
+     margin-top: 20px;
+}
+.rightbutton{
+    @include button(88px, 33px, $colorMain1, $colorSecondary2, $colorMain1);
+    margin-left: 25px;
+    cursor: pointer;
+}
+.leftbutton{
+    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
+    cursor: pointer;
+}
+.twobtn{
+    text-align: center;
+    margin: 20px;
+    height: 50px;
+}
+.setall{
+    width: 500px;
+    color: $colorSecondary3;
+}
+@media screen and (max-width: $breakpoint-sm){
+    .setall{
+        width: 100%;
+    }
+    .twobtn{
+        text-align: center;
+        margin: 10px;
+    }
+}
