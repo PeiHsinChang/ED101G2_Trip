@@ -18,6 +18,5 @@ $(document).ready(function(){
     document.getElementById(tabName).style.display = "block";  
   }
 
-  
 })
 
