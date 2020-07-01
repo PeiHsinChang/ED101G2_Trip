@@ -26,10 +26,24 @@ sass.compiler = require('node-sass');
 // });
 
 //js 搬家
-gulp.task('move',function(){
+gulp.task('movejs',function(){
   gulp
-    .src('./dev/js/*.js') //來源
-    .pipe(gulp.dest('dest/js/')) //目的地
+    .src(['./dev/js/*.js']) //來源
+    .pipe(gulp.dest('dest/js/*.js')) //目的地
+})
+
+//php 搬家
+gulp.task('movephp',function(){
+  gulp
+    .src(['./dev/*.php']) //來源
+    .pipe(gulp.dest('dest/*.php')) //目的地
+})
+
+//backstage 搬家
+gulp.task('movebackstage',function(){
+  gulp
+    .src(['./backstage/**.*']) //來源
+    .pipe(gulp.dest('dest/backstage')) //目的地
 })
 
 // sass 轉譯
@@ -67,8 +81,8 @@ gulp.task("miniimg", function () {
 // 同步
 gulp.task("default", function () {
   gulp.watch(
-    ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php","./dev/js/*.js"],
-    ["fileinclude","move","sass","sass:watch"],
+    ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php","./dev/js/*.js","./dev/sass/*.scss","./dev/sass/**/*.scss"],
+    ["fileinclude","movejs","sass","sass:watch","movephp","movebackstage"],
     
   );
 });
