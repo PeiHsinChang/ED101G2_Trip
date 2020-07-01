@@ -69,6 +69,7 @@ gulp.task("default", function () {
   gulp.watch(
     ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php","./dev/js/*.js"],
     ["fileinclude","move","sass","sass:watch"],
+    
   );
 });
 
