@@ -1,32 +1,3 @@
-// @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-
-// @import "variables";
-
-// @import "components/bootstrapCustom";
-
-// @import "components/card";
-// @import "footer";
-// @import "nav";
-// @import "member";
-// @import "plan";
-// @import "writeBlog";
-// @import "groupView";
-// @import "blogView";
-// @import "slider";
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-// @import "partinGroups";
-
-// @import "profileMem";
-// @import "setupGroup";
-// @import "setupTourn";
-// @import "tourStatus";
-// @import "blogShow";
-// @import "enrollMem";
-// @import "loginMember";
-// @import "groupShow";
-// @import "homepageBody";
-// @import "search";
 @import "./components/bootstrapCustom.scss";
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "./testImage.scss";
@@ -47,9 +18,11 @@
 @import "tourStatus";
 @import "blogShow";
 @import "enrollMem";
-@import "./loginMember.scss";
+@import "loginMember";
 @import "groupShow";
-@import "./homepageBody.scss";
+@import "homepageBody";
+@import "lightBox";
+
 * {
     font-family: 'Noto Sans TC';
 }

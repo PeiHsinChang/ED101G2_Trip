@@ -1,5 +1,3 @@
-// $(document).ready(function(){
-
   col_lg_8 = document.getElementsByClassName("col-lg-8")[0];
   col_lg_4 = document.getElementsByClassName("col-lg-4")[0];
   function myFunction(){
@@ -105,5 +103,13 @@
     }
   }
 
+  
+  let setupTourn = document.getElementById("setupTourn");
+  function closeLightBox(){
+    tourname = document.getElementById("tourname").value;
+    if(tourname != ""){
+      setupTourn.style.display = "none";
+      document.getElementById("planName").value = tourname;
+    }
+  }
 
-// })

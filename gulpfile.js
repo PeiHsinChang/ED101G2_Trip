@@ -28,21 +28,21 @@ sass.compiler = require('node-sass');
 //js 搬家
 gulp.task('movejs',function(){
   gulp
-    .src(['./dev/js/*.js']) //來源
-    .pipe(gulp.dest('dest/js/*.js')) //目的地
+    .src('./dev/js/*.js') //來源
+    .pipe(gulp.dest('dest/js')) //目的地
 })
 
 //php 搬家
 gulp.task('movephp',function(){
   gulp
     .src(['./dev/*.php']) //來源
-    .pipe(gulp.dest('dest/*.php')) //目的地
+    .pipe(gulp.dest('dest/')) //目的地
 })
 
 //backstage 搬家
 gulp.task('movebackstage',function(){
   return gulp
-    .src(['./backstage/**.*']) //來源
+    .src(['./dev/backstage/**.*','./dev/backstage/**/**.*']) //來源
     .pipe(gulp.dest('./dest/backstage')) //目的地
 })
 

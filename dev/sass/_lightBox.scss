@@ -1,0 +1,54 @@
+.lightBoxWall {
+  display: none; 
+  position: fixed; 
+  z-index: 7; 
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  height: 100vh;
+}
+.lightBoxWallforTourn {
+  display: block; 
+  position: fixed; 
+  z-index: 7; 
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  height: 100vh;
+}
+/* plan Modal Content */
+.setnameform {
+  margin: 40vh auto ;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+
+}
+
+/* Add Animation */
+.setnameform {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+.setupform{
+  margin: 0 auto ;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+
+
+}
