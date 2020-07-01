@@ -23,6 +23,7 @@
       mybutton.innerText = "搜尋";
       col_lg_8.style.display = "none";
       col_lg_4.style.display = "block";
+      
     }
   }
   window.addEventListener("resize", myFunction); 

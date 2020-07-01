@@ -68,7 +68,7 @@ gulp.task("miniimg", function () {
 gulp.task("default", function () {
   gulp.watch(
     ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php","./dev/js/*.js"],
-    ["fileinclude"],
+    ["fileinclude","move","sass","sass:watch"],
   );
 });
 
