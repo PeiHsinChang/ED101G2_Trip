@@ -41,9 +41,9 @@ gulp.task('movephp',function(){
 
 //backstage 搬家
 gulp.task('movebackstage',function(){
-  gulp
+  return gulp
     .src(['./backstage/**.*']) //來源
-    .pipe(gulp.dest('dest/backstage')) //目的地
+    .pipe(gulp.dest('./dest/backstage')) //目的地
 })
 
 // sass 轉譯
@@ -82,7 +82,7 @@ gulp.task("miniimg", function () {
 gulp.task("default", function () {
   gulp.watch(
     ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php","./dev/js/*.js","./dev/sass/*.scss","./dev/sass/**/*.scss"],
-    ["fileinclude","movejs","sass","sass:watch","movephp","movebackstage"],
+    ["fileinclude","movejs","sass","sass:watch","movephp"],
     
   );
 });
