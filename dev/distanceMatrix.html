@@ -134,7 +134,7 @@
                             });
                         });
                 },
-                // 抓使用者所在位置
+                // 抓使用者所在位置&計算距離：
                 getCurrent() {
                     const _this = this;
 
@@ -145,15 +145,15 @@
                             alert("無法取得你的位置");
                         }
 
-                        // 使用者允許抓目前位置，回傳經緯度
+                        // 使用者允許抓目前位置，回傳經緯度:
                         function success(position) {
-                            // 將所在地設成比較的點
+                            // 取得所在地的座標，並將所在地設成比較的點
                             let originPosition = new google.maps.LatLng(
                                 position.coords.latitude,
                                 position.coords.longitude
                             );
-
-                            // 把要計算的點存成陣列
+                            console.log(originPosition);
+                            // 把features的景點存成陣列：
                             let destinations = [];
                             _this.features.forEach((f) => {
                                 destinations.push(
@@ -163,13 +163,13 @@
                                     )
                                 );
                             });
-
-                            // 所在位置跟各點的距離
+                            console.log(destinations);
+                            // 所在位置跟各景點的距離：
                             const service = new google.maps.DistanceMatrixService();
                             service.getDistanceMatrix({
-                                    origins: [originPosition],
+                                    origins: destinations,
                                     destinations: destinations,
-                                    travelMode: "DRIVING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+                                    travelMode: "WALKING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
                                     unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
                                     avoidHighways: true, // 是否避開高速公路
                                     avoidTolls: true, // 是否避開收費路線
