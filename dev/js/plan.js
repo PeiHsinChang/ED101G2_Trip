@@ -103,13 +103,22 @@
     }
   }
 
-  
+
+ 
+  document.getElementById('closeLightBoxbtn').addEventListener('click',closeLightBox);
   let setupTourn = document.getElementById("setupTourn");
   function closeLightBox(){
-    tourname = document.getElementById("tourname").value;
+    let tourname = document.getElementById("tourname").value;
     if(tourname != ""){
+      localStorage.setItem("tourname", tourname);
       setupTourn.style.display = "none";
       document.getElementById("planName").value = tourname;
     }
   }
-
+  if(localStorage.getItem("tourname") == null){
+    setupTourn.style.display = "block";
+  }else{
+    document.getElementById("planName").value = localStorage.getItem("tourname");
+  
+  }
+  

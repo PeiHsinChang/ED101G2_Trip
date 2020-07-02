@@ -7,8 +7,8 @@
         <div>
           <input id="planName" type="text" value="行程名稱">
           <div class="planIconBtn">
-            <img onclick="saveMyPlan();" src="./images/icon/save.png" alt="">
-            <img src="./images/icon/trash.png" alt="">
+            <img onclick="saveMyPlan();" src="./images/icon/save.png" >
+            <img src="./images/icon/trash.png" >
           </div>
         </div>
         <div>
@@ -246,8 +246,8 @@
 </div>
 
 
-<div id="setupTourn" class="lightBoxWallforTourn"  style="display: none;">
-  <form action="#" method="get" class="setnameform">
+<div id="setupTourn" class="lightBoxWallforTourn"  >
+  <div action="#" method="get" class="setnameform">
     <div class="setall">
     <div class="setupname">
         <div class="setuptitle">請建立行程名稱</div>
@@ -255,13 +255,13 @@
     <div class="setupcont">           
       名稱：<input id="tourname" type="text" name="tourname" size="10" class="setupninput">
       <div class="twobtn">
-        <button onclick="closeLightBox();" type="submit" value="Submit" class="leftbutton">送出</button>
+        <button  id='closeLightBoxbtn' value="Submit" class="leftbutton">送出</button>
         <button type="reset" value="Reset" class="rightbutton">取消</button>
       </div>
     </div>
         </div>
     </div>
- </form>
+ </div>
 </div>
 
 

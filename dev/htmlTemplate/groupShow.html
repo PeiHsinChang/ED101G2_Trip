@@ -9,7 +9,7 @@
                 <form>
                     <table>
                         <label>選擇一個行程:</label>
-                        <select>
+                            <select>
                                 <option>台北行</option>
                                 <option>九份2日遊</option>
                             </select>
@@ -46,8 +46,6 @@
                 <button id="btnClose">取消</button>
             </div>
             </form>
-
-
         </div>
     </div>
     <div class="tabAll">
@@ -163,10 +161,7 @@
 
 <script>
     function openCity(evt, cityName) {
-
         var i, tabcontent, tablinks;
-
-
         tabcontent = document.getElementsByClassName(" tabcontent ");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none ";
@@ -182,7 +177,7 @@
     }
 
     //lightbox
-    var modal = document.getElementById("myModal");
+    var myModal = document.getElementById("myModal");
     var btnOpen = document.getElementById("btnOpen");
     var btnClose = document.getElementById("btnClose");
     btnOpen.onclick = function() {
@@ -193,15 +188,11 @@
     }
 
     function openCity(evt, cityName) {
-
         var i, tabcontent, tablinks;
-
-
         tabcontent = document.getElementsByClassName("tabcontent ");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none ";
         }
-
         tabs = document.getElementsByClassName("tabs ");
         for (i = 0; i < tabs.length; i++) {
             tabs[i].className = tabs[i].className.replace(" active ", " ");
@@ -211,14 +202,5 @@
         evt.currentTarget.className += " active ";
     }
 
-    //lightbox
-    var modal = document.getElementById("myModal ");
-    var btnOpen = document.getElementById("btnOpen ");
-    var btnClose = document.getElementById("btnClose ");
-    btnOpen.onclick = function() {
-        myModal.style.display = "block ";
-    }
-    btnClose.onclick = function() {
-        myModal.style.display = "none ";
-    }
+   
 </script>
