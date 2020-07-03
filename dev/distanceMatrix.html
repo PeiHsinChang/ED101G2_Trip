@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-        自助大丈夫：Distance Matrix API
+      自助大丈夫：Distance Matrix API
     </title>
-    <link rel="canonical" href="https://letswrite.tw/google-map-api-distance-matrix/" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link
+      rel="canonical"
+      href="https://letswrite.tw/google-map-api-distance-matrix/"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <style>
-        .container {
-            padding-top: 30px;
-            padding-bottom: 30px;
-        }
-        
-        #map {
-            background: #ccc;
-        }
-        
-        ul {
-            padding-top: 16px;
-        }
-        
-        .media img {
-            max-width: 64px;
-        }
-        
-        .media h5,
-        p {
-            font-size: 14px;
-        }
-        
-        .mdeia p {
-            margin-bottom: 6px;
-        }
-        
-        .media h6 {
-            font-size: 12px;
-            color: #ccc;
-        }
-        
-        .fixed-bottom {
-            position: fixed;
-            left: 16px;
-            bottom: 0;
-            max-width: 320px;
-        }
+      .container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+
+      #map {
+        background: #ccc;
+      }
+
+      ul {
+        padding-top: 16px;
+      }
+
+      .media img {
+        max-width: 64px;
+      }
+
+      .media h5,
+      p {
+        font-size: 14px;
+      }
+
+      .mdeia p {
+        margin-bottom: 6px;
+      }
+
+      .media h6 {
+        font-size: 12px;
+        color: #ccc;
+      }
+
+      .fixed-bottom {
+        position: fixed;
+        left: 16px;
+        bottom: 0;
+        max-width: 320px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app" class="container">
-        <!-- 執行 -->
-        <section class="row">
-            <div class="col google-map">
-                <button type="button" class="btn btn-info" @click="getCurrent">
-                    執行
-                </button>
+      <!-- 執行 -->
+      <section class="row">
+        <div class="col google-map">
+          <button type="button" class="btn btn-info" @click="getCurrent">
+            執行
+          </button>
+        </div>
+      </section>
+      <hr />
+      <section class="row">
+        <!-- 顯示距離列表 -->
+        <div class="col-md-4">
+          <div class="list-group">
+            <div v-for="f in features" class="list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ f.properties.name }}</h5>
+                <small>{{ f.properties.distance_text }}</small>
+              </div>
+              <p class="mb-1">{{ f.properties.site }}</p>
+              <small>{{ f.properties.distance_time }}</small>
             </div>
-        </section>
-        <hr />
-        <section class="row">
-            <!-- 顯示距離列表 -->
-            <div class="col-md-4">
-                <div class="list-group">
-                    <div v-for="f in features" class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ f.properties.name }}</h5>
-                            <small>{{ f.properties.distance_text }}</small>
-                        </div>
-                        <p class="mb-1">{{ f.properties.site }}</p>
-                        <small>{{ f.properties.distance_time }}</small>
-                    </div>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <!-- google map -->
-            <div class="col-md-8 google-map">
-                <div id="map" class="embed-responsive embed-responsive-16by9"></div>
-            </div>
-        </section>
+        <!-- google map -->
+        <div class="col-md-8 google-map">
+          <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+        </div>
+      </section>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
@@ -89,129 +94,131 @@
 
     <!-- map -->
     <script>
-        const googleMap = new Vue({
-            el: "#app",
-            data: {
-                map: null,
-                features: [], // 放景點的array
-            },
-            methods: {
-                // init google map
-                initMap() {
-                    // 預設地圖中心點
-                    let location = {
-                        lat: 25.0374865,
-                        lng: 121.5647688,
-                    };
+      const googleMap = new Vue({
+        el: "#app",
+        data: {
+          map: null,
+          features: [], // 放景點的array
+        },
+        methods: {
+          // init google map
+          initMap() {
+            // 預設地圖中心點
+            let location = {
+              lat: 25.0374865,
+              lng: 121.5647688,
+            };
 
-                    this.map = new google.maps.Map(document.getElementById("map"), {
-                        center: location,
-                        zoom: 16,
-                    });
+            this.map = new google.maps.Map(document.getElementById("map"), {
+              center: location,
+              zoom: 16,
+            });
 
-                    // 放置marker
-                    fetch("./json/map.json")
-                        .then((res) => res.json())
-                        .then((result) => {
-                            this.features = result.features; //把map.json裡的景點放到data的feature array裡
+            // 放置marker
+            fetch("./json/map.json")
+              .then((res) => res.json())
+              .then((result) => {
+                this.features = result.features; //把map.json裡的景點放到data的feature array裡
 
-                            this.features.forEach((r) => {
-                                // 寫入marker
-                                let latLng = new google.maps.LatLng(
-                                    r.geometry.coordinates[0],
-                                    r.geometry.coordinates[1]
-                                );
-                                let marker = new google.maps.Marker({
-                                    position: latLng,
-                                    map: this.map,
-                                    icon: "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
-                                });
+                this.features.forEach((r) => {
+                  // 寫入marker
+                  let latLng = new google.maps.LatLng(
+                    r.geometry.coordinates[0],
+                    r.geometry.coordinates[1]
+                  );
+                  console.log(latLng);
+                  let marker = new google.maps.Marker({
+                    position: latLng,
+                    map: this.map,
+                    icon:
+                      "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+                  });
 
-                                // marker 的泡泡框
-                                // let infowindow = new google.maps.InfoWindow({
-                                //     content: `<p>${r.properties.name}</p>`, // 支援html
-                                // });
-                            });
-                        });
-                },
-                // 抓使用者所在位置&計算距離：
-                getCurrent() {
-                    const _this = this;
-
-                    // 先確認使用者裝置能不能抓地點
-                    if (navigator.geolocation) {
-                        // 使用者不提供權限，或是發生其它錯誤
-                        function error() {
-                            alert("無法取得你的位置");
-                        }
-
-                        // 使用者允許抓目前位置，回傳經緯度:
-                        function success(position) {
-                            // 取得所在地的座標，並將所在地設成比較的點
-                            let originPosition = new google.maps.LatLng(
-                                position.coords.latitude,
-                                position.coords.longitude
-                            );
-                            console.log(originPosition);
-                            // 把features的景點存成陣列：
-                            let destinations = [];
-                            _this.features.forEach((f) => {
-                                destinations.push(
-                                    new google.maps.LatLng(
-                                        f.geometry.coordinates[0],
-                                        f.geometry.coordinates[1]
-                                    )
-                                );
-                            });
-                            console.log(destinations);
-                            // 所在位置跟各景點的距離：
-                            const service = new google.maps.DistanceMatrixService();
-                            service.getDistanceMatrix({
-                                    origins: destinations,
-                                    destinations: destinations,
-                                    travelMode: "WALKING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
-                                    unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
-                                    avoidHighways: true, // 是否避開高速公路
-                                    avoidTolls: true, // 是否避開收費路線
-                                },
-                                callback
-                            );
-
-                            function callback(response, status) {
-                                console.log(response);
-                                // 把距離寫進json裡
-                                for (let i = 0, len = _this.features.length; i < len; i++) {
-                                    _this.features[i].properties.distance =
-                                        response.rows[0].elements[i].distance.value;
-                                    _this.features[i].properties.distance_text =
-                                        response.rows[0].elements[i].distance.text;
-                                    _this.features[i].properties.distance_time =
-                                        response.rows[0].elements[i].duration.text;
-                                }
-                                // 按距離重排
-                                _this.features = _this.features.sort((a, b) => {
-                                    return a.properties.distance > b.properties.distance ?
-                                        1 :
-                                        -1;
-                                });
-                                console.log(_this.features);
-                            }
-                        }
-
-                        // 跟使用者拿所在位置的權限
-                        navigator.geolocation.getCurrentPosition(success, error);
-                    } else {
-                        alert("Sorry, 你的裝置不支援地理位置功能。");
-                    }
-                },
-            },
-            mounted() {
-                window.addEventListener("load", () => {
-                    this.initMap();
+                  // marker 的泡泡框
+                  // let infowindow = new google.maps.InfoWindow({
+                  //     content: `<p>${r.properties.name}</p>`, // 支援html
+                  // });
                 });
-            },
-        });
-    </script>
-</body>
+              });
+          },
+          // 抓使用者所在位置&計算距離：
+          getCurrent() {
+            const _this = this;
 
+            // 先確認使用者裝置能不能抓地點
+            if (navigator.geolocation) {
+              // 使用者不提供權限，或是發生其它錯誤
+              function error() {
+                alert("無法取得你的位置");
+              }
+
+              // 使用者允許抓目前位置，回傳經緯度:
+              function success(position) {
+                // 取得所在地的座標，並將所在地設成比較的點
+                let originPosition = new google.maps.LatLng(
+                  position.coords.latitude,
+                  position.coords.longitude
+                );
+                console.log(originPosition);
+                // 把features的景點存成陣列：
+                let destinations = [];
+                _this.features.forEach((f) => {
+                  destinations.push(
+                    new google.maps.LatLng(
+                      f.geometry.coordinates[0],
+                      f.geometry.coordinates[1]
+                    )
+                  );
+                });
+                console.log(destinations);
+                // 所在位置跟各景點的距離：
+                const service = new google.maps.DistanceMatrixService();
+                service.getDistanceMatrix(
+                  {
+                    origins: destinations,
+                    destinations: destinations,
+                    travelMode: "WALKING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+                    unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
+                    avoidHighways: true, // 是否避開高速公路
+                    avoidTolls: true, // 是否避開收費路線
+                  },
+                  callback
+                );
+
+                function callback(response, status) {
+                  console.log(response);
+                  // 把距離寫進json裡
+                  for (let i = 0, len = _this.features.length; i < len; i++) {
+                    _this.features[i].properties.distance =
+                      response.rows[0].elements[i].distance.value;
+                    _this.features[i].properties.distance_text =
+                      response.rows[0].elements[i].distance.text;
+                    _this.features[i].properties.distance_time =
+                      response.rows[0].elements[i].duration.text;
+                  }
+                  // 按距離重排
+                  _this.features = _this.features.sort((a, b) => {
+                    return a.properties.distance > b.properties.distance
+                      ? 1
+                      : -1;
+                  });
+                  console.log(_this.features);
+                }
+              }
+
+              // 跟使用者拿所在位置的權限
+              navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+              alert("Sorry, 你的裝置不支援地理位置功能。");
+            }
+          },
+        },
+        mounted() {
+          window.addEventListener("load", () => {
+            this.initMap();
+          });
+        },
+      });
+    </script>
+  </body>
 </html>
