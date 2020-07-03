@@ -1,0 +1,15 @@
+<?php 
+session_start();
+unset($_SESSION["Mem_NO"]);
+unset($_SESSION["Mem_Name"]);
+unset($_SESSION["Mem_Id"]);
+unset($_SESSION["Mem_Psw"]);
+unset($_SESSION["Mem_Email"]);
+unset($_SESSION["Mem_Status"]);
+unset($_SESSION["Mem_LikeSum"]);
+unset($_SESSION["Mem_LikeAmount"]);
+unset($_SESSION["Mem_Tel"]);
+unset($_SESSION["Mem_Sex"]);
+unset($_SESSION["Mem_Birth"]);
+unset($_SESSION["Mem_Photo"]);
+?>
