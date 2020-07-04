@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      自助大丈夫：Distance Matrix API
+    </title>
+    <link
+      rel="canonical"
+      href="https://letswrite.tw/google-map-api-distance-matrix/"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      .container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+
+      #map {
+        background: #ccc;
+      }
+
+      ul {
+        padding-top: 16px;
+      }
+
+      .media img {
+        max-width: 64px;
+      }
+
+      .media h5,
+      p {
+        font-size: 14px;
+      }
+
+      .mdeia p {
+        margin-bottom: 6px;
+      }
+
+      .media h6 {
+        font-size: 12px;
+        color: #ccc;
+      }
+
+      .fixed-bottom {
+        position: fixed;
+        left: 16px;
+        bottom: 0;
+        max-width: 320px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <div class="col-md-8 google-map">
+        <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+      </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <!-- map -->
+    <script>
+      const googleMap = new Vue({
+        el: "#app",
+        data: {
+          map: null,
+          selectedAttractions: [], // 放景點的array
+        },
+        methods: {
+          initMap() {
+            // 預設地圖中心點
+            let location = {
+              lat: 25.0374865,
+              lng: 121.5647688,
+            };
+
+            this.map = new google.maps.Map(document.getElementById("map"), {
+              center: location,
+              zoom: 16,
+            });
+
+            axios.get("./json/aoi.json").then((response) => {
+              this.selectedAttractions = response.data;
+
+              this.selectedAttractions.forEach((r) => {
+                // 寫入marker
+                let latLng = new google.maps.LatLng(r.Py, r.Px);
+                console.log(latLng);
+                let marker = new google.maps.Marker({
+                  position: latLng,
+                  map: this.map,
+                  icon:
+                    "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+                });
+
+                this.map.panTo(latLng);
+              });
+            });
+          },
+        },
+        mounted() {
+          window.addEventListener("load", () => {
+            this.initMap();
+          });
+        },
+      });
+    </script>
+  </body>
+</html>
