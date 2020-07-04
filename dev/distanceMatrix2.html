@@ -58,6 +58,32 @@
 
   <body>
     <div id="app" class="container">
+      <!-- 執行 -->
+      <section class="row">
+        <div class="col google-map">
+          <button type="button" class="btn btn-info" @click="getCurrent">
+            執行
+          </button>
+        </div>
+      </section>
+      <hr />
+      <section class="row">
+        <!-- 顯示距離列表 -->
+        <div class="col-md-4">
+          <div class="list-group">
+            <div v-for="f in selectedAttractions" class="list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ f.Name }}</h5>
+                <small>{{ f.distance_text }}</small>
+              </div>
+              <p class="mb-1">{{ f.Add }}</p>
+              <p class="mb-1">{{ f.Tel }}</p>
+              <small>{{ f.distance_time }}</small>
+            </div>
+          </div>
+        </div>
+
+
       <div class="col-md-8 google-map">
         <div id="map" class="embed-responsive embed-responsive-16by9"></div>
       </div>
@@ -65,6 +91,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
     <!-- map -->
     <script>
@@ -76,22 +103,21 @@
         },
         methods: {
           initMap() {
-            // 預設地圖中心點
+            // 地圖初始化：
             let location = {
               lat: 25.0374865,
               lng: 121.5647688,
             };
-
             this.map = new google.maps.Map(document.getElementById("map"), {
               center: location,
-              zoom: 16,
+              zoom: 12,
             });
-
+            // 取得景點：
             axios.get("./json/aoi.json").then((response) => {
               this.selectedAttractions = response.data;
-
+            // 處理各景點：
               this.selectedAttractions.forEach((r) => {
-                // 寫入marker
+              //(1) 寫入marker
                 let latLng = new google.maps.LatLng(r.Py, r.Px);
                 console.log(latLng);
                 let marker = new google.maps.Marker({
@@ -100,17 +126,59 @@
                   icon:
                     "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
                 });
-
                 this.map.panTo(latLng);
               });
             });
           },
+          getCurrent() {
+            const _this = this;
+            let destinations = [];
+            _this.selectedAttractions.forEach((f) => {
+              destinations.push(new google.maps.LatLng(f.Py, f.Px));
+            });
+            const service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                origins: destinations,
+                destinations: destinations,
+                travelMode: "WALKING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+                unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
+                avoidHighways: true, // 是否避開高速公路
+                avoidTolls: true, // 是否避開收費路線
+              },
+              callback
+            );
+            function callback(response, status) {
+              // console.log(response);
+              // 把距離寫進json裡
+              for (
+                let i = 0, len = _this.selectedAttractions.length;
+                i < len;
+                i++
+              ) {
+                _this.selectedAttractions[i].distance =
+                  response.rows[0].elements[i].distance.value;
+                _this.selectedAttractions[i].distance_text =
+                  response.rows[0].elements[i].distance.text;
+                _this.selectedAttractions[i].distance_time =
+                  response.rows[0].elements[i].duration.text;
+              }
+              // 按距離重排
+              _this.selectedAttractions = _this.selectedAttractions.sort(
+                (a, b) => {
+                  return a.distance > b.distance ? 1 : -1;
+                }
+              );
+              console.log(_this.selectedAttractions);
+            }
+          },
         },
         mounted() {
-          window.addEventListener("load", () => {
-            this.initMap();
-          });
-        },
+          // window.addEventListener("load", () => {
+            this.initMap(),
+            this.getCurrent()
+          // });
+        }
       });
     </script>
   </body>
