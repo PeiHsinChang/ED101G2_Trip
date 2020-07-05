@@ -17,9 +17,6 @@ td {
 }
 .subTabFocus {
   @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
-
-  // background-color: $colorMain1;
-  // color: $colorSecondary2;
 }
 button:focus {
   outline: none;
@@ -52,17 +49,7 @@ border-radius: 5px 0 0 0;
 .filterBtn:focus{
   color: $colorMain1;
 }
-// .filterBtn::after {
-//   content: url(../images/blackdown.png);
-//   width: 20px;
-//   height: 20px;
-// }
-// .filterBtn:focus::after {
-//   content: url(../images/pinkdown.png);
-//   width: 20px;
-//   height: 20px;
 
-// }
 
 .memRightContainer{
   background-color: $colorSecondary2;

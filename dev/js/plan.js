@@ -68,20 +68,20 @@
       keepWall.style.display ="flex";
       isOpenPlanWall=true;
     }
-    console.log(isOpenPlanWall);
     return isOpenPlanWall;
   }
   
-  
   let left = 0;
+
   dateWall = document.getElementsByClassName('planDate')[0];
   dateWallWidth = window.getComputedStyle(dateWall,null).getPropertyValue("width");
+  // 日期的寬度
   dateBlock = document.getElementsByClassName('dateBlock')[0];
   datedateBlock = parseInt(window.getComputedStyle(dateBlock,null).getPropertyValue("width"));
   datedateBlockLenght = document.getElementsByClassName('dateBlock').length;
   dateRedpixelWidth = datedateBlockLenght * datedateBlock;
-  document.getElementsByClassName("sliderInnerblock")[0].style.width = dateRedpixelWidth;
   sliderInnerblock = document.getElementsByClassName("sliderInnerblock")[0];
+  sliderInnerblock.style.width = dateRedpixelWidth;
   function goRight(){  
   if(parseInt(dateWallWidth) > parseInt(dateRedpixelWidth)){
     left=0;
@@ -103,7 +103,6 @@
     }
   }
 
-
  
   document.getElementById('closeLightBoxbtn').addEventListener('click',closeLightBox);
   let setupTourn = document.getElementById("setupTourn");
@@ -119,6 +118,6 @@
     setupTourn.style.display = "block";
   }else{
     document.getElementById("planName").value = localStorage.getItem("tourname");
-  
   }
+  
   

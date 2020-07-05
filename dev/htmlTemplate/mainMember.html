@@ -5,7 +5,7 @@
                 <div class="memInfoTitle">會員資料</div>
                 <div class="memInfo">
                     <div class="memPhoto">
-                        <img src="./images/1.png" alt="">
+                        <img src="./images/1.png" >
                     </div>
                     <div class="changePhoto" onclick="">更換頭貼</div>
                     <table>
@@ -60,11 +60,11 @@
                         </div>
                         <!-- 景點收藏 -->
                         <div id="appforSpot" class="keepAllWall" >        
-                        <!-- spotCard start-->
+                        <!-- cardSpot start-->
                         <div v-for="spot in spots" class="card cardSpot cardOriginalTem " style="width: 18rem;">
                             <a>
-                                <img  :src="spot.cardimg" class="card-img-top">
-                                <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                <img :src="spot.cardimg" class="card-img-top">
+                                <div onclick="openSpotLightBox();" class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5  class="card-title cardTitleWebUse">{{spot.cardTitle}}</h5>
                                     <div class="mask">
                                         <p class="card-text cardTextWebUse">{{spot.spotArea}}<br>
@@ -86,7 +86,7 @@
                                 </div>
                             </a>
                         </div>            
-                        <!-- spotCard end -->
+                        <!-- cardSpot end -->
                         </div>
                     </div>
                     <div id="keepsche" class="keepContainer" style="display:none">
