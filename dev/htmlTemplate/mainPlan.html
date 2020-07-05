@@ -18,13 +18,14 @@
           </div>
         </div>        
       </div>
+
       <div class="planB">
-        <div onclick="goRight()" class="planArrow"><img src="./images/icon/arrow_left.png" alt=""></div>
+        <div onclick="goRight()" class="planArrow"><img src="./images/icon/arrow_left.png" ></div>
         <ul class="planDate">
           <div class="sliderInnerblock">
             <li class="dateBlock">
               <div class="planDateCross">
-                <img src="./images/icon/cross_d_red.png" alt="">
+                <img src="./images/icon/cross_d_red.png" >
               </div>
               <div class="dateBlockCon">
                 5/19 (二) <br>
@@ -33,7 +34,7 @@
             </li>
             <li class="dateBlock">
               <div class="planDateCross">
-                <img src="./images/icon/cross_d_red.png" alt="">
+                <img src="./images/icon/cross_d_red.png" >
               </div>
               <div class="dateBlockCon">
                 5/19 (二) <br>
@@ -42,7 +43,7 @@
             </li>
             <li class="dateBlock">
               <div class="planDateCross">
-                <img src="./images/icon/cross_d_red.png" alt="">
+                <img src="./images/icon/cross_d_red.png" >
               </div>
               <div class="dateBlockCon">
                 5/19 (二) <br>
@@ -213,24 +214,21 @@
             <img src="./images/icon/roll.png" alt="">
           </div>
           <div class="planKeepWall">
-            <div class="planKeepArrow"><img src="./images/icon/arrow_left.png" alt=""></div>
-            <div class="planKeepCardBlock">
-              <div class="planKeepAttrac">
+            <div class="planKeepArrow"><img src="./images/icon/arrow_left.png"></div>
+            <div id="keepSpotsCard" class="planKeepCardBlock" style="border:1px solid red;">
+              <!-- keep spots card start -->
+              <div v-for="spot in spots" class="planKeepAttrac" style="border:1px solid green;">
                 <div class="planKeepAttracPic">
-                  <div class="planDateCross"><img src="./images/icon/cross_d_white.png" alt=""></div>
-                  <img src="./images/2.png" alt="">
-                  <div class="planKeepAttracCon">
-                    深坑老街一日遊
-                  </div>
+                  <div class="planDateCross"><img src="./images/icon/cross_d_white.png"></div>
+                  <img class="spotPic"  :src="spot.cardimg">
+                  <div class="planKeepAttracCon">{{spot.spotName}}</div>
                 </div>
                 <p>+加入行程</p>
               </div>
-              <div class="planKeepAttrac"></div>
-              <div class="planKeepAttrac"></div>
-              <div class="planKeepAttrac"></div>
+              <!-- keep spots card end -->
+
             </div>
-            <div class="planKeepArrow"><img src="./images/icon/arrow_right.png" alt=""></div>
-         
+            <div class="planKeepArrow"><img src="./images/icon/arrow_right.png"></div>
           </div>
         </div>
         <!-- keep box end-->
@@ -266,3 +264,19 @@
 
 
 <script src="./js/plan.js"></script>
+<script>
+  new Vue({
+          el: '#keepSpotsCard', 
+          data: {      
+            //相當於之前JS宣告的變數
+            spots: [{
+              cardimg: "./images/lake.jpg",
+              spotName: "日月潭",
+            },
+            {
+              cardimg: "./images/lake.jpg",
+              spotName: "饒河夜市",
+            }],
+          },
+        });
+</script>

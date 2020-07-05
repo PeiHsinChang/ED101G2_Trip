@@ -1,7 +1,7 @@
 <!-- 景點卡片 -->
 <div class="card cardSpot cardOriginalTem " style="width: 18rem;">
-    <a href="">
-        <img src="./images/lake.jpg" class="card-img-top" alt="...">
+    <a>
+        <img src="./images/lake.jpg" class="card-img-top">
         <div class="card-body card-img-overlay cardImgOverlayWebUse">
             <h5 class="card-title cardTitleWebUse">景點</h5>
             <div class="mask">
@@ -13,13 +13,26 @@
                 <p>人氣319</p>
             </div>
             <div class="cardLike">
-                <a href="">
-                    <p>+加入行程</p>
-                </a>
-                <a href="" onclick="keepSpotLike(this);">
-                    <img src="./images/heart.png" alt="">
-                </a>
+                <a><p>+加入行程</p></a>
+                <a class="heartimg" onclick="keepSpotLike(this);"><img src="./images/heart.png" ></a>
             </div>
         </div>
     </a>
 </div>
+
+{
+cardTitle: "景點",
+cardimg: "./images/lake.jpg"
+spotArea: "南投",
+spotName: "日月潭",
+hotcount: "319",
+iskeep: "1"
+},
+{
+cardTitle: "景點",
+cardimg: "./images/lake.jpg"
+spotArea: "台北",
+spotName: "饒河夜市",
+hotcount: "320",
+iskeep: "1"
+}

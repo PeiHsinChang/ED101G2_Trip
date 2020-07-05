@@ -59,69 +59,34 @@
                             <button class="btnSmall">篩選</button>
                         </div>
                         <!-- 景點收藏 -->
-                        <div class="keepAllWall">
-
-                            <!-- 景點卡片 -->
-                            <div class="card cardSpot cardOriginalTem " style="width: 18rem;">
-                                <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">景點</h5>
-                                        <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                        </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <div id="appforSpot" class="keepAllWall" >        
+                        <!-- spotCard start-->
+                        <div v-for="spot in spots" class="card cardSpot cardOriginalTem " style="width: 18rem;">
+                            <a>
+                                <img  :src="spot.cardimg" class="card-img-top">
+                                <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <h5  class="card-title cardTitleWebUse">{{spot.cardTitle}}</h5>
+                                    <div class="mask">
+                                        <p class="card-text cardTextWebUse">{{spot.spotArea}}<br>
+                                            <span  style="font-weight: 300;">{{spot.spotName}}</span>
+                                        </p>
                                     </div>
-                                    <div>
-                                        <div class="cardStar">
-                         
-                                            <p>人氣319</p>
-                                        </div>
-                                        <div class="cardLike">
-                                            <a href="">
-                                                <p>+加入行程</p>
-                                            </a>
-                                            <a href="" onclick="keepSpotLike(this);">
-                                                <img src="./images/heart.png" alt="">
-                                            </a>
-                                        </div>
+                                </div>
+                                <div>
+                                    <div class="cardStar">
+                                        <p >人氣{{spot.hotcount}}</p>
                                     </div>
-                                </a>
-                            </div>
-                            <!-- 景點卡片 -->
-                            <div class="card cardSpot cardOriginalTem " style="width: 18rem;">
-                                <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">景點</h5>
-                                        <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                        </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    <div class="cardLike">
+                                        <a><p>+加入行程</p></a>
+                                        <a class="heartimg" onclick="keepSpotLike(this);">
+                                            <img v-if="spot.iskeep == 1" src="./images/heart_r.png" >
+                                            <img v-else src="./images/heart.png" >
+                                        </a>
                                     </div>
-                                    <div>
-                                        <div class="cardStar">
-                                            <!-- <img src="./img/star_fill.png" alt="">
-                  <img src="./img/star_fill.png" alt="">
-                  <img src="./img/star_fill.png" alt="">
-                  <img src="./img/star_fill.png" alt="">
-                  <img src="./img/star_notfill.png" alt=""> -->
-                                            <p>人氣319</p>
-                                        </div>
-                                        <div class="cardLike">
-                                            <a href="">
-                                                <p>+加入行程</p>
-                                            </a>
-                                            <a href="">
-                                                <img src="./images/heart.png" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
+                                </div>
+                            </a>
+                        </div>            
+                        <!-- spotCard end -->
                         </div>
                     </div>
                     <div id="keepsche" class="keepContainer" style="display:none">
@@ -130,63 +95,34 @@
                             <button class="filterBtn">最高人氣&darr;</button>
                         </div>
                         <!-- 行程收藏 -->
-                        <div class="keepAllWall">
+                        <div class="keepAllWall" >
                             <!-- 行程 -->
+                            <!-- keep schedule start -->
                             <div class="card cardSchedule cardOriginalTem " style="width: 18rem;">
-                                <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                <a>
+                                    <img src="./images/lake.jpg" class="card-img-top">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">行程</h5>
                                         <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                            <p class="card-text cardTextWebUse">日月潭<br>
+                                                <span style="font-weight: 300;">九族文化村和健行步道</span>
+                                            </p>
                                         </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                                     </div>
                                     <div>
                                         <div class="cardScheduleContent">
                                             <p>319人氣</p>
                                             <div>
-                                                <a href="">
-                                                    <p>+加入行程</p>
-                                                </a>
-                                                <a href="">
-                                                    <img src="./images/heart.png" alt="">
+                                                <a><p>+加入行程</p></a>
+                                                <a>
+                                                    <img src="./images/heart.png">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <!-- 行程 -->
-                            <div class="card cardSchedule cardOriginalTem " style="width: 18rem;">
-                                <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">行程</h5>
-                                        <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                        </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                    </div>
-                                    <div>
-                                        <div class="cardScheduleContent">
-                                            <p>319人氣</p>
-                                            <div>
-                                                <a href="">
-                                                    <p>+加入行程</p>
-                                                </a>
-                                                <a href="">
-                                                    <img src="./images/heart.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-
+                            <!-- keep schedule end -->
                         </div>
                     </div>
                     <div id="keepgroup" class="keepContainer" style="display:none">
@@ -194,12 +130,44 @@
                             <button class="filterBtn">最新刊登&darr;</button>
                             <button class="filterBtn">最高評價&darr;</button>
                         </div>
+                        <!-- 揪團收藏 -->
                         <div class="keepAllWall">
+                            <!-- 揪團 -->
+                            <div class="card cardOriginalTem cardGroup" >
+                                <a>
+                                    <img src="./images/lake.jpg" class="card-img-top" >
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br>
+                                                <span style="font-weight: 300;">九族文化村和健行步道</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="cardGroupContent">
+                                            <p>團主：愛旅行</p>
+                                            <div>
+                                                <p>團主評價：
+                                                    <img src="./images/good.png" >
+                                                </p>
+                                            </div>
+                                            <p>出團日期：2020/06/30</p>
+                                            <div>
+                                                <p>報名截止：2020/06/30</p>
+                                                <a>
+                                                    <img src="./images/heart.png">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
 
                             <!-- 揪團卡片 -->
-                            <div class="card cardOriginalTem cardGroup " style="">
+                            <div class="card cardOriginalTem cardGroup " >
                                 <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                                    <img src="./images/lake.jpg" class="card-img-top">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
                                         <div class="mask">
@@ -228,41 +196,6 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <!-- 揪團卡片 -->
-                            <div class="card cardOriginalTem cardGroup " style="">
-                                <a href="">
-                                    <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
-                                        <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                        </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                    </div>
-                                    <div>
-                                        <div class="cardGroupContent">
-                                            <p>團主：愛旅行</p>
-                                            <div>
-                                                <p>團主評價：
-                                                    <img src="./images/good.png" alt="">
-                                                </p>
-
-                                            </div>
-                                            <p>出團日期：2020/06/30</p>
-                                            <div>
-                                                <p>報名截止：2020/06/30</p>
-                                                <a href="">
-                                                    <img src="./images/heart.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-
 
 
                         </div>
@@ -272,7 +205,35 @@
                             <button class="filterBtn">最新刊登&darr;</button>
                             <button class="filterBtn">最高人氣&darr;</button>
                         </div>
+                        <!-- 遊記收藏 -->
                         <div class="keepAllWall">
+                            <!-- keep blog start -->
+                            <div class="card cardOriginalTem cardBlog" style="width: 18rem;">
+                                <a>
+                                    <img src="./images/1.png" class="card-img-top">
+                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                        <h5 class="card-title cardTitleWebUse">遊記</h5>
+                                        <div class="mask">
+                                            <p class="card-text cardTextWebUse">日月潭<br>
+                                                <span style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="cardBlogContent">
+                                            <p>作者：中央劉德華</p>
+                                            <p>發佈日期：2020/08/20</p>
+                                            <div>
+                                                <p>人氣319</p>
+                                                <a>
+                                                    <img src="./images/heart.png">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- keep blog end -->
+
                             <!-- 遊記 -->
                             <div class="card cardOriginalTem cardBlog" style="width: 18rem;">
                                 <a href="">
@@ -299,58 +260,30 @@
                                     </div>
                                 </a>
                             </div>
-                            <!-- 遊記 -->
-                            <div class="card cardOriginalTem cardBlog" style="width: 18rem;">
-                                <a href="">
-                                    <img src="./images/1.png" class="card-img-top" alt="...">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                                        <div class="mask">
-                                            <p class="card-text cardTextWebUse">日月潭<br><span
-                                                    style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                        </div>
-                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                    </div>
-                                    <div>
-                                        <div class="cardBlogContent">
-                                            <p>作者：中央劉德華</p>
-                                            <p>發佈日期：2020/08/20</p>
-                                            <div>
-                                                <p>人氣319</p>
-                                                <a href="">
-                                                    <img src="./images/heart.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div id="schedule" class="memRightContainer" style="display:none">
+                    <!-- 會員中心＿行程 -->
                     <div class="memRightWall">
-
                         <!-- 會員中心＿行程 -->
+                        <!-- mem sche start -->
                         <div class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">
-                            <a href="">
-                                <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                            <a >
+                                <img src="./images/lake.jpg" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5 class="card-title cardTitleWebUse">行程</h5>
                                     <div class="mask">
-                                        <p class="card-text cardTextWebUse">日月潭<br><span
-                                                style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        <p class="card-text cardTextWebUse">日月潭<br>
+                                            <span style="font-weight: 300;">九族文化村和健行步道</span></p>
                                     </div>
-                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                                 </div>
                                 <div>
                                     <div class="cardScheduleContent">
-                                        <!-- <p>南投縣</p> -->
                                         <div>
-                                            <a href="">
-                                                <p>319人氣</p>
-                                            </a>
-                                            <a href="">
+                                            <a><p>319人氣</p></a>
+                                            <a>
                                                 <img src="./images/heart.png" alt="">
                                             </a>
                                         </div>
@@ -358,32 +291,31 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">
-                            <a href="">
-                                <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                                <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                    <h5 class="card-title cardTitleWebUse">行程</h5>
-                                    <div class="mask">
-                                        <p class="card-text cardTextWebUse">日月潭<br><span
-                                                style="font-weight: 300;">九族文化村和健行步道</span></p>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <!-- mem sche end -->
+                       <!-- mem sche start -->
+                       <div class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">
+                        <a >
+                            <img src="./images/lake.jpg" class="card-img-top">
+                            <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                <h5 class="card-title cardTitleWebUse">行程</h5>
+                                <div class="mask">
+                                    <p class="card-text cardTextWebUse">日月潭<br>
+                                        <span style="font-weight: 300;">九族文化村和健行步道</span></p>
                                 </div>
-                                <div>
-                                    <div class="cardScheduleContent">
-                                        <!-- <p>南投縣</p> -->
-                                        <div>
-                                            <a href="">
-                                                <p>319人氣</p>
-                                            </a>
-                                            <a href="">
-                                                <img src="./images/heart.png" alt="">
-                                            </a>
-                                        </div>
+                            </div>
+                            <div>
+                                <div class="cardScheduleContent">
+                                    <div>
+                                        <a><p>319人氣</p></a>
+                                        <a>
+                                            <img src="./images/heart.png" alt="">
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- mem sche end -->
                     </div>
                 </div>
                 <div id="group" class="memRightContainer" style="display:none">
@@ -391,30 +323,28 @@
 
                         <!-- 揪團卡片 -->
                         <div class="card cardOriginalTem cardGroup ">
-                            <a href="">
-                                <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                            <a>
+                                <img src="./images/lake.jpg" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5 class="card-title cardTitleWebUse">揪團</h5>
                                     <div class="mask">
-                                        <p class="card-text cardTextWebUse">日月潭<br><span
-                                                style="font-weight: 300;">九族文化村和健行步道</span></p>
+                                        <p class="card-text cardTextWebUse">日月潭<br>
+                                            <span style="font-weight: 300;">九族文化村和健行步道</span></p>
                                     </div>
-                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                                 </div>
                                 <div>
                                     <div class="cardGroupContent">
                                         <p>團主：愛旅行</p>
                                         <div>
                                             <p>團主評價：
-                                                <img src="./images/good.png" alt="">
+                                                <img src="./images/good.png">
                                             </p>
-
                                         </div>
                                         <p>出團日期：2020/06/30</p>
                                         <div>
                                             <p>報名截止：2020/06/30</p>
-                                            <a href="">
-                                                <img src="./images/heart.png" alt="">
+                                            <a>
+                                                <img src="./images/heart.png">
                                             </a>
                                         </div>
                                     </div>
@@ -507,7 +437,7 @@
                                         <p>發佈日期：2020/08/20</p>
                                         <div>
                                             <p>人氣319</p>
-                                            <a href="">
+                                            <a >
                                                 <img src="./images/heart.png" alt="">
                                             </a>
                                         </div>
@@ -522,7 +452,6 @@
 
     </div>
 </div>
-
 
 <script>
     function openTab(obj, index, tabName) {
@@ -544,6 +473,7 @@
         }
         document.getElementById(tabName).style.display = "block";
     }
+ 
     // Vue.component('todo-list',{              
     //           data(){
     //               return{
@@ -587,4 +517,26 @@
     //       new Vue({
     //           el: '#app',
     //       });   
+    new Vue({
+            el: '#appforSpot', 
+            data: {      
+                //相當於之前JS宣告的變數
+                spots: [{
+                    cardTitle: "景點",
+                    cardimg: "./images/lake.jpg",
+                    spotArea: "南投",
+                    spotName: "日月潭",
+                    hotcount: "319",
+                    iskeep: 1
+                },
+                {
+                    cardTitle: "景點",
+                    cardimg: "./images/lake.jpg",
+                    spotArea: "台北",
+                    spotName: "饒河夜市",
+                    hotcount: "320",
+                    iskeep: 0
+                }],
+            },
+        });
 </script>
