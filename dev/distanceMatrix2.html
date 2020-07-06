@@ -64,6 +64,10 @@
           <button type="button" class="btn btn-info" @click="getCurrent">
             執行
           </button>
+          <input type="radio" v-model="travelMode" value="WALKING" >走路
+          <input type="radio" v-model="travelMode" value="BICYCLING" >自行車
+          <input type="radio" v-model="travelMode" value="DRIVING" >開車
+          <!-- <input type="radio" v-model="travelMode" value="TRANSIT" >大眾交通 -->
         </div>
       </section>
       <hr />
@@ -74,11 +78,12 @@
             <div v-for="f in selectedAttractions" class="list-group-item">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ f.Name }}</h5>
-                <small>{{ f.distance_text }}</small>
               </div>
               <p class="mb-1">{{ f.Add }}</p>
-              <p class="mb-1">{{ f.Tel }}</p>
-              <small>{{ f.distance_time }}</small>
+              <p class="mb-1">{{ f.Tel }}</p> 
+              <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
+              <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
+              <!-- <p class="text-right">{{ f.distance_time }}</p> -->
             </div>
           </div>
         </div>
@@ -100,6 +105,7 @@
         data: {
           map: null,
           selectedAttractions: [], // 放景點的array
+          travelMode:'WALKING'
         },
         methods: {
           initMap() {
@@ -112,15 +118,16 @@
               center: location,
               zoom: 12,
             });
-            // 取得景點：
+            // 取得個景點：
             axios.get("./json/aoi.json").then((response) => {
+              // (2)將取得的景點寫入selectedAttractions
               this.selectedAttractions = response.data;
-            // 處理各景點：
+              //(1) 將各景點寫入marker
               this.selectedAttractions.forEach((r) => {
-              //(1) 寫入marker
                 let latLng = new google.maps.LatLng(r.Py, r.Px);
                 console.log(latLng);
                 let marker = new google.maps.Marker({
+                  // position: latLng,
                   position: latLng,
                   map: this.map,
                   icon:
@@ -141,7 +148,7 @@
               {
                 origins: destinations,
                 destinations: destinations,
-                travelMode: "WALKING", // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+                travelMode: `${this.travelMode}`, // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
                 unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
                 avoidHighways: true, // 是否避開高速公路
                 avoidTolls: true, // 是否避開收費路線
@@ -152,7 +159,7 @@
               // console.log(response);
               // 把距離寫進json裡
               for (
-                let i = 0, len = _this.selectedAttractions.length;
+                let i = 1, len = _this.selectedAttractions.length;
                 i < len;
                 i++
               ) {
@@ -169,15 +176,15 @@
                   return a.distance > b.distance ? 1 : -1;
                 }
               );
-              console.log(_this.selectedAttractions);
+              // console.log(_this.selectedAttractions);
             }
           },
         },
         mounted() {
-          // window.addEventListener("load", () => {
-            this.initMap(),
-            this.getCurrent()
-          // });
+          window.addEventListener("load", () => {
+            this.initMap();
+            // this.getCurrent()
+          });
         }
       });
     </script>
