@@ -79,8 +79,9 @@ function sendForm(){
   let loginInfo = {
       Mem_Id:$id("memId").value,
       Mem_Psw:$id("memPsw").value
-  }
+      
 
+  }
   let str = JSON.stringify(loginInfo);
 
   let data_info = `loginInfo=${str}`;//傳json字串
@@ -92,6 +93,7 @@ function sendForm(){
   $id('memId').value = '';
   $id('memPsw').value = '';
 }
+// localStorage.setItem("memId", $id('memId').value);
 
 //每次重整頁面，取得seeion中的會員資料
 function getMemberInfo(){

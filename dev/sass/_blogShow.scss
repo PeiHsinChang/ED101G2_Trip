@@ -65,18 +65,14 @@ a {
         margin: 0 auto;
         margin-top: 20px;
         display: flex;
-        .blogCont {
-            // border: 1px solid red;
-            // min-height: 120vh;
+        .blogCont {        
             width: 70%;
             margin-right: 5px;
-            // background-color: white;
             span {
                 display: block;
                 font-weight: bold;
             }
             #imgSets {
-                // border: 1px solid red;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -84,7 +80,6 @@ a {
             }
             img {
                 max-width: 100%;
-                // flex-shrink: 0;
             }
         }
         .popular {
@@ -115,10 +110,3 @@ a {
     }
 }
 
-// @media screen and (min-width: $breakpoint-md) {
-//     .containerBlog {
-//     .popular { 
-//         display: none;
-//     }
-// }
-// }
