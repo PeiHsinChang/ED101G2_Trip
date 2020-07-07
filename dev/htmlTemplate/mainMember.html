@@ -61,26 +61,26 @@
                         <!-- 景點收藏 -->
                         <div id="spotForKeep" class="keepAllWall" >        
                         <!-- cardSpot start-->
-                        <div v-for="spot in spots" class="card cardSpot cardOriginalTem " style="width: 18rem;">
+                        <div v-for="keepAttra in keepAttras" class="card cardSpot cardOriginalTem " style="width: 18rem;">
                             <a>
-                                <img :src="spot.cardimg" class="card-img-top">
+                                <img :src="keepAttra.Attrac_PicURL" class="card-img-top">
+                                <!-- <img src="./images/lake.jpg" class="card-img-top"> -->
                                 <div onclick="openSpotLightBox();" class="card-body card-img-overlay cardImgOverlayWebUse">
-                                    <h5  class="card-title cardTitleWebUse">{{spot.cardTitle}}</h5>
+                                    <h5  class="card-title cardTitleWebUse">景點</h5>
                                     <div class="mask">
-                                        <p class="card-text cardTextWebUse">{{spot.spotArea}}<br>
-                                            <span  style="font-weight: 300;">{{spot.spotName}}</span>
+                                        <p class="card-text cardTextWebUse">{{keepAttra.Attrac_Region}}<br>
+                                            <span  style="font-weight: 300;">{{keepAttra.Attrac_Name}}</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="cardStar">
-                                        <p >人氣{{spot.hotcount}}</p>
+                                        <p >人氣{{keepAttra.likecount}}</p>
                                     </div>
                                     <div class="cardLike">
                                         <a><p>+加入行程</p></a>
                                         <a class="heartimg" onclick="keepSpotLike(this);">
-                                            <img v-if="spot.iskeep == 1" src="./images/heart_r.png" >
-                                            <img v-else src="./images/heart.png" >
+                                            <img src="./images/heart_r.png" >
                                         </a>
                                     </div>
                                 </div>
@@ -98,18 +98,18 @@
                         <div id="scheForKeep" class="keepAllWall" >
                             <!-- 行程 -->
                             <!-- keep schedule start -->
-                            <div v-for="sched in scheds" class="card cardSchedule cardOriginalTem " style="width: 18rem;">
+                            <div v-for="keepSche in keepSches" class="card cardSchedule cardOriginalTem " style="width: 18rem;">
                                 <a>
-                                    <img :src="sched.cardimg" class="card-img-top">
+                                    <img :src="keepSche.Sche_Img" class="card-img-top">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">{{sched.cardTitle}}</h5>
+                                        <h5 class="card-title cardTitleWebUse">行程</h5>
                                         <div class="mask">
-                                            <p class="card-text cardTextWebUse">{{sched.ScheName}}</p>
+                                            <p class="card-text cardTextWebUse">{{keepSche.Sche_Name}}</p>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="cardScheduleContent">
-                                            <p>{{sched.ScheViews}}人氣</p>
+                                            <p>{{keepSche.Sche_Views}}人氣</p>
                                             <div>
                                                 <a><p>+加入行程</p></a>
                                                 <a>
@@ -131,26 +131,27 @@
                         <!-- 揪團收藏 -->
                         <div id="groupForKeep" class="keepAllWall">
                             <!-- keep group start -->
-                            <div v-for="group in groups" class="card cardOriginalTem cardGroup" >
+                            <div v-for="keepGroup in keepGroups" class="card cardOriginalTem cardGroup" >
                                 <a>
-                                    <img :src="group.cardimg" class="card-img-top" >
+                                    <img :src="keepGroup.Group_Pic" class="card-img-top" >
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">{{group.cardTitle}}</h5>
+                                        <h5 class="card-title cardTitleWebUse">揪團</h5>
                                         <div class="mask">
-                                            <p class="card-text cardTextWebUse">{{group.Group_Title}}</p>
+                                            <p class="card-text cardTextWebUse">{{keepGroup.Group_title}}</p>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="cardGroupContent">
-                                            <p>團主：{{group.groupHost}}</p>
+                                            <p>團主：{{keepGroup.Mem_Name}}</p>
                                             <div>
                                                 <p>團主評價：                                                    
                                                     <img src="./images/good.png" >
+                                                    {{keepGroup.MemLike}}
                                                 </p>
                                             </div>
-                                            <p>出團日期：{{group.GroupStartDate}}</p>
+                                            <p>出團日期：{{keepGroup.Group_StartDate}}</p>
                                             <div>
-                                                <p>報名截止：{{group.GroupDeadline}}</p>
+                                                <p>報名截止：{{keepGroup.Group_Deadline}}</p>
                                                 <a>
                                                     <img src="./images/heart.png">
                                                 </a>
@@ -171,21 +172,21 @@
                         <!-- 遊記收藏 -->
                         <div id="blogForKeep" class="keepAllWall">
                         <!-- keep blog start -->
-                            <div v-for="blog in blogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
+                            <div v-for="keepBlog in keepBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
                                 <a>
-                                    <img :src="blog.cardimg" class="card-img-top">
+                                    <img :src="keepBlog.Blog_PicURL" class="card-img-top">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                        <h5 class="card-title cardTitleWebUse">{{blog.cardTitle}}</h5>
+                                        <h5 class="card-title cardTitleWebUse">遊記</h5>
                                         <div class="mask">
-                                            <p class="card-text cardTextWebUse">{{blog.BlogName}}<br></p>
+                                            <p class="card-text cardTextWebUse">{{keepBlog.Blog_Name}}<br></p>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="cardBlogContent">
-                                            <p>作者：{{blog.BlogEditor}}</p>
-                                            <p>發佈日期：{{blog.BlogDate}}</p>
+                                            <p>作者：{{keepBlog.mem_name}}</p>
+                                            <p>發佈日期：{{keepBlog.Blog_Date}}</p>
                                             <div>
-                                                <p>人氣{{blog.BlogViews}}</p>
+                                                <p>人氣{{keepBlog.Blog_Views}}</p>
                                                 <a>
                                                     <img src="./images/heart.png">
                                                 </a>
@@ -204,19 +205,19 @@
                     <div id="schedForMem" class="memRightWall">
                         <!-- 會員中心＿行程 -->
                         <!-- mem sche start -->
-                        <div v-for="sched in scheds" class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">
+                        <div v-for="memSche in memSches" class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">
                             <a >
-                                <img :src="sched.cardimg" class="card-img-top">
+                                <img :src="memSche.Sche_Img" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                    <h5 class="card-title cardTitleWebUse">{{sched.cardTitle}}</h5>
+                                    <h5 class="card-title cardTitleWebUse">行程</h5>
                                     <div class="mask">
-                                        <p class="card-text cardTextWebUse">{{sched.ScheName}}</p>
+                                        <p class="card-text cardTextWebUse">{{memSche.Sche_Name}}</p>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="cardScheduleContent">
                                         <div>
-                                            <a><p>{{sched.ScheViews}}人氣</p></a>                                          
+                                            <a><p>{{memSche.Sche_Views}}人氣</p></a>                                          
                                         </div>
                                     </div>
                                 </div>
@@ -230,35 +231,34 @@
                     <div id="groupForMem" class="memRightWall">
                         <!-- 揪團卡片 -->
                         <!-- Mem group start -->
-                        <div v-for="group in groups" class="card cardOriginalTem cardGroup" >
+                        <div v-for="memGroup in memGroups" class="card cardOriginalTem cardGroup" >
                         <a>
-                            <img :src="group.cardimg" class="card-img-top" >
+                            <img :src="memGroup.Group_Pic" class="card-img-top" >
                             <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                <h5 class="card-title cardTitleWebUse">{{group.cardTitle}}</h5>
+                                <h5 class="card-title cardTitleWebUse">揪團</h5>
                                 <div class="mask">
-                                    <p class="card-text cardTextWebUse">{{group.Group_Title}}</p>
+                                    <p class="card-text cardTextWebUse">{{memGroup.Group_title}}</p>
                                 </div>
                             </div>
                             <div>
                                 <div class="cardGroupContent">
-                                    <p>團主：{{group.groupHost}}</p>
+                                    <p>團主：{{memGroup.mem_name}}</p>
                                     <div>
                                         <p>團主評價：
                                             <img src="./images/good.png" >
+                                            {{memGroup.hostlike}}
                                         </p>
                                     </div>
-                                    <p>出團日期：{{group.GroupStartDate}}</p>
+                                    <p>出團日期：{{memGroup.Group_StartDate}}</p>
                                     <div>
-                                        <p>報名截止：{{group.GroupDeadline}}</p>                                
+                                        <p>報名截止：{{memGroup.Group_Deadline}}</p>                                
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <!-- Mem group end -->
-
                     </div>
-
                 </div>
                 <div id="blog" class="memRightContainer" style="display:none">
                     <!-- <div id="app">
@@ -267,21 +267,21 @@
                     <div id="blogForMem" class="memRightWall">
                         <!-- 遊記 -->
                         <!-- Mem blog start -->
-                        <div v-for="blog in blogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
+                        <div v-for="memBlog in memBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
                             <a>
-                                <img :src="blog.cardimg" class="card-img-top">
+                                <img :src="memBlog.Blog_PicURL" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
-                                    <h5 class="card-title cardTitleWebUse">{{blog.cardTitle}}</h5>
+                                    <h5 class="card-title cardTitleWebUse">遊記</h5>
                                     <div class="mask">
-                                        <p class="card-text cardTextWebUse">{{blog.BlogTitle}}</p>
+                                        <p class="card-text cardTextWebUse">{{memBlog.Blog_Name}}</p>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="cardBlogContent">
-                                        <p>作者：{{blog.BlogEditor}}</p>
-                                        <p>發佈日期：{{blog.BlogDate}}</p>
+                                        <p>作者：{{memBlog.mem_name}}</p>
+                                        <p>發佈日期：{{memBlog.Blog_Date}}</p>
                                         <div>
-                                            <p>人氣{{blog.BlogViews}}</p>
+                                            <p>人氣{{memBlog.Blog_Views}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -297,24 +297,72 @@
 </div>
 
 <script>
-
-
-    function keepAttraction(){
+    window.onload = function (){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
             if(xhr.status==200){
-                console.log(xhr.responseText);
-                keepAttra = JSON.parse(xhr.responseText);
-                console.log(keepAttra);
+                AllKeepPackage = JSON.parse(xhr.responseText);
+                console.log(AllKeepPackage[6]);
+                keepAttras = AllKeepPackage[0];
+                keepGroups = AllKeepPackage[1];
+                keepSches = AllKeepPackage[2];
+                keepBlogs = AllKeepPackage[3];
+                memSches = AllKeepPackage[4];
+                memGroups = AllKeepPackage[5];
+                memBlogs = AllKeepPackage[6];
+                new Vue({
+                    el: '#spotForKeep', 
+                    data: {      
+                        keepAttras,
+                    },
+                });
+                new Vue({
+                    el: '#groupForKeep', 
+                    data: {      
+                        keepGroups,
+                    },
+                });
+                new Vue({
+                    el: '#scheForKeep', 
+                    data: {
+                        keepSches,
+                    },
+                });
+                new Vue({
+                    el: '#blogForKeep', 
+                    data: {
+                        keepBlogs,
+                    },
+                });
+                new Vue({
+                    el: '#schedForMem', 
+                    data: { 
+                        memSches,   
+                    },
+                });
+                new Vue({
+                    el: '#groupForMem', 
+                    data: { 
+                        memGroups,  
+                    },
+                });
+                new Vue({
+            el: '#blogForMem', 
+            data: {      
+                memBlogs,
+            },
+        });
+
             }else{
                 alert(xhr.status);
             }
         }
-        xhr.open("post", "keepAttraction.php", true);
+        xhr.open("post", "keepAllquery.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        //在 php  require 一支getmemberinfo 取 memberinfo
+        //在 php session_start  取 memberinfo
         xhr.send();   
-    }
+}
+
 
     function openTab(obj, index, tabName) {
         var i;
@@ -334,37 +382,6 @@
             x[i].style.display = "none";
         }
         document.getElementById(tabName).style.display = "block";
-        
-        switch (tabName) {
-            case 'schedule':
-                console.log('行程');
-                // memSchedule();
-            break;
-            case 'group':
-                console.log('團');    
-            break;  
-            case 'blog':
-                console.log('部落格');    
-            break;
-            case 'keepsche':
-                console.log('keepsche');    
-            break;
-            case 'keepgroup':
-                console.log('keepgroup');    
-            break;
-            case 'keepblog':
-                console.log('keepblog');    
-            break;
-            case 'keepattr':
-                console.log('keepattr');
-                keepAttraction();
-    
-            break;
-            default:
-                console.log(`111`);
-            break;
-}
-
     }
  
     // Vue.component('todo-list',{              
@@ -407,192 +424,6 @@
     //           `,
     //       });       
 
-    //       new Vue({
-    //           el: '#app',
-    //       });   
-    new Vue({
-            el: '#spotForKeep', 
-            data: {      
-                //相當於之前JS宣告的變數
-                spots: [{
-                    cardTitle: "景點",
-                    cardimg: "./images/lake.jpg",
-                    spotArea: "南投",
-                    spotName: "日月潭",
-                    hotcount: "319",
-                    iskeep: 1
-                },
-                {
-                    cardTitle: "景點",
-                    cardimg: "./images/lake.jpg",
-                    spotArea: "台北",
-                    spotName: "饒河夜市",
-                    hotcount: "320",
-                    iskeep: 0
-                }],
-            },
-        });
-        new Vue({
-            el: '#groupForKeep', 
-            data: {      
-                //相當於之前JS宣告的變數
-                groups: [{
-                    cardTitle: "揪團",
-                    cardimg: "./images/lake.jpg",
-                    spotArea: "南投",
-                    Group_Title: "南投三天兩夜",
-                    spotName: "日月潭",
-                    groupHost: "愛旅行",
-                    HostCom: "4.5",
-                    GroupStartDate: "2020-12-05",
-                    GroupDeadline: "2020-10-15",
-                    iskeep: 1
-                },
-                {
-                    cardTitle: "揪團",
-                    cardimg: "./images/lake.jpg",
-                    spotArea: "南投",
-                    Group_Title: "南投五天四夜",
-                    spotName: "日月潭",
-                    groupHost: "Alex",
-                    HostCom: "4.5",
-                    GroupStartDate: "2020-12-08",
-                    GroupDeadline: "2020-10-15",
-                    iskeep: 1
-                }],
-            },
-        });
-        new Vue({
-            el: '#scheForKeep', 
-            data: {      
-                //相當於之前JS宣告的變數
-                scheds: [{
-                    cardTitle: "行程",
-                    cardimg: "./images/lake.jpg",
-                    ScheName: "台東五天四夜熱氣球體驗團",
-                    ScheViews: "319",
-                    iskeep: 1
-                },
-                {
-                    cardTitle: "行程",
-                    cardimg: "./images/lake.jpg",
-                    ScheName: "屏東三天兩夜墾丁遊",
-                    ScheViews: "490",
-                    iskeep: 1
-                }],
-            },
-        });
-        new Vue({
-            el: '#blogForKeep', 
-            data: {      
-                //相當於之前JS宣告的變數
-                blogs: [{
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogName: "台東五天四夜熱氣球體驗團",
-                    BlogEditor: "愛旅遊",
-                    BlogDate: "2020-07-15",
-                    BlogViews: "319",
-                    iskeep: 1
-                },
-                {
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogName: "台東五天四夜熱氣球體驗團",
-                    BlogEditor: "Alex",
-                    BlogDate: "2020-08-15",
-                    BlogViews: "419",
-                    iskeep: 1
-                }],
-            },
-        });
-        new Vue({
-            el: '#blogForKeep', 
-            data: {      
-                //相當於之前JS宣告的變數
-                blogs: [{
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogName: "台東五天四夜熱氣球體驗團",
-                    BlogEditor: "愛旅遊",
-                    BlogDate: "2020-07-15",
-                    BlogViews: "319",
-                    iskeep: 1
-                },
-                {
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogName: "雲林劍湖山兩天一夜",
-                    BlogEditor: "Alex",
-                    BlogDate: "2020-08-15",
-                    BlogViews: "419",
-                    iskeep: 1
-                }],
-            },
-        });
-        new Vue({
-            el: '#schedForMem', 
-            data: {      
-                //相當於之前JS宣告的變數
-                scheds: [{
-                    cardTitle: "行程",
-                    cardimg: "./images/lake.jpg",
-                    ScheName: "台東五天四夜熱氣球體驗團",
-                    ScheViews: "319"
-                    
-                },
-                {
-                    cardTitle: "行程",
-                    cardimg: "./images/lake.jpg",
-                    ScheName: "台東五天四夜熱氣球體驗團",
-                    ScheViews: "319"
-                }],
-            },
-        });
-        new Vue({
-            el: '#groupForMem', 
-            data: {      
-                //相當於之前JS宣告的變數
-                groups: [{
-                    cardTitle: "揪團",
-                    cardimg: "./images/lake.jpg",
-                    Group_Title: "南投三天兩夜",
-                    groupHost: "愛旅行",
-                    HostCom: "4.5",
-                    GroupStartDate: "2020-12-05",
-                    GroupDeadline: "2020-10-15",
-                },
-                {
-                    cardTitle: "揪團",
-                    cardimg: "./images/lake.jpg",
-                    Group_Title: "花蓮三天兩夜",
-                    groupHost: "愛旅行",
-                    HostCom: "4.5",
-                    GroupStartDate: "2020-12-05",
-                    GroupDeadline: "2020-10-15",
-                }],
-            },
-        });
-        new Vue({
-            el: '#blogForMem', 
-            data: {      
-                //相當於之前JS宣告的變數
-                blogs: [{
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogTitle: "南投三天兩夜",
-                    BlogEditor: "愛旅遊",
-                    BlogDate: "2020-07-15",
-                    BlogViews: "666"    
-                },
-                {
-                    cardTitle: "遊記",
-                    cardimg: "./images/lake.jpg",
-                    BlogTitle: "南庄三天兩夜",
-                    BlogEditor: "愛旅遊",
-                    BlogDate: "2020-08-21",
-                    BlogViews: "686"
-                }],
-            },
-        });
+
+
 </script>
