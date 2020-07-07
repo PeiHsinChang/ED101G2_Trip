@@ -150,7 +150,26 @@
         methods: {
           getSearchedAttractionsFromPHP(x) {
             // get searchedAttractions from php:
+            axios({
+              method: "get",
+              url: "./distanceMatrix.php",
+              data: {
+                Id: x,
+              },
+            }).then(function (response) {
+              console.log(response.status);
+              console.log(response.data);
+            });
 
+            // axios
+            //   .post("./distanceMatrix.php", {
+            //     Id: x,
+            //   })
+            //   .then((response) => {
+            //     // (2)將取得的景點寫入selectedAttractions
+            //     // this.selectedAttractions = response.data;
+            //     console.log(response);
+            //   });
             this.searchedAttractions.push(x);
           },
         },
