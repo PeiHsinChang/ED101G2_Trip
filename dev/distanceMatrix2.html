@@ -110,6 +110,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
     <script>
@@ -150,27 +151,22 @@
         methods: {
           getSearchedAttractionsFromPHP(x) {
             // get searchedAttractions from php:
-            axios({
-              method: "get",
-              url: "./distanceMatrix.php",
-              data: {
-                Id: x,
-              },
-            }).then(function (response) {
-              console.log(response.status);
-              console.log(response.data);
-            });
-
-            // axios
-            //   .post("./distanceMatrix.php", {
+            // (1)axios:...so far fail...
+            // axios({
+            //   method: "get",
+            //   url: "distanceMatrix2.php",
+            //   data: {
             //     Id: x,
-            //   })
-            //   .then((response) => {
-            //     // (2)將取得的景點寫入selectedAttractions
-            //     // this.selectedAttractions = response.data;
-            //     console.log(response);
-            //   });
-            this.searchedAttractions.push(x);
+            //   },
+            // }).then(function (response) {
+            //   console.log(response.status);
+            //   console.log(response.data);
+            // });
+            // (2)jquery:
+            $.get(`distanceMatrix2.php?Id=${x}`).then((data) => {
+              this.searchedAttractions.push(data);
+            });
+            console.log(this.searchedAttractions);
           },
         },
       });
@@ -206,7 +202,7 @@
               //(1) 將各景點寫入marker
               this.selectedAttractions.forEach((r) => {
                 let latLng = new google.maps.LatLng(r.Py, r.Px);
-                console.log(latLng);
+                // console.log(latLng);
                 let marker = new google.maps.Marker({
                   // position: latLng,
                   position: latLng,
