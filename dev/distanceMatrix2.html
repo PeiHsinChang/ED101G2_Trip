@@ -163,8 +163,8 @@
             //   console.log(response.data);
             // });
             // (2)jquery:
-            $.get(`distanceMatrix2.php?Id=${x}`).then((data) => {
-              this.searchedAttractions.push(data);
+            $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
+              this.searchedAttractions = data;
             });
             console.log(this.searchedAttractions);
           },

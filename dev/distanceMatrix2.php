@@ -1,17 +1,24 @@
 <?php 
 try{
     require_once("connect.php");
-    $sql = "select * from `attractions` where Id = :Id";
+    $sql = "select * from `attractions` where Name like :Name";
+    // $sql = "select * from `attractions` where Name like '%步道%'";
     $attraction = $pdo->prepare($sql); 
-    $attraction->bindValue(":Id", "$_GET[Id]");
+    // $attraction = $pdo->query($sql); 
+    // $attraction->bindValue(":Name", "$_GET[Name]");
+    $attraction->bindValue(":Name", "%都蘭%");
     $attraction->execute();
   
     if( $attraction->rowCount()==0){ //查無此景點
-        echo "{}";
+        echo "無此景點";
     }else{ //成功取得景點
       //自資料庫中取回景點資料
-        $Row = $attraction->fetch(PDO::FETCH_ASSOC);
-        echo $Row["Name"];
+        $searchedAttractionRows = $attraction->fetchAll(PDO::FETCH_ASSOC);
+        // $responseRow=[];
+        foreach($searchedAttractionRows as $searchedAttractionRow){
+          echo "景點名稱：",$searchedAttractionRow['Name'],"<br>";
+        }
+        // echo json_encode($searchedAttractionRows);
         //將景點資訊寫入SESSION
         // $_SESSION["Id"] = $Row["Id"];
         // $_SESSION["memId"] = $Row["memId"];
