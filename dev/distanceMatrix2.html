@@ -64,12 +64,22 @@
           <button type="button" class="btn btn-info" @click="getCurrent">
             執行
           </button>
-          <input type="radio" v-model="travelMode" value="WALKING" >走路
-          <input type="radio" v-model="travelMode" value="BICYCLING" >自行車
-          <input type="radio" v-model="travelMode" value="DRIVING" >開車
+          <input type="radio" v-model="travelMode" value="WALKING" />走路
+          <input type="radio" v-model="travelMode" value="BICYCLING" />自行車
+          <input type="radio" v-model="travelMode" value="DRIVING" />開車
           <!-- <input type="radio" v-model="travelMode" value="TRANSIT" >大眾交通 -->
         </div>
       </section>
+      <hr />
+      <section class="row">
+        <!-- 查詢景點 -->
+        <!-- <input
+          type="text"
+          name="Name"
+          @keydown.enter="attractionSearch"
+        />查詢景點名稱 -->
+      </section>
+      <attraction-list></attraction-list>
       <hr />
       <section class="row">
         <!-- 顯示距離列表 -->
@@ -80,32 +90,80 @@
                 <h5 class="mb-1">{{ f.Name }}</h5>
               </div>
               <p class="mb-1">{{ f.Add }}</p>
-              <p class="mb-1">{{ f.Tel }}</p> 
-              <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
-              <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
-              <!-- <p class="text-right">{{ f.distance_time }}</p> -->
+              <p class="mb-1">{{ f.Tel }}</p>
+              <span class="float-left mb-0 text-primary"
+                >{{ f.distance_text }}</span
+              >
+              <span class="float-right mb-0 text-primary"
+                >{{ f.distance_time }}</span
+              >
             </div>
           </div>
         </div>
-
-
-      <div class="col-md-8 google-map">
-        <div id="map" class="embed-responsive embed-responsive-16by9"></div>
-      </div>
+        <!-- </section> -->
+        <!-- 顯示地圖 -->
+        <div class="col-md-8 google-map">
+          <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+        </div>
+      </section>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
-    <!-- map -->
     <script>
+      Vue.component("attraction-search", {
+        template: `
+        <input v-model="queryAttractionName" @keydown.enter='getSearchedAttraction' placeholder="請輸入景點名稱">
+        `,
+        data() {
+          return {
+            queryAttractionName: "",
+          };
+        },
+        methods: {
+          getSearchedAttraction() {
+            this.$emit("abc", this.queryAttractionName);
+            this.queryAttractionName = "";
+          },
+        },
+      });
+
+      Vue.component("attraction-list", {
+        //父元素接收abc事件之後，呼叫attTask函式
+        //父元素bind一個變數label，再把label往下傳
+        // input-->emit 'abc'-->@abc-->addTask-->:label-->props
+        template: `
+              <div>
+                <attraction-search @abc="addAttraction"></attraction-search> 
+                  <ul>
+                    <attraction-item v-for="attraction in attractions" v-bind:label="attraction"></attraction-item>  
+                  </ul>
+              </div>
+            `,
+        data() {
+          return {
+            attractions: [],
+          };
+        },
+        methods: {
+          addAttraction(x) {
+            this.attractions.push(x);
+          },
+        },
+      });
+
+      Vue.component("attraction-item", {
+        template: `<li>{{label}}</li>`,
+        props: ["label"],
+      });
       const googleMap = new Vue({
         el: "#app",
         data: {
           map: null,
           selectedAttractions: [], // 放景點的array
-          travelMode:'WALKING'
+          travelMode: "WALKING",
         },
         methods: {
           initMap() {
@@ -183,9 +241,9 @@
         mounted() {
           window.addEventListener("load", () => {
             this.initMap();
-            // this.getCurrent()
+            // this.getCurrent();
           });
-        }
+        },
       });
     </script>
   </body>
