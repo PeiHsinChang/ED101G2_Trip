@@ -150,21 +150,8 @@
         },
         methods: {
           getSearchedAttractionsFromPHP(x) {
-            // get searchedAttractions from php:
-            // (1)axios:...so far fail...
-            // axios({
-            //   method: "get",
-            //   url: "distanceMatrix2.php",
-            //   data: {
-            //     Id: x,
-            //   },
-            // }).then(function (response) {
-            //   console.log(response.status);
-            //   console.log(response.data);
-            // });
-            // (2)jquery:
             $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
-              this.searchedAttractions = data;
+              this.searchedAttractions = JSON.parse(data);
             });
             console.log(this.searchedAttractions);
           },
