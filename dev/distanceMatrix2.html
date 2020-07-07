@@ -113,9 +113,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
     <script>
-      Vue.component("attraction-search", {
+      Vue.component("attraction-input", {
         template: `
-        <input v-model="queryAttractionName" @keydown.enter='getSearchedAttraction' placeholder="請輸入景點名稱">
+        <input v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
         `,
         data() {
           return {
@@ -123,7 +123,7 @@
           };
         },
         methods: {
-          getSearchedAttraction() {
+          sendInputToAttractionList() {
             this.$emit("abc", this.queryAttractionName);
             this.queryAttractionName = "";
           },
@@ -131,25 +131,27 @@
       });
 
       Vue.component("attraction-list", {
-        //父元素接收abc事件之後，呼叫attTask函式
-        //父元素bind一個變數label，再把label往下傳
-        // input-->emit 'abc'-->@abc-->addTask-->:label-->props
+        //父元素接收abc事件之後，呼叫getAttractionsFromPHP函式
+        //父元素bind一個變數label，再把label往子組件傳
+        // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
               <div>
-                <attraction-search @abc="addAttraction"></attraction-search> 
+                <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input> 
                   <ul>
-                    <attraction-item v-for="attraction in attractions" v-bind:label="attraction"></attraction-item>  
+                    <attraction-item v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>  
                   </ul>
               </div>
             `,
         data() {
           return {
-            attractions: [],
+            searchedAttractions: [],
           };
         },
         methods: {
-          addAttraction(x) {
-            this.attractions.push(x);
+          getSearchedAttractionsFromPHP(x) {
+            // get searchedAttractions from php:
+
+            this.searchedAttractions.push(x);
           },
         },
       });
@@ -158,6 +160,8 @@
         template: `<li>{{label}}</li>`,
         props: ["label"],
       });
+
+      // /////////////////////////////////////////////////////////////////////////////////
       const googleMap = new Vue({
         el: "#app",
         data: {
