@@ -82,7 +82,6 @@
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
     </div>
-
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -115,7 +114,7 @@
             
             <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
             
-            <cards class="border d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
+            <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
               <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
             </cards>
 
@@ -151,9 +150,15 @@
       });
 
       Vue.component("attraction-item", {
+        data() {
+          return {
+            img: this.label.Picture1,
+          };
+        },
         template: `
-        <card class="card m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
-                <h6>{{label.Name}}</h6>
+        <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
+                <img :src='img' class="card-img-top"/>
+                <h6 class="card-title">{{label.Name}}</h6>
                 <button @click="sendSelectedAttractionToAttractionApi" type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
         </card>
                 `,
