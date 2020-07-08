@@ -82,7 +82,7 @@
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
       <hr />
-      <!-- <attraction-schedule></attraction-schedule> -->
+      <attraction-api></attraction-api>
     </div>
 
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
@@ -116,13 +116,16 @@
                     <div class="border">
                       <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
                         <cards class="border d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
-                          <attraction-item v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
+                          <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                         </cards>
+
+                        <attraction-direction v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
                     </div>
                   `,
         data() {
           return {
             searchedAttractions: [],
+            selectedAttractions: [],
           };
         },
         methods: {
@@ -130,7 +133,10 @@
             $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
               this.searchedAttractions = JSON.parse(data);
             });
-            // console.log(this.searchedAttractions);
+          },
+          addSelectedAttractionsToDirection(x) {
+            this.selectedAttractions.push(x);
+            console.log(this.selectedAttractions);
           },
         },
       });
@@ -145,27 +151,30 @@
         props: ["label"],
         methods: {
           sendSelectedAttractionToAttractionApi() {
-            console.log(this.label);
             this.$emit("def", this.label);
+            console.log(this.label);
           },
         },
       });
 
       Vue.component("attraction-direction", {
+        props: ["label2"],
         template: `
-        
+          <card>
+            <p>{{label2.Name}}</p>
+          </card>
         `,
       });
 
       Vue.component("attraction-schedule", {
         template: `
-        <!-- 交通方式選擇 
+        <!-- 交通方式選擇
             <div class="col google-map">
               <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
               <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
               <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
             </div>-->
-        <!-- 顯示距離列表 
+        <!-- 顯示距離列表
             <section class="row">
               <div class="col-md-4">
                 <div class="list-group">
@@ -176,7 +185,7 @@
                   </div>
                 </div>
               </div>-->
-        <!-- 顯示地圖 
+        <!-- 顯示地圖
               <div class="col-md-8 google-map">
                 <div id="map" class="embed-responsive embed-responsive-16by9"></div>
               </div>
