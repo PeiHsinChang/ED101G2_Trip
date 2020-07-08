@@ -169,7 +169,14 @@
       Vue.component("attraction-direction", {
         props: ["label2"],
         template: `
-            <div>{{label2.Name}}</div>
+        <div class="p-2 my-2 rounded shadow-sm">
+          <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5>{{label2.Name}}</h5>
+          <div>{{label2.Add}}</div>
+          <div>{{label2.Tel}}</div>
+        </div>
         `,
       });
 
