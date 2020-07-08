@@ -10,7 +10,6 @@ $(document).ready(function(){
   $hamburger.on("click", function(e) {
     $hamburger.toggleClass("is-active");
     $("#panel").slideToggle("slow");
-    // Do something else, like open/close menu
   });
   function openTab(index,tabName) {
     var i;
@@ -42,6 +41,9 @@ function showLoginForm(){
               $id('aLogin').innerHTML = '登入'; 
               $id('aRegist').style.display = 'inline-block';
               $id('memberPic').style.display = 'none';
+              $id("loginLightBox").style.display = 'none';
+              location.href='index.html';
+
           }else{
               alert(xhr.status);
           }
@@ -50,7 +52,8 @@ function showLoginForm(){
       xhr.open("get", "logout.php", true);  
       //傳送一個空值，把遠端的.json資料撈過來，檢查xhr，readyState狀態變成4，responseText也抓到資料，responseURL也正確抓到網址，資料都已經抓取。
       xhr.send(null);              
-  }           
+  } 
+          
 }
 
 //登入，輸入完帳號密碼後送出
@@ -66,6 +69,7 @@ function sendForm(){
               $id('aLogin').innerText = '登出';
               $id('aRegist').style.display = 'none';
               $id('memberPic').style.display = 'inline-block';
+
           }else{
               alert("帳密錯誤");
           }                    
