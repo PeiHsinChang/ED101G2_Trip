@@ -58,54 +58,10 @@
 
   <body>
     <div id="app" class="container">
-      <!-- 執行 -->
-      <section class="row">
-        <div class="col google-map">
-          <button type="button" class="btn btn-info" @click="getCurrent">
-            執行
-          </button>
-          <input type="radio" v-model="travelMode" value="WALKING" />走路
-          <input type="radio" v-model="travelMode" value="BICYCLING" />自行車
-          <input type="radio" v-model="travelMode" value="DRIVING" />開車
-          <!-- <input type="radio" v-model="travelMode" value="TRANSIT" >大眾交通 -->
-        </div>
-      </section>
-      <hr />
-      <section class="row">
-        <!-- 查詢景點 -->
-        <!-- <input
-          type="text"
-          name="Name"
-          @keydown.enter="attractionSearch"
-        />查詢景點名稱 -->
-      </section>
+      <!-- 景點查詢 -->
       <attraction-list></attraction-list>
       <hr />
-      <section class="row">
-        <!-- 顯示距離列表 -->
-        <div class="col-md-4">
-          <div class="list-group">
-            <div v-for="f in selectedAttractions" class="list-group-item">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ f.Name }}</h5>
-              </div>
-              <p class="mb-1">{{ f.Add }}</p>
-              <p class="mb-1">{{ f.Tel }}</p>
-              <span class="float-left mb-0 text-primary"
-                >{{ f.distance_text }}</span
-              >
-              <span class="float-right mb-0 text-primary"
-                >{{ f.distance_time }}</span
-              >
-            </div>
-          </div>
-        </div>
-        <!-- </section> -->
-        <!-- 顯示地圖 -->
-        <div class="col-md-8 google-map">
-          <div id="map" class="embed-responsive embed-responsive-16by9"></div>
-        </div>
-      </section>
+      <attraction-schedule></attraction-schedule>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
@@ -116,8 +72,8 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-        <input v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
-        `,
+              <input v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
+              `,
         data() {
           return {
             queryAttractionName: "",
@@ -136,13 +92,13 @@
         //父元素bind一個變數label，再把label往子組件傳
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
-              <div>
-                <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input> 
-                  <ul>
-                    <attraction-item v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>  
-                  </ul>
-              </div>
-            `,
+                    <div>
+                      <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
+                        <ul>
+                          <attraction-item v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
+                        </ul>
+                    </div>
+                  `,
         data() {
           return {
             searchedAttractions: [],
@@ -159,17 +115,44 @@
       });
 
       Vue.component("attraction-item", {
-        template: `<li>{{label}}</li>`,
+        template: `<li>
+                {{label.Name}}<br>
+                <button>加入行程</button>
+                </li>`,
         props: ["label"],
       });
 
-      // /////////////////////////////////////////////////////////////////////////////////
-      const googleMap = new Vue({
-        el: "#app",
-        data: {
-          map: null,
-          selectedAttractions: [], // 放景點的array
-          travelMode: "WALKING",
+      Vue.component("attraction-schedule", {
+        template: `
+        <!-- 交通方式選擇 -->
+            <div class="col google-map">
+              <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
+              <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
+              <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
+            </div>
+        <!-- 顯示距離列表 -->
+            <section class="row">
+              <div class="col-md-4">
+                <div class="list-group">
+                  <div v-for="f in selectedAttractions" class="list-group-item">
+                    <h5 class="mb-1">{{ f.Name }}</h5>
+                    <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
+                    <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
+                  </div>
+                </div>
+              </div>
+        <!-- 顯示地圖 -->
+              <div class="col-md-8 google-map">
+                <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+              </div>
+            </section>
+              `,
+        data() {
+          return {
+            map: null,
+            selectedAttractions: [], // 放景點的array
+            travelMode: "",
+          };
         },
         methods: {
           initMap() {
@@ -182,16 +165,13 @@
               center: location,
               zoom: 12,
             });
-            // 取得個景點：
             axios.get("./json/aoi.json").then((response) => {
               // (2)將取得的景點寫入selectedAttractions
               this.selectedAttractions = response.data;
               //(1) 將各景點寫入marker
               this.selectedAttractions.forEach((r) => {
                 let latLng = new google.maps.LatLng(r.Py, r.Px);
-                // console.log(latLng);
                 let marker = new google.maps.Marker({
-                  // position: latLng,
                   position: latLng,
                   map: this.map,
                   icon:
@@ -220,7 +200,6 @@
               callback
             );
             function callback(response, status) {
-              // console.log(response);
               // 把距離寫進json裡
               for (
                 let i = 1, len = _this.selectedAttractions.length;
@@ -244,12 +223,15 @@
             }
           },
         },
-        mounted() {
-          window.addEventListener("load", () => {
-            this.initMap();
-            // this.getCurrent();
-          });
-        },
+        // mounted() {
+        //   // window.addEventListener("load", () => {
+        //   this.initMap();
+        //   // });
+        // },
+      });
+
+      new Vue({
+        el: "#app",
       });
     </script>
   </body>
