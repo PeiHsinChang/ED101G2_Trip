@@ -82,7 +82,7 @@
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
     </div>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
@@ -111,20 +111,20 @@
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
           <div class="border">
-            
+
             <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
-            
+
             <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
               <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
             </cards>
 
-            <div class="container"> 
-              <div class="row">    
-                <div class="border col-md-4">       
+            <div class="container">
+              <div class="row">
+                <div class="border col-md-4">
                   <attraction-direction class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
                 </div>
                 <div class="border col-md-8" style="height:400px">
-                  <attraction-mark></attraction-mark>
+                  <attraction-mark v-for="selectedAttraction in selectedAttractions" v-bind:label3="selectedAttraction"></attraction-mark>
                 </div>
               </div>
             </div>
@@ -181,12 +181,45 @@
       });
 
       Vue.component("attraction-mark", {
-        props: ["label2"],
+        props: ["label3"],
         template: `
-          <div>
-            <p>google map</p>
+          <div id="map">
+            <p>{{label3.Px}}</p>
+            <p>{{label3.Py}}</p>
           </div>
         `,
+        data() {
+          return {
+            map: null,
+          };
+        },
+        methods: {
+          initMap() {
+            // 地圖初始化：
+            let location = {
+              lat: 25.0374865,
+              lng: 121.5647688,
+            };
+            this.map = new google.maps.Map(document.getElementById("map"), {
+              center: location,
+              zoom: 12,
+            });
+            //(1) 將各景點寫入marker
+            // let latLng = new google.maps.LatLng(this.label3.Py, this.label3.Px);
+            // let marker = new google.maps.Marker({
+            //   position: latLng,
+            //   map: this.map,
+            //   icon:
+            //     "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+            // });
+            // this.map.panTo(latLng);
+          },
+        },
+        mounted() {
+          window.addEventListener("load", () => {
+            this.initMap();
+          });
+        },
       });
 
       Vue.component("attraction-schedule", {
@@ -222,32 +255,32 @@
           };
         },
         methods: {
-          initMap() {
-            // 地圖初始化：
-            let location = {
-              lat: 25.0374865,
-              lng: 121.5647688,
-            };
-            this.map = new google.maps.Map(document.getElementById("map"), {
-              center: location,
-              zoom: 12,
-            });
-            axios.get("./json/aoi.json").then((response) => {
-              // (2)將取得的景點寫入selectedAttractions
-              this.selectedAttractions = response.data;
-              //(1) 將各景點寫入marker
-              this.selectedAttractions.forEach((r) => {
-                let latLng = new google.maps.LatLng(r.Py, r.Px);
-                let marker = new google.maps.Marker({
-                  position: latLng,
-                  map: this.map,
-                  icon:
-                    "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
-                });
-                this.map.panTo(latLng);
-              });
-            });
-          },
+          // initMap() {
+          //   // 地圖初始化：
+          //   let location = {
+          //     lat: 25.0374865,
+          //     lng: 121.5647688,
+          //   };
+          //   this.map = new google.maps.Map(document.getElementById("map"), {
+          //     center: location,
+          //     zoom: 12,
+          //   });
+          //   axios.get("./json/aoi.json").then((response) => {
+          //     // (2)將取得的景點寫入selectedAttractions
+          //     this.selectedAttractions = response.data;
+          //     //(1) 將各景點寫入marker
+          //     this.selectedAttractions.forEach((r) => {
+          //       let latLng = new google.maps.LatLng(r.Py, r.Px);
+          //       let marker = new google.maps.Marker({
+          //         position: latLng,
+          //         map: this.map,
+          //         icon:
+          //           "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+          //       });
+          //       this.map.panTo(latLng);
+          //     });
+          //   });
+          // },
           getCurrent() {
             const _this = this;
             let destinations = [];
