@@ -83,8 +83,7 @@ function sendForm(){
   let loginInfo = {
       Mem_Id:$id("memId").value,
       Mem_Psw:$id("memPsw").value
-      
-
+  
   }
   let str = JSON.stringify(loginInfo);
 
