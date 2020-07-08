@@ -15,6 +15,27 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <style>
       .container {
         padding-top: 30px;
@@ -61,10 +82,10 @@
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
       <hr />
-      <attraction-schedule></attraction-schedule>
+      <!-- <attraction-schedule></attraction-schedule> -->
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
@@ -72,7 +93,7 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-              <input v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
+              <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
               `,
         data() {
           return {
@@ -92,11 +113,11 @@
         //父元素bind一個變數label，再把label往子組件傳
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
-                    <div>
+                    <div class="border">
                       <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
-                        <ul>
+                        <cards class="border d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
                           <attraction-item v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
-                        </ul>
+                        </cards>
                     </div>
                   `,
         data() {
@@ -115,22 +136,24 @@
       });
 
       Vue.component("attraction-item", {
-        template: `<li>
-                {{label.Name}}<br>
-                <button>加入行程</button>
-                </li>`,
+        template: `
+        <card class="card m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
+                <h6>{{label.Name}}</h6>
+                <button type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
+        </card>
+                `,
         props: ["label"],
       });
 
       Vue.component("attraction-schedule", {
         template: `
-        <!-- 交通方式選擇 -->
+        <!-- 交通方式選擇 
             <div class="col google-map">
               <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
               <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
               <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
-            </div>
-        <!-- 顯示距離列表 -->
+            </div>-->
+        <!-- 顯示距離列表 
             <section class="row">
               <div class="col-md-4">
                 <div class="list-group">
@@ -140,12 +163,12 @@
                     <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
                   </div>
                 </div>
-              </div>
-        <!-- 顯示地圖 -->
+              </div>-->
+        <!-- 顯示地圖 
               <div class="col-md-8 google-map">
                 <div id="map" class="embed-responsive embed-responsive-16by9"></div>
               </div>
-            </section>
+            </section>-->
               `,
         data() {
           return {
