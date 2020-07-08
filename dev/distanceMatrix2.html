@@ -130,7 +130,7 @@
             $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
               this.searchedAttractions = JSON.parse(data);
             });
-            console.log(this.searchedAttractions);
+            // console.log(this.searchedAttractions);
           },
         },
       });
@@ -139,10 +139,22 @@
         template: `
         <card class="card m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
                 <h6>{{label.Name}}</h6>
-                <button type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
+                <button @click="sendSelectedAttractionToAttractionApi" type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
         </card>
                 `,
         props: ["label"],
+        methods: {
+          sendSelectedAttractionToAttractionApi() {
+            console.log(this.label);
+            this.$emit("def", this.label);
+          },
+        },
+      });
+
+      Vue.component("attraction-direction", {
+        template: `
+        
+        `,
       });
 
       Vue.component("attraction-schedule", {
