@@ -63,7 +63,10 @@
                         <!-- cardSpot start-->
                         <div v-for="keepAttra in keepAttras" class="card cardSpot cardOriginalTem " style="width: 18rem;">
                             <a>
-                                <img :src="keepAttra.Attrac_PicURL" class="card-img-top">
+                                <!-- <img :src="keepAttra.Attrac_PicURL" class="card-img-top"> -->
+                                <img v-if="keepAttra.Attrac_PicURL == ''" :src="output" class="card-img-top">
+                                <img  v-else :src="keepAttra.Attrac_PicURL" class="card-img-top">
+
                                 <!-- <img src="./images/lake.jpg" class="card-img-top"> -->
                                 <div onclick="openSpotLightBox();" class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5  class="card-title cardTitleWebUse">景點</h5>
@@ -315,6 +318,15 @@
                     data: {      
                         keepAttras,
                     },
+                    computed: {
+                        output(){
+                            // if(keepAttras.Attrac_PicURL == "")
+                            console.log( keepAttras.Attrac_PicURL);
+                            s ="./images/lake.jpg"
+                            return s;  
+
+                        }
+                },
                 });
                 new Vue({
                     el: '#groupForKeep', 
