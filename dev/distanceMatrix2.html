@@ -81,8 +81,6 @@
     <div id="app" class="container">
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
-      <hr />
-      <attraction-api></attraction-api>
     </div>
 
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
@@ -113,14 +111,25 @@
         //父元素bind一個變數label，再把label往子組件傳
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
-                    <div class="border">
-                      <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
-                        <cards class="border d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
-                          <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
-                        </cards>
+          <div class="border">
+            
+            <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
+            
+            <cards class="border d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
+              <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
+            </cards>
 
-                        <attraction-direction v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
-                    </div>
+            <div class="container"> 
+              <div class="row">    
+                <div class="border col-md-4">       
+                  <attraction-direction class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
+                </div>
+                <div class="border col-md-8" style="height:400px">
+                  <attraction-mark></attraction-mark>
+                </div>
+              </div>
+            </div>
+          </div>
                   `,
         data() {
           return {
@@ -160,9 +169,16 @@
       Vue.component("attraction-direction", {
         props: ["label2"],
         template: `
-          <card>
-            <p>{{label2.Name}}</p>
-          </card>
+            <div>{{label2.Name}}</div>
+        `,
+      });
+
+      Vue.component("attraction-mark", {
+        props: ["label2"],
+        template: `
+          <div>
+            <p>google map</p>
+          </div>
         `,
       });
 
