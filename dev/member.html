@@ -11,42 +11,5 @@
     </div>
   </body>
   <script src="./js/member.js"></script>
-  <script>
-    // new Vue({
-    //         el: '#oneSpotCard', 
-    //         data: {      
-    //             QueryCards:{},
-    //         },
-    //     })
-    // function openSpotLightBox(obj){
-    //   spotLightBox.style.display = "block";
-    //   let mySpotName = obj.dataset.id;
-    //   console.log(mySpotName);
-    //   let keepSpotInfo = {
-    //     Spot_Id:mySpotName
-    //   };
-    //   //先ajax 後vue 
-    //   let xhr = new XMLHttpRequest();
-    //   xhr.open("post", "./openQueryCards.php", true);
-    //   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    //   //把資料往後傳
-    //   xhr.send("keepSpotInfo=" + JSON.stringify(keepSpotInfo));   
-    //   xhr.onload = function(){
-    //     if(xhr.status==200){
-    //         console.log(xhr.responseText);
-    //         QueryCards = JSON.parse(xhr.responseText);
-    //         console.log(QueryCards);
-    //         new Vue({
-    //                 el: '#oneSpotCard', 
-    //                 data: {      
-    //                     QueryCards:{},
-    //                 },
-    //             })
-    //     }else{
-    //       alert(xhr.status);
-    //     }
-    //   }
-    // }
-  </script>
 
 </html>
