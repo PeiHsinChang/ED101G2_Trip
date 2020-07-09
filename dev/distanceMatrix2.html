@@ -128,25 +128,23 @@
                 },
                 addSelectedAttractionsToDirection(x) {
                     this.selectedAttractions.push(x);
-                    console.log(this.selectedAttractions);
-                },
-                initMap() {
-                    // 預設地圖中心點
-                    let location = {
-                        lat: 25.0374865,
-                        lng: 121.5647688,
-                    };
-
-                    this.map = new google.maps.Map(document.getElementById("map"), {
-                        center: location,
-                        zoom: 16,
+                    // console.log(this.selectedAttractions);
+                    this.selectedAttractions.forEach((r) => {
+                        console.log(r.Px);
+                        let latLng = new google.maps.LatLng(r.Py, r.Px);
+                        let marker = new google.maps.Marker({
+                            position: latLng,
+                            map: this.map,
+                            icon: "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+                        });
+                        this.map.panTo(latLng);
                     });
                 },
             },
             mounted() {
                 this.map = new google.maps.Map(document.getElementById("map"), {
                     center: this.mapCenter,
-                    zoom: 16,
+                    zoom: 8,
                 });
             },
         });
@@ -206,6 +204,8 @@
 
         });
 
+
+        //Reference///////////////////////////////////////////////////////////////////////////////////////
         // Vue.component("attraction-schedule", {
         //   template: `
         //   <!-- 交通方式選擇
