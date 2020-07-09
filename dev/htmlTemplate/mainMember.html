@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="cardLike">
                                         <a><p>+加入行程</p></a>
-                                        <a class="heartimg" onclick="keepSpotLike(this);">
+                                        <a class="heartimg" :data-id="keepAttra.Attrac_Name" onclick="keepLikeBtn(this);">
                                             <img src="./images/heart_r.png" >
                                         </a>
                                     </div>
@@ -112,7 +112,7 @@
                                             <p>{{keepSche.Sche_Views}}人氣</p>
                                             <div>
                                                 <a><p>+加入行程</p></a>
-                                                <a class="heartimg" onclick="keepSpotLike(this);">
+                                                <a class="heartimg" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -152,7 +152,7 @@
                                             <p>出團日期：{{keepGroup.Group_StartDate}}</p>
                                             <div>
                                                 <p>報名截止：{{keepGroup.Group_Deadline}}</p>
-                                                <a class="heartimg" onclick="keepSpotLike(this);">
+                                                <a class="heartimg" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -187,7 +187,7 @@
                                             <p>發佈日期：{{keepBlog.Blog_Date}}</p>
                                             <div>
                                                 <p>人氣{{keepBlog.Blog_Views}}</p>
-                                                <a class="heartimg" onclick="keepSpotLike(this);">
+                                                <a class="heartimg" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -296,215 +296,4 @@
     </div>
 </div>
 
-<script>
-    window.onload = function (){
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if(xhr.status==200){
-                AllKeepPackage = JSON.parse(xhr.responseText);
-                console.log(AllKeepPackage[6]);
-                keepAttras = AllKeepPackage[0];
-                keepGroups = AllKeepPackage[1];
-                keepSches = AllKeepPackage[2];
-                keepBlogs = AllKeepPackage[3];
-                memSches = AllKeepPackage[4];
-                memGroups = AllKeepPackage[5];
-                memBlogs = AllKeepPackage[6];
-                new Vue({
-                    el: '#spotForKeep', 
-                    data: {      
-                        keepAttras,
-                    },
-                    computed: {
-                        output(){
-                            // if(keepAttras.Attrac_PicURL == "")
-                            console.log( keepAttras.Attrac_PicURL);
-                            s ="./images/lake.jpg"
-                            return s;  
-                        }
-                },
-                });
-                new Vue({
-                    el: '#groupForKeep', 
-                    data: {      
-                        keepGroups,
-                    },
-                });
-                new Vue({
-                    el: '#scheForKeep', 
-                    data: {
-                        keepSches,
-                    },
-                });
-                new Vue({
-                    el: '#blogForKeep', 
-                    data: {
-                        keepBlogs,
-                    },
-                });
-                new Vue({
-                    el: '#schedForMem', 
-                    data: { 
-                        memSches,   
-                    },
-                });
-                new Vue({
-                    el: '#groupForMem', 
-                    data: { 
-                        memGroups,  
-                    },
-                });
-                new Vue({
-            el: '#blogForMem', 
-            data: {      
-                memBlogs,
-            },
-        });
 
-            }else{
-                alert(xhr.status);
-            }
-        }
-        xhr.open("post", "keepAllquery.php", true);
-        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        //在 php session_start  取 memberinfo
-        xhr.send();   
-}
-
-
-    function openTab(obj, index, tabName) {
-        var i;
-        if (index == 1) {
-            x = document.getElementsByClassName("memRightContainer");
-            document.getElementsByClassName("tabButtonFocus")[0].classList.add("tabButton");
-            document.getElementsByClassName("tabButtonFocus")[0].classList.remove("tabButtonFocus");
-            obj.classList.add("tabButtonFocus");
-            obj.classList.remove("tabButton");
-
-        } else {
-            x = document.getElementsByClassName("keepContainer");
-            document.getElementsByClassName("subTabFocus")[0].className = "subTab";
-            obj.className = "subTabFocus";
-        }
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        document.getElementById(tabName).style.display = "block";
-    }
-
-
-    function openSpotLightBox(obj){
-        // new Vue({
-        //     el: '#spotLightBox', 
-        //     data: {      
-        //         QueryCards
-        //     },
-          
-            
-        // })
-        spotLightBox.style.display = "block";
-        let mySpotName = obj.dataset.id;
-        console.log(mySpotName);
-        let keepSpotInfo = {
-                Spot_Id:mySpotName
-        };
-    // //先ajax 後vue 
-    let xhr = new XMLHttpRequest();
-    xhr.open("post", "./openQueryCards.php", true);
-    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    //把資料往後傳
-    xhr.send("keepSpotInfo=" + JSON.stringify(keepSpotInfo));   
-    xhr.onload = function(){
-        if(xhr.status==200){
-            console.log(xhr.responseText);
-            QueryCards = JSON.parse(xhr.responseText);
-            console.log(QueryCards);
-            new Vue({
-                el: '#spotLightBox', 
-                data: {      
-                    QueryCards
-                },
-                methods: {
-                    
-                    update(){
-                        this.QueryCards = QueryCards;
-                    },
-                    
-                }
-            })
-        }else{
-            alert(xhr.status);
-        }
-    }
-// 先vue 包ajax
-
-        // var hh = new Vue({
-        //     el: '#spotLightBox', 
-        //     data: {      
-        //         QueryCards,
-        //     },
-        //     mounted() {
-        //         let xhr = new XMLHttpRequest();
-        //         xhr.open("post", "./openQueryCards.php", true);
-        //         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        //         xhr.send("keepSpotInfo=" + JSON.stringify(keepSpotInfo));  
-        //         xhr.onload = function(){
-        //             if(xhr.status==200){
-        //                 this.QueryCards = JSON.parse(xhr.responseText);
-        //                 // hh.$data.QueryCards = QueryCards;
-        //                 console.log(this.QueryCards);
-        //                 // console.log(hh.$data.QueryCards);                        
-        //             }else{
-        //                 alert(xhr.status);
-        //             }
-        //         }                  
-        //     },    
-        //     })
-    }
-    function closespotLightBox(){
-        spotLightBox.style.display = "none";
-    }
-
-    // Vue.component('todo-list',{              
-    //           data(){
-    //               return{
-    //                   tasks: [],
-    //               };
-    //           },
-    //           methods: {
-    //               addTask(task){
-    //                   this.tasks.push(task);
-    //               }
-    //           },
-    //           template: `
-    //           <!-- 遊記 -->
-    //           <div class="card cardBlog" style="width: 18rem;">
-    //             <a href="">
-    //             <img src="./images/1.png" class="card-img-top" alt="...">
-    //             <div class="card-body card-img-overlay">
-    //             <h5 class="card-title">遊記</h5>
-    //             <div class="mask">
-    //             <p class="card-text">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span></p>
-    //             </div>
-    //             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-    //             </div>
-    //             <div>
-    //             <div class="cardBlogContent">
-    //             <p>作者：中央劉德華</p>
-    //             <p>發佈日期：2020/08/20</p>
-    //             <div>
-    //             <p>人氣319</p>
-    //             <a href="">
-    //             <img src="./images/heart.png" alt="">
-    //             </a>
-    //             </div>
-    //             </div>
-    //             </div>
-    //             </a>
-    //           </div>
-    //           `,
-    //       });       
-
-
-
-</script>

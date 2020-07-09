@@ -2,15 +2,16 @@
     session_start();
     $memInfo = $_SESSION["Mem_NO"];
     // $loginInfo = json_decode($_POST["memInfo"]); 
+
     try{
         require_once("connectMemberTable.php");
         //下收藏景點SQL指令
         $sql_keepAttr = "select Attrac_Name, Attrac_Region, 
-                        round(Attrac_LikeSum/Attrac_LikeAmount,1) likecount, 
-                        Attrac_PicURL
-                        FROM keep_attrac k, attraction a 
-                        where  k.Attrac_NO=a.Attrac_NO 
-                        and Mem_NO=:memId ";
+            round(Attrac_LikeSum/Attrac_LikeAmount,1) likecount, 
+            Attrac_PicURL
+            FROM keep_attrac k, attraction a 
+            where  k.Attrac_NO=a.Attrac_NO 
+            and Mem_NO=:memId ";
         $keepAttr = $pdo->prepare($sql_keepAttr);
         $keepAttr -> bindValue(":memId", $memInfo);
         $keepAttr -> execute();
@@ -27,9 +28,9 @@
         $keepGroup -> execute();
         //下收藏行程SQL指令 
         $sql_keepSche = "select Sche_Name, Sche_Img, Sche_Views
-                        FROM keep_sche ks, sche s
-                        where ks.Sche_NO = s.Sche_NO  
-                        and ks.Mem_NO=:memId";
+            FROM keep_sche ks, sche s
+            where ks.Sche_NO = s.Sche_NO  
+            and ks.Mem_NO=:memId";
         $keepSche = $pdo->prepare($sql_keepSche);
         $keepSche -> bindValue(":memId", $memInfo);
         $keepSche -> execute();
@@ -71,7 +72,7 @@
         $MemBlog -> execute();
         
         
-        
+
         //建存放所有收藏資料
         $AllKeepPackage=array();
         //建收藏景點資料
@@ -198,4 +199,8 @@
     }catch(PDOException $e){
         echo $e->getMessage();
     }
+
+
+
+
 ?>
