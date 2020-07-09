@@ -26,7 +26,7 @@
                 Mem_Status, Mem_LikeSum, Mem_LikeAmount, Mem_Tel, Mem_Sex, Mem_Birth, Mem_Photo) values ('$r_memName',
                 '$r_memId', '$r_memPsw', '$r_memEmail', 1, 0, 0, '$r_memTel', $r_memSex, '$r_memBirth', '')";
                 $addmembersql = $pdo->exec($sql);
-                echo "<script>alert('註冊成功');location.href='index.html';</script>";
+                echo "<script>alert('註冊成功');location.href='main.html';</script>";
 
 
                 $sql2 = "select * from `MemberTable` where Mem_Id=:r_memId;";
@@ -58,10 +58,10 @@
                 "Mem_Birth"=>$_SESSION["Mem_Birth"], "Mem_Photo"=>$_SESSION["Mem_Photo"]);
                 echo json_encode($memberInfo);
             }else{
-                echo "<script>alert('註冊失敗，請重新註冊');location.href='index.html';</script>";
+                echo "<script>alert('註冊失敗，請重新註冊');location.href='main.html';</script>";
             }
         }else{
-            echo "<script>alert('帳號已經有人使用囉！');location.href='index.html';</script>";
+            echo "<script>alert('帳號已經有人使用囉！');location.href='main.html';</script>";
         }
     }catch(PDOException $e){
         echo $e->getMessage();
