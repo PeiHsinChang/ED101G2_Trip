@@ -22,6 +22,39 @@
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <style>
+    #addAdminSubmitBtn{
+      width: 85px;
+      height: 35px;
+      font-size: 16px;
+      border: 1px silod rgb(188,38,84);
+      background-color: rgb(188,38,84);
+      color: white;
+      border-radius: 5px;
+      margin-left: 70px;
+      margin-top: 20px;
+    }
+    #addAdminSubmitBtn:hover{
+      background-color: white;
+      color: rgb(188,38,84);
+    }
+    #addAdminSubmitBtn2{
+      width: 85px;
+      height: 35px;
+      font-size: 16px;
+      border: 1px silod rgb(188,38,84);
+      background-color: white;
+      color: rgb(188,38,84);
+      border-radius: 5px;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    #addAdminSubmitBtn2:hover{
+      background-color: rgb(188,38,84);
+      color: white;
+    }
+  </style>
+
 </head>
 
 <body id="page-top">
@@ -43,7 +76,6 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -51,7 +83,6 @@
       <div class="sidebar-heading">
         後台管理
       </div>
-
 
       <!-- Nav Item - 管理員帳號管理  -->
       <li class="nav-item active">
@@ -94,8 +125,6 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-
-
           <!-- Sidebar Toggle (Topbar) -->
           <form class="form-inline">
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -103,41 +132,15 @@
             </button>
           </form>
 
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-
-
-
-            <!-- Nav Item - User Information -->
+            <!--  管理員登出  -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <span class="logoutimgreplace">登出</span>
+                <span class="logoutimgreplace" id="logoutimgreplace">登出</span>
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
             </li>
-
           </ul>
 
         </nav>
@@ -149,42 +152,27 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-center mb-4">
             <h1 class="h3 mb-0 text-gray-800">管理員帳號管理</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>新增</a>
+            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="addNewAdminBtn" style="margin-left:15px;"><i class="fas fa-plus fa-sm text-white-50"></i>新增管理員</button>
           </div>
-          <!-- DataTales Example -->
+          <!-- 新增管理員燈箱 -->
+          <div id="addAdminLightBox" style="display:none; background-color: rgba(57,57,57,.6); width:100%; height:100%; position:fixed; top:0; left:0; z-index:10;">
+            <div style="width:390px; height:320px; margin-left:50%; transform:translateX(-50%) translateY(100px); color:rgb(57,57,57); background-color:rgb(237,237,237); font-weight:400; border-radius:5px;">
+              <div style="width:390px; height:50px; margin-top:0; color:rgb(188,38,84); background-color:rgb(255,237,237); font-weight:500; text-align:center; padding: 15px; border-top-right-radius:5px; border-top-left-radius:5px;">新增管理員</div>
+                <form action="addAdmin.php" method="post" style="margin-left:40px; margin-top:40px;">
+                  名稱：<input type="text" style="margin-bottom:5px; width:250px" name="r_Adm_Name" autocomplete="off"><br>
+                  帳號：<input type="text" style="margin-bottom:5px; width:250px" name="r_Adm_Acc" autocomplete="off"><br>
+                  密碼：<input type="text" style="margin-bottom:5px; width:250px" name="r_Adm_Psw" autocomplete="off"><br>
+                  信箱：<input type="text" style="margin-bottom:5px; width:250px" name="r_Adm_Email" autocomplete="off"><br>
+                  <input type="submit" value="送出" id="addAdminSubmitBtn">
+                  <input type="button" value="取消" id="addAdminSubmitBtn2">
+                </form>
+            </div>
+          </div>
+          <!-- 管理員欄位內容table -->
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>管理員編號</th>
-                      <th>名稱</th>
-                      <th>帳號</th>
-                      <th>密碼</th>
-                      <th>信箱</th>
-                      <th>狀態</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>00001</td>
-                      <td>admin</td>
-                      <td>admin</td>
-                      <td>admin</td>
-                      <td>admin@gmail.com</td>
-                      <td><input type="checkbox" checked data-toggle="toggle"></td>
-                    </tr>
-                    <tr>
-                      <td>00002</td>
-                      <td>employee1</td>
-                      <td>employee1</td>
-                      <td>employee1</td>
-                      <td>employee1@gmail.com</td>
-                      <td><input type="checkbox" checked data-toggle="toggle"></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <table class="table table-bordered" id="adminDataTable" width="100%" cellspacing="0"></table>
               </div>
             </div>
           </div>
@@ -199,7 +187,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; 自助大丈夫 2020</span>
           </div>
         </div>
       </footer>
@@ -215,25 +203,6 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="CMS_login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -252,6 +221,136 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+  <script>
+    function $id(id){
+        return document.getElementById(id);
+    }
+
+    //重整時取得session管理員登入資料
+    function getAdminInfo(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                member = JSON.parse(xhr.responseText);
+                if(member.Adm_NO){
+                }else{
+                  location.href = 'CMS_login.html';
+                }           
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("get", "getAdminInfo.php", true);
+        xhr.send(null);
+    }
+
+    //管理員登出
+    function adminLogout(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status==200){
+            alert("登出成功");
+            location.href = "CMS_login.html";
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("get", "adminLogout.php", true);  
+      xhr.send(null); 
+    }
+
+    //取回所有管理員資料並呈現在網頁上
+    function getAllAdminInfo(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status == 200){
+          adminInfo = JSON.parse(xhr.responseText);
+          // console.log(adminInfo);
+
+          adminFormContent='';
+          for(i=0;i<adminInfo.length;i++){
+            if(adminInfo[i].Adm_Status == 1){
+              adminFormContent += `<tr><td>${adminInfo[i].Adm_NO}</td><td>${adminInfo[i].Adm_Name}</td><td>${adminInfo[i].Adm_Acc}</td>
+              <td>${adminInfo[i].Adm_Psw}</td><td>${adminInfo[i].Adm_Email}</td><td><input type="checkbox" id="bbb${i}" checked></td></tr>`;
+            }else{
+              adminFormContent += `<tr><td>${adminInfo[i].Adm_NO}</td><td>${adminInfo[i].Adm_Name}</td><td>${adminInfo[i].Adm_Acc}</td>
+              <td>${adminInfo[i].Adm_Psw}</td><td>${adminInfo[i].Adm_Email}</td><td><input type="checkbox" id="bbb${i}"></td></tr>`;
+            }             
+          }
+          adminFormContent2 = `<thead>
+                <tr>
+                  <th>管理員編號</th>
+                  <th>名稱</th>
+                  <th>帳號</th>
+                  <th>密碼</th>
+                  <th>信箱</th>
+                  <th>帳號狀態</th>
+                </tr>
+              </thead>` + adminFormContent; 
+              document.getElementById('adminDataTable').innerHTML = adminFormContent2; 
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("get","searchAllAdminInfo.php",true);
+      xhr.send(null);
+    }
+
+    //點擊checkbox更改管理員權限(修改資料庫)
+    function adminClickCheckBox(){
+      console.log('執行adminClickCheckBox');
+      let xhr = new XMLHttpRequest();
+
+      xhr.onload = function(){
+        if(xhr.status == 200){
+            // console.log(xhr.responseText);
+            alert("修改成功！");
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("post","searchSpecificAdminInfo.php",true);
+      xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+      const tableTr = this.closest('tr');
+      const tableTrFirstChild = tableTr.children[0].innerText;
+
+      xhr.send('Adm_NO='+tableTrFirstChild);  
+    }
+
+    function init3(){
+      //重整時取得session管理員登入資料
+      getAdminInfo();
+      setTimeout(getAdminInfo,500);
+      //使用Ajax回server端,取回所有管理員資料資訊
+      getAllAdminInfo();
+      $id('logoutimgreplace').onclick = adminLogout;
+
+      function countChildrenAmount(){
+        var tableAmount = document.getElementById('adminDataTable').children[1];
+        // console.log(tableAmount.childElementCount);
+        for(i=0;i<tableAmount.childElementCount;i++){
+          document.getElementById(`bbb${i}`).addEventListener('click',adminClickCheckBox);
+        }
+      }
+      setTimeout(countChildrenAmount,200); 
+
+      //點擊新增跳出燈箱
+      var addAdmin = $id('addNewAdminBtn');
+      addAdmin.onclick = function(){
+        $id('addAdminLightBox').style.display = 'block';
+      }
+
+      //點擊取消關閉燈箱
+      var closeLightBox = $id('addAdminSubmitBtn2');
+      closeLightBox.onclick = function(){
+        $id('addAdminLightBox').style.display = 'none';
+      }
+    }
+    //window.onload
+    window.addEventListener("load",init3,false);
+  </script>
 
 </body>
 

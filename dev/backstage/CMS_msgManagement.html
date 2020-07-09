@@ -102,61 +102,16 @@
             </button>
           </form>
 
-
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - User Information -->
+            <!--  管理員登出  -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <span class="logoutimgreplace">登出</span>
+                <span class="logoutimgreplace" id="logoutimgreplace2">登出</span>
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
             </li>
-
           </ul>
-
         </nav>
         <!-- End of Topbar -->
 
@@ -167,37 +122,11 @@
           <div class="d-sm-flex align-items-center justify-content-center mb-4">
             <h1 class="h3 mb-0 text-gray-800">留言管理</h1>
           </div>
-          <!-- DataTales Example -->
+          <!-- 管理檢舉留言table -->
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>檢舉編號</th>
-                      <th>留言編號</th>
-                      <th>檢舉會員編號</th>
-                      <th>檢舉日期</th>
-                      <th>內容</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>01</td>
-                      <td>report01</td>
-                      <td>m062101</td>
-                      <td>2020-06-21</td>
-                      <td>你才胖，你全家都胖</td>
-                    </tr>
-                    <tr>
-                      <td>02</td>
-                      <td>report02</td>
-                      <td>m062101</td>
-                      <td>2020-06-21</td>
-                      <td>這內容我不行</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <table class="table table-bordered" id="reportDataTable" width="100%" cellspacing="0"></table>
               </div>
             </div>
           </div>
@@ -266,6 +195,128 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
+  <script>
+    function $id(id){
+        return document.getElementById(id);
+    }
+
+    //重整時取得session管理員登入資料
+    function getAdminInfo2(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                member = JSON.parse(xhr.responseText);  
+                if(member.Adm_NO){
+                }else{
+                  location.href = 'CMS_login.html';
+                }            
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("get", "getAdminInfo.php", true);
+        xhr.send(null);
+    }
+
+    //管理員登出
+    function adminLogout2(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status==200){
+            alert("登出成功");
+            location.href = "CMS_login.html";
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("get", "adminLogout.php", true);  
+      xhr.send(null); 
+    }
+
+    //取回所有管理員資料並呈現在網頁上
+    function getReportInfo(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status == 200){
+          reportInfo = JSON.parse(xhr.responseText);
+          // console.log(reportInfo);
+
+          reportFormContent='';
+          for(i=0;i<reportInfo.length;i++){
+            reportFormContent += `<tr><td>${reportInfo[i].Rpt_NO}</td><td>${reportInfo[i].Mem_Name}</td>
+            <td>${reportInfo[i].Rpt_Date}</td><td>${reportInfo[i].Msg_Cont}</td><td>${reportInfo[i].Msg_NO}</td><td>${reportInfo[i].Rpt_Cont}</td>
+            <td><input type="button" id="ccc${i}" value="刪除留言"></td></tr>`;
+          }
+          reportFormContent2 = `<thead>
+                <tr>
+                  <th>檢舉編號</th>             
+                  <th>檢舉人</th>
+                  <th>檢舉日期</th>
+                  <th>留言內容</th>
+                  <th>留言編號</th>
+                  <th>說明</th>
+                  <th></th>
+                </tr>
+              </thead>` + reportFormContent;
+              document.getElementById('reportDataTable').innerHTML = reportFormContent2; 
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("get","searchReportInfo.php",true);
+      xhr.send(null);
+    }
+
+    //點擊checkbox刪除被檢舉的留言(修改資料庫)
+    function reportClickCheckBox(){
+      // console.log('執行reportClickCheckBox');
+      let xhr = new XMLHttpRequest();
+
+      xhr.onload = function(){
+        if(xhr.status == 200){
+            // console.log(xhr.responseText);
+            alert("留言刪除成功！");
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("post","searchReportedMsg.php",true);
+      xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+      const tableTr = this.closest('tr');
+      const tableTrFirstChild = tableTr.children[0].innerText;  //檢舉編號
+      const tableTrSecondChild = tableTr.children[4].innerText; //留言內容
+      console.log(tableTrFirstChild);
+      console.log(tableTrSecondChild);
+      let report_info = {
+        Rpt_NO:tableTrFirstChild,
+        Msg_NO:tableTrSecondChild
+      }
+      let str = JSON.stringify(report_info); //轉為json字串
+      let report = `report=${str}`; //傳json字串
+      xhr.send(report); 
+      console.log(report);
+    }
+
+    function init4(){
+      //使用Ajax回server端,取回所有被檢舉留言資訊
+      getReportInfo();
+      //重整時取得session管理員登入資料
+      getAdminInfo2();
+      $id('logoutimgreplace2').onclick = adminLogout2;
+
+      function countChildrenAmount(){
+        var tableAmount = document.getElementById('reportDataTable').children[1];
+        // console.log(tableAmount.childElementCount);
+        for(i=0;i<tableAmount.childElementCount;i++){
+          document.getElementById(`ccc${i}`).addEventListener('click',reportClickCheckBox);
+        }
+      }
+      setTimeout(countChildrenAmount,200); 
+    }
+    //window.onload
+    window.addEventListener("load",init4,false);
+  </script>
 </body>
 
 </html>

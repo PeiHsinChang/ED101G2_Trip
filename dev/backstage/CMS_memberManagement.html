@@ -110,41 +110,15 @@
                 <i class="fas fa-search fa-fw"></i>
               </a>
 
-
-            <!-- Nav Item - User Information -->
+            <!--  管理員登出  -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin登出</span>
-                <span class="logoutimgreplace">登出</span>
+                <span class="logoutimgreplace" id="logoutimgreplace1">登出</span>
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
             </li>
-
           </ul>
-
         </nav>
         <!-- End of Topbar -->
-
-
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -153,41 +127,15 @@
           <div class="d-sm-flex align-items-center justify-content-center mb-4">
             <h1 class="h3 mb-0 text-gray-800">會員管理</h1>
           </div>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
+          <!-- 會員管理欄位內容table -->
+          <div class="card shadow mb-4">           
             <div class="card-body">
+              <form action="" method="GET" style="display:inline-block;margin-bottom:10px;margin-left:50%;transform:translateX(-50%);">
+                <input type="text" placeholder="搜尋名稱.." id="searchMember" autocomplete="off">
+                <input type="button" value="查詢">
+              </form>
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>會員編號</th>
-                      <th>名稱</th>
-                      <th>帳號</th>
-                      <th>密碼</th>
-                      <th>電話</th>
-                      <th>狀態</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>m062101</td>
-                      <td>test</td>
-                      <td>test062101</td>
-                      <td>test062101</td>
-                      <td>0922235678</td>
-                      <td><input type="checkbox" checked data-toggle="toggle"></td>
-                    </tr>
-                    <tr>
-                      <td>m062102</td>
-                      <td>test02</td>
-                      <td>test062102</td>
-                      <td>test062102</td>
-                      <td>0912345678</td>
-                      <td><input type="checkbox" checked data-toggle="toggle"></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"></table>
               </div>
             </div>
           </div>
@@ -202,7 +150,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; 自助大丈夫 2020</span>
           </div>
         </div>
       </footer>
@@ -218,25 +166,6 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -255,6 +184,168 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+  <script>
+    function $id(id){
+        return document.getElementById(id);
+    }
+
+    //重整時取得session管理員登入資料
+    function getAdminInfo1(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                member = JSON.parse(xhr.responseText);
+                // console.log(member);
+                if(member.Adm_NO){
+                }else{
+                  location.href = 'CMS_login.html';
+                }        
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("get", "getAdminInfo.php", true);
+        xhr.send(null);
+    }
+
+    //管理員登出
+    function adminLogout1(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status==200){
+            alert("登出成功");
+            location.href = "CMS_login.html";
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("get", "adminLogout.php", true);  
+      xhr.send(null); 
+    }
+
+    //取回所有會員資料並呈現在網頁上
+    function getAllMemberInfo(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                // console.log(xhr.responseText);
+                memberInfo = JSON.parse(xhr.responseText);
+                // console.log(memberInfo);
+                // console.log(memberInfo.length);
+                
+                memberFormcontent='';
+                for(i=0;i<memberInfo.length;i++){
+                  if(memberInfo[i].Mem_Status == 1){
+                    // console.log("123");
+                    memberFormcontent += `<tr><td class="member_number">${memberInfo[i].Mem_NO}</td><td>${memberInfo[i].Mem_Name}</td><td>${memberInfo[i].Mem_Id}</td><td>${memberInfo[i].Mem_Psw}</td><td>${memberInfo[i].Mem_Tel}</td>
+                    <td><input type="checkbox" class="rightToComment" id="aaa${i}" checked></td></tr>`;
+                  }else{
+                    memberFormcontent += `<tr><td class="member_number">${memberInfo[i].Mem_NO}</td><td>${memberInfo[i].Mem_Name}</td><td>${memberInfo[i].Mem_Id}</td><td>${memberInfo[i].Mem_Psw}</td><td>${memberInfo[i].Mem_Tel}</td>
+                    <td><input type="checkbox" class="rightToComment" id="aaa${i}"></td></tr>`;
+                  }
+                }  
+                memberFormcontent2 = `<thead>
+                    <tr>
+                      <th>會員編號</th>
+                      <th>名稱</th>
+                      <th>帳號</th>
+                      <th>密碼</th>
+                      <th>電話</th>
+                      <th>發言權限</th>
+                    </tr>
+                  </thead>` + memberFormcontent;
+                document.getElementById('dataTable').innerHTML = memberFormcontent2; 
+
+                $("#searchMember").change(function(){
+                    inputv = $("#searchMember").val();
+                    console.log(inputv); 
+                    document.getElementById('dataTable').innerHTML='';
+
+                    result='';
+                    box = [];
+                    for(i=0;i<memberInfo.length;i++){
+                        if(memberInfo[i].Mem_Name.indexOf(inputv) != -1){ 
+                          box.push(i);
+                          if(memberInfo[i].Mem_Status == 1){
+                            // console.log("123");
+                            result += `<tr><td class="member_number">${memberInfo[i].Mem_NO}</td><td>${memberInfo[i].Mem_Name}</td><td>${memberInfo[i].Mem_Id}</td><td>${memberInfo[i].Mem_Psw}</td><td>${memberInfo[i].Mem_Tel}</td>
+                            <td><input type="checkbox" class="rightToComment" id="aaa${i}" checked></td></tr>`;
+                          }else{
+                            result += `<tr><td class="member_number">${memberInfo[i].Mem_NO}</td><td>${memberInfo[i].Mem_Name}</td><td>${memberInfo[i].Mem_Id}</td><td>${memberInfo[i].Mem_Psw}</td><td>${memberInfo[i].Mem_Tel}</td>
+                            <td><input type="checkbox" class="rightToComment" id="aaa${i}"></td></tr>`;
+                          }
+                        }
+                        result2 = `<thead>
+                          <tr>
+                            <th>會員編號</th>
+                            <th>名稱</th>
+                            <th>帳號</th>
+                            <th>密碼</th>
+                            <th>電話</th>
+                            <th>發言權限</th>
+                          </tr>
+                        </thead>` + result;
+                      document.getElementById('dataTable').innerHTML = result2; 
+                    }
+                    //不用再另外寫function將監聽事件寫進去
+                    for(i=0;i<box.length;i++){
+                      document.getElementById(`aaa${box[i]}`).addEventListener('click',clickCheckBox);
+                    }
+                    // console.log(box.length);
+                });              
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("get","searchAllMemberInfo.php",true);
+        xhr.send(null);
+    }
+
+    //點擊checkbox更改會員發言權限(修改資料庫)
+    function clickCheckBox(){
+      // console.log('123');
+      let xhr = new XMLHttpRequest();
+
+      xhr.onload = function(){
+        if(xhr.status == 200){
+            // console.log(xhr.responseText);
+            alert("修改成功！");
+        }else{
+            alert(xhr.status);
+        }
+      }
+      xhr.open("post","searchSpecificMemberInfo.php",true);
+      xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+      // e.preventDefault();
+      // e.stopImmediatePropagation();      
+      //找出checkbox的父層中第一個td值     
+      const tableTr = this.closest('tr');
+      const tableTrFirstChild = tableTr.children[0].innerText;
+
+      xhr.send('Mem_NO='+tableTrFirstChild);      
+    }
+
+    function init2(){  
+        //重整時取得session會員登入資料 
+        getAdminInfo1();     
+        //使用Ajax回server端,取回所有會員資料資訊
+        getAllMemberInfo();       
+        $id('logoutimgreplace1').onclick = adminLogout1;  
+
+        function countChildrenAmount(){
+          var tableAmount = document.getElementById('dataTable').children[1];
+          // console.log(tableAmount.childElementCount);
+          for(i=0;i<tableAmount.childElementCount;i++){
+            document.getElementById(`aaa${i}`).addEventListener('click',clickCheckBox);
+          }
+        }
+        setTimeout(countChildrenAmount,200);       
+    }
+    //window.onload
+    window.addEventListener("load",init2,false);
+</script>
 
 </body>
 

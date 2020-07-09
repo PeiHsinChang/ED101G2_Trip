@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>自助大丈夫 後台登入</title>
 
   <!-- Custom fonts for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -40,6 +40,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">歡迎登入</h1>
                   </div>
+                  <!-- 登入表單 -->
                   <form class="user">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="請輸入帳號">
@@ -49,9 +50,10 @@
                     </div>
                     <div class="form-group">
                     </div>
-                    <a href="CMS_accManagement.html" class="btn btn-primary btn-user btn-block">
+                    <!-- <a href="CMS_accManagement.html" class="btn btn-primary btn-user btn-block" id="btnAdminLogin">
                       登入
-                    </a>
+                    </a> -->
+                    <input type="button" class="btn btn-primary btn-user btn-block" id="btnAdminLogin" value="登入" style="font-size:16px;">
                     <hr>
                   </form>
                 </div>
@@ -75,6 +77,57 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <script>
+    function $id(id){
+      return document.getElementById(id);
+    }
+
+    let admin = {};
+
+    //管理員登入送出
+    function sendAdminForm(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.status==200){
+          admin = JSON.parse(xhr.responseText);
+          console.log(admin);
+          if(admin.Adm_Status == 1){
+              alert("登入成功");location.href='CMS_accManagement.html';
+          }else if(admin.Adm_Status == 0){
+              alert("此帳號無登入權限");
+          }else{
+              alert("帳密錯誤，請重新登入");
+          } 
+        }else{
+          alert(xhr.status);
+        }
+      }
+      xhr.open("post","adminLogin.php",true);
+      xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+      //將要送出的資料先放在物件中
+      let adminLoginInfo = {
+        Adm_Acc:$id("exampleInputEmail").value,
+        Adm_Psw:$id("exampleInputPassword").value
+      }
+
+      let str = JSON.stringify(adminLoginInfo);
+
+      let data_info = `adminLoginInfo=${str}`;//傳json字串
+      xhr.send(data_info);
+      console.log(data_info);
+
+      //將登入表單上的資料清空    
+      $id('exampleInputEmail').value = '';
+      $id('exampleInputPassword').value = '';
+    }
+
+    function init1(){
+      $id('btnAdminLogin').onclick = sendAdminForm;
+    }; 
+    //window.onload
+    window.addEventListener("load",init1,false);
+  </script>
 
 </body>
 
