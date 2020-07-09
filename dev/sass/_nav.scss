@@ -5,7 +5,7 @@
   position: relative;
   .navBg{
     height: 80px;
-    background-image: linear-gradient(180deg, $colorSecondary2 , rgba(255, 255, 255, 0.1));
+    background-color: white;
     z-index: 5;
     position: fixed;
     top:0;
@@ -23,7 +23,7 @@
           display: flex;
           color: $colorSecondary3;
           img {
-            height: 70px;
+            height: 65px;
           }
           div.daijoubu{
             margin-left: 10px;
@@ -69,10 +69,14 @@
       }
       .navRight {
         width: 145px;
+        margin-right: 15px;
         padding: 10px;
         display: flex;
         justify-content: space-between;
         a {
+          &:hover{
+            cursor: pointer;
+          }
           img{
             width: 20px;
             margin-right: 5px;
@@ -88,7 +92,7 @@
           width: 60px;
           border-radius: 50%;
           overflow: hidden;
-          transform: translateX(-18px) translateY(10px);
+          // transform: translateY(-10px);
           img{
             width: 100%;
           }
@@ -120,10 +124,11 @@
           }
         }
         .navSmallRight{
-          img{
-            height: 25px;
-            padding-right: 25px;
+          &:hover{
+            cursor: pointer;
           }
+          margin-right: 30px;
+          font-size: 16px;
         }
       }
     }

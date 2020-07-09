@@ -42,7 +42,8 @@ function showLoginForm(){
               $id('aRegist').style.display = 'inline-block';
               $id('memberPic').style.display = 'none';
               $id("loginLightBox").style.display = 'none';
-              location.href='index.html';
+              location.href='main.html';
+              document.querySelector('.navSmallRight').innerHTML == "登入"
 
           }else{
               alert(xhr.status);
@@ -52,8 +53,30 @@ function showLoginForm(){
       xhr.open("get", "logout.php", true);  
       //傳送一個空值，把遠端的.json資料撈過來，檢查xhr，readyState狀態變成4，responseText也抓到資料，responseURL也正確抓到網址，資料都已經抓取。
       xhr.send(null);              
-  } 
-          
+  }          
+}
+
+//登出，手機版登出
+function phoneLogout(){
+  if(document.querySelector('.navSmallRight').innerHTML == "登出"){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+      if(xhr.status==200){
+          $id('memberPic').innerHTML = '';
+          $id('aLogin').innerHTML = '登入'; 
+          $id('aRegist').style.display = 'inline-block';
+          $id('memberPic').style.display = 'none';
+          $id("loginLightBox").style.display = 'none';
+          location.href='main.html';
+          document.querySelector('.navSmallRight').innerHTML == "登入"
+
+      }else{
+          alert(xhr.status);
+      }
+    }
+    xhr.open("get", "logout.php", true); 
+    xhr.send(null); 
+  }
 }
 
 //登入，輸入完帳號密碼後送出
@@ -69,6 +92,8 @@ function sendForm(){
               $id('aLogin').innerText = '登出';
               $id('aRegist').style.display = 'none';
               $id('memberPic').style.display = 'inline-block';
+              document.querySelector('.modal-backdrop').style.display = 'none';
+              document.querySelector('.navSmallRight').innerText = '登出';
 
           }else{
               alert("帳密錯誤");
@@ -109,6 +134,7 @@ function getMemberInfo(){
               $id("aLogin").innerText = "登出";
               $id('aRegist').style.display = 'none';
               $id('memberPic').style.display = 'inline-block';
+              document.querySelector('.navSmallRight').innerText = '登出';
           }else{
               $id('aRegist').style.display = 'inline-block';
           }
@@ -175,6 +201,8 @@ function init(){
   $id('registrightbutton').onclick = cancelRegist;
   //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
   $id('loginrightbutton').onclick = cancelLogin;
+  //手機版登出
+  document.querySelector('.navSmallRight').onclick = phoneLogout;
 
   //註冊，檢查帳號長度
   $("#r_memId").keyup(function(){
