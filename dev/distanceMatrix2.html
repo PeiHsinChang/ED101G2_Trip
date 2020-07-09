@@ -1,87 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-      自助大丈夫：Distance Matrix API
+        自助大丈夫：Distance Matrix API
     </title>
-    <link
-      rel="canonical"
-      href="https://letswrite.tw/google-map-api-distance-matrix/"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="canonical" href="https://letswrite.tw/google-map-api-distance-matrix/" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <style>
-      .container {
-        padding-top: 30px;
-        padding-bottom: 30px;
-      }
-
-      #map {
-        background: #ccc;
-      }
-
-      ul {
-        padding-top: 16px;
-      }
-
-      .media img {
-        max-width: 64px;
-      }
-
-      .media h5,
-      p {
-        font-size: 14px;
-      }
-
-      .mdeia p {
-        margin-bottom: 6px;
-      }
-
-      .media h6 {
-        font-size: 12px;
-        color: #ccc;
-      }
-
-      .fixed-bottom {
-        position: fixed;
-        left: 16px;
-        bottom: 0;
-        max-width: 320px;
-      }
+        .container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        
+        #map {
+            background: #ccc;
+        }
+        
+        ul {
+            padding-top: 16px;
+        }
+        
+        .media img {
+            max-width: 64px;
+        }
+        
+        .media h5,
+        p {
+            font-size: 14px;
+        }
+        
+        .mdeia p {
+            margin-bottom: 6px;
+        }
+        
+        .media h6 {
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        .fixed-bottom {
+            position: fixed;
+            left: 16px;
+            bottom: 0;
+            max-width: 320px;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="app" class="container">
-      <!-- 景點查詢 -->
-      <attraction-list></attraction-list>
-      <!-- google map -->
+        <!-- 景點查詢 -->
+        <attraction-list></attraction-list>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
@@ -89,28 +66,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
     <script>
-      Vue.component("attraction-input", {
-        template: `
+        Vue.component("attraction-input", {
+            template: `
               <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
               `,
-        data() {
-          return {
-            queryAttractionName: "",
-          };
-        },
-        methods: {
-          sendInputToAttractionList() {
-            this.$emit("abc", this.queryAttractionName);
-            this.queryAttractionName = "";
-          },
-        },
-      });
+            data() {
+                return {
+                    queryAttractionName: "",
+                };
+            },
+            methods: {
+                sendInputToAttractionList() {
+                    this.$emit("abc", this.queryAttractionName);
+                    this.queryAttractionName = "";
+                },
+            },
+        });
 
-      Vue.component("attraction-list", {
-        //父元素接收abc事件之後，呼叫getAttractionsFromPHP函式
-        //父元素bind一個變數label，再把label往子組件傳
-        // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
-        template: `
+        Vue.component("attraction-list", {
+            //父元素接收abc事件之後，呼叫getAttractionsFromPHP函式
+            //父元素bind一個變數label，再把label往子組件傳
+            // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
+            template: `
           <div class="border">
 
             <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
@@ -132,45 +109,68 @@
             </div>
           </div>
                   `,
-        data() {
-          return {
-            searchedAttractions: [],
-            selectedAttractions: [],
-          };
-        },
-        methods: {
-          getSearchedAttractionsFromPHP(x) {
-            $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
-              this.searchedAttractions = JSON.parse(data);
-            });
-          },
-          addSelectedAttractionsToDirection(x) {
-            this.selectedAttractions.push(x);
-            console.log(this.selectedAttractions);
-          },
-        },
-      });
+            data() {
+                return {
+                    searchedAttractions: [],
+                    selectedAttractions: [],
+                    map: null,
+                    mapCenter: {
+                        lat: 25.0374865,
+                        lng: 121.5647688,
+                    },
+                };
+            },
+            methods: {
+                getSearchedAttractionsFromPHP(x) {
+                    $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
+                        this.searchedAttractions = JSON.parse(data);
+                    });
+                },
+                addSelectedAttractionsToDirection(x) {
+                    this.selectedAttractions.push(x);
+                    console.log(this.selectedAttractions);
+                },
+                initMap() {
+                    // 預設地圖中心點
+                    let location = {
+                        lat: 25.0374865,
+                        lng: 121.5647688,
+                    };
 
-      Vue.component("attraction-item", {
-        template: `
+                    this.map = new google.maps.Map(document.getElementById("map"), {
+                        center: location,
+                        zoom: 16,
+                    });
+                },
+            },
+            mounted() {
+                this.map = new google.maps.Map(document.getElementById("map"), {
+                    center: this.mapCenter,
+                    zoom: 16,
+                });
+            },
+        });
+
+        Vue.component("attraction-item", {
+            template: `
         <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
                 <img :src='this.label.Picture1' class="card-img-top"/>
                 <h6 class="card-title text-truncate">{{label.Name}}</h6>
                 <button @click="sendSelectedAttractionToAttractionApi" type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
         </card>
                 `,
-        props: ["label"],
-        methods: {
-          sendSelectedAttractionToAttractionApi() {
-            this.$emit("def", this.label);
-            // console.log(this.label);
-          },
-        },
-      });
+            props: ["label"],
+            methods: {
+                sendSelectedAttractionToAttractionApi() {
+                    this.$emit("def", this.label);
+                    // console.log(this.label);
+                },
+            },
+        });
 
-      Vue.component("attraction-direction", {
-        props: ["label2"],
-        template: `
+        Vue.component("attraction-direction", {
+            props: ["label2"],
+            template: `
         <div class="p-2 my-2 rounded shadow-sm">
           <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -180,191 +180,144 @@
           <div>{{label2.Tel}}</div>
         </div>
         `,
-      });
+        });
 
-      Vue.component("attraction-mark", {
-        props: ["label3"],
-        // template: `
-        //   <div class="col-md-8 google-map" style="height:400px">
-        //     <div id="map" class="embed-responsive embed-responsive-16by9" style="height:400px">
-        //       <p>{{label3.Px}}</p>
-        //       <p>{{label3.Py}}</p>
-        //     </div>
-        //   </div>
-        // `,
-        data() {
-          return {
-            map: null,
-          };
-        },
-        methods: {
-          // initMap() {
-          //   //center marker from circle
-          //   this.map = new google.maps.Map(document.getElementById("map"), {
-          //     zoom: 13,
-          //     center: { lat: -34.397, lng: 150.644 },
-          //   });
-          // },
-          // initMap() {
-          //   // 地圖初始化：
-          //   let location = {
-          //     lat: 25.0374865,
-          //     lng: 121.5647688,
-          //   };
-          //   this.map = new google.maps.Map(document.getElementById("map"), {
-          //     center: location,
-          //     zoom: 12,
-          //   });
-          //(1) 將各景點寫入marker
-          // let latLng = new google.maps.LatLng(this.label3.Py, this.label3.Px);
-          // let marker = new google.maps.Marker({
-          //   position: latLng,
-          //   map: this.map,
-          //   icon:
-          //     "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
-          // });
-          // this.map.panTo(latLng);
-        },
-        // mounted() {
-        //   window.addEventListener("load", () => {
-        //     this.initMap();
-        //   });
-        // },
-      });
+        Vue.component("attraction-mark", {
+            //   template: `
+            // <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+            // `,
+            props: ["label3"],
+            data() {
+                return {
+                    // map: null,
+                    // mapCenter: {
+                    //     lat: 25.0374865,
+                    //     lng: 121.5647688,
+                    // },
+                };
+            },
+            methods: {},
+            // mounted() {
+            //     this.map = new google.maps.Map(document.getElementById("map"), {
+            //         center: this.mapCenter,
+            //         zoom: 16,
+            //     });
+            // },
 
-      // Vue.component("attraction-schedule", {
-      //   template: `
-      //   <!-- 交通方式選擇
-      //       <div class="col google-map">
-      //         <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
-      //         <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
-      //         <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
-      //       </div>-->
-      //   <!-- 顯示距離列表
-      //       <section class="row">
-      //         <div class="col-md-4">
-      //           <div class="list-group">
-      //             <div v-for="f in selectedAttractions" class="list-group-item">
-      //               <h5 class="mb-1">{{ f.Name }}</h5>
-      //               <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
-      //               <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
-      //             </div>
-      //           </div>
-      //         </div>-->
-      //   <!-- 顯示地圖
-      //         <div class="col-md-8 google-map">
-      //           <div id="map" class="embed-responsive embed-responsive-16by9"></div>
-      //         </div>
-      //       </section>-->
-      //         `,
-      //   data() {
-      //     return {
-      //       map: null,
-      //       selectedAttractions: [], // 放景點的array
-      //       travelMode: "",
-      //     };
-      //   },
-      //   methods: {
-      //     // initMap() {
-      //     //   // 地圖初始化：
-      //     //   let location = {
-      //     //     lat: 25.0374865,
-      //     //     lng: 121.5647688,
-      //     //   };
-      //     //   this.map = new google.maps.Map(document.getElementById("map"), {
-      //     //     center: location,
-      //     //     zoom: 12,
-      //     //   });
-      //     //   axios.get("./json/aoi.json").then((response) => {
-      //     //     // (2)將取得的景點寫入selectedAttractions
-      //     //     this.selectedAttractions = response.data;
-      //     //     //(1) 將各景點寫入marker
-      //     //     this.selectedAttractions.forEach((r) => {
-      //     //       let latLng = new google.maps.LatLng(r.Py, r.Px);
-      //     //       let marker = new google.maps.Marker({
-      //     //         position: latLng,
-      //     //         map: this.map,
-      //     //         icon:
-      //     //           "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
-      //     //       });
-      //     //       this.map.panTo(latLng);
-      //     //     });
-      //     //   });
-      //     // },
-      //     getCurrent() {
-      //       const _this = this;
-      //       let destinations = [];
-      //       _this.selectedAttractions.forEach((f) => {
-      //         destinations.push(new google.maps.LatLng(f.Py, f.Px));
-      //       });
-      //       const service = new google.maps.DistanceMatrixService();
-      //       service.getDistanceMatrix(
-      //         {
-      //           origins: destinations,
-      //           destinations: destinations,
-      //           travelMode: `${this.travelMode}`, // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
-      //           unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
-      //           avoidHighways: true, // 是否避開高速公路
-      //           avoidTolls: true, // 是否避開收費路線
-      //         },
-      //         callback
-      //       );
-      //       function callback(response, status) {
-      //         // 把距離寫進json裡
-      //         for (
-      //           let i = 1, len = _this.selectedAttractions.length;
-      //           i < len;
-      //           i++
-      //         ) {
-      //           _this.selectedAttractions[i].distance =
-      //             response.rows[0].elements[i].distance.value;
-      //           _this.selectedAttractions[i].distance_text =
-      //             response.rows[0].elements[i].distance.text;
-      //           _this.selectedAttractions[i].distance_time =
-      //             response.rows[0].elements[i].duration.text;
-      //         }
-      //         // 按距離重排
-      //         _this.selectedAttractions = _this.selectedAttractions.sort(
-      //           (a, b) => {
-      //             return a.distance > b.distance ? 1 : -1;
-      //           }
-      //         );
-      //         // console.log(_this.selectedAttractions);
-      //       }
-      //     },
-      //   },
-      //   // mounted() {
-      //   //   // window.addEventListener("load", () => {
-      //   //   this.initMap();
-      //   //   // });
-      //   // },
-      // });
+        });
 
-      new Vue({
-        el: "#app",
-        data: {
-          map: null,
-        },
-        methods: {
-          initMap() {
-            // 預設地圖中心點
-            let location = {
-              lat: 25.0374865,
-              lng: 121.5647688,
-            };
+        // Vue.component("attraction-schedule", {
+        //   template: `
+        //   <!-- 交通方式選擇
+        //       <div class="col google-map">
+        //         <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
+        //         <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
+        //         <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
+        //       </div>-->
+        //   <!-- 顯示距離列表
+        //       <section class="row">
+        //         <div class="col-md-4">
+        //           <div class="list-group">
+        //             <div v-for="f in selectedAttractions" class="list-group-item">
+        //               <h5 class="mb-1">{{ f.Name }}</h5>
+        //               <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
+        //               <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
+        //             </div>
+        //           </div>
+        //         </div>-->
+        //   <!-- 顯示地圖
+        //         <div class="col-md-8 google-map">
+        //           <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+        //         </div>
+        //       </section>-->
+        //         `,
+        //   data() {
+        //     return {
+        //       map: null,
+        //       selectedAttractions: [], // 放景點的array
+        //       travelMode: "",
+        //     };
+        //   },
+        //   methods: {
+        //     // initMap() {
+        //     //   // 地圖初始化：
+        //     //   let location = {
+        //     //     lat: 25.0374865,
+        //     //     lng: 121.5647688,
+        //     //   };
+        //     //   this.map = new google.maps.Map(document.getElementById("map"), {
+        //     //     center: location,
+        //     //     zoom: 12,
+        //     //   });
+        //     //   axios.get("./json/aoi.json").then((response) => {
+        //     //     // (2)將取得的景點寫入selectedAttractions
+        //     //     this.selectedAttractions = response.data;
+        //     //     //(1) 將各景點寫入marker
+        //     //     this.selectedAttractions.forEach((r) => {
+        //     //       let latLng = new google.maps.LatLng(r.Py, r.Px);
+        //     //       let marker = new google.maps.Marker({
+        //     //         position: latLng,
+        //     //         map: this.map,
+        //     //         icon:
+        //     //           "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+        //     //       });
+        //     //       this.map.panTo(latLng);
+        //     //     });
+        //     //   });
+        //     // },
+        //     getCurrent() {
+        //       const _this = this;
+        //       let destinations = [];
+        //       _this.selectedAttractions.forEach((f) => {
+        //         destinations.push(new google.maps.LatLng(f.Py, f.Px));
+        //       });
+        //       const service = new google.maps.DistanceMatrixService();
+        //       service.getDistanceMatrix(
+        //         {
+        //           origins: destinations,
+        //           destinations: destinations,
+        //           travelMode: `${this.travelMode}`, // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+        //           unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
+        //           avoidHighways: true, // 是否避開高速公路
+        //           avoidTolls: true, // 是否避開收費路線
+        //         },
+        //         callback
+        //       );
+        //       function callback(response, status) {
+        //         // 把距離寫進json裡
+        //         for (
+        //           let i = 1, len = _this.selectedAttractions.length;
+        //           i < len;
+        //           i++
+        //         ) {
+        //           _this.selectedAttractions[i].distance =
+        //             response.rows[0].elements[i].distance.value;
+        //           _this.selectedAttractions[i].distance_text =
+        //             response.rows[0].elements[i].distance.text;
+        //           _this.selectedAttractions[i].distance_time =
+        //             response.rows[0].elements[i].duration.text;
+        //         }
+        //         // 按距離重排
+        //         _this.selectedAttractions = _this.selectedAttractions.sort(
+        //           (a, b) => {
+        //             return a.distance > b.distance ? 1 : -1;
+        //           }
+        //         );
+        //         // console.log(_this.selectedAttractions);
+        //       }
+        //     },
+        //   },
+        //   // mounted() {
+        //   //   // window.addEventListener("load", () => {
+        //   //   this.initMap();
+        //   //   // });
+        //   // },
+        // });
 
-            this.map = new google.maps.Map(document.getElementById("map"), {
-              center: location,
-              zoom: 16,
-            });
-          },
-        },
-        mounted() {
-          window.addEventListener("load", () => {
-            this.initMap();
-          });
-        },
-      });
+        new Vue({
+            el: "#app",
+        });
     </script>
-  </body>
+</body>
+
 </html>
