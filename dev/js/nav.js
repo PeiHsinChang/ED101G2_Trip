@@ -42,7 +42,7 @@ function showLoginForm(){
               $id('aRegist').style.display = 'inline-block';
               $id('memberPic').style.display = 'none';
               $id("loginLightBox").style.display = 'none';
-              location.href='index1.html';
+              location.href='main.html';
               document.querySelector('.navSmallRight').innerHTML == "登入"
 
           }else{
@@ -67,7 +67,7 @@ function phoneLogout(){
           $id('aRegist').style.display = 'inline-block';
           $id('memberPic').style.display = 'none';
           $id("loginLightBox").style.display = 'none';
-          location.href='index1.html';
+          location.href='main.html';
           document.querySelector('.navSmallRight').innerHTML == "登入"
 
       }else{
