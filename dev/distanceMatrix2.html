@@ -101,7 +101,7 @@
                 <div class="border col-md-4">
                   <attraction-direction class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
                 </div>
-                <div class="border col-md-8" style="height:400px">
+                <div class="border col-md-8 px-0" style="height:400px">
                   <div id="map" class="embed-responsive embed-responsive-16by9"></div>
                   <attraction-mark v-for="selectedAttraction in selectedAttractions" v-bind:label3="selectedAttraction"></attraction-mark>
                 </div>
@@ -130,7 +130,7 @@
                     this.selectedAttractions.push(x);
                     // console.log(this.selectedAttractions);
                     this.selectedAttractions.forEach((r) => {
-                        console.log(r.Px);
+                        // marker:
                         let latLng = new google.maps.LatLng(r.Py, r.Px);
                         let marker = new google.maps.Marker({
                             position: latLng,
@@ -138,6 +138,20 @@
                             icon: "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
                         });
                         this.map.panTo(latLng);
+
+                        // infowindow:
+                        let contentString = `
+                        <div>
+                          <h6 class="card-title text-truncate">${r.Name}</h6>
+                          <p>${r.Region}</p>
+                        </div>
+                        `;
+                        let infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
                     });
                 },
             },
