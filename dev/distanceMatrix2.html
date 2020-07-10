@@ -90,8 +90,8 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-              <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
-              `,
+                    <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
+                    `,
         data() {
           return {
             queryAttractionName: "",
@@ -110,29 +110,29 @@
         //父元素bind一個變數label，再把label往子組件傳
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
-          <div class="border">
+                <div class="border">
 
-            <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
+                  <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
 
-            <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
-              <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
-            </cards>
+                  <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
+                    <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
+                  </cards>
 
-            
 
-            <div class="container">
-              <div class="row">
-                <div class="border col-md-4">
-                  <attraction-direction @ghi="removeSelectedAttraction" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="border col-md-4">
+                        <attraction-direction @ghi="removeSelectedAttraction" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction"></attraction-direction>
+                      </div>
+                      <div class="border col-md-8 px-0" style="height:400px">
+                        <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+                        <attraction-mark v-for="selectedAttraction in selectedAttractions" v-bind:label3="selectedAttraction"></attraction-mark>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="border col-md-8 px-0" style="height:400px">
-                  <div id="map" class="embed-responsive embed-responsive-16by9"></div>
-                  <attraction-mark v-for="selectedAttraction in selectedAttractions" v-bind:label3="selectedAttraction"></attraction-mark>
-                </div>
-              </div>
-            </div>
-          </div>
-                  `,
+                        `,
         data() {
           return {
             searchedAttractions: [],
@@ -142,6 +142,7 @@
               lat: 25.0374865,
               lng: 121.5647688,
             },
+            markers: [],
           };
         },
         methods: {
@@ -152,40 +153,48 @@
           },
           addSelectedAttractionsToDirection(x) {
             this.selectedAttractions.push(x);
-            this.selectedAttractions.forEach((r) => {
-              // marker:
-              let latLng = new google.maps.LatLng(r.Py, r.Px);
-              let marker = new google.maps.Marker({
-                position: latLng,
-                map: this.map,
-                icon:
-                  "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
-              });
-              this.map.panTo(latLng);
+            let latLng = new google.maps.LatLng(x.Py, x.Px);
+            let marker = new google.maps.Marker({
+              position: latLng,
+              map: this.map,
+              icon:
+                "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+            });
+            // move map center to selected attraction:
+            this.map.panTo(latLng);
 
-              // infowindow:
-              let contentString = `
-                        <div>
-                          <h6 class="card-title text-truncate">${r.Name}</h6>
-                          <p>${r.Region}</p>
-                        </div>
-                        `;
-              let infowindow = new google.maps.InfoWindow({
-                content: contentString,
-              });
-              marker.addListener("click", function () {
-                infowindow.open(map, marker);
-              });
+            // add marker to markers:
+            this.markers.push(marker);
+            console.log(this.markers.length);
+
+            // add infowindow:
+            let contentString = `
+                              <div>
+                                <h6 class="card-title text-truncate">${x.Name}</h6>
+                                <p>${x.Region}</p>
+                              </div>
+                              `;
+            let infowindow = new google.maps.InfoWindow({
+              content: contentString,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
             });
           },
+
           removeSelectedAttraction(x) {
+            // remove closed mark:
+            let n = this.selectedAttractions.indexOf(x);
+            this.markers[n].setMap(null);
+            this.markers.splice(this.selectedAttractions.indexOf(x), 1);
+
+            // remove closed attraction:
             this.selectedAttractions.splice(
               this.selectedAttractions.indexOf(x),
               1
             );
           },
         },
-
         mounted() {
           this.map = new google.maps.Map(document.getElementById("map"), {
             center: this.mapCenter,
@@ -196,12 +205,12 @@
 
       Vue.component("attraction-item", {
         template: `
-        <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
-                <img :src='this.label.Picture1' class="card-img-top"/>
-                <h6 class="card-title text-truncate">{{label.Name}}</h6>
-                <button @click="sendSelectedAttractionToAttractionList" type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
-        </card>
-                `,
+              <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 12rem;height:14rem;">
+                      <img :src='this.label.Picture1' class="card-img-top"/>
+                      <h6 class="card-title text-truncate">{{label.Name}}</h6>
+                      <button @click="sendSelectedAttractionToAttractionList" type="button" class="btn btn-outline-success btn-block w-50">加入行程</button>
+              </card>
+                      `,
         props: ["label"],
         methods: {
           sendSelectedAttractionToAttractionList() {
@@ -214,15 +223,15 @@
       Vue.component("attraction-direction", {
         props: ["label2"],
         template: `
-        <div class="p-2 my-2 rounded shadow-sm">
-          <button @click="sendClosedAttractionToAttractionList" type="button" class="close" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h5>{{label2.Name}}</h5>
-          <div>{{label2.Add}}</div>
-          <div>{{label2.Tel}}</div>
-        </div>
-        `,
+              <div class="p-2 my-2 rounded shadow-sm">
+                <button @click="sendClosedAttractionToAttractionList" type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h5>{{label2.Name}}</h5>
+                <div>{{label2.Add}}</div>
+                <div>{{label2.Tel}}</div>
+              </div>
+              `,
         methods: {
           sendClosedAttractionToAttractionList() {
             this.$emit("ghi", this.label2);
