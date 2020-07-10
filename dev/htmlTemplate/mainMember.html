@@ -65,8 +65,8 @@
                             <a >
                                 <img v-if="keepAttra.Attrac_PicURL == ''" :src="output" class="card-img-top">
                                 <img  v-else :src="keepAttra.Attrac_PicURL" class="card-img-top">
-                                <div onclick="openSpotLightBox(this);" :data-id="keepAttra.Attrac_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
-                                    <h5  class="card-title cardTitleWebUse">景點</h5>
+                                <div onclick="openCardLightBox(this);" :data-id="keepAttra.Attrac_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <h5 class="card-title cardTitleWebUse">景點</h5>
                                     <div class="mask">
                                         <p class="card-text cardTextWebUse">{{keepAttra.Attrac_Region}}<br>
                                             <span :id="keepAttra.Attrac_Name" style="font-weight: 300;">{{keepAttra.Attrac_Name}}</span>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="cardLike">
                                         <a><p>+加入行程</p></a>
-                                        <a class="heartimg" :data-id="keepAttra.Attrac_Name" onclick="keepLikeBtn(this);">
+                                        <a class="heartimg"  data-title="spot" :data-id="keepAttra.Attrac_Name" onclick="keepLikeBtn(this);">
                                             <img src="./images/heart_r.png" >
                                         </a>
                                     </div>
@@ -101,7 +101,7 @@
                             <div v-for="keepSche in keepSches" class="card cardSchedule cardOriginalTem " style="width: 18rem;">
                                 <a>
                                     <img :src="keepSche.Sche_Img" class="card-img-top">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <div :data-id="keepSche.Sche_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">行程</h5>
                                         <div class="mask">
                                             <p class="card-text cardTextWebUse">{{keepSche.Sche_Name}}</p>
@@ -112,7 +112,7 @@
                                             <p>{{keepSche.Sche_Views}}人氣</p>
                                             <div>
                                                 <a><p>+加入行程</p></a>
-                                                <a class="heartimg" onclick="keepLikeBtn(this);">
+                                                <a class="heartimg" data-title="sche" :data-id="keepSche.Sche_Name" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -134,7 +134,7 @@
                             <div v-for="keepGroup in keepGroups" class="card cardOriginalTem cardGroup" >
                                 <a>
                                     <img :src="keepGroup.Group_Pic" class="card-img-top" >
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <div :data-id="keepGroup.Group_title" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
                                         <div class="mask">
                                             <p class="card-text cardTextWebUse">{{keepGroup.Group_title}}</p>
@@ -152,7 +152,7 @@
                                             <p>出團日期：{{keepGroup.Group_StartDate}}</p>
                                             <div>
                                                 <p>報名截止：{{keepGroup.Group_Deadline}}</p>
-                                                <a class="heartimg" onclick="keepLikeBtn(this);">
+                                                <a class="heartimg" data-title="group" :data-id="keepGroup.Group_title" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -175,7 +175,7 @@
                             <div v-for="keepBlog in keepBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
                                 <a >
                                     <img :src="keepBlog.Blog_PicURL" class="card-img-top">
-                                    <div class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <div :data-id="keepBlog.Blog_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">遊記</h5>
                                         <div class="mask">
                                             <p class="card-text cardTextWebUse">{{keepBlog.Blog_Name}}<br></p>
@@ -187,7 +187,7 @@
                                             <p>發佈日期：{{keepBlog.Blog_Date}}</p>
                                             <div>
                                                 <p>人氣{{keepBlog.Blog_Views}}</p>
-                                                <a class="heartimg" onclick="keepLikeBtn(this);">
+                                                <a class="heartimg" data-iskeep=true data-title="blog" :data-id="keepBlog.Blog_Name" onclick="keepLikeBtn(this);">
                                                     <img src="./images/heart_r.png" >
                                                 </a>
                                             </div>
@@ -196,7 +196,6 @@
                                 </a>
                             </div>
                             <!-- keep blog end -->
-
                         </div>
                     </div>
                 </div>

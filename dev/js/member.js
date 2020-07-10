@@ -116,7 +116,9 @@ function openTab(obj, index, tabName) {
           QueryCards:{}
       }, 
   })
-function openSpotLightBox(obj){
+
+  
+function openCardLightBox(obj){
   spotLightBox.style.display = "block";
   mySpotName = obj.dataset.id;
   console.log(mySpotName);
@@ -142,20 +144,34 @@ function closespotLightBox(){
 }
 
 function keepLikeBtn(obj){
-  let mySpotName = obj.dataset.id;
-  console.log(mySpotName);
-  let keepLikeSpotInfo = {
-    Spot_Id:mySpotName
+  let likeName = obj.dataset.id;
+  let likeTitle = obj.dataset.title;
+ 
+  let patt = new RegExp("heart_r.png");
+  iskeep = patt.test(obj.firstChild.src);    
+  if(iskeep){
+    obj.firstChild.src = "./images/heart.png";
+    iskeep = false;
+}else{
+    obj.firstChild.src = "./images/heart_r.png";
+    iskeep = true;
+}
+  let keepLikeInfo = {
+    Like_Title: likeTitle,
+    Like_Id: likeName,
+    iskeep: iskeep
   };
+
   let xhr = new XMLHttpRequest();
   xhr.open("post", "./likeBtnQuery.php", true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  xhr.send("keepLikeSpotInfo=" + JSON.stringify(keepLikeSpotInfo));   
-  console.log(JSON.stringify(keepLikeSpotInfo));
+  let sendif ="keepLikeInfo="+JSON.stringify(keepLikeInfo);
+  console.log(sendif);
+  xhr.send(sendif);   
+  console.log(JSON.stringify(keepLikeInfo));
   xhr.onload = function(){
     if(xhr.status==200){
-      console.log(xhr.responseText+'132')
-    // backInfo = JSON.parse(xhr.responseText);
+      console.log(xhr.responseText);
     }else{
       alert(xhr.status);
     }
@@ -163,13 +179,6 @@ function keepLikeBtn(obj){
 
 //在 php session_start  取 memberinfo
 
-str = /heart.png/;
-iskeep = str.test(obj.firstChild.src);
-if(iskeep){
-obj.firstChild.src = "./images/heart_r.png";
-iskeep = false;
-}else{
-obj.firstChild.src = "./images/heart.png";
-iskeep = true;
-}
+
+
 }

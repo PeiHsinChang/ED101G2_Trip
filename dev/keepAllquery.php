@@ -71,7 +71,6 @@
         $MemBlog -> bindValue(":memId", $memInfo);
         $MemBlog -> execute();
         
-        
 
         //建存放所有收藏資料
         $AllKeepPackage=array();
