@@ -4,13 +4,16 @@
   session_start();
   $memInfo = $_SESSION["Mem_NO"];
   $likeSpot = json_decode($_POST["keepLikeInfo"],true); 
-  $iskeep =  isset($likeSpot['iskeep']);
+  $iskeep =  $likeSpot['iskeep'];
+  $LikeTitle =$likeSpot['Like_Title'];
+  
+  // echo $LikeTitle;
+  // die;
+  // $ls= $likeSpot->Like_Id;
+  // $Lzz =$likeSpot['Like_Id'];
 
-  // $iskeep = $likeSpot->iskeep;
-  $LikeTitle =isset($likeSpot['Like_Title']);
-  // $LikeTitle = $likeSpot->Like_Title;
-
-  $ls= $likeSpot->Like_Id;
+    // echo $Lzz;
+    // die;
 
   if($iskeep==""){ //not like
     if( $LikeTitle == "spot"){
@@ -91,14 +94,18 @@
         
         
   }
-  // echo "執行成功" ;
 
+  // $sql_11="SET SQL_SAFE_UPDATES = 0; ";
+  // $likeSpot112 = $pdo->prepare($sql_11);
+  // $likeSpot112->execute();
+
+ 
   $likeSpot111 = $pdo->prepare($sql);
-  echo "執行成功" ;
-  die;
   $likeSpot111->bindValue(":memId", $memInfo);
-  $likeSpot111->bindValue(":TitleName", $ls);
+  $likeSpot111->bindValue(":TitleName", $likeSpot->Like_Id);
   $likeSpot111->execute();
+  echo "執行成功" ;
+  // die;
 }catch(PDOException $e){
   echo $e->getMessage();
 }
