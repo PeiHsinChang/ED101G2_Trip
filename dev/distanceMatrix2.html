@@ -241,7 +241,14 @@
               // input selectedAttractions:
               this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
               // send selectedAttractions to backend:
-              $.post("saveSchedule.php", this.toBeSavedSchedule);
+              // $.post("saveSchedule.php", this.toBeSavedSchedule, "json");
+              $.ajax({
+                method: "POST",
+                url: "saveSchedule.php",
+                data: this.toBeSavedSchedule,
+                // data: { name: "paul" },
+                dataType: "json",
+              });
             }
             console.log(this.toBeSavedSchedule);
           },
