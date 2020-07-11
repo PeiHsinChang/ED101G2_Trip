@@ -7,13 +7,8 @@
   $iskeep =  $likeSpot['iskeep'];
   $LikeTitle =$likeSpot['Like_Title'];
   
-  // echo $LikeTitle;
-  // die;
   // $ls= $likeSpot->Like_Id;
   // $Lzz =$likeSpot['Like_Id'];
-
-    // echo $Lzz;
-    // die;
 
   if($iskeep==""){ //not like
     if( $LikeTitle == "spot"){
