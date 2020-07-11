@@ -8,6 +8,10 @@
       自助大丈夫：Distance Matrix API
     </title>
     <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
       integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
@@ -43,6 +47,16 @@
       crossorigin="anonymous"
     ></script>
     <style>
+      body {
+        font-family: "Noto Sans TC", sans-serif;
+      }
+      i {
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+      i:hover {
+        font-weight: bold;
+      }
       .container {
         padding-top: 30px;
         padding-bottom: 30px;
@@ -124,14 +138,12 @@
                     <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                   </cards>
 
-
-
                   <div class="container">
                     <div class="row">
                       <div class="border col-md-4">
                         <div class="d-flex">
-                        <input type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control" placeholder="行程名稱">
-                          <i class="my-auto far fa-save mx-1 text-black-50"></i><i class="my-auto fas fa-trash-alt mx-1 text-black-50"></i>
+                        <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate" placeholder="請輸入行程名稱" required="required">
+                          <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
                           </div>
                         <attraction-direction @ghi="removeSelectedAttraction" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
                         </attraction-direction>
@@ -153,6 +165,9 @@
               lng: 121.5647688,
             },
             markers: [],
+            toBeSavedSchedule: {
+              scheName: "",
+            },
           };
         },
         methods: {
@@ -204,6 +219,16 @@
               1
             );
           },
+          saveSchedule() {
+            // check if log in:
+            // check shceName and input scheName to toBeSavedSchedule:
+            if (this.toBeSavedSchedule.scheName == "") {
+              alert("請輸入行程名稱");
+            } else {
+              alert(this.toBeSavedSchedule.scheName);
+            }
+            // build toBeSavedSchedule:
+          },
         },
         mounted() {
           this.map = new google.maps.Map(document.getElementById("map"), {
@@ -234,7 +259,7 @@
         template: `
               <div class="p-2 my-2 rounded shadow-sm">
                 <button @click="sendClosedAttractionToAttractionList" type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true" style="font-size:1rem">&times;</span>
                 </button>
                 <h5>{{label2.Name}}</h5>
                 <div>{{label2.Add}}</div>
