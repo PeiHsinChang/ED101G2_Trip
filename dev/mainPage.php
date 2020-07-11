@@ -25,7 +25,7 @@
       echo "{}";
   }else{
     $homePageGroupInfo=array();
-      while($homePageGroupRows = $homePageGroup ->fetch(PDO::FETCH_ASSOC)){
+      while($homePageGroupRows = $homePageGroup->fetch(PDO::FETCH_ASSOC)){
         $homePageGroupInfo[] = array(
               "Group_title"=>$homePageGroupRows["Group_title"],
               "Group_Pic"=>$homePageGroupRows["Group_Pic"],

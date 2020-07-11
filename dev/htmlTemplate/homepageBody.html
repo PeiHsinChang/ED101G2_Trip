@@ -81,7 +81,6 @@
                     <!-- group cards end-->
                 </div>
             </div>
-
             <div class="left-background-content" data-1800="opacity:0;transform:translateY(110%);"
                 data-2350="opacity:1;transform:translateY(0);" data-2650="opacity:1;transform:translateY(0);"
                 data-2950="opacity:0;transform:translateY(0);">
@@ -89,7 +88,6 @@
                 <br>
                 <button onclick="location.href='./groupView.html';">更多揪團</button>
             </div>
-
             <div class="right-background2" data-2949="opacity:0;transform:translateX(80%);"
                 data-2950="opacity:1;transform:translateX(80%);" data-3600="opacity:1;transform:translateX(0);">
                 <!-- 卡片加在這 -->
@@ -97,7 +95,6 @@
                     <!-- spot cards start-->        
                     <div v-for="spot in homePageSpots" class="card cardSpot cardOriginalTem ">
                         <a>
-                            <!-- <img src="./images/lake.jpg" class="card-img-top" alt="..."> -->
                             <img v-if="spot.Attrac_PicURL == ''" :src="output" class="card-img-top">
                             <img  v-else :src="spot.Attrac_PicURL" class="card-img-top">
                             <div class="card-body card-img-overlay cardImgOverlayWebUse">
