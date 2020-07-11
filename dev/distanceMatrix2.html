@@ -169,6 +169,7 @@
               MemNO: "",
               scheName: "",
               scheStatus: "",
+              selectedAttractions: [],
             },
           };
         },
@@ -222,20 +223,25 @@
             );
           },
           saveSchedule() {
-            // check if log in:
+            // check if logged, if true, get and input MemNO:
+            if (true) {
+              this.toBeSavedSchedule.MemNO = 1;
+            }
             // check if shceName and any attraction in direction:
             if (this.toBeSavedSchedule.scheName == "") {
               alert("請輸入行程名稱");
             } else if (this.selectedAttractions.length == 0) {
               alert("請輸入至少一個景點");
             } else {
-              //setting scheStatus:
-              confirm("請問是否完成行程編輯？") == true
+              //input scheStatus:
+              confirm("請問是否完成行程編輯？")
                 ? (this.toBeSavedSchedule.scheStatus = 1)
                 : (this.toBeSavedSchedule.scheStatus = 0);
               alert(this.toBeSavedSchedule.scheStatus);
+              // input selectedAttractions:
+              this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
             }
-            // build toBeSavedSchedule:
+            console.log(this.toBeSavedSchedule);
           },
         },
         mounted() {
