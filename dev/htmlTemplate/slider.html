@@ -1,40 +1,56 @@
 <!-- ------992px以上------- -->
 <div class="container1">
   <div class="carousel1">
-    <div class="item a" id="a">
-      <span class="mask">
-        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
-          一日遊 觀光客首選行程</p>
-      </span>
-      <img src="./images/a-lin_back.jpg">
+    <div id="GroupCarousel_deskA" name="GroupCarousel_deskA">
+      <a href="">
+        <div v-for="GroupCarousel_A in GroupCarousel_As" class="item a" id="a">
+          <span class="mask">
+            <p>{{GroupCarousel_As.GroupDays}}天<br>{{GroupCarousel_As.Group_title}}</p>
+          </span>
+          <img :src="GroupCarousel_As.Group_pic">
+        </div>
+      </a>
     </div>
-    <div class="item b" id="b">
-      <span class="mask">
-        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
-          一日遊 觀光客首選行程</p>
-      </span>
-      <img src="./images/alin.jpg">
+    <div id="GroupCarousel_deskB" name="GroupCarousel_deskB">
+      <a href="">
+        <div v-for="GroupCarousel_B in GroupCarousel_Bs" class="item b" id="b">
+          <!--增加名稱id for database-->
+          <span class="mask">
+            <p>{{GroupCarousel_Bs.GroupDays}}天<br>{{GroupCarousel_Bs.Group_title}}</p>
+          </span>
+          <img :src="GroupCarousel_Bs.Group_pic">
+        </div>
+      </a>
     </div>
-    <div class="item c" id="c">
-      <span class="mask">
-        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
-          一日遊 觀光客首選行程</p>
-      </span>
-      <img src="./images/blind3.jpg">
+    <div id="GroupCarousel_deskC" name="GroupCarousel_deskC">
+      <a href="">
+        <div v-for="GroupCarousel_C in GroupCarousel_Cs" class="item c" id="c">
+          <span class="mask">
+            <p>{{GroupCarousel_Cs.GroupDays}}天<br>{{GroupCarousel_Cs.Group_title}}</p>
+          </span>
+          <img :src="GroupCarousel_Cs.Group_pic">
+        </div>
+      </a>
     </div>
-    <div class="item d" id="d">
-      <span class="mask">
-        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
-          一日遊 觀光客首選行程</p>
-      </span>
-      <img src="./images/eric.jpg">
+    <div id="GroupCarousel_deskD" name="GroupCarousel_deskD">
+      <a href="">
+        <div v-for="GroupCarousel_D in GroupCarousel_Ds" class="item d" id="d">
+          <span class="mask">
+            <p>{{GroupCarousel_Ds.GroupDays}}天<br>{{GroupCarousel_Ds.Group_title}}</p>
+          </span>
+          <img :src="GroupCarousel_Ds.Group_pic">
+        </div>
+      </a>
     </div>
-    <div class="item e" id="e">
-      <span class="mask">
-        <p>5天 <br>搭公車賞螢趣 新北市螢光祕境、平溪線鐵道探幽、深坑老街美食
-          一日遊 觀光客首選行程</p>
-      </span>
-      <img src="./images/iu_back.jpg">
+    <div id="GroupCarousel_deskE" name="GroupCarousel_deskE">
+      <a href="">
+        <div v-for="GroupCarousel_E in GroupCarousel_Es" class="item e" id="e">
+          <span class="mask">
+            <p>{{GroupCarousel_Es.GroupDays}}天<br>{{GroupCarousel_Es.Group_title}}</p>
+          </span>
+          <img :src="GroupCarousel_Es.Group_pic">
+        </div>
+      </a>
     </div>
   </div>
   <div class="boxes">
@@ -138,7 +154,7 @@
 </script>
 <script>
   $(document).ready(function () {
-    let imgCount = $('.carousel1 div').length;
+    let imgCount = $('.carousel1>div').length;
     //依照div數量產生長方形
     for (let i = 0; i < imgCount; i++) {
       $('.boxes').append(`<div class="box${i}"></div>`);
