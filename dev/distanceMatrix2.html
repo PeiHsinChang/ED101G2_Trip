@@ -98,7 +98,7 @@
   </head>
 
   <body>
-    <div id="app" class="container">
+    <div id="app" class="container px-1">
       <!-- 景點查詢 -->
       <attraction-list></attraction-list>
     </div>
@@ -140,7 +140,7 @@
 
                   <div class="container">
                     <div class="row">
-                      <div class="border col-lg-4">
+                      <div class="border px-1 col-lg-4">
                         <div class="d-flex">
                         <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate" placeholder="請輸入行程名稱" required="required">
                           <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
@@ -276,17 +276,19 @@
       Vue.component("attraction-direction", {
         props: ["label2"],
         template: `
-              <div class="container my-3 py-3 pr-0 rounded shadow-sm">
-                <button @click="sendClosedAttractionToAttractionList" type="button" class="close border"   aria-label="Close">
+              <div class="container my-3 py-3 pr-0 rounded shadow">
+                <button @click="sendClosedAttractionToAttractionList" type="button" class="close border"   aria-label="Close" style="margin-top:-17px;">
                   <span aria-hidden="true" style="font-size:1rem">&times;</span>
                 </button>
                 <div class="row">
                   <div class="left px-0 overflow-hidden col-4 border" style="height:100px">
                     <img :src="this.label2.Picture1" class="d-block h-100 mx-auto">
                   </div>
-                  <div class="right col-8 border">
-                    <h6>{{label2.Name}}</h6>
-                    <label class="my-0" style="font-size:0.7rem">預計到達時間：</label><input type="time" class="border-0" style="font-size:0.7rem">
+                  <div class="right col-8 border pr-0 pl-1 position-relative">
+                    <h6 class="border">{{label2.Name}}</h6>
+                    <div class="border position-absolute" style="bottom:0px;right:0px;cursor:pointer;" >
+                      <label class=" my-0" style="font-size:0.7rem;">抵達：</label><input type="time" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
+                    </div>
                   </div>
                 </div>
               </div>
