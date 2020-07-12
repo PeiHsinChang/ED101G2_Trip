@@ -2,39 +2,47 @@
 <html lang="en">
 @@include('./htmlTemplate/head.html')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+</script>
 
 <body>
     @@include('./htmlTemplate/nav.html')
     @@include('./htmlTemplate/slider.html')
     @@include('./htmlTemplate/mainGroupView.html')
     @@include('./htmlTemplate/footer.html')
-    <div id="setupGroup" class="lightBoxWall" >
+    <div id="setupGroup" class="lightBoxWall">
         @@include('./htmlTemplate/setupGroup.html')
     </div>
-    <div id="partinGroup" class="lightBoxWall" >
+    <div id="partinGroup" class="lightBoxWall">
         @@include('./htmlTemplate/partinGroups.html')
     </div>
 
 
 </body>
+<script src="./js/carousel.js"></script>
 <script>
     let setupGroup = document.getElementById("setupGroup");
-    function openNewGroup(){
+
+    function openNewGroup() {
         setupGroup.style.display = "block";
     };
-    function closeNewGroup(){
+
+    function closeNewGroup() {
         setupGroup.style.display = "none";
     };
     let partinGroup = document.getElementById("partinGroup");
-    function openpartinGroup(){
+
+    function openpartinGroup() {
         partinGroup.style.display = "block";
     };
-    function closepartinGroup(){
+
+    function closepartinGroup() {
         partinGroup.style.display = "none";
     };
-
 </script>
 
 </html>
