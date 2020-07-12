@@ -26,11 +26,13 @@ try{
     require_once("connect.php");
 
 for($i=0;$i<count($_POST["selectedAttractions"]);$i++){
-    $sql = "insert into attrac_sche (Sche_NO,Attrac_NO) values (:ScheNO,:AttracNO)";
+    $sql = "insert into attrac_sche (Sche_NO,Attrac_NO,Attrac_Start_Time) values (:ScheNO,:AttracNO,:attracStartTime)";
 	$schedule = $pdo->prepare($sql);
 	
 	$schedule->bindValue(":ScheNO",$scheNO);
     $schedule->bindValue(":AttracNO", $_POST["selectedAttractions"][$i]["Id"]);
+    $schedule->bindValue(":attracStartTime", $_POST["selectedAttractions"][$i]["attracStartTime"]);
+    // $schedule->bindValue(":attracStartTime", $_POST["attracStartTime"][$i]);
 	$schedule->execute();
 };
     echo '成功儲存ScheNO,AttracNO';
