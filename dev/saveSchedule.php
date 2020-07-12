@@ -10,6 +10,9 @@ try{
     $schedule->bindValue(":scheStatus", $_POST["scheStatus"]);
 	$schedule->execute();
     
+    // 取得db最後一筆資料的pk:
+    $scheNO=$pdo->lastInsertId();
+    
     echo '成功儲存MemNO,scheName,scheStatus';
 
   }catch(PDOException $e){
@@ -19,16 +22,12 @@ try{
 //   inser savedSchedule to attrac_sche:
   try{
     require_once("connect.php");
-    // print_r($_POST["selectedAttractions"][0]["Name"]);
-// for($i=0;$i<count($_POST["selectedAttractions"]);$i++){
-//     print_r($_POST["selectedAttractions"][$i]["Id"]);
-// };
 
 for($i=0;$i<count($_POST["selectedAttractions"]);$i++){
     $sql = "insert into attrac_sche (Sche_NO,Attrac_NO) values (:ScheNO,:AttracNO)";
 	$schedule = $pdo->prepare($sql);
 	
-	$schedule->bindValue(":ScheNO",5566);
+	$schedule->bindValue(":ScheNO",$scheNO);
     $schedule->bindValue(":AttracNO", $_POST["selectedAttractions"][$i]["Id"]);
 	$schedule->execute();
 };
