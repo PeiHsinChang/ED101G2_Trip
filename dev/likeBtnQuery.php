@@ -7,13 +7,8 @@
   $iskeep =  $likeSpot['iskeep'];
   $LikeTitle =$likeSpot['Like_Title'];
   
-  // echo $LikeTitle;
-  // die;
-  // $ls= $likeSpot->Like_Id;
-  // $Lzz =$likeSpot['Like_Id'];
 
-    // echo $Lzz;
-    // die;
+  $Lzz =$likeSpot['Like_Id'];
 
   if($iskeep==""){ //not like
     if( $LikeTitle == "spot"){
@@ -99,7 +94,7 @@
   // $likeSpot112 = $pdo->prepare($sql_11);
   // $likeSpot112->execute();
 
- 
+  // $ls= $likeSpot->Like_Id;
   $likeSpot111 = $pdo->prepare($sql);
   $likeSpot111->bindValue(":memId", $memInfo);
   $likeSpot111->bindValue(":TitleName", $likeSpot->Like_Id);

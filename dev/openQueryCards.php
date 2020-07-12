@@ -1,5 +1,4 @@
 <?php
-
     $keepSpotInfo = json_decode($_POST['keepSpotInfo']); 
     session_start();
     $memInfo = $_SESSION["Mem_NO"];
