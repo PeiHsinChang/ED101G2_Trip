@@ -140,7 +140,7 @@
 
                   <div class="container">
                     <div class="row">
-                      <div class="border col-md-4">
+                      <div class="border col-lg-4">
                         <div class="d-flex">
                         <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate" placeholder="請輸入行程名稱" required="required">
                           <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
@@ -148,7 +148,7 @@
                         <attraction-direction @ghi="removeSelectedAttraction" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
                         </attraction-direction>
                       </div>
-                      <div class="border col-md-8 px-0" style="height:400px">
+                      <div class="border col-lg-8 px-0" style="height:400px">
                         <div id="map" class="embed-responsive embed-responsive-16by9"></div>
                       </div>
                     </div>
@@ -276,13 +276,19 @@
       Vue.component("attraction-direction", {
         props: ["label2"],
         template: `
-              <div class="p-2 my-2 rounded shadow-sm">
-                <button @click="sendClosedAttractionToAttractionList" type="button" class="close" aria-label="Close">
+              <div class="container my-3 py-3 pr-0 rounded shadow-sm">
+                <button @click="sendClosedAttractionToAttractionList" type="button" class="close border"   aria-label="Close">
                   <span aria-hidden="true" style="font-size:1rem">&times;</span>
                 </button>
-                <h5>{{label2.Name}}</h5>
-                <div>{{label2.Add}}</div>
-                <div>{{label2.Tel}}</div>
+                <div class="row">
+                  <div class="left px-0 overflow-hidden col-4 border" style="height:100px">
+                    <img :src="this.label2.Picture1" class="d-block h-100 mx-auto">
+                  </div>
+                  <div class="right col-8 border">
+                    <h6>{{label2.Name}}</h6>
+                    <label class="my-0" style="font-size:0.7rem">預計到達時間：</label><input type="time" class="border-0" style="font-size:0.7rem">
+                  </div>
+                </div>
               </div>
               `,
         methods: {
