@@ -76,6 +76,7 @@ window.onload = function () {
                 data: {
                     GroupCarousel_Fs,
                 },
+
                 computed: {
 
                 },

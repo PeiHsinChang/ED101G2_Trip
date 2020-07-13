@@ -12,7 +12,6 @@ try{
     from GroupTable where Group_Status=1 order by Group_NO desc limit 5";
     // $sql="select * from GroupTable limit 5";
     //畫面需要的sql
-
     $carousel = $pdo->query($sql);
     $carousel->execute();
     // $carouselGroupInfo=array();
