@@ -202,7 +202,155 @@ function openScheCardLightBox(obj){
     }
   }
  
-  
 function closescheLightBox(){
     scheLightBox.style.display = "none";
   }
+
+
+//會員頁面左側-會員資料修改
+//點擊修改會員資料，切換至修改模式
+function adjust(){
+    document.getElementById('memLeftAdjust').style.display = 'inline-block';
+    document.getElementById('memLeft').style.display = 'none';
+    MemberInfoToMemLeft();
+}
+//點擊取消，切換回瀏覽模式
+function cancel(){
+    document.getElementById('memLeftAdjust').style.display = 'none';
+    document.getElementById('memLeft').style.display = 'inline-block';
+    $id("memLeftPicAdjust").innerHTML = `<img src="${member.Mem_Photo}">`;
+    $id("memLeftNameAdjust").innerText = `${member.Mem_Name}`;
+    $id("memLeftAdjustPsw").innerHTML = `密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" value="${member.Mem_Psw}">`;
+    $id("memLeftAdjustBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" value="${member.Mem_Birth}">`;
+    $id("memLeftAdjustEma").innerHTML = `連絡信箱：<input type="text" value="${member.Mem_Email}">`;
+    $id("memLeftAdjustTel").innerHTML = `聯絡電話：<input type="text" value="${member.Mem_Tel}">`;
+
+    $("#memLeftAdjustPswCheck").html("");
+    $("#memLeftAdjustBirCheck").html("");
+    $("#memLeftAdjustEmaCheck").html("");
+    $("#memLeftAdjustTelCheck").html("");
+}
+//每次重整頁面，取得seeion中的會員資料，呈現在會員資料欄
+function MemberInfoToMemLeft(){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+      if(xhr.status == 200){
+          member = JSON.parse(xhr.responseText);
+          if(member.Mem_Name){ //已登入
+            $id("memLeftPic").innerHTML = `<img src="${member.Mem_Photo}">`;
+            $id("memLeftName").innerText = `${member.Mem_Name}`;
+            $id("memLeftAcc").innerHTML = `帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號： ${member.Mem_Id}`;
+            $id("memLeftBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日： ${member.Mem_Birth}`;
+            if(member.Mem_Sex == 0){
+                $id("memLeftSex").innerHTML = `性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別： 男`;
+            }else{
+                $id("memLeftSex").innerHTML = `性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別： 女`;
+            }       
+            $id("memLeftEma").innerHTML = `連絡信箱： ${member.Mem_Email}`;
+            $id("memLeftTel").innerHTML = `聯絡電話： ${member.Mem_Tel}`;
+
+            $id("memLeftPicAdjust").innerHTML = `<img src="${member.Mem_Photo}">`;
+            $id("memLeftNameAdjust").innerText = `${member.Mem_Name}`;
+            $id("memLeftAdjustAcc").innerHTML = `帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input id="memLeftAdjustAccContent" name="memLeftAdjustAccContent" type="text" value="${member.Mem_Id}" readonly="readonly" style="outline:none">`;
+            $id("memLeftAdjustPsw").innerHTML = `密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input id="memLeftAdjustPswContent" name="memLeftAdjustPswContent" type="text" value="${member.Mem_Psw}">`;
+            $id("memLeftAdjustBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input id="memLeftAdjustBirContent" name="memLeftAdjustBirContent" type="text" value="${member.Mem_Birth}">`;
+            $id("memLeftAdjustEma").innerHTML = `連絡信箱：<input id="memLeftAdjustEmaContent" name="memLeftAdjustEmaContent" type="text" value="${member.Mem_Email}">`;
+            $id("memLeftAdjustTel").innerHTML = `聯絡電話：<input id="memLeftAdjustTelContent" name="memLeftAdjustTelContent" type="text" value="${member.Mem_Tel}">`;
+
+            // 修改會員修改會員密碼，檢查密碼長度
+            $("#memLeftAdjustPswContent").keyup(function(){
+                let accountLength = $("#memLeftAdjustPswContent").val().length;
+                // console.log(accountLength);
+                if(accountLength < 8){
+                    $("#memLeftAdjustPswCheck").html("密碼長度不得低於8個字");
+                    $("#memLeftAdjustPswCheck").css("color","red");
+                    if(accountLength == 0){
+                        $("#memLeftAdjustPswCheck").html("");
+                    }
+                }else{
+                    $("#memLeftAdjustPswCheck").html("");
+                }
+            });
+
+            // 修改會員修改會員生日，檢查生日格式是否正確
+            $("#memLeftAdjustBirContent").keyup(function(){
+                let reg = /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+                let regExp = new RegExp(reg);
+                let birth = $("#memLeftAdjustBirContent").val(); 
+                let birthLength = $("#memLeftAdjustBirContent").val().length;
+                if(!regExp.test(birth)){
+                  $("#memLeftAdjustBirCheck").html("請輸入正確格式:YYYY-MM-DD");
+                  $("#memLeftAdjustBirCheck").css("color","red");
+                  if(birthLength == 0){
+                    $("#memLeftAdjustBirCheck").html("");
+                  }
+                }else{
+                  $("#memLeftAdjustBirCheck").html("");
+                }
+            });
+
+            // 修改會員修改會員信箱，檢查email格式是否正確
+            $("#memLeftAdjustEmaContent").keyup(function(){
+                let email = $("#memLeftAdjustEmaContent").val();
+                let emailLength = $("#memLeftAdjustEmaContent").val().length;
+                if((email.indexOf('.com') == -1)||(email.indexOf('@') == -1)){
+                $("#memLeftAdjustEmaCheck").html("請輸入正確e-mail格式");
+                $("#memLeftAdjustEmaCheck").css("color","red");
+                if(emailLength == 0){
+                    $("#memLeftAdjustEmaCheck").html("");
+                }
+                }else{
+                $("#memLeftAdjustEmaCheck").html("");
+                }
+            });
+
+            // 修改會員修改會員電話，檢查電話格式是否正確
+            $("#memLeftAdjustTelContent").keyup(function(){
+                let phoneLength = $("#memLeftAdjustTelContent").val().length;
+                if((event.keyCode>=48&&event.keyCode<=57)||(event.keyCode>=96&&event.keyCode<=105)){
+                  $("#memLeftAdjustTelCheck").html("");
+                }else{
+                  $("#memLeftAdjustTelCheck").html("請輸入正確電話格式");
+                  $("#memLeftAdjustTelCheck").css("color","red");
+                  if(phoneLength == 0){
+                    $("#memLeftAdjustTelCheck").html("");
+                  }
+                }     
+              });
+
+            //檢查所有欄位是否都已經填妥，未填妥則無法送出表單
+            $(document).ready(function(){
+                $("#memLeftAdjustSave").click(function(){
+                    if($("#memLeftAdjustPswCheck").html().length != 0){
+                        alert('密碼長度不得低於8個字');
+                    }else if($("#memLeftAdjustEmaCheck").html().length != 0){
+                        alert('請輸入正確e-mail格式');
+                    }else if($("#memLeftAdjustTelCheck").html().length != 0){
+                        alert('請輸入正確電話格式');
+                    }else if($("#memLeftAdjustBirCheck").html().length != 0){
+                        alert('請輸入正確日期格式:YYYY-MM-DD');
+                    }else{
+                        document.memLeftAdjustForm.submit();
+                        $id("memLeftBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日： ${$("#memLeftAdjustBirContent").val()}`;
+                        $id("memLeftEma").innerHTML = `連絡信箱： ${$("#memLeftAdjustEmaContent").val()}`;
+                        $id("memLeftTel").innerHTML = `聯絡電話： ${$("#memLeftAdjustTelContent").val()}`;
+                    }
+                });
+            });
+          }else{
+            
+          }
+      }
+    }
+    xhr.open("get", "getMemberInfo.php", true);
+    xhr.send(null);
+}
+
+function onlooooad(){
+    document.getElementById('adjustProfile').onclick = adjust;
+    document.getElementById('memLeftAdjustCancel').onclick = cancel;
+    //每次重整頁面，取得seeion中的會員資料，呈現在會員資料欄
+    MemberInfoToMemLeft();
+}
+//window.onload
+window.addEventListener("load",onlooooad,false);

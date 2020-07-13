@@ -1,40 +1,41 @@
 <div class="mainBody container">
     <div class="subBody row">
         <div class="col-lg-3 px-lg-0 col-12">
-            <div class="memLeft">
-                <div class="memInfoTitle">會員資料</div>
-                <div class="memInfo">
-                    <div class="memPhoto">
-                        <img src="./images/1.png" >
-                    </div>
-                    <div class="changePhoto" onclick="">更換頭貼</div>
-                    <table>
-                        <tr>
-                            <td>姓名</td>
-                            <td>Ａlex</td>
-                        </tr>
-                        <tr>
-                            <td>註冊日期</td>
-                            <td>2019/03/09</td>
-                        </tr>
-                        <tr>
-                            <td>性別</td>
-                            <td>男</td>
-                        </tr>
-                        <tr>
-                            <td>個人評價</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>聯絡方式</td>
-                            <td>Line z8893012</td>
-                        </tr>
-                    </table>
-                    <div class="divforBtn">
-                        <button class="btnSmall">儲存</button>
-                        <button class="btnSmall">修改</button>
-                    </div>
-                </div>
+            <div class="memLeft" id="memLeft">
+                <div class="memLeftHead">個人資料</div>
+                <div class="memLeftPic" id="memLeftPic"></div>
+                <div class="memLeftName" id="memLeftName"></div>
+                <ul>
+                    <li id="memLeftAcc"></li>
+                    <li id="memLeftBir"></li>
+                    <li id="memLeftSex"></li>
+                    <li id="memLeftEma"></li>
+                    <li id="memLeftTel"></li>
+                </ul>
+                <input class="adjustProfile" id="adjustProfile" type="button" value="修改會員資料">
+            </div>
+            <div class="memLeftAdjust" id="memLeftAdjust">
+                <form action="adjustMemberInfo.php" method="post" id="memLeftAdjustForm" name="memLeftAdjustForm" onclick="return false">
+                    <div class="memLeftHeadAdjust">修改會員資料</div>
+                    <div class="memLeftPicAdjust" id="memLeftPicAdjust"></div>
+                    <input type="file" class="chooseFile">
+                    <div class="memLeftNameAdjust" id="memLeftNameAdjust">Alex Wang</div>
+                    <ul class="memLeftAdjustUl">
+                        <li class="memLeftAdjustLi" id="memLeftAdjustAcc"></li>
+                        <li class="memLeftAdjustLi" id="memLeftAdjustPsw"></li>
+                        <div id="memLeftAdjustPswCheck" style="font-size:12px;transform: translateX(85px);"></div> 
+                        <li class="memLeftAdjustLi" id="memLeftAdjustBir"></li>
+                        <div id="memLeftAdjustBirCheck" style="font-size:12px;transform: translateX(85px);"></div> 
+                        <li class="memLeftAdjustLi" id="memLeftAdjustEma"></li>
+                        <div id="memLeftAdjustEmaCheck" style="font-size:12px;transform: translateX(85px);"></div> 
+                        <li class="memLeftAdjustLi" id="memLeftAdjustTel"></li>
+                        <div id="memLeftAdjustTelCheck" style="font-size:12px;transform: translateX(85px);"></div> 
+                    </ul>
+                    <div class="memLeftAdjustBtns">
+                        <input id="memLeftAdjustSave" type="submit" value="儲存">
+                        <input id="memLeftAdjustCancel" type="button" value="取消">
+                    </div>   
+                </form>
             </div>
         </div>
         <div class="col-lg-9 px-lg-0 col-12 ">
