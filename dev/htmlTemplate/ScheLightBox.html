@@ -1,20 +1,12 @@
 
 <div class="scheLightBox">
-  <div  class="closedBtn" onclick="closespotLightBox();"><img src="./images/icon/cross_b.png" alt="關閉"></div>
-  <div class="spotLightBoxImg">
-    <img :src="QueryCards.Attrac_PicURL" >  
+  <div class="closedBtn" onclick="closescheLightBox();"><img src="./images/icon/cross_b.png" alt="關閉"></div>
+  <div class="scheLightBoxImg">
+    <img src="./images/1.png" >  
   </div>
-  <div class="spotLightBox1stCol">
-    <div>{{QueryCards.Attrac_Region}}</div>
-    <div class="starForHot">
-      <div ><img src="./images/star_fill.png"></div>
-      <div ><img src="./images/star_fill.png"></div>
-      <div ><img src="./images/star_half.png"></div>
-      {{QueryCards.LikeAttrac}}
-    </div>
-  </div>
-  <div class="spotName">{{QueryCards.Attrac_Name}}</div>
-  <div class="spotContent">
+  <div class="scheName">{{QueryCards.Attrac_Name}}</div>
+
+  <div class="scheContent">
     <div>{{QueryCards.Attrac_Open}}</div>
     <div>電話：{{QueryCards.Attrac_Tel}}</div>
     <div>地址：{{QueryCards.Attrac_Addre}}</div>

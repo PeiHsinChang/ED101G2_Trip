@@ -1,20 +1,3 @@
- 
-
-//keep click hearts 
-// function keepLikeBtn(obj){
-
-
-//   str = /heart.png/;
-//   iskeep = str.test(obj.firstChild.src);
-//   if(iskeep){
-//     obj.firstChild.src = "./images/heart_r.png";
-//     iskeep = false;
-//   }else{
-//     obj.firstChild.src = "./images/heart.png";
-//     iskeep = true;
-//   }
-// }
-
 window.onload = function (){
   let xhr = new XMLHttpRequest();
   xhr.onload = function(){
@@ -117,7 +100,6 @@ function openTab(obj, index, tabName) {
       }, 
   })
 
-  
 function openCardLightBox(obj){
   spotLightBox.style.display = "block";
   mySpotName = obj.dataset.id;
@@ -177,8 +159,38 @@ function keepLikeBtn(obj){
     }
 }
 
-//在 php session_start  取 memberinfo
-
-
-
 }
+var ss = new Vue({
+    el: '#scheLightBox', 
+    data: {      
+        QueryCards:{}
+    }, 
+})
+function openScheCardLightBox(obj){
+    scheLightBox.style.display = "block";
+    myScheName = obj.dataset.id;
+    // console.log(myScheName);
+    keepSchetInfo = {
+        Spot_Id:myScheName
+    };
+    console.log(keepSchetInfo);
+   
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "./openQueryCards.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //把資料往後傳
+    xhr.send("keepSchetInfo=" + JSON.stringify(keepSchetInfo));   
+    xhr.onload = function(){
+        if(xhr.status==200){
+            let QueryCards = JSON.parse(xhr.responseText);
+            sche.$data.QueryCards = QueryCards;
+        }else{
+            alert(xhr.status);
+        }
+    }
+  }
+ 
+  
+function closescheLightBox(){
+    scheLightBox.style.display = "none";
+  }

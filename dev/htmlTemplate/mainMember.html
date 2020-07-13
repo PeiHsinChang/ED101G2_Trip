@@ -101,7 +101,7 @@
                             <div v-for="keepSche in keepSches" class="card cardSchedule cardOriginalTem " style="width: 18rem;">
                                 <a>
                                     <img :src="keepSche.Sche_Img" class="card-img-top">
-                                    <div :data-id="keepSche.Sche_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
+                                    <div onclick="openScheCardLightBox(this)" :data-id="keepSche.Sche_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">行程</h5>
                                         <div class="mask">
                                             <p class="card-text cardTextWebUse">{{keepSche.Sche_Name}}</p>
