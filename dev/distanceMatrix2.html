@@ -8,7 +8,7 @@
       自助大丈夫：Distance Matrix API
     </title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap"
       rel="stylesheet"
     />
     <link
@@ -94,6 +94,9 @@
         bottom: 0;
         max-width: 320px;
       }
+      #addToSchedule:hover {
+        font-weight: bold;
+      }
     </style>
   </head>
 
@@ -110,7 +113,7 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-                    <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="請輸入景點名稱">
+                    <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
                     `,
         data() {
           return {
@@ -134,7 +137,7 @@
 
                   <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
 
-                  <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap">
+                  <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
                     <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                   </cards>
 
@@ -142,7 +145,7 @@
                     <div class="row">
                       <div class="border px-1 col-lg-4">
                         <div class="d-flex">
-                        <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate" placeholder="請輸入行程名稱" required="required">
+                        <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate text-center" placeholder="請輸入行程名稱" required="required">
                           <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
                           </div>
                         <attraction-direction @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
@@ -268,15 +271,21 @@
 
       Vue.component("attraction-item", {
         template: `
-              <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 10rem;height:14rem;">
-                <div class="border position-relative cardImg overflow-hidden" style="height:10rem">
+              <card class="card align-top m-2 p-2 d-inline-block shadow-sm" style="width: 11rem;height:14rem;">
+                <div class="border position-relative cardImg overflow-hidden" style="height:11.5rem">
+                  <h5 class="position-absolute text-light" style="top:0px;left:0px;">景點</h5>
                   <img :src='this.label.Picture1' class="d-block h-100 mx-auto"/>
-                  <div class="border position-absolute bg-dark w-100 px-1" style="bottom:0px;opacity:0.6">
-                    <h6 class=" text-light text-truncate mb-0">{{label.Name}}</h6>
+                  <div class="position-absolute w-100 px-1" style="bottom:0px;background-color:rgba(0,0,0,0.4);">
+                    <h6 class=" text-light text-truncate mb-0 mt-1" style="font-size:0.9rem;">{{label.Name}}</h6>
                     <p class=" text-light text-truncate mb-1" style="font-size:0.7rem">{{label.Region}}</p>
                   </div>
                 </div>
-                      <button @click="sendSelectedAttractionToAttractionList" type="button" class="btn btn-outline-success btn-block w-50">+加入行程</button>
+                <div class="container py-0">
+                  <div class="row justify-content-between">
+                    <p @click="sendSelectedAttractionToAttractionList" id="addToSchedule" class=" p-1 m-0" style="color:#bc2654; font-size:0.8rem;cursor:pointer;">+ 加入行程</p>
+                    <i class="p-1 pt-2 m-0 far fa-heart" style="color:#bc2654; font-size:0.8rem;cursor:pointer;"></i>
+                  </div>
+                </div>
               </card>
                       `,
         props: ["label"],
