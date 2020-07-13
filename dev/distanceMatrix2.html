@@ -111,9 +111,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
     <script>
+      // <input class="border border-secondary w-100 my-2 rounded-pill" id="attractionInput" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
       Vue.component("attraction-input", {
         template: `
-                    <input class="border border-secondary w-100 my-2 rounded-pill" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+          </div>
+        </div>
                     `,
         data() {
           return {
@@ -133,11 +139,11 @@
         //父元素bind一個變數label，再把label往子組件傳
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
-                <div class="border">
+                <div>
 
                   <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
 
-                  <cards class="border  d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
+                  <cards class="d-block" style="height:16.5rem;overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
                     <attraction-item @def="addSelectedAttractionsToDirection" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                   </cards>
 
