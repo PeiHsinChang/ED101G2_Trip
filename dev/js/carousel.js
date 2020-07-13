@@ -6,7 +6,7 @@ window.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
-            console.log(carouselPackage);
+            // console.log(carouselPackage);
             // console.log(carouselPackage[4]);
 
             //桌機版輪播
