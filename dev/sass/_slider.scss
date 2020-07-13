@@ -128,6 +128,28 @@
     background-color: white;
 }
 
+.phoneCarouselWord {
+    color: white;
+    font-size: $content;
+}
+
+.phoneCarouselWordTitle {
+    color: white;
+    font-size: $content;
+}
+
+.carouselmask {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 100px;
+    width: 100%;
+    // border: 1px solid red;
+    margin: 0 auto;
+    z-index: 10;
+    left: 0;
+    right: 0;
+}
+
+
 /* ------rwd------- */
 @media (min-width: 577px) and (max-width: 768px) {
     .carousel-item {
