@@ -1,5 +1,5 @@
 <?php
-    $dsn = "mysql:host=localhost;port=7700;dbname=easyPlanningTrip;charset=utf8";
+    $dsn = "mysql:host=localhost;port=8889;dbname=easyPlanningTrip;charset=utf8";
     $user = "root";
     $password = "123456";
     $password = "root";

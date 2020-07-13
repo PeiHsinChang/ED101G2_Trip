@@ -168,7 +168,7 @@ function cancelLogin(){
   $id('memPsw').value = '';
 }
 
-//檢查所有欄位是否都已經填妥，為填妥則無法送出表單
+//檢查所有欄位是否都已經填妥，填妥則無法送出表單
 $(document).ready(function(){
   $(".enrollleftbutton").click(function(){
     if($("#accountCheck").html().length != 0){
