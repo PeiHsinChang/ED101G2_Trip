@@ -9,6 +9,7 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
   height: 100vh;
+  overflow-y: scroll;
 }
 .lightBoxWallforTourn {
   display: none; 
@@ -136,4 +137,5 @@
     img{
       width:100%;
     }
+  }
 }
