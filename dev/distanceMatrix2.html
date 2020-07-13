@@ -353,7 +353,7 @@
         props: ["label4"],
         template: `
         <div class="modal fade" id="attracModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{label4.Name}}</h5>
@@ -362,7 +362,15 @@
                 </button>
               </div>
               <div class="modal-body">
-                ...
+                <div class="border w-100 overflow-hidden" style="height:20rem">
+                  <img :src="this.label4.Picture1" class="d-block h-100 mx-auto">
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{label4.Add}}</li>
+                  <li class="list-group-item">{{label4.Tel}}</li>
+                  <li class="list-group-item">{{label4.Opentime}}</li>
+                  <li class="list-group-item">{{label4.Description}}</li>
+                </ul>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
