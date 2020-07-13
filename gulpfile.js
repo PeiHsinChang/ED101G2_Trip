@@ -82,12 +82,6 @@ gulp.task("miniimg", function () {
 gulp.task("default", function () {
   gulp.watch(
     ["./dev/*.html", "./dev/**/*.html", "./dev/*.php", "./dev/**/*.php", "./dev/js/*.js", "./dev/sass/*.scss", "./dev/sass/**/*.scss"],
-    // ["fileinclude","movejs","sass","sass:watch","movephp"],
-<<<<<<< HEAD
-    ["fileinclude","movejs","movephp","sass"],
-=======
-    ["fileinclude", "movejs", "movephp"],
->>>>>>> 9f6dd40b18b3655f7f1f4a7d32caa431bbb9b7d2
-
+    ["fileinclude","movejs","sass","sass:watch","movephp"],
   );
 });
