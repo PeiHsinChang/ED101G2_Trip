@@ -140,7 +140,7 @@
         // input-->emit 'abc'-->@abc-->addAttraction-->:label-->props
         template: `
                 <div>
-                  <attrac-modal :label4="attracModal"></attrac-modal>
+                  <attrac-modal @jkl="addSelectedAttractionsToDirection" :label4="attracModal"></attrac-modal>
 
                   <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
 
@@ -397,7 +397,9 @@
         </div>
         `,
         methods: {
-          sendSelectedAttractionToAttractionList() {},
+          sendSelectedAttractionToAttractionList() {
+            this.$emit("jkl", this.label4);
+          },
         },
       });
       //Reference///////////////////////////////////////////////////////////////////////////////////////
