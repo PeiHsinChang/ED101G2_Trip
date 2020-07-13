@@ -74,14 +74,12 @@
     <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
   </ol>
   <div class="carousel-inner">
-    <div id="GroupCarousel_deskF" name="GroupCarousel_deskF" class="bb carousel-item active" style="height: 500px;">
+    <div id="GroupCarousel_deskF" name="GroupCarousel_deskF" class="carousel-item active" style="height: 500px;">
       <a href="">
-        <div v-for="GroupCarousel_F in GroupCarousel_Fs">
-          <img :src="GroupCarousel_Fs.Group_pic" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{GroupCarousel_Fs.Group_title}}</h5>
-            <p>{{GroupCarousel_Fs.GroupDays}}天</p>
-          </div>
+        <img :src="GroupCarousel_Fs.Group_pic" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{GroupCarousel_Fs.Group_title}}</h5>
+          <p>{{GroupCarousel_Fs.GroupDays}}天</p>
         </div>
       </a>
     </div>
