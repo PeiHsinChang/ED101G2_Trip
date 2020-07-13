@@ -76,7 +76,7 @@
         $AllKeepPackage=array();
         //建收藏景點資料
         if($keepAttr -> rowCount()==0 ){
-            echo "{}";
+            $attracInfo=[];
         }else{
             $attracInfo=array();
             while($keepAttrRows = $keepAttr->fetch(PDO::FETCH_ASSOC)){
@@ -92,7 +92,7 @@
         array_push($AllKeepPackage,$attracInfo);
         //建收藏團資料
         if($keepGroup -> rowCount()==0 ){
-            echo "{}";
+            $GroupInfo=[];        
         }else{
             $GroupInfo=array();
             while($keepGroupRows = $keepGroup->fetch(PDO::FETCH_ASSOC)){
@@ -110,7 +110,7 @@
         array_push($AllKeepPackage,$GroupInfo);
         //建收藏行程資料
         if($keepSche -> rowCount()==0 ){
-            echo "{}";
+            $ScheInfo=[];
         }else{
             $ScheInfo=array();
             while($keepScheRows = $keepSche->fetch(PDO::FETCH_ASSOC)){
@@ -126,7 +126,7 @@
 
         // //建收藏遊記資料
         if($keepBlog -> rowCount()==0 ){
-            echo "{}";
+            $BlogInfo=[];
         }else{
             $BlogInfo=array();
             while($keepBlogRows = $keepBlog->fetch(PDO::FETCH_ASSOC)){
@@ -143,7 +143,8 @@
         array_push($AllKeepPackage,$BlogInfo);
         //建我的行程資料
         if($MemSche -> rowCount()==0 ){
-            echo "{}";
+            $MemScheInfo=[];
+            // echo $MemScheInfo[];
         }else{
             $MemScheInfo=array();
             while($MemScheRows = $MemSche->fetch(PDO::FETCH_ASSOC)){
@@ -158,7 +159,7 @@
         array_push($AllKeepPackage,$MemScheInfo);
         //建開團資料
         if($MemGroup -> rowCount()==0 ){
-            echo "{}";
+            $MemGroupInfo=[];
         }else{
             $MemGroupInfo=array();
             while($MemGroupRows = $MemGroup->fetch(PDO::FETCH_ASSOC)){
@@ -176,7 +177,7 @@
         array_push($AllKeepPackage,$MemGroupInfo);
         //建開團資料
         if($MemBlog -> rowCount()==0 ){
-            echo "{}";
+            $MemBlogInfo=[];
         }else{
 
             $MemBlogInfo=array();

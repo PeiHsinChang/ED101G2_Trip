@@ -160,30 +160,42 @@ function keepLikeBtn(obj){
 }
 
 }
-var ss = new Vue({
+var sche = new Vue({
     el: '#scheLightBox', 
     data: {      
-        QueryCards:{}
+        keepSche1:{},
+        QueryScheCards:{}
+        
     }, 
 })
+
+//sche card open
 function openScheCardLightBox(obj){
     scheLightBox.style.display = "block";
     myScheName = obj.dataset.id;
     // console.log(myScheName);
     keepSchetInfo = {
-        Spot_Id:myScheName
+        Sche_Id:myScheName
     };
     console.log(keepSchetInfo);
-   
     let xhr = new XMLHttpRequest();
-    xhr.open("post", "./openQueryCards.php", true);
+    xhr.open("post", "./openQueryScheCard.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     //把資料往後傳
     xhr.send("keepSchetInfo=" + JSON.stringify(keepSchetInfo));   
     xhr.onload = function(){
         if(xhr.status==200){
-            let QueryCards = JSON.parse(xhr.responseText);
-            sche.$data.QueryCards = QueryCards;
+            console.log(xhr.responseText)
+            let QueryScheCards = JSON.parse(xhr.responseText);
+            console.log(QueryScheCards)
+            keepSche1 = {
+                Sche_Img:QueryScheCards[0].Sche_Img,
+                Sche_Name:QueryScheCards[0].Sche_Name
+            };
+            console.log(keepSche1);
+            sche.$data.QueryScheCards = QueryScheCards;
+            sche.$data.keepSche1 = keepSche1;
+
         }else{
             alert(xhr.status);
         }

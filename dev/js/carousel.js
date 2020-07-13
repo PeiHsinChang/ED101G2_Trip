@@ -6,7 +6,7 @@ window.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
-            console.log(carouselPackage);
+            // console.log(carouselPackage);
             // console.log(carouselPackage[4]);
 
             //桌機版輪播
@@ -119,7 +119,7 @@ window.onload = function () {
             //如果資料傳送失敗的話顯示原因
         }
     };
-    xhr.open("post", "groupViewCarousel.php", true);
+    xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(); //因為開太快所以要送個空值回去
 };

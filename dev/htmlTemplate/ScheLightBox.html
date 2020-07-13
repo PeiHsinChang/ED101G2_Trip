@@ -2,14 +2,16 @@
 <div class="scheLightBox">
   <div class="closedBtn" onclick="closescheLightBox();"><img src="./images/icon/cross_b.png" alt="關閉"></div>
   <div class="scheLightBoxImg">
-    <img src="./images/1.png" >  
-  </div>
-  <div class="scheName">{{QueryCards.Attrac_Name}}</div>
+    <!-- <img src="./images/1.png" >   -->
+    <img :src="keepSche1.Sche_Img" >  
 
-  <div class="scheContent">
-    <div>{{QueryCards.Attrac_Open}}</div>
-    <div>電話：{{QueryCards.Attrac_Tel}}</div>
-    <div>地址：{{QueryCards.Attrac_Addre}}</div>
+  </div>
+  <div class="scheName">{{keepSche1.Sche_Name}}</div>
+
+  <div  v-for="QueryScheCard in QueryScheCards" class="scheContent">
+    <!-- <div  v-for="item in QueryScheCards" >第{{QueryScheCard.Nth_Day}}天</div> -->
+    <div>第{{QueryScheCard.Nth_Day}}天</div>
+    <div >{{QueryScheCard.Attrac_Name}}</div>
   </div>
   
 </div>

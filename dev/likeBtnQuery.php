@@ -5,12 +5,10 @@
   $memInfo = $_SESSION["Mem_NO"];
   $likeSpot = json_decode($_POST["keepLikeInfo"],true); 
   $iskeep =  $likeSpot['iskeep'];
-  $LikeTitle =$likeSpot['Like_Title'];
-  
+  $LikeTitle = $likeSpot['Like_Title'];
+  $ls= $likeSpot["Like_Id"];
 
-  $Lzz =$likeSpot['Like_Id'];
-
-  if($iskeep==""){ //not like
+  if($iskeep==false){ //not like
     if( $LikeTitle == "spot"){
     //like button for 景點
     $sql =
@@ -32,10 +30,10 @@
     }else if($LikeTitle == "group"){
       //like button for 團
       $sql =
-      "delete kg from Keep_grooup kg
+      "delete kg from Keep_group kg
       inner join grouptable g
       on kg.group_NO = g.group_NO 
-      where  g.Group_Name=:TitleName
+      where  g.Group_title=:TitleName
       and kg.Mem_NO=:memId";
       
       }else{
@@ -90,14 +88,10 @@
         
   }
 
-  // $sql_11="SET SQL_SAFE_UPDATES = 0; ";
-  // $likeSpot112 = $pdo->prepare($sql_11);
-  // $likeSpot112->execute();
 
-  // $ls= $likeSpot->Like_Id;
   $likeSpot111 = $pdo->prepare($sql);
   $likeSpot111->bindValue(":memId", $memInfo);
-  $likeSpot111->bindValue(":TitleName", $likeSpot->Like_Id);
+  $likeSpot111->bindValue(":TitleName", $ls);
   $likeSpot111->execute();
   echo "執行成功" ;
   // die;
