@@ -136,7 +136,7 @@
       Vue.component("attraction-list", {
         template: `
                       <div>
-                        <attrac-modal @jkl="addSelectedAttractionsToDirection" :label4="attracModal"></attrac-modal>
+                        <attrac-modal @jkl="addSelectedAttractionsToDirection" @def3="saveKeepAttrap" :label4="attracModal"></attrac-modal>
 
                         <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
 
@@ -316,7 +316,7 @@
                       <div class="container py-0">
                         <div class="row justify-content-between">
                           <p @click.stop="sendSelectedAttractionToAttractionList" id="addToSchedule" class=" p-1 m-0" style="color:#bc2654; font-size:0.8rem;cursor:pointer;">+ 加入行程</p>
-                          <i @click.stop="sendSelectedAttractionToAttractionList3" class="p-1 pt-2 m-0 far fa-heart" style="color:#bc2654; font-size:0.8rem;cursor:pointer;"></i>
+                          <i @click.stop="sendSelectedAttractionToAttractionList3" class="p-1 pt-2 m-0 mr-2 far fa-heart" style="color:#bc2654; font-size:0.8rem;cursor:pointer;"></i>
                         </div>
                       </div>
                     </card>
@@ -415,7 +415,7 @@
                       <div class="container py-0">
                         <div class="row justify-content-between">
                           <p @click.stop="sendSelectedAttractionToAttractionList" id="addToSchedule" class=" p-1 m-0" style="color:#bc2654; font-size:1rem;cursor:pointer;">+ 加入行程</p>
-                          <i class="p-1 pt-2 m-0 far fa-heart" style="color:#bc2654; font-size:1rem;cursor:pointer;"></i>
+                          <!--<i @click.stop="sendSelectedAttractionToAttractionList3" class="p-1 pt-2 m-0 far fa-heart" style="color:#bc2654; font-size:1rem;cursor:pointer;"></i>-->
                         </div>
                       </div>
                     </div>
@@ -426,6 +426,11 @@
         methods: {
           sendSelectedAttractionToAttractionList() {
             this.$emit("jkl", this.label4);
+          },
+          sendSelectedAttractionToAttractionList3(e) {
+            alert("xx");
+            this.$emit("def3", this.label4);
+            e.target.classList.add("fas");
           },
         },
       });
