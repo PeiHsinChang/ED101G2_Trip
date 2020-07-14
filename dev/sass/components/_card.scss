@@ -124,7 +124,7 @@
     flex-wrap: wrap;
     margin-left: 10px;
     /* border: 1px solid red; */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(../images/group_bg.jpg);
+    background-image: url(../images/group_bg.jpg);
     background-size: 150px;
     background-position: top;
     background-repeat: no-repeat;
@@ -184,7 +184,7 @@
 .cardBlogContent {
     // border: 1px solid orange; 
     margin-right: 10px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(../images/card_blog_bg.png);
+    background-image:  url(../images/card_blog_bg.png);
     background-position: right;
     background-size: 38%;
     background-repeat: no-repeat;
