@@ -186,8 +186,12 @@
         methods: {
           getSearchedAttractionsFromPHP(x) {
             $.get(`searchAttrac.php?searchedName=${x}`).then((data) => {
-              this.searchedAttractions = JSON.parse(data);
-              console.log(this.searchedAttractions);
+              if (JSON.parse(data) == 0) {
+                alert("無此景點");
+              } else {
+                this.searchedAttractions = JSON.parse(data);
+                console.log(this.searchedAttractions);
+              }
             });
           },
           addSelectedAttractionsToDirection(x) {

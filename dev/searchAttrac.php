@@ -9,7 +9,7 @@ try{
     $attraction->execute();
   
     if( $attraction->rowCount()==0){ //查無此景點
-        echo "無此景點";
+        echo 0;
     }else{ //成功取得景點
       //自資料庫中取回景點資料
         $searchedAttractionRows = $attraction->fetchAll(PDO::FETCH_ASSOC);
