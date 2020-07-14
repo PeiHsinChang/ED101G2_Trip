@@ -53,10 +53,11 @@
                     <button class="subTab" onclick="openTab(this,2,'keepblog')">遊記收藏</button>
                     <hr>
                     <div id="keepattr" class="keepContainer">
-                        <div class="keepfilter_1">
+                        <div class="keepfilter_1" >
                             縮小範圍顯示
-                            地區: <select name="area" id=""></select>
-                            類型: <select name="type" id=""></select>
+                            地區: <select id="filterArea" name="area" >
+                                <option v-for="item in areas" value="item.A_R">{{item.A_R}}</option>
+                            </select>
                             <button class="btnSmall">篩選</button>
                         </div>
                         <!-- 景點收藏 -->
