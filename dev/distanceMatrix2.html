@@ -329,8 +329,9 @@
           sendSelectedAttractionToAttractionList2() {
             this.$emit("def2", this.label);
           },
-          sendSelectedAttractionToAttractionList3() {
+          sendSelectedAttractionToAttractionList3(e) {
             this.$emit("def3", this.label);
+            e.target.classList.add("fas");
           },
         },
       });
