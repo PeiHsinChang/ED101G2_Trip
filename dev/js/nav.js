@@ -97,6 +97,7 @@ function sendForm(){
 
           }else{
               alert("帳密錯誤");
+              document.querySelector('.modal-backdrop').style.display = 'none';
           }                    
       }else{
           alert(xhr.status);
@@ -189,6 +190,23 @@ $(document).ready(function(){
   })
 });
 
+//點擊會員專區，判斷是否已登入
+function checkLogin(){
+  let xhr = new XMLHttpRequest();
+  xhr.onload = function(){
+      if(xhr.status == 200){
+          member = JSON.parse(xhr.responseText);
+          if(member.Mem_Name){ //已登入
+            location.href="member.html";
+          }else{
+            alert('您尚未登入喔！');
+          }
+      }
+  }
+  xhr.open("get", "getMemberInfo.php", true);
+  xhr.send(null);
+}
+
 // ============================================
 function init(){
   //使用Ajax回server端,取回會員的登入資訊
@@ -203,6 +221,8 @@ function init(){
   $id('loginrightbutton').onclick = cancelLogin;
   //手機版登出
   document.querySelector('.navSmallRight').onclick = phoneLogout;
+  //點擊會員專區，判斷是否已登入
+  $id('nav-linkMember').onclick = checkLogin;
 
   //註冊，檢查帳號長度
   $("#r_memId").keyup(function(){

@@ -336,7 +336,8 @@ function MemberInfoToMemLeft(){
                 });
             });
           }else{
-            
+            // alert('請先登入');
+            // history.go(-1);
           }
       }
     }
