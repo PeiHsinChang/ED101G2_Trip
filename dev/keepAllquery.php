@@ -71,6 +71,15 @@
         $MemBlog -> bindValue(":memId", $memInfo);
         $MemBlog -> execute();
         
+        //下篩選地區SQL 
+        $sql_FilterArea ="select distinct(Attrac_Region),
+        case  attraction.Attrac_Region  when '' then '其他' 
+            else attraction.Attrac_Region end as A_R 
+        FROM easyplanningtrip.attraction ";
+        $FilterArea = $pdo->prepare($sql_FilterArea);
+        $FilterArea -> execute();
+
+
 
         //建存放所有收藏資料
         $AllKeepPackage=array();
@@ -194,6 +203,21 @@
         }
         //所有資料串接
         array_push($AllKeepPackage,$MemBlogInfo);
+
+        //建開團資料
+        if($FilterArea -> rowCount()==0 ){
+            $FilterAreaInfo=[];
+        }else{
+            while($FilterAreaRows = $FilterArea->fetch(PDO::FETCH_ASSOC)){
+                $FilterAreaInfo[] = array(
+                    "A_R"=>$FilterAreaRows["A_R"],   
+                );	
+            }            
+        }
+        // echo print_r($FilterAreaInfo);
+        //所有資料串接
+        array_push($AllKeepPackage,$FilterAreaInfo);
+
         //送出景點資料  
         echo json_encode($AllKeepPackage,JSON_UNESCAPED_UNICODE);
     }catch(PDOException $e){

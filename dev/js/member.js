@@ -3,7 +3,7 @@ window.onload = function (){
   xhr.onload = function(){
       if(xhr.status==200){
           AllKeepPackage = JSON.parse(xhr.responseText);
-          console.log(AllKeepPackage[6]);
+          console.log(AllKeepPackage[7]);
           keepAttras = AllKeepPackage[0];
           keepGroups = AllKeepPackage[1];
           keepSches = AllKeepPackage[2];
@@ -11,6 +11,8 @@ window.onload = function (){
           memSches = AllKeepPackage[4];
           memGroups = AllKeepPackage[5];
           memBlogs = AllKeepPackage[6];
+          areas = AllKeepPackage[7];
+
           new Vue({
               el: '#spotForKeep', 
               data: {      
@@ -56,11 +58,17 @@ window.onload = function (){
               },
           });
           new Vue({
-      el: '#blogForMem', 
-      data: {      
-          memBlogs,
-      },
-  });
+              el: '#blogForMem', 
+              data: {      
+                  memBlogs,
+              },
+          });
+            new Vue({
+                el: '#filterArea', 
+                data: {      
+                    areas,
+                },
+            });
 
       }else{
           alert(xhr.status);
