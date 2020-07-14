@@ -183,14 +183,14 @@
     }
 
     .left-background {
-        // border: 1px solid red;
+        // border: 2px solid green;
         width: 70%;
         height: 110%;
         position: absolute;
         top: 0;
         left: 0;
         z-index: 2;
-        background-color: $colorSecondary2;
+        background-color: $colorMain2;
         padding: 250px;
 
         //add for card start
@@ -202,7 +202,6 @@
                 left: 350px;
             }
         }
-
         //add for card end
     }
 
@@ -257,14 +256,14 @@
     }
 
     .right-background2-content {
-        // border: 1px solid red; 
+        // border: 2px solid blue; 
         display: inline-block;
         width: 25%;
         margin: 5%;
         // margin-top: 180px;
         margin-top: 15%;
         z-index: 3;
-        background-color: $colorSecondary2;
+        background-color: $colorMain2;
         position: absolute;
 
         p {
