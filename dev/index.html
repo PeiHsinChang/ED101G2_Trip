@@ -16,15 +16,21 @@
         font-weight: 500;
         background-color: #fce4ec;
         -webkit-font-smoothing: antialiased;
+        background: linear-gradient(-45deg, white, #ffca85, #fb4e82, #756de6, #abd666, white);
+	    background-size: 400% 400%;
+	    animation: gradient 15s ease infinite;
     }
-    
-    .title {
-        font-family: 'Noto Sans TC', sans-serif;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #5d4037;
-        text-align: center;
-    }
+    @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
     
     p {
         line-height: 1.5em;
@@ -175,13 +181,152 @@
         text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
     }
     /*# sourceMappingURL=indexNav.css.map */
+  
+    .wrapper {
+    /* border: 1px solid red; */
+    margin: auto;
+    text-align: center;  
+    }
+
+    .happy {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    display: block;
+    color: black;
+    -webkit-animation: slide-in 2s both ;
+    font-size: 25px;
+    }
+    .letters {
+    position: relative;
+    }
+    @-webkit-keyframes slide-in {
+    0% {
+        -webkit-transform: translateX(-1000px);
+        -webkit-animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    38% {
+        -webkit-transform: translateX(0);
+        -webkit-animation-timing-function: ease-out;
+        opacity: 1;
+    }
+    55% {
+        -webkit-transform: translateX(-68px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    72% {
+        -webkit-transform: translateX(0);
+        -webkit-animation-timing-function: ease-out;
+    }
+    81% {
+        -webkit-transform: translateX(-28px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    90% {
+        -webkit-transform: translateX(0);
+        -webkit-animation-timing-function: ease-out;
+    }
+    95% {
+        -webkit-transform: translateX(-8px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        -webkit-animation-timing-function: ease-out;
+        color: #007;
+        text-shadow: 2px 4px 10px whitesmoke;
+    }
+    }
+    .letter {
+    color: black;
+    position: relative;
+    display: inline-block;
+    top: 30px;
+    font-size: 40px;
+    -webkit-animation: letter-bounce 2s both;
+    }
+    .letter:nth-child(1){
+    -webkit-animation-delay: 2s;
+    color: black;
+    }
+    .letter:nth-child(2){
+    -webkit-animation-delay: 2.2s;
+    color: black;
+    }
+    .letter:nth-child(3){
+    -webkit-animation-delay: 2.4s;
+    color: black;
+    }
+    .letter:nth-child(4){
+    -webkit-animation-delay: 2.6s;
+    color: black;
+    }
+    .letter:nth-child(5){
+    -webkit-animation-delay: 2.8s;
+    color: black;
+    }
+    .letter:nth-child(6){
+    -webkit-animation-delay: 3s;
+    color: black;
+    }
+    @-webkit-keyframes letter-bounce {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-75px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    40% {
+        -webkit-transform: translateY(-50px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    65% {
+        -webkit-transform: translateY(-25px);
+        -webkit-animation-timing-function: ease-in;
+        text-shadow: 2px 2px 5px whitesmoke;
+    }
+    82% {
+        -webkit-transform: translateY(-10px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    93% {
+        -webkit-transform: translateY(-6px);
+        -webkit-animation-timing-function: ease-in;
+    }
+    25% {
+        -webkit-transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        opacity: 1;
+    }
+    55%, 75%, 87% {
+        -webkit-transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        -webkit-animation-timing-function: ease-out;
+        text-shadow: 2px 2px 6px whitesmoke;
+    }
+    }
 </style>
 
 <body>
     <div style="width:100px;margin:0 auto;">
         <img src="./images/logo.png" alt="" style="width: 100%;">
     </div>
-    <h1 class="title">自助大丈夫</h1>
+    <!-- <h1 class="title">自助大丈夫</h1> -->
+    <div class='wrapper'>
+        <h4 class='happy'>EasyPlanningTrip</h4>
+        <h3 class='letters'>
+          <span class='letter'>自</span>
+          <span class='letter'>助</span>
+          <span class='letter'>大</span>
+          <span class='letter'>丈</span>
+          <span class='letter'>夫</span>
+          <!-- <span class='letter'>Y</span> -->
+        </h3>
+    </div>
 
     <div id="app" class="container">
         <a href="./main.html">
