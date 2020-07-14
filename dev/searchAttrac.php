@@ -2,7 +2,8 @@
 try{
     require_once("connect.php");
     // $sql = "select * from `attractions` where Name like :searchedName";
-    $sql = "select * from attractions a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName";
+    // $sql = "select * from attractions a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName and char_length(Picture1)>1";
+    $sql = "select * from attractions a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName and Picture1 like 'https://%'";
     $attraction = $pdo->prepare($sql); 
     $attraction->bindValue(":searchedName", '%'.$_GET["searchedName"].'%');
     $attraction->execute();
