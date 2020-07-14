@@ -124,7 +124,7 @@
     flex-wrap: wrap;
     margin-left: 10px;
     /* border: 1px solid red; */
-    background-image: url(../images/group_bg.jpg);
+    background-image: url(../images/group_bg.png);
     background-size: 150px;
     background-position: top;
     background-repeat: no-repeat;
@@ -178,17 +178,20 @@
     font-size: 16px;
     // border: 1px solid red;
 }
+
 .cardBlog a {
     color: black;
 }
+
 .cardBlogContent {
     // border: 1px solid orange; 
     margin-right: 10px;
-    background-image:  url(../images/card_blog_bg.png);
+    background-image: url(../images/card_blog_bg.png);
     background-position: right;
     background-size: 38%;
     background-repeat: no-repeat;
 }
+
 .cardBlogContent p {
     /* border: 1px solid red; */
     margin-left: 19px;
@@ -264,6 +267,7 @@
 .cardSchedule .cardLike img {
     margin-left: 130px;
 }
+
 .cardScheduleContent {
     display: flex;
     flex-wrap: wrap;
@@ -357,7 +361,7 @@
             position: absolute;
             left: -2px;
             // display: none;
-            
+
         }
 
         .cardImgOverlayWebUse {
