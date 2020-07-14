@@ -1,0 +1,199 @@
+<!-- ------992px以上------- -->
+<div class="container1">
+    <div class="carousel1">
+        <div id="BlogCarousel_deskA" name="BlogCarousel_deskA">
+            <a href="">
+                <div v-for="BlogCarousel_A in BlogCarousel_As" class="item a" id="a">
+                    <span class="mask">
+                        <p>{{BlogCarousel_As.Blog_Name}}</p>
+                    </span>
+                    <img :src="BlogCarousel_As.Blog_PicURL">
+                </div>
+            </a>
+        </div>
+        <div id="BlogCarousel_deskB" name="BlogCarousel_deskB">
+            <a href="">
+                <div v-for="BlogCarousel_B in BlogCarousel_Bs" class="item b" id="b">
+                    <!--增加名稱id for database-->
+                    <span class="mask">
+                        <p>{{BlogCarousel_Bs.Blog_Name}}</p>
+                    </span>
+                    <img :src="BlogCarousel_Bs.Blog_PicURL">
+                </div>
+            </a>
+        </div>
+        <div id="BlogCarousel_deskC" name="BlogCarousel_deskC">
+            <a href="">
+                <div v-for="BlogCarousel_C in BlogCarousel_Cs" class="item c" id="c">
+                    <span class="mask">
+                        <p>{{BlogCarousel_Cs.Blog_Name}}</p>
+                    </span>
+                    <img :src="BlogCarousel_Cs.Blog_PicURL">
+                </div>
+            </a>
+        </div>
+        <div id="BlogCarousel_deskD" name="BlogCarousel_deskD">
+            <a href="">
+                <div v-for="BlogCarousel_D in BlogCarousel_Ds" class="item d" id="d">
+                    <span class="mask">
+                        <p>{{BlogCarousel_Ds.Blog_Name}}</p>
+                    </span>
+                    <img :src="BlogCarousel_Ds.Blog_PicURL">
+                </div>
+            </a>
+        </div>
+        <div id="BlogCarousel_deskE" name="BlogCarousel_deskE">
+            <a href="">
+                <div v-for="BlogCarousel_E in BlogCarousel_Es" class="item e" id="e">
+                    <span class="mask">
+                        <p>{{BlogCarousel_Es.Blog_Name}}</p>
+                    </span>
+                    <img :src="BlogCarousel_Es.Blog_PicURL">
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="boxes">
+        <!-- <div class="box box1"></div>
+      <div class="box box2"></div>
+      <div class="box box3"></div>
+      <div class="box box4"></div>
+      <div class="box box5"></div> -->
+    </div>
+    <img class="prev" src="./images/leftnext.png" alt="">
+    <img class="next" id="next" src="./images/rightnext.png" alt="">
+</div>
+
+<!-- --------992px以下-------- -->
+<div id="carouselExampleCaptions" class="carousel slide slideAdjust" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div id="BlogCarousel_deskF" name="BlogCarousel_deskF" class="carousel-item active" style="height: 500px;">
+
+            <img :src="BlogCarousel_Fs.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block carouselmask">
+                <h5 class="phoneCarouselWordTitle">{{BlogCarousel_Fs.Blog_Name}}</h5>
+            </div>
+
+        </div>
+
+        <div id="BlogCarousel_deskG" name="BlogCarousel_deskG" class="carousel-item" style="height: 500px;">
+
+            <img :src="BlogCarousel_Gs.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block carouselmask">
+                <h5 class="phoneCarouselWordTitle">{{BlogCarousel_Gs.Blog_Name}}</h5>
+            </div>
+
+        </div>
+
+        <div id="BlogCarousel_deskH" name="BlogCarousel_deskH" class="carousel-item " style="height: 500px;">
+
+            <img :src="BlogCarousel_Hs.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block carouselmask">
+                <h5 class="phoneCarouselWordTitle">{{BlogCarousel_Hs.Blog_Name}}</h5>
+            </div>
+
+        </div>
+
+        <div id="BlogCarousel_deskI" name="BlogCarousel_deskI" class="carousel-item " style="height: 500px;">
+
+            <img :src="BlogCarousel_Is.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block carouselmask">
+                <h5 class="phoneCarouselWordTitle">{{BlogCarousel_Is.Blog_Name}}</h5>
+            </div>
+
+        </div>
+
+        <div id="BlogCarousel_deskJ" name="BlogCarousel_deskJ" class="carousel-item " style="height: 500px;">
+
+            <img :src="BlogCarousel_Js.Group_pic" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
+            <div class="carousel-caption d-none d-md-block carouselmask">
+                <h5 class="phoneCarouselWordTitle">{{BlogCarousel_Js.Group_title}}</h5>
+            </div>
+
+        </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- --------js--------- -->
+<script>
+    let carousel = $(".carousel1"),
+        currdeg = 0;
+
+    $(".next").on("click", {
+        d: "n"
+    }, rotate); //按下next鍵觸發rotate事件
+    $(".prev").on("click", {
+        d: "p"
+    }, rotate); //按下prev鍵觸發rotate事件
+
+    function rotate(e) {
+        if (e.data.d == "n") {
+            currdeg = currdeg + 72;
+        }
+        if (e.data.d == "p") {
+            currdeg = currdeg - 72;
+        }
+        carousel.css({
+            "transform": "rotateY(" + currdeg + "deg)"
+        });
+    }
+
+    //每五秒自動輪播一次
+    setInterval(function () {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        document.getElementById("next").dispatchEvent(e);
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        let imgCount = $('.carousel1>div').length;
+        //依照div數量產生長方形
+        //更動為依照div下一層的div數量產生方塊（避免多層影響）
+        for (let i = 0; i < imgCount; i++) {
+            $('.boxes').append(`<div class="box${i}"></div>`);
+        }
+        $('.boxes div').addClass('box');
+        $('.boxes div:nth-child(1)').addClass('clickMe');
+    });
+
+    let count = 0;
+    $('.next').click(function () {
+        if (count < 4) {
+            $('.boxes div').removeClass('clickMe');
+            count += 1;
+            $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+        } else {
+            $('.boxes div').removeClass('clickMe');
+            count = 0;
+            $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+        }
+    });
+    $('.prev').click(function () {
+        if (count > 0) {
+            $('.boxes div').removeClass('clickMe');
+            count -= 1;
+            $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+        } else {
+            $('.boxes div').removeClass('clickMe');
+            count = 4;
+            $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
+        }
+    });
+</script>
