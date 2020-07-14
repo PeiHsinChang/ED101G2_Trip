@@ -97,6 +97,7 @@ function sendForm(){
 
           }else{
               alert("帳密錯誤");
+              document.querySelector('.modal-backdrop').style.display = 'none';
           }                    
       }else{
           alert(xhr.status);
