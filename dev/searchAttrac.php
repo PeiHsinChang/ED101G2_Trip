@@ -1,9 +1,9 @@
 <?php 
 try{
     require_once("connect.php");
-    $sql = "select * from `attractions` where Name like :Name";
+    $sql = "select * from `attractions` where Name like :searchedName";
     $attraction = $pdo->prepare($sql); 
-    $attraction->bindValue(":Name", '%'.$_GET["Name"].'%');
+    $attraction->bindValue(":searchedName", '%'.$_GET["searchedName"].'%');
     $attraction->execute();
   
     if( $attraction->rowCount()==0){ //查無此景點

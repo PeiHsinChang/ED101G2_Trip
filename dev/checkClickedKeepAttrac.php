@@ -8,7 +8,7 @@ try{
     $keepAttraction->execute();
   
     if( $keepAttraction->rowCount()==0){ 
-        echo "無收藏此景點";
+        echo 0;
     }else{ //成功取得收藏景點
       //自資料庫中取回景點資料
         $keepAttractionRow = $keepAttraction->fetchAll(PDO::FETCH_ASSOC);

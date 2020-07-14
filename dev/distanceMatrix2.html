@@ -185,7 +185,7 @@
         },
         methods: {
           getSearchedAttractionsFromPHP(x) {
-            $.get(`distanceMatrix2.php?Name=${x}`).then((data) => {
+            $.get(`searchAttrac.php?searchedName=${x}`).then((data) => {
               this.searchedAttractions = JSON.parse(data);
             });
           },
@@ -270,22 +270,28 @@
           saveKeepAttrap(x) {
             // check if logged, if true, get and input MemNO:
             if (true) {
-              this.MemNO = 1;
+              this.MemNO = 2;
             }
             // if keep is not existed then save it, if keep is existed then alert :
             // check if keep is existed:
             let n = this.searchedAttractions.indexOf(x);
             $.get(
-              `saveKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+              `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
             ).then((data) => {
-              console.log(JSON.parse(data));
+              if (JSON.parse(data) == 0) {
+                $.ajax({
+                  method: "POST",
+                  url: "saveClickedKeepAttrac.php",
+                  data: {
+                    saveKeepMemNO: `${this.MemNO}`,
+                    saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+                  },
+                  dataType: "json",
+                });
+              } else {
+                alert("已收藏過此景點");
+              }
             });
-            // $.ajax({
-            //   method: "GET",
-            //   url: "distanceMatrix2.php",
-            //   data: {this.MemNO:"45"},
-            //   dataType: "json",
-            // });
           },
         },
         mounted() {
