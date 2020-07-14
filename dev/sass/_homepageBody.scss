@@ -150,7 +150,7 @@
     }
 
     .right-background {
-        // border: 1px solid red;
+        // border: 2px solid green;
         width: 70%;
         height: 110%;
         position: absolute;
@@ -192,14 +192,16 @@
         z-index: 2;
         background-color: $colorMain2;
         padding: 250px;
+        padding-left: 180px;
+        background-image: url(../images/group1.jpg);
+        background-position: center;
+        background-size: cover;
 
         //add for card start
         .firstPageGroupCardsPart {
-            position: relative;
-
+            display: flex;
             .cardOriginalTem:first-child {
-                position: absolute;
-                left: 350px;
+                margin-right: 80px;
             }
         }
         //add for card end
@@ -231,7 +233,7 @@
     }
 
     .right-background2 {
-        // border: 1px solid red;
+        // border: 2px solid green;
         width: 70%;
         height: 110%;
         position: absolute;
@@ -248,10 +250,13 @@
 
             .cardOriginalTem:first-child {
                 position: absolute;
-                left: 350px;
+                left: 320px;
+            }
+            .cardOriginalTem:nth-child(2){
+                position: absolute;
+                left: -80px;
             }
         }
-
         //add for card end
     }
 
@@ -265,7 +270,6 @@
         z-index: 3;
         background-color: $colorMain2;
         position: absolute;
-
         p {
             display: inline-block;
             margin-top: 0;
@@ -341,7 +345,7 @@
             top: 0;
             left: 0;
             z-index: 2;
-            background-color: $colorSecondary2;
+            background-color: $colorMain2;
         }
 
         .left-background-content {
@@ -705,7 +709,9 @@
                 transform: translateX(-50%);
                 font-size: 18px;
                 border-radius: 5px;
-
+                &:hover{
+                    cursor: pointer;
+                }
                 p {
                     margin: 0;
                 }
@@ -765,8 +771,7 @@
 
     .secondScreen576 {
         text-align: center;
-
-        .thirdScreen576_p {
+        p{
             // border: 1px solid red;
             text-align: center;
             padding: 30px;
@@ -807,7 +812,6 @@
             color: $colorMain1;
             font-size: 18px;
         }
-
         button {
             margin: 20px;
         }

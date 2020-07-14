@@ -223,6 +223,7 @@ function init(){
   document.querySelector('.navSmallRight').onclick = phoneLogout;
   //點擊會員專區，判斷是否已登入
   $id('nav-linkMember').onclick = checkLogin;
+  $id('navSmallMember').onclick = checkLogin;
 
   //註冊，檢查帳號長度
   $("#r_memId").keyup(function(){
