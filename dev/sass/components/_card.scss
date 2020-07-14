@@ -20,18 +20,17 @@
     margin-left: 10px;
     margin-top: 10px;
     position: relative;
-    /* border: 1px solid blue; */
-
+    // border: 1px solid blue; 
 }
 
 //card-text
 .cardTextWebUse {
     margin-top: 214px;
-    padding: 10px;
+    padding: 15px;
     color: white;
-    /* background-color: orange; */
     height: 74px;
     text-overflow: ellipsis;
+    // border: 1px solid blue;
 }
 
 //card-title
@@ -39,7 +38,7 @@
     color: $colorSecondary2;
     opacity: 0.8;
     font-size: 35px;
-    /* border:1px solid firebrick; */
+    // border:1px solid firebrick;
     position: absolute;
     text-overflow: ellipsis;
 
@@ -120,11 +119,12 @@
 }
 
 .cardGroupContent {
+    padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
     margin-left: 10px;
-    /* border: 1px solid red; */
-    background-image: url(../images/group_bg.jpg);
+    // border: 1px solid red;
+    background-image: url(../images/group_bg.png);
     background-size: 150px;
     background-position: top;
     background-repeat: no-repeat;
@@ -329,7 +329,6 @@
     // border: 1px solid red;
     position: relative;
     margin: 0 auto;
-
     a {
         .mask {
             position: relative;
@@ -350,9 +349,6 @@
                 font-size: 1rem;
             }
         }
-
-
-
         img {
             position: absolute;
             left: -2px;
@@ -378,7 +374,7 @@
 
     div>p>img {
         // border: 1px solid red;
-        left: 85px;
+        left: 130px;
         top: 36px;
     }
 

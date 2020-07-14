@@ -34,7 +34,9 @@
             data-550="opacity:1;" data-4000="opacity:1;" data-4300="opacity:0;display:none;">
 
             <div class="right-background" data-550="opacity:0;transform:translateX(80%);"
-                data-1200="opacity:1;transform:translateX(0);">
+                data-1200="opacity:1;transform:translateX(0);"
+                data-2449="opacity:1;transform:translateX(0);"
+                data-2450="opacity:1;transform:translateX(54%);">
             </div>
 
             <div class="right-background-content" data-700="opacity:0;transform:translateY(110%);"
@@ -91,7 +93,8 @@
                 <button onclick="location.href='./groupView.html';">更多揪團</button>
             </div>
             <div class="right-background2" data-2949="opacity:0;transform:translateX(80%);"
-                data-2950="opacity:1;transform:translateX(80%);" data-3600="opacity:1;transform:translateX(0);">
+                data-2950="opacity:1;transform:translateX(80%);"
+                data-3600="opacity:1;transform:translateX(0);">
                 <!-- 卡片加在這 -->
                 <div id="homePageSpot" class="firstPageSpotCardsPart">
                     <!-- spot cards start-->        
@@ -141,13 +144,13 @@
         <pre class="taiwan576">         這座寶島上...
 還有很多風景等著我們一起探索！</pre>
         <ul class="selectArea576">
-            <li class="selectbox576 selectbox1576" onclick="location.href='#';">
+            <li class="selectbox576 selectbox1576" onclick="location.href='./plan.html';">
                 <p>排行程</p>
             </li>
-            <li class="selectbox576 selectbox2576" onclick="location.href='#';">
+            <li class="selectbox576 selectbox2576" onclick="location.href='./groupView.html';">
                 <p>揪團</p>
             </li>
-            <li class="selectbox576 selectbox3576" onclick="location.href='#';">
+            <li class="selectbox576 selectbox3576" onclick="location.href='./blogView.html';">
                 <p>遊記</p>
             </li>
         </ul>
@@ -155,7 +158,7 @@
     </div>
     <div class="secondScreen576">
         <p>輕鬆的操作方式～<br>建立一個屬於自己的行程吧！</p>
-        <div>圖片加這裡～</div>
+        <!-- <div>圖片加這裡～</div> -->
         <button class="btnLarge" onclick="location.href='./plan.html';">馬上去！</button>
     </div>
     <div id="smallhomePageGroup" class="thirdScreen576">
@@ -163,7 +166,7 @@
         <!-- 卡片加這裡～ -->
         <!-- 揪團卡片 -->
         <!-- group cards start-->
-        <div v-for="group in homePageGroups"  class="card cardOriginalTem cardGroup cardGroupRWDindex">
+        <div v-for="group in homePageGroups"  class="card cardOriginalTem cardGroup cardGroupRWDindex" style="margin-bottom: 10px;">
             <a>
                 <img :src="group.Group_Pic" class="card-img-top" >
                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
@@ -203,8 +206,8 @@
             <!-- 卡片加這裡～ -->
             <!-- 景點卡片 -->
             <!-- spot cards start-->
-            <div  v-for="spot in homePageSpots" class="card cardSpot cardOriginalTem cardSpotRWDindex" style="width: 18rem;">
-                <a >
+            <div  v-for="spot in homePageSpots" class="card cardSpot cardOriginalTem cardSpotRWDindex" style="width:18rem;margin-bottom: 10px;">
+                <a>
                     <img v-if="spot.Attrac_PicURL == ''" :src="output" class="card-img-top">
                     <img  v-else :src="spot.Attrac_PicURL" class="card-img-top">
                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
