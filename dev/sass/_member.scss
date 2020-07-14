@@ -72,13 +72,24 @@ border-radius: 5px 0 0 0;
   justify-content: flex-end;
 }
 .keepAllWall{
+  width:100%;
   padding: 15px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .cardOriginalTem {
+    margin: 10px;
+  }
+
 }
 .memRightWall{
   padding: 15px;
   display: flex;
-
+  flex-wrap: wrap;
+  justify-content: center;
+  .cardOriginalTem {
+    margin: 10px;
+  }
 }
 .mainBody{
   width: 100%;
