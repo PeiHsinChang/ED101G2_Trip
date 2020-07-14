@@ -174,25 +174,23 @@ function openScheCardLightBox(obj){
     scheLightBox.style.display = "block";
     myScheName = obj.dataset.id;
     // console.log(myScheName);
-    keepSchetInfo = {
+    keepScheInfo = {
         Sche_Id:myScheName
     };
-    console.log(keepSchetInfo);
+    console.log(keepScheInfo);
     let xhr = new XMLHttpRequest();
     xhr.open("post", "./openQueryScheCard.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     //把資料往後傳
-    xhr.send("keepSchetInfo=" + JSON.stringify(keepSchetInfo));   
+    xhr.send("keepScheInfo=" + JSON.stringify(keepScheInfo));   
     xhr.onload = function(){
         if(xhr.status==200){
-            console.log(xhr.responseText)
             let QueryScheCards = JSON.parse(xhr.responseText);
             console.log(QueryScheCards)
             keepSche1 = {
                 Sche_Img:QueryScheCards[0].Sche_Img,
                 Sche_Name:QueryScheCards[0].Sche_Name
             };
-            console.log(keepSche1);
             sche.$data.QueryScheCards = QueryScheCards;
             sche.$data.keepSche1 = keepSche1;
 

@@ -2,7 +2,8 @@
   
     session_start();
     $memInfo = $_SESSION["Mem_NO"];
-    $keepScheInfo = json_decode($_POST['keepSchetInfo']);
+    // echo $_POST['keepScheInfo'];
+    $keepScheInfo = json_decode($_POST['keepScheInfo']);
 
     
     try{
@@ -14,6 +15,7 @@
           and ats.sche_no=s.sche_no
           and s.Sche_Name =:scheName
           order by ats.attrac_sche_no;";
+         
         $keepOneSche1 = $pdo-> prepare($sql_keepOneSche1);
         // $keepOneSche1 -> bindValue(":memId", $memInfo);
         $keepOneSche1 -> bindValue(":scheName",$keepScheInfo->Sche_Id);
