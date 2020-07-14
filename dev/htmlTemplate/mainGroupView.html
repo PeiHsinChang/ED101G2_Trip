@@ -1,14 +1,14 @@
 <div class="container">
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
-        <a  onclick="openNewGroup();">
-            <img src="./images/openNewGroup.png"  class="d-md-block" />
+        <a onclick="openNewGroup();">
+            <img src="./images/openNewGroup.png" class="d-md-block" />
         </a>
     </div>
     <!-- search bar -->
     <div class="groupViewSearchBar row">
         <input type="text" placeholder="來看看有哪些揪團" class="col col-md-5" />
         <button>
-            <img src="./images/iconSearch.png"  />
+            <img src="./images/iconSearch.png" />
         </button>
     </div>
     <hr />
@@ -141,18 +141,24 @@
                         <th>熱搜行程</th>
                     </tr>
                     <tr>
-                        <td>
-                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        <td id="hotSche001" name="hotSche001">
+                            <a><img :src="hotSche001.Sche_Img" alt="" />
+                                <p>{{hotSche001.Sche_Name}}</p>
+                            </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        <td id="hotSche002" name="hotSche002">
+                            <a><img :src="hotSche002.Sche_Img" alt="" />
+                                <p>{{hotSche002.Sche_Name}}</p>
+                            </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <a href=""><img src="./images/lake.jpg" alt="" /></a>
+                        <td id="hotSche003" name="hotSche003">
+                            <a><img :src="hotSche003.Sche_Img" alt="" />
+                                <p>{{hotSche003.Sche_Name}}</p>
+                            </a>
                         </td>
                     </tr>
                 </table>
@@ -164,9 +170,9 @@
             <!-- pc version start  -->
             <div class="groupViewPCcardBlock d-md-flex d-none">
                 <!-- 揪團卡片 -->
-                <div class="card cardOriginalTem cardGroup"  >
+                <div class="card cardOriginalTem cardGroup">
                     <!-- <a  onclick="openpartinGroup();"> -->
-                        <a href="./groupInside.html">
+                    <a href="./groupInside.html">
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -187,7 +193,7 @@
                                 <p>出團日期：2020/06/30</p>
                                 <div>
                                     <p>報名截止：2020/06/30</p>
-                                    <a >
+                                    <a>
                                         <img src="./images/heart.png" alt="">
                                     </a>
                                 </div>
@@ -197,7 +203,7 @@
                 </div>
                 <!-- 揪團卡片 -->
                 <div class="card cardOriginalTem cardGroup ">
-                    <a >
+                    <a>
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -219,7 +225,7 @@
                                 <p>出團日期：2020/06/30</p>
                                 <div>
                                     <p>報名截止：2020/06/30</p>
-                                    <a >
+                                    <a>
                                         <img src="./images/heart.png" alt="">
                                     </a>
                                 </div>
@@ -239,7 +245,7 @@
                     <div class="carousel-inner innerCardScheGroupPhoneSlide">
                         <div class="carousel-item active ">
                             <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                                <a >
+                                <a>
                                     <img src="./images/lake.jpg" class="card-img-top" alt="...">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -263,7 +269,7 @@
 
                                             <div>
                                                 <p>報名截止：2020/06/30</p>
-                                                <a >
+                                                <a>
                                                     <img src="./images/heart.png" alt="">
                                                 </a>
                                             </div>
@@ -274,7 +280,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="card cardOriginalTem cardGroup d-block " style="width: 18rem;">
-                                <a >
+                                <a>
                                     <img src="./images/lake.jpg" class="card-img-top" alt="...">
                                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -457,6 +463,3 @@
         </div>
     </div>
 </div>
-
-
-
