@@ -145,14 +145,14 @@
                           @def="addSelectedAttractionsToDirection" @def2="addSelectedAttractionsToModal" @def3="saveKeepAttrap" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                         </cards>
 
-                        <div class="container">
-                          <div class="row">
-                            <div class="border px-1 col-lg-4">
-                              <div class="d-flex">
-                              <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control font-weight-bold text-truncate text-center" placeholder="請輸入行程名稱" required="required">
+                        <div class="container" >
+                          <div class="row" >
+                            <div class="border px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
+                              <div class="d-flex mt-3">
+                              <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
                                 <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
                                 </div>
-                              <attraction-direction @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" class="border" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
+                              <attraction-direction @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" @sendAttracLeaveTimeToAttractionList="sendAttracLeaveTimeToBackend" class="border bg-light" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
                               </attraction-direction>
                             </div>
                             <div class="border col-lg-8 px-0" style="height:400px">
@@ -255,6 +255,7 @@
               alert(this.toBeSavedSchedule.scheStatus);
               // input selectedAttractions:
               this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
+              // console.log(this.toBeSavedSchedule.selectedAttractions);
               $.ajax({
                 method: "POST",
                 url: "saveSchedule.php",
@@ -266,6 +267,11 @@
           sendAttracStartTimeToBackend(x, y) {
             let n = this.selectedAttractions.indexOf(x);
             this.selectedAttractions[n].attracStartTime = y;
+            // console.log(this.selectedAttractions);
+          },
+          sendAttracLeaveTimeToBackend(x, y) {
+            let n = this.selectedAttractions.indexOf(x);
+            this.selectedAttractions[n].attracLeaveTime = y;
             // console.log(this.selectedAttractions);
           },
           addSelectedAttractionsToModal(x) {
@@ -352,22 +358,26 @@
         data() {
           return {
             attracStartTime: "",
+            attracLeaveTime: "",
           };
         },
         props: ["label2"],
         template: `
                     <div class="container my-3 py-3 pr-0 rounded shadow">
-                      <button @click="sendClosedAttractionToAttractionList" type="button" class="close border"   aria-label="Close" style="margin-top:-17px;">
+                      <button @click="sendClosedAttractionToAttractionList" type="button" class="close"   aria-label="Close" style="margin-top:-17px;margin-right:3px;">
                         <span aria-hidden="true" style="font-size:1rem">&times;</span>
                       </button>
                       <div class="row">
-                        <div class="left px-0 overflow-hidden col-4 border" style="height:100px">
+                        <div class="left px-0 overflow-hidden col-4" style="height:100px">
                           <img :src="this.label2.Picture1" class="d-block h-100 mx-auto">
                         </div>
-                        <div class="right col-8 border pr-0 pl-1 position-relative">
-                          <h6 class="border">{{label2.Name}}</h6>
-                          <div class="border position-absolute" style="bottom:0px;cursor:pointer;" >
+                        <div class="right col-8 pr-0 pl-1 position-relative">
+                          <h6 class="">{{label2.Name}}</h6>
+                          <div class=" position-absolute" style="bottom:0px;cursor:pointer;color:#bc2654" >
+
                             <label class=" my-0" style="font-size:0.7rem;">抵達：</label><input type="time" v-model="attracStartTime" @change="sendAttracStartTimeToAttractionList" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
+                            <br>
+                            <label class=" my-0" style="font-size:0.7rem;">離開：</label><input type="time" v-model="attracLeaveTime" @change="sendAttracLeaveTimeToAttractionList" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
                           </div>
                         </div>
                       </div>
@@ -382,6 +392,14 @@
               "sendAttracStartTimeToAttractionList",
               this.label2,
               this.attracStartTime
+            );
+            // alert(`${this.attracStartTime}`);
+          },
+          sendAttracLeaveTimeToAttractionList() {
+            this.$emit(
+              "sendAttracLeaveTimeToAttractionList",
+              this.label2,
+              this.attracLeaveTime
             );
             // alert(`${this.attracStartTime}`);
           },
