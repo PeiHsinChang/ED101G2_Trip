@@ -124,9 +124,9 @@
               </div>
               
               <div class=" col-md-4 p-0">
-                <select class="align-top w-25 ml-3 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
+                <select @change="sendRegionSelectToAttractionList" class="align-top w-25 ml-3 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
                  <option>地區</option>
-                 <option>新北市</option>
+                 <option value="新北市">新北市</option>
                 </select>
                 <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border ml-3 align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
               </div>
@@ -136,15 +136,23 @@
         data() {
           return {
             queryAttractionName: "",
+            inputValueForRegionSearch: "",
           };
         },
         methods: {
-          sendInputToAttractionList() {
+          sendInputToAttractionList(e) {
             this.$emit("abc", this.queryAttractionName);
             this.queryAttractionName = "";
+            this.inputValueForRegionSearch = e.target.value;
+            // console.log(this.inputValueForRegionSearch);
           },
           sendKeepAttracSearchToAttractionList() {
             this.$emit("abc2");
+          },
+          sendRegionSelectToAttractionList(e) {
+            // console.log(e.target.value);
+            // console.log(this.inputValueForRegionSearch);
+            this.$emit("abc3", e.target.value, this.queryAttractionName);
           },
         },
       });
@@ -154,7 +162,7 @@
                       <div>
                         <attrac-modal @jkl="addSelectedAttractionsToDirection" @def3="saveKeepAttrap" :label4="attracModal"></attrac-modal>
 
-                        <attraction-input @abc="getSearchedAttractionsFromPHP" @abc2="getSearchedKeepAttractionsFromPHP"></attraction-input>
+                        <attraction-input @abc="getSearchedAttractionsFromPHP" @abc2="getSearchedKeepAttractionsFromPHP" @abc3="getSearchedRegionAttractionsFromPHP"></attraction-input>
 
                         <cards class="d-block" style="height:16.5rem; overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
                           <attraction-item
@@ -211,19 +219,37 @@
             });
           },
           getSearchedKeepAttractionsFromPHP() {
-            alert("ok");
             // check if logged, if true, get and input MemNO:
             if (true) {
-              this.MemNO = 1;
+              this.MemNO = 2;
             }
             $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
               if (JSON.parse(data) == 0) {
                 alert("尚無收藏任何景點");
               } else {
                 this.searchedAttractions = JSON.parse(data);
-                console.log(this.searchedAttractions);
+                // console.log(this.searchedAttractions);
               }
             });
+          },
+          getSearchedRegionAttractionsFromPHP(x, y) {
+            console.log(x);
+            console.log(y);
+            if (y == "") {
+              // alert("nothing");
+              $.get(`searchAttracRegionWoInput.php?Region=${x}`).then(
+                (data) => {
+                  if (JSON.parse(data) == 0) {
+                    alert("查無景點");
+                  } else {
+                    this.searchedAttractions = JSON.parse(data);
+                    // console.log(this.searchedAttractions);
+                  }
+                }
+              );
+            } else {
+              alert("something");
+            }
           },
           addSelectedAttractionsToDirection(x) {
             this.selectedAttractions.push(x);
