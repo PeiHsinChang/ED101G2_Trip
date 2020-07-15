@@ -113,12 +113,25 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-              <div class="input-group mb-3">
+        <div class="container">
+          <div class="border row">
+
+              <div class="border col-md-8 input-group p-0">
                 <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
                 <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                  <span class="input-group-text rounded-right" id="basic-addon2"><i class="fas fa-search"></i></span>
                 </div>
               </div>
+              
+              <div class="border col-md-4 p-0">
+                <select class="align-top w-50 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
+                 <option>地區</option>
+                 <option>新北市</option>
+                </select>
+                <button type="button" class="border float-right align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+              </div>
+          </div>
+        </div>
                           `,
         data() {
           return {
