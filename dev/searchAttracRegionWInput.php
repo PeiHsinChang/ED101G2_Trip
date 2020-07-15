@@ -1,12 +1,13 @@
 <?php 
 try{
     require_once("connect.php");
-    $sql = "select * from keep_attrac k left join attractions a on k.Attrac_NO=a.Id where Mem_NO=:MemNO and Picture1 like 'http%' and Picture1 not like 'http://210%'";
+    $sql = "select * from attractions where Region=:Region and Name like :searchedName and Picture1 like 'http%' and Picture1 not like 'http://210%'";
     $attraction = $pdo->prepare($sql); 
-    $attraction->bindValue(":MemNO",$_GET["MemNO"]);
+    $attraction->bindValue(":Region", $_GET["Region"]);
+    $attraction->bindValue(":searchedName", '%'.$_GET["searchedName"].'%');
     $attraction->execute();
   
-    if( $attraction->rowCount()==0){ //尚無收藏任何景點
+    if( $attraction->rowCount()==0){ //查無此景點
         echo 0;
     }else{ //成功取得景點
       //自資料庫中取回景點資料
@@ -17,5 +18,4 @@ try{
   }catch(PDOException $e){
     echo $e->getMessage();
   }
-// echo $_GET["MemNO"];
 ?>

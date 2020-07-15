@@ -124,11 +124,23 @@
               </div>
               
               <div class=" col-md-4 p-0">
-                <select @change="sendRegionSelectToAttractionList" class="align-top w-25 ml-3 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
+                <select @change="sendRegionSelectToAttractionList" class="align-top w-25 ml-1 px-1 d-inline-block form-control form-control" style="font-size:0.9rem;">
                  <option>地區</option>
                  <option value="新北市">新北市</option>
+                 <option value="新竹縣">新竹縣</option>
+                 <option value="苗栗縣">苗栗縣</option>
+                 <option value="臺中市">臺中市</option>
+                 <option value="彰化縣">彰化縣</option>
+                 <option value="南投縣">南投縣</option>
+                 <option value="雲林縣">雲林縣</option>
+                 <option value="嘉義縣">嘉義縣</option>
+                 <option value="臺南市">臺南市</option>
+                 <option value="高雄市">高雄市</option>
+                 <option value="屏東縣">屏東縣</option>
+                 <option value="花蓮縣">花蓮縣</option>
+                 <option value="臺東縣">臺東縣</option>
                 </select>
-                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border ml-3 align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border ml-3 float-right align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
               </div>
           </div>
         </div>
@@ -142,7 +154,7 @@
         methods: {
           sendInputToAttractionList(e) {
             this.$emit("abc", this.queryAttractionName);
-            this.queryAttractionName = "";
+            // this.queryAttractionName = "";
             this.inputValueForRegionSearch = e.target.value;
             // console.log(this.inputValueForRegionSearch);
           },
@@ -233,8 +245,8 @@
             });
           },
           getSearchedRegionAttractionsFromPHP(x, y) {
-            console.log(x);
-            console.log(y);
+            console.log(typeof x);
+            console.log(typeof y);
             if (y == "") {
               // alert("nothing");
               $.get(`searchAttracRegionWoInput.php?Region=${x}`).then(
@@ -247,8 +259,18 @@
                   }
                 }
               );
-            } else {
+            } else if (y != "") {
               alert("something");
+              $.get(
+                `searchAttracRegionWInput.php?Region=${x}&searchedName=${y}`
+              ).then((data) => {
+                if (JSON.parse(data) == 0) {
+                  alert("查無景點");
+                } else {
+                  this.searchedAttractions = JSON.parse(data);
+                  // console.log(this.searchedAttractions);
+                }
+              });
             }
           },
           addSelectedAttractionsToDirection(x) {
