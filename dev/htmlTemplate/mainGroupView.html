@@ -159,42 +159,46 @@
             </div>
             <!-- Hot Schedule End -->
         </div>
-        <div id="groupCardsAll" class="groupViewRight col-9 d-block">
+
+        <div class="groupViewRight col-9 d-block">
             <!-- Group Main Start -->
             <!-- pc version start  -->
             <div class="groupViewPCcardBlock d-md-flex d-none">
-                <!-- 揪團卡片 -->
-                <div v-for="groupCard in groupCardsAlls" class="card
-                        cardOriginalTem cardGroup">
-                    <!-- <a  onclick="openpartinGroup();"> -->
-                    <a href="./groupInside.html">
-                        <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                        <div class="card-body card-img-overlay
-                                cardImgOverlayWebUse">
-                            <h5 class="card-title cardTitleWebUse">揪團</h5>
-                            <div class="mask">
-                                <p class="card-text cardTextWebUse">{{groupCard.Group_title}}<br></p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cardGroupContent">
-                                <p>團主：{{groupCard.Mem_Name}}</p>
-                                <div>
-                                    <p>團主評價：
-                                        <img src="./images/good.png" alt=""> {{groupCard.hostlike}}
-                                    </p>
+                <div id="groupCardsAll">
+                    <!-- 揪團卡片 -->
 
-                                </div>
-                                <p>出團日期：{{groupCard.Group_StartDate}}</p>
-                                <div>
-                                    <p>報名截止：{{groupCard.Group_Deadline}}</p>
-                                    <a>
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                    <div v-for="groupCard in groupCardsAlls" class="card
+                        cardOriginalTem cardGroup">
+                        <!-- <a  onclick="openpartinGroup();"> -->
+                        <a href="./groupInside.html">
+                            <img :src="groupCard.Group_Pic" class="card-img-top" alt="...">
+                            <div class="card-body card-img-overlay
+                                cardImgOverlayWebUse">
+                                <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                <div class="mask">
+                                    <p class="card-text cardTextWebUse">{{groupCard.Group_title}}<br></p>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                            <div>
+                                <div class="cardGroupContent">
+                                    <p>團主：{{groupCard.Mem_Name}}</p>
+                                    <div>
+                                        <p>團主評價：
+                                            <img src="./images/good.png" alt=""> {{groupCard.hostlike}}
+                                        </p>
+
+                                    </div>
+                                    <p>出團日期：{{groupCard.Group_StartDate}}</p>
+                                    <div>
+                                        <p>報名截止：{{groupCard.Group_Deadline}}</p>
+                                        <a>
+                                            <img src="./images/heart.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <!-- 揪團卡片 -->
                 <!-- <div class="card cardOriginalTem cardGroup">
@@ -229,6 +233,7 @@
                 </div> -->
             </div>
         </div>
+
     </div>
     <!-- pc version end -->
     <!-- phone vision start -->
