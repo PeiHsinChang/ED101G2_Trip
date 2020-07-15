@@ -636,11 +636,15 @@
 
             // add infowindow:
             let contentString = `
-                                    <div>
-                                      <h6 class="card-title text-truncate">${x.Name}</h6>
-                                      <p>${x.Region}</p>
-                                    </div>
-                                    `;
+              <div>
+                <h6 style="font-size:0.8rem;margin-bottom:0.2rem">${x.Name}</h6>
+                <hr style="margin:0.2rem auto;">
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Add}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Tel}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Website}</h6>
+                
+              </div>
+              `;
             let infowindow = new google.maps.InfoWindow({
               content: contentString,
             });
@@ -741,7 +745,7 @@
       Vue.component("attraction-item", {
         template: `
                     <card @click="sendSelectedAttractionToAttractionList2" class="card align-top m-2 p-2 d-inline-block shadow-sm" data-toggle="modal" data-target="#attracModal" style="width: 11rem;height:14rem;cursor:pointer;">
-                      <div class="border position-relative cardImg overflow-hidden" style="height:11.5rem">
+                      <div class="position-relative cardImg overflow-hidden" style="height:11.5rem">
                         <h5 class="position-absolute text-light" style="top:0px;left:0px;">景點</h5>
                         <img :src='this.label.Picture1' class="d-block h-100 mx-auto"/>
                         <div class="position-absolute w-100 px-1" style="bottom:0px;background-color:rgba(0,0,0,0.4);">
@@ -844,7 +848,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <div class="border w-100 overflow-hidden" style="height:20rem">
+                      <div class="w-100 overflow-hidden" style="height:20rem">
                         <img :src="this.label4.Picture1" class="d-block h-100 mx-auto">
                       </div>
                       <ul class="list-group list-group-flush">
