@@ -114,21 +114,21 @@
       Vue.component("attraction-input", {
         template: `
         <div class="container">
-          <div class="border row">
+          <div class="row">
 
-              <div class="border col-md-8 input-group p-0">
+              <div class=" col-md-8 input-group p-0">
                 <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
                 <div class="input-group-append">
                   <span class="input-group-text rounded-right" id="basic-addon2"><i class="fas fa-search"></i></span>
                 </div>
               </div>
               
-              <div class="border col-md-4 p-0">
-                <select class="align-top w-50 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
+              <div class=" col-md-4 p-0">
+                <select class="align-top w-25 ml-3 px-1 d-inline-block form-control form-control" style="font-size:0.9rem">
                  <option>地區</option>
                  <option>新北市</option>
                 </select>
-                <button type="button" class="border float-right align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border ml-3 align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
               </div>
           </div>
         </div>
@@ -143,6 +143,9 @@
             this.$emit("abc", this.queryAttractionName);
             this.queryAttractionName = "";
           },
+          sendKeepAttracSearchToAttractionList() {
+            this.$emit("abc2");
+          },
         },
       });
 
@@ -151,7 +154,7 @@
                       <div>
                         <attrac-modal @jkl="addSelectedAttractionsToDirection" @def3="saveKeepAttrap" :label4="attracModal"></attrac-modal>
 
-                        <attraction-input @abc="getSearchedAttractionsFromPHP"></attraction-input>
+                        <attraction-input @abc="getSearchedAttractionsFromPHP" @abc2="getSearchedKeepAttractionsFromPHP"></attraction-input>
 
                         <cards class="d-block" style="height:16.5rem; overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
                           <attraction-item
@@ -201,6 +204,21 @@
             $.get(`searchAttrac.php?searchedName=${x}`).then((data) => {
               if (JSON.parse(data) == 0) {
                 alert("無此景點");
+              } else {
+                this.searchedAttractions = JSON.parse(data);
+                // console.log(this.searchedAttractions);
+              }
+            });
+          },
+          getSearchedKeepAttractionsFromPHP() {
+            alert("ok");
+            // check if logged, if true, get and input MemNO:
+            if (true) {
+              this.MemNO = 1;
+            }
+            $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
+              if (JSON.parse(data) == 0) {
+                alert("尚無收藏任何景點");
               } else {
                 this.searchedAttractions = JSON.parse(data);
                 console.log(this.searchedAttractions);
