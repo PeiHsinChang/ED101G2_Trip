@@ -326,11 +326,14 @@ function MemberInfoToMemLeft(){
 
             //檢查所有欄位是否都已經填妥，未填妥則無法送出表單
             $(document).ready(function(){
-                $("#memLeftAdjustSave").click(function(){
+                $("#memLeftAdjustSave").click(function(e){
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
                     if($("#memLeftAdjustPswCheck").html().length != 0){
                         alert('密碼長度不得低於8個字');
                     }else if($("#memLeftAdjustEmaCheck").html().length != 0){
                         alert('請輸入正確e-mail格式');
+                        console.log('123');
                     }else if($("#memLeftAdjustTelCheck").html().length != 0){
                         alert('請輸入正確電話格式');
                     }else if($("#memLeftAdjustBirCheck").html().length != 0){
