@@ -258,10 +258,10 @@ function MemberInfoToMemLeft(){
             $id("memLeftPicAdjust").innerHTML = `<img src="${member.Mem_Photo}">`;
             $id("memLeftNameAdjust").innerText = `${member.Mem_Name}`;
             $id("memLeftAdjustAcc").innerHTML = `帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input id="memLeftAdjustAccContent" name="memLeftAdjustAccContent" type="text" value="${member.Mem_Id}" readonly="readonly" style="outline:none">`;
-            $id("memLeftAdjustPsw").innerHTML = `密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input id="memLeftAdjustPswContent" name="memLeftAdjustPswContent" type="text" value="${member.Mem_Psw}">`;
-            $id("memLeftAdjustBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input id="memLeftAdjustBirContent" name="memLeftAdjustBirContent" type="text" value="${member.Mem_Birth}">`;
-            $id("memLeftAdjustEma").innerHTML = `連絡信箱：<input id="memLeftAdjustEmaContent" name="memLeftAdjustEmaContent" type="text" value="${member.Mem_Email}">`;
-            $id("memLeftAdjustTel").innerHTML = `聯絡電話：<input id="memLeftAdjustTelContent" name="memLeftAdjustTelContent" type="text" value="${member.Mem_Tel}">`;
+            $id("memLeftAdjustPsw").innerHTML = `密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input class="qqq" id="memLeftAdjustPswContent" name="memLeftAdjustPswContent" type="text" value="${member.Mem_Psw}">`;
+            $id("memLeftAdjustBir").innerHTML = `生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input class="qqq" id="memLeftAdjustBirContent" name="memLeftAdjustBirContent" type="text" value="${member.Mem_Birth}">`;
+            $id("memLeftAdjustEma").innerHTML = `連絡信箱：<input class="qqq" id="memLeftAdjustEmaContent" name="memLeftAdjustEmaContent" type="text" value="${member.Mem_Email}">`;
+            $id("memLeftAdjustTel").innerHTML = `聯絡電話：<input class="qqq" id="memLeftAdjustTelContent" name="memLeftAdjustTelContent" type="text" value="${member.Mem_Tel}">`;
 
             // 修改會員修改會員密碼，檢查密碼長度
             $("#memLeftAdjustPswContent").keyup(function(){
