@@ -163,40 +163,42 @@
             <!-- Group Main Start -->
             <!-- pc version start  -->
             <div class="groupViewPCcardBlock d-md-flex d-none">
-                <!-- 揪團卡片 -->
-                <div class="card cardOriginalTem cardGroup">
-                    <!-- <a  onclick="openpartinGroup();"> -->
-                    <a href="./groupInside.html">
-                        <img src="./images/lake.jpg" class="card-img-top" alt="...">
-                        <div class="card-body card-img-overlay
-                            cardImgOverlayWebUse">
-                            <h5 class="card-title cardTitleWebUse">揪團</h5>
-                            <div class="mask">
-                                <p class="card-text cardTextWebUse">{{groupCardsAlls.Group_title}}<br></p>
+                <div id="groupCardsAll">
+                    <!-- 揪團卡片 -->
+                    <div v-for="groupCard in groupCardsAlls" class="card
+                        cardOriginalTem cardGroup">
+                        <!-- <a  onclick="openpartinGroup();"> -->
+                        <a href="./groupInside.html">
+                            <img src="./images/lake.jpg" class="card-img-top" alt="...">
+                            <div class="card-body card-img-overlay
+                                cardImgOverlayWebUse">
+                                <h5 class="card-title cardTitleWebUse">揪團</h5>
+                                <div class="mask">
+                                    <p class="card-text cardTextWebUse">{{groupCardsAlls.Group_title}}<br></p>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="cardGroupContent">
-                                <p>團主：{{groupCardsAlls.Mem_Name}}</p>
-                                <div>
-                                    <p>團主評價：
-                                        <img src="./images/good.png" alt=""> {{groupCardsAlls.hostlike}}
-                                    </p>
+                            <div>
+                                <div class="cardGroupContent">
+                                    <p>團主：{{groupCardsAlls.Mem_Name}}</p>
+                                    <div>
+                                        <p>團主評價：
+                                            <img src="./images/good.png" alt=""> {{groupCardsAlls.hostlike}}
+                                        </p>
 
-                                </div>
-                                <p>出團日期：{{groupCardsAlls.Group_StartDate}}</p>
-                                <div>
-                                    <p>報名截止：{{groupCardsAlls.Group_Deadline}}</p>
-                                    <a>
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    </div>
+                                    <p>出團日期：{{groupCardsAlls.Group_StartDate}}</p>
+                                    <div>
+                                        <p>報名截止：{{groupCardsAlls.Group_Deadline}}</p>
+                                        <a>
+                                            <img src="./images/heart.png" alt="">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- 揪團卡片 -->
-                <!-- <div class="card cardOriginalTem cardGroup">
+                        </a>
+                    </div>
+                    <!-- 揪團卡片 -->
+                    <!-- <div class="card cardOriginalTem cardGroup">
                     <a>
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
@@ -226,6 +228,7 @@
                         </div>
                     </a>
                 </div> -->
+                </div>
             </div>
             <!-- pc version end -->
             <!-- phone vision start -->
