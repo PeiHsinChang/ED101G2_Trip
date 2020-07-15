@@ -1,13 +1,14 @@
-window.onload = function () {
+window.onload = function() {
     titleCarousel();
     hotSche();
+    groupCard();
 }
 
 function titleCarousel() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
@@ -137,7 +138,7 @@ function hotSche() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             hotSchePackage = JSON.parse(xhr.responseText);
@@ -186,4 +187,28 @@ function hotSche() {
     xhr.open("post", "groupViewHotSche.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(); //因為開太快所以要送個空值回去
+};
+
+
+function groupCard() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            groupviewCards = JSON.parse(xhr.responseText);
+            console.log(groupviewCards[0]);
+            groupCardsAlls = groupviewCards[0];
+            new Vue({
+                el: '#groupCardsAll',
+                data: {
+                    groupCardsAlls,
+                },
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupCard.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
 };
