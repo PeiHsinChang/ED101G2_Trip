@@ -115,16 +115,16 @@
         template: `
         <div class="container">
           <div class="row">
-
-              <div class=" col-md-8 input-group p-0">
+            <div class="border d-flex col-md-10 px-0">
+              <div class="col-9 input-group p-0">
                 <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
                 <div class="input-group-append">
-                  <span class="input-group-text rounded-right" id="basic-addon2"><i class="fas fa-search"></i></span>
+                  <span class="input-group-text rounded-right px-2" id="basic-addon2"><i class="fas fa-search" style="font-size:0.9rem;"></i></span>
                 </div>
               </div>
               
-              <div class=" col-md-4 p-0">
-                <select @change="sendRegionSelectToAttractionList" class="align-top w-25 ml-1 px-1 d-inline-block form-control form-control" style="font-size:0.9rem;">
+              <div class="col-3 p-0">
+                <select @change="sendRegionSelectToAttractionList" class="align-top px-1 d-inline-block form-control form-control" style="font-size:0.9rem;">
                  <option>地區</option>
                  <option value="新北市">新北市</option>
                  <option value="新竹縣">新竹縣</option>
@@ -140,8 +140,11 @@
                  <option value="花蓮縣">花蓮縣</option>
                  <option value="臺東縣">臺東縣</option>
                 </select>
-                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border ml-3 float-right align-top px-1 btn d-inline-block btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
               </div>
+            </div>
+            <div class="border col-md-2 px-0">
+                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border align-top px-1 btn dblock w-100 btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+            </div>
           </div>
         </div>
                           `,
