@@ -27,19 +27,19 @@ window.onload = function (){
                   }
           },
           });
-          new Vue({
+          groupCard =  new Vue({
               el: '#groupForKeep', 
               data: {      
                   keepGroups,
               },
           });
-          new Vue({
+        scheCard =   new Vue({
               el: '#scheForKeep', 
               data: {
                   keepSches,
               },
           });
-          new Vue({
+          blogCard =      new Vue({
               el: '#blogForKeep', 
               data: {
                   keepBlogs,
@@ -361,3 +361,37 @@ function onlooooad(){
 }
 //window.onload
 window.addEventListener("load",onlooooad,false);
+/*排序的click*/
+function sortKeep(obj){
+    //  obj.className= "filterBtnClick";
+    keepSort = obj.dataset.keepsort;
+    keepSortObj = {
+        keepSort: keepSort
+    };
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "./MemberSort.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //把資料往後傳
+    xhr.send("keepSortObj=" + JSON.stringify(keepSortObj)); 
+    console.log(JSON.stringify(keepSortObj));  
+    xhr.onload = function(){
+        if(xhr.status==200){
+            var QueryScheCards = JSON.parse(xhr.responseText);
+            console.log(QueryScheCards)
+            if(keepSort =="scheNew" || keepSort =="schePop"){
+                scheCard.$data.keepSches = QueryScheCards; 
+            }else if(keepSort =="blogNew" || keepSort =="blogPop"){
+                blogCard.$data.keepBlogs = QueryScheCards; 
+            }else{
+                groupCard.$data.keepGroups = QueryScheCards;
+
+            }
+
+            // sche.$data.QueryScheCards = QueryScheCards;
+            // sche.$data.keepSche1 = keepSche1;
+
+        }else{
+            alert(xhr.status);
+        }
+    }
+}

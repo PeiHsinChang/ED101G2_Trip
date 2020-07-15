@@ -11,8 +11,6 @@ try{
     $hotSche = $pdo->query($sql);
     $hotSche->execute();
     $hotScheRows=$hotSche->fetchAll(PDO::FETCH_ASSOC);
-    // r_print($hotScheRows);
-    // die;
     echo json_encode($hotScheRows,JSON_UNESCAPED_UNICODE);
 }catch (PDOException $e){
     echo "錯誤行號：",$e->getLine(),"<br>";

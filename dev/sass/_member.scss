@@ -46,10 +46,14 @@ border-radius: 5px 0 0 0;
   border: 0;
   background-color: $colorSecondary2;
 }
+.filterBtnClick{
+  color: $colorMain1;
+  background-color: white;
+}
 .filterBtn:focus{
   color: $colorMain1;
+  background-color: white;
 }
-
 
 .memRightContainer{
   background-color: $colorSecondary2;
