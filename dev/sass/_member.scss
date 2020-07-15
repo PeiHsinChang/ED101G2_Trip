@@ -200,6 +200,12 @@ border-radius: 5px 0 0 0;
             height: 100%;
           }
         }
+        .chooseFile{
+          width: 100px;
+          height: 30px;
+          border: 1px solid black;
+          // display: inline-block !important;
+        }
         .memLeftNameAdjust{
           text-align: center;
           text-align: center;
@@ -221,13 +227,18 @@ border-radius: 5px 0 0 0;
             letter-spacing: 1.5px;
             margin-top: 10px;
             input{
+              letter-spacing: 1.5px;
               padding: 0;
-              outline: double;
+              // outline: double;
+              // border-bottom: 1px solid black;
               width: 130px;
               padding-left: 5px;
               @media screen and (max-width: $breakpoint-lg){
                 width: 170px;
               }
+            }
+            input.qqq{
+              border-bottom: 1px solid black;
             }
           }         
         }
