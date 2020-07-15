@@ -165,9 +165,9 @@
             <!-- pc version start  -->
             <div class="groupViewPCcardBlock d-md-flex d-none">
                 <!-- 揪團卡片 -->
+
                 <div id="groupCardsAll">
-                    <div v-for="groupCard in groupCardsAlls" class="card
-                        cardOriginalTem cardGroup">
+                    <div v-for="groupCard in groupCardsAlls" class="card cardOriginalTem cardGroup">
                         <!-- <a  onclick="openpartinGroup();"> -->
                         <a href="./groupInside.html">
                             <img :src="groupCard.Group_Pic" class="card-img-top" alt="...">
@@ -188,17 +188,16 @@
 
                                     </div>
                                     <p>出團日期：{{groupCard.Group_StartDate}}</p>
-                                    <div>
-                                        <p>報名截止：{{groupCard.Group_Deadline}}</p>
-                                        <a>
-                                            <img src="./images/heart.png" alt="">
-                                        </a>
-                                    </div>
+
+                                    <p>報名截止：{{groupCard.Group_Deadline}}</p>
+
+
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
 

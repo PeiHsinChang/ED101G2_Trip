@@ -169,6 +169,17 @@ body {
             .groupViewPCcardBlock {
                 width: 100px;
                 border: red;
+                width: 100%;
+                display: flex;
+                #groupCardsAll {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    .cardGroup {
+                        margin: 10px;
+                    }
+                }
             }
             .groupPhoneCardCarousel {
                 // border: 1px solid red;
