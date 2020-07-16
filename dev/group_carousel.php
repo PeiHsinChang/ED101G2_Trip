@@ -17,15 +17,15 @@ try{
     // $sql="select * from GroupTable limit 5";
     //畫面需要的sql
 
-    $carousel = $pdo->query($sql);
-    $carousel->execute();
+    $groupCards = $pdo->query($sql);
+    $groupCards->execute();
     // $carouselGroupInfo=array();
 
-    $carouselGroupRows=$carousel->fetchAll(PDO::FETCH_ASSOC);
+    $groupCarousel=$groupCards->fetchAll(PDO::FETCH_ASSOC);
     // print_r($carouselGroupRows);
     // die;
    
-    echo json_encode($carouselGroupRows,JSON_UNESCAPED_UNICODE);
+    echo json_encode($groupCarousel,JSON_UNESCAPED_UNICODE);
     
 }catch(PDOException $e){
     echo "錯誤行號：",$e->getLine(),"<br>";
