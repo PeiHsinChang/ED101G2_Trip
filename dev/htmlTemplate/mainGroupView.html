@@ -208,7 +208,7 @@
 <div class="groupPhoneCardCarousel d-xl-none d-lg-none d-md-none">
     <div id="carouselPhoneGroupControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner innerCardScheGroupPhoneSlide">
-            <div class="carousel-item active">
+            <div id="groupCardCarousel_1" class="carousel-item active" name="groupCardCarousel_1">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a>
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
@@ -216,33 +216,29 @@
                                         cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
-                                <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                                </p>
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_1.Group_title}}</p>
                             </div>
                         </div>
                         <div>
                             <div class="cardGroupContent">
-                                <p>團主：愛旅行</p>
+                                <p>團主：{{groupCardCarousel_1.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_1.hostlike}}
                                     </p>
 
                                 </div>
-                                <p>出團日期：2020/06/30</p>
+                                <p>出團日期：{{groupCardCarousel_1.Group_StartDate}}</p>
 
                                 <div>
-                                    <p>報名截止：2020/06/30</p>
-                                    <a>
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_1.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div id="groupCardCarousel_2" class="carousel-item" name="groupCardCarousel_2">
                 <div class="card cardOriginalTem cardGroup d-block" style="width:
                                 18rem;">
                     <a>
@@ -251,33 +247,29 @@
                                         cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
-                                <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                                </p>
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_2.Group_title}}</p>
                             </div>
                         </div>
                         <div>
                             <div class="cardGroupContent">
-                                <p>團主：愛旅行</p>
+                                <p>團主：{{groupCardCarousel_2.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_2.hostlike}}
                                     </p>
 
                                 </div>
-                                <p>出團日期：2020/06/30</p>
+                                <p>出團日期：{{groupCardCarousel_2.Group_StartDate}</p>
 
                                 <div>
-                                    <p>報名截止：2020/06/30</p>
-                                    <a href="">
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_2.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div id="groupCardCarousel_3" class="carousel-item" name="groupCardCarousel_3">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a href="">
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
@@ -285,33 +277,29 @@
                                         cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
-                                <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                                </p>
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_3.Group_title}}</p>
                             </div>
                         </div>
                         <div>
                             <div class="cardGroupContent">
-                                <p>團主：愛旅行</p>
+                                <p>團主：{{groupCardCarousel_3.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_3.hostlike}}
                                     </p>
 
                                 </div>
-                                <p>出團日期：2020/06/30</p>
+                                <p>出團日期：{{groupCardCarousel_3.Group_StartDate}}</p>
 
                                 <div>
-                                    <p>報名截止：2020/06/30</p>
-                                    <a href="">
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_3.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div id="groupCardCarousel_4" class="carousel-item" name="groupCardCarousel_4">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a href="">
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
@@ -319,33 +307,29 @@
                                         cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
-                                <p class="card-text cardTextWebUse">日月潭5<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                                </p>
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_4.Group_title}}</p>
                             </div>
                         </div>
                         <div>
                             <div class="cardGroupContent">
-                                <p>團主：愛旅行</p>
+                                <p>團主：{{groupCardCarousel_4.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_4.hostlike}}
                                     </p>
 
                                 </div>
-                                <p>出團日期：2020/06/30</p>
+                                <p>出團日期：{{groupCardCarousel_4.Group_StartDate}}</p>
 
                                 <div>
-                                    <p>報名截止：2020/06/30</p>
-                                    <a href="">
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_4.Group_Deadline}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div id="groupCardCarousel_5" class="carousel-item" name="groupCardCarousel_5">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a href="">
                         <img src="./images/lake.jpg" class="card-img-top" alt="...">
@@ -353,26 +337,22 @@
                                         cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
-                                <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                                </p>
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_5.Group_title}}</p>
                             </div>
                         </div>
                         <div>
                             <div class="cardGroupContent">
-                                <p>團主：愛旅行</p>
+                                <p>團主：{{groupCardCarousel_5.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_5.hostlike}}
                                     </p>
 
                                 </div>
-                                <p>出團日期：2020/06/30</p>
+                                <p>出團日期：{{groupCardCarousel_5.Group_StartDate}}</p>
 
                                 <div>
-                                    <p>報名截止：2020/06/30</p>
-                                    <a href="">
-                                        <img src="./images/heart.png" alt="">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_5.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
