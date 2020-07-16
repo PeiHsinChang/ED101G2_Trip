@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    require_once("head.php");  
+
+<?php require_once("./phpTemplate/head.php");?> 
+
 
 <body>
-    require_once("nav.php");     
-    require_once("groupShow.php");  
-    require_once("footer.php");  
-    <div id="setupGroup" class="lightBoxWall" >
-        require_once("setupGroup.php");  
-    </div>
+    <?php require_once("./phpTemplate/nav.php");?> 
+    <?php require_once("./phpTemplate/groupShow.php");?> 
+    <?php require_once("./phpTemplate/footer.php");?> 
 
+    <div id="setupGroup" class="lightBoxWall" style="overflow-y: scroll;">
+        <?php require_once("./phpTemplate/setupGroup.php");?> 
+    </div>
 </body>
 <script>
     let setupGroup = document.getElementById("setupGroup");
