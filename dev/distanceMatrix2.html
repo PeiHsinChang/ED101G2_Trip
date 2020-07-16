@@ -97,6 +97,10 @@
       #addToSchedule:hover {
         font-weight: bold;
       }
+      .flip-list {
+        transition: all 0.5s ease;
+        cursor: grab;
+      }
     </style>
   </head>
 
@@ -109,6 +113,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
 
     <script>
       Vue.component("attraction-input", {
@@ -188,11 +194,28 @@
                           <div class="row" >
                             <div class="border px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
                               <div class="d-flex mt-3">
-                              <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
-                                <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i><i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
-                                </div>
-                              <attraction-direction @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" @sendAttracLeaveTimeToAttractionList="sendAttracLeaveTimeToBackend" class="border bg-light" v-for="selectedAttraction in selectedAttractions" v-bind:label2="selectedAttraction">
-                              </attraction-direction>
+                                <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
+                                <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i>
+                                <i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
+                              </div>
+
+
+                              <draggable v-model="selectedAttractions">
+                                <transition-group>
+
+                                  <attraction-direction 
+                                  @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" @sendAttracLeaveTimeToAttractionList="sendAttracLeaveTimeToBackend" 
+                                  class="border bg-light flip-list" 
+                                  :key="selectedAttraction.Id"
+                                  v-for="selectedAttraction in selectedAttractions" 
+                                  v-bind:label2="selectedAttraction">
+                                  </attraction-direction>
+
+                                </transition-group>
+                              </draggable>
+
+
+
                             </div>
                             <div class="border col-lg-8 px-0" style="height:400px">
                               <div id="map" class="h-100"></div>
