@@ -7,11 +7,11 @@ let member = {};
 //Hamburger
 $(document).ready(function(){
   let $hamburger = $(".hamburger");
-  $hamburger.on("click", function(e) {
+  $hamburger.on("click", function(e){
     $hamburger.toggleClass("is-active");
     $("#panel").slideToggle("slow");
   });
-  function openTab(index,tabName) {
+  function openTab(index,tabName){
     var i;
     if(index==1){
       x = document.getElementsByClassName("memRightContainer");
@@ -91,6 +91,7 @@ function sendForm(){
               $id('memberPic').innerHTML = `<img src="${member.Mem_Photo}">`;
               $id('aLogin').innerText = '登出';
               $id('aRegist').style.display = 'none';
+              $id('qwer').style.display = 'none';
               $id('memberPic').style.display = 'inline-block';
               document.querySelector('.modal-backdrop').style.display = 'none';
               document.querySelector('.navSmallRight').innerText = '登出';
@@ -134,10 +135,12 @@ function getMemberInfo(){
               $id("memberPic").innerHTML = `<img src="${member.Mem_Photo}">`;
               $id("aLogin").innerText = "登出";
               $id('aRegist').style.display = 'none';
+              $id('qwer').style.display = 'none';
               $id('memberPic').style.display = 'inline-block';
               document.querySelector('.navSmallRight').innerText = '登出';
           }else{
               $id('aRegist').style.display = 'inline-block';
+              $id('qwer').style.display = 'inline-block';
           }
       }
   }
@@ -321,6 +324,13 @@ function init(){
       $("#birthCheck").html("");
     }
   });
+
+  $(".navSmallRight1").click(function(){
+    $(".hamburger").click();
+  });  
+  $(".navSmallRight").click(function(){
+    $(".hamburger").click();
+  });  
 }; 
 //window.onload
 window.addEventListener("load",init,false);
