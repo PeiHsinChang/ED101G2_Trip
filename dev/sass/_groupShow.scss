@@ -11,13 +11,15 @@ a {
 }
 
 .containerGroup {
-    margin: 100px 0 100px 0;
+    margin: 100px 0 0px 0;
     .coverPhoto {
         margin: 0 auto;
-        // border: 1px solid green;
-        width: 80%;
-        height: 50vh;
-        margin-bottom: 100px;
+        height: 40vh;
+        // margin-bottom: 50px;
+        overflow: hidden;
+        img{
+            width:100%;
+        }
     }
     a {
         position: fixed;

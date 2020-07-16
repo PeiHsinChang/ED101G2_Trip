@@ -1,5 +1,33 @@
-<div style="width:1000px;height:500px;"></div>
+<?php
+	require_once("connectMemberTable.php");
+try {
+    $sql_g = 
+        "select * 
+        from grouptable g,membertable m
+        where g.mem_no = m.mem_no
+        and g.Group_title =:groupTitle;
+        ";
+    
+	$groupShow = $pdo->prepare($sql_g);
+	$groupShow->bindValue(":groupTitle", $_GET["groupTitle"]);
+    $groupShow->execute();
+    $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+}
+
+?>
+
+<div class="containerGroup">
+    <div class="coverPhoto">
+    <img src="<?=$groupShowInfo["Group_Pic"];?>" >
+    </div>
+   
+</div>
 <div class="container">
+<h5><?php print_r( $groupShowInfo);?> </h5>
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
         <a  onclick="openNewGroup();">
             <img src="./images/openNewGroup.png"  class="d-md-block" />

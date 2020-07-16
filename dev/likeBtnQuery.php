@@ -70,7 +70,7 @@
         $sql =
         "insert into Keep_Group (Mem_NO, Group_NO)
         select m.Mem_NO, g.Group_NO 
-        from membertable m inner join Grouptable s 
+        from membertable m inner join Grouptable g 
         on  g.Group_title=:TitleName
         where m.Mem_NO=:memId;";
 
