@@ -174,16 +174,435 @@
         }
       }
       /*# sourceMappingURL=style.css.map */
+
+      /* nav */
+      .btnSmall {
+        width: 70px;
+        height: 25px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnSmall:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      .btnMid {
+        width: 120px;
+        height: 40px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnMid:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      .btnLarge {
+        width: 190px;
+        height: 66px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnLarge:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      .mainBody {
+        width: 100%;
+        max-width: 1920px;
+        background-color: #ededed;
+        position: relative;
+      }
+
+      .mainBody .navBg {
+        height: 80px;
+        background-image: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(white),
+          to(rgba(255, 255, 255, 0.1))
+        );
+        background-image: linear-gradient(
+          180deg,
+          white,
+          rgba(255, 255, 255, 0.1)
+        );
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .mainBody .navBg .nav {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
+
+      .mainBody .navBg .nav .navLeft {
+        padding-left: 10px;
+      }
+
+      .mainBody .navBg .nav .navLeft a {
+        padding: 5px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        color: #393939;
+      }
+
+      .mainBody .navBg .nav .navLeft a img {
+        height: 70px;
+      }
+
+      .mainBody .navBg .nav .navLeft a div.daijoubu {
+        margin-left: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        line-height: 25px;
+      }
+
+      .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuMd {
+        font-size: 24px;
+      }
+
+      .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuEn {
+        font-size: 14px;
+      }
+
+      .mainBody .navBg .nav .navCenter {
+        width: 414px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .mainBody .navBg .nav .navCenter a {
+        width: 80px;
+        height: 50px;
+        text-align: center;
+        padding: 3px;
+        padding-top: 10px;
+        line-height: 30px;
+        color: #393939;
+      }
+
+      .mainBody .navBg .nav .navCenter a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        margin: 0 auto;
+        background: #bc2654;
+        -webkit-transition: width 0.3s;
+        transition: width 0.3s;
+      }
+
+      .mainBody .navBg .nav .navCenter a:hover::after {
+        width: 100%;
+      }
+
+      .mainBody .navBg .nav .navRight {
+        width: 145px;
+        padding: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+      }
+
+      .mainBody .navBg .nav .navRight a {
+        padding: 0;
+        line-height: 70px;
+        color: #393939;
+      }
+
+      .mainBody .navBg .nav .navRight a img {
+        width: 20px;
+        margin-right: 5px;
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+
+      .mainBody .navBg .nav .navRight #memberPic {
+        display: none;
+        border: 1px solid red;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        -webkit-transform: translateX(-18px) translateY(10px);
+        transform: translateX(-18px) translateY(10px);
+      }
+
+      .mainBody .navBg .nav .navRight #memberPic img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .mainBody .navBg .navSmall {
+        display: none;
+      }
+
+      @media screen and (max-width: 950px) {
+        .mainBody .navBg {
+          height: 70px;
+        }
+        .mainBody .navBg .nav {
+          display: none;
+        }
+        .mainBody .navBg .navSmall {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          position: relative;
+        }
+        .mainBody .navBg .navSmall .navSmallCenter {
+          padding: 5px;
+        }
+        .mainBody .navBg .navSmall .navSmallCenter img {
+          height: 60px;
+        }
+        .mainBody .navBg .navSmall .navSmallRight img {
+          height: 25px;
+          padding-right: 25px;
+        }
+      }
+
+      #panel {
+        padding: 30px;
+        display: none;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        z-index: 30;
+      }
+
+      #panel a {
+        font-size: 1.25rem;
+        color: #393939;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+      }
+
+      #panel a:hover {
+        color: #bc2654;
+      }
+
+      .hamburger {
+        padding: 15px 25px;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-transition-property: opacity, -webkit-filter;
+        transition-property: opacity, -webkit-filter;
+        transition-property: opacity, filter;
+        transition-property: opacity, filter, -webkit-filter;
+        -webkit-transition-duration: 0.15s;
+        transition-duration: 0.15s;
+        -webkit-transition-timing-function: linear;
+        transition-timing-function: linear;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        background-color: transparent;
+        border: 0;
+        margin: 0;
+        overflow: visible;
+      }
+
+      .hamburger:hover {
+        opacity: 0.7;
+      }
+
+      .hamburger.is-active:hover {
+        opacity: 0.7;
+      }
+
+      .hamburger.is-active .hamburger-inner,
+      .hamburger.is-active .hamburger-inner::before,
+      .hamburger.is-active .hamburger-inner::after {
+        background-color: #000;
+      }
+
+      .hamburger-box {
+        width: 30px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+      }
+
+      .hamburger-inner {
+        display: block;
+        top: 50%;
+        margin-top: -2px;
+      }
+
+      .hamburger-inner,
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+        width: 30px;
+        height: 2px;
+        background-color: #000;
+        border-radius: 4px;
+        position: absolute;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        transition-property: transform;
+        transition-property: transform, -webkit-transform;
+        -webkit-transition-duration: 0.15s;
+        transition-duration: 0.15s;
+        -webkit-transition-timing-function: ease;
+        transition-timing-function: ease;
+      }
+
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+        content: "";
+        display: block;
+      }
+
+      .hamburger-inner::before {
+        top: -10px;
+      }
+
+      .hamburger-inner::after {
+        bottom: -10px;
+      }
+
+      .hamburger--collapse .hamburger-inner {
+        top: auto;
+        bottom: 0;
+        -webkit-transition-duration: 0.13s;
+        transition-duration: 0.13s;
+        -webkit-transition-delay: 0.13s;
+        transition-delay: 0.13s;
+        -webkit-transition-timing-function: cubic-bezier(
+          0.55,
+          0.055,
+          0.675,
+          0.19
+        );
+        transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      .hamburger--collapse .hamburger-inner::after {
+        top: -20px;
+        -webkit-transition: top 0.2s 0.2s
+            cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          opacity 0.1s linear;
+        transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          opacity 0.1s linear;
+      }
+
+      .hamburger--collapse .hamburger-inner::before {
+        -webkit-transition: top 0.12s 0.2s
+            cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+          -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      .hamburger--collapse.is-active .hamburger-inner {
+        -webkit-transform: translate3d(0, -10px, 0) rotate(-45deg);
+        transform: translate3d(0, -10px, 0) rotate(-45deg);
+        -webkit-transition-delay: 0.22s;
+        transition-delay: 0.22s;
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .hamburger--collapse.is-active .hamburger-inner::after {
+        top: 0;
+        opacity: 0;
+        -webkit-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          opacity 0.1s 0.22s linear;
+        transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          opacity 0.1s 0.22s linear;
+      }
+
+      .hamburger--collapse.is-active .hamburger-inner::before {
+        top: 0;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        -webkit-transition: top 0.1s 0.16s
+            cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1),
+          -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      /*# sourceMappingURL=style.css.map */
     </style>
   </head>
 
   <body>
     <div id="app" class="container px-1" style="margin-top: 80px;">
-      <!-- @@include('./htmlTemplate/nav.html') -->
+      <attrac-nav></attrac-nav>
       <attraction-list></attraction-list>
       <attrac-footer></attrac-footer>
     </div>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
@@ -193,18 +612,18 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-        <div class="container py-3">
+        <div class="container py-5">
           <div class="row">
             <div class="d-flex col-md-10 px-0">
-              <div class="col-9 input-group p-0">
+              <div class=" input-group p-0">
                 <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
                 <div class="input-group-append">
                   <span class="input-group-text rounded-right px-2" id="basic-addon2"><i class="fas fa-search" style="font-size:0.9rem;"></i></span>
                 </div>
               </div>
               
-              <div class="col-3 p-0">
-                <select @change="sendRegionSelectToAttractionList" class="align-top px-1 d-inline-block form-control form-control" style="font-size:0.9rem;">
+              <div class=" p-0">
+                <select @change="sendRegionSelectToAttractionList" class="align-top px-1 d-inline-block form-control form-control h-100" style="font-size:0.9rem;width:6rem;">
                  <option>地區</option>
                  <option value="新北市">新北市</option>
                  <option value="新竹縣">新竹縣</option>
@@ -223,7 +642,7 @@
               </div>
             </div>
             <div class="col-md-2 px-0">
-                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border align-top px-1 btn dblock w-100 btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border align-top px-1 h-100 btn dblock w-100 btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
             </div>
           </div>
         </div>
@@ -264,9 +683,9 @@
                           @def="addSelectedAttractionsToDirection" @def2="addSelectedAttractionsToModal" @def3="saveKeepAttrap" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                         </cards>
 
-                        <div class="container my-4" >
+                        <div class="container my-5" >
                           <div class="row" >
-                            <div class="border px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
+                            <div class="border-top border-left border-bottom px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
                               <div class="d-flex mt-3">
                                 <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
                                 <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i>
@@ -291,7 +710,7 @@
 
 
                             </div>
-                            <div class="border col-lg-8 px-0" style="height:400px">
+                            <div class="border col-lg-8 px-0" style="height:500px">
                               <div id="map" class="h-100"></div>
                             </div>
                           </div>
@@ -305,8 +724,8 @@
             MemNO: "",
             map: null,
             mapCenter: {
-              lat: 25.0374865,
-              lng: 121.5647688,
+              lat: 23.7074865,
+              lng: 121.0007688,
             },
             markers: [],
             toBeSavedSchedule: {
@@ -834,7 +1253,7 @@
           this.initialAttraction();
           this.map = new google.maps.Map(document.getElementById("map"), {
             center: this.mapCenter,
-            zoom: 8,
+            zoom: 7.6,
           });
         },
       });
@@ -990,6 +1409,7 @@
           },
         },
       });
+
       Vue.component("attrac-footer", {
         template: `
 <footer>
@@ -1039,6 +1459,122 @@
 </footer>
         `,
       });
+
+      Vue.component("attrac-nav", {
+        template: `
+        <div class="mainBody">
+    <div class="navBg">   
+      <nav class="nav">
+        <div class="navLeft">
+          <a class="nav-link" href="index.html">
+            <img src="./images/logo.png" alt="">
+            <div class="daijoubu">
+              <div class="daijoubuMd">自助大丈夫</div>
+              <div class="daijoubuEn">Easy Planning Trip</div>
+            </div>
+          </a>
+        </div>
+        <div class="navCenter">
+          <a class="nav-link active" href="plan.html">排行程</a>
+          <a class="nav-link" href="groupView.html">揪團</a>
+          <a class="nav-link" href="blogView.html">遊記</a>
+          <a class="nav-link" href="member.html">會員專區</a>
+        </div>
+        <div class="navRight">
+          <a id="aLogin" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
+          <div id="memberPic"></div>
+          <a id="aRegist" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
+        </div>
+      </nav>
+      <div class="navSmall">
+        <div class="navSmallLeft">
+          <button class="hamburger hamburger--collapse " type="button">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+          </button>
+          <div id="panel">		
+            <a href="plan.html">排行程</a> 
+            <a href="groupView.html">揪團</a>
+            <a href="blogView.html">遊記</a>
+            <a href="member.html">會員專區</a>
+          </div>
+        </div>
+        <a class="nav-link, navSmallCenter" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt=""></a>
+      </div>
+      <div class="container">
+        <div class="modal fade" id="loginForm" role="dialog">
+          <div class="modal-dialog">
+            <!-- 登入燈箱 -->
+            <div class="modal-content">
+                <form action="#" method="get" class="loginform">
+                  <div class="loginall">
+                  <div class="loginnamea">
+                      <div class="logintitle">會員登入</div>
+                  </div>    
+                      <div class="logincont">           
+                          <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" id="memId" style="margin: 1px;"></div>
+                          <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
+                          <div class="logintwobtn">
+                          <button type="button" value="Submit"  id="loginbutton" class="loginleftbutton">送出</button>
+                          <button type="reset" value="Reset" class="loginrightbutton" id="loginrightbutton" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+      <div class="modal fade" id="registerForm" role="dialog">
+        <div class="modal-dialog">
+          <!-- 註冊燈箱 -->
+          <div class="modal-content">
+              <form action="regist.php" method="post" class="enrollfrom" id="enrollfrom" name="enrollfrom" onclick="return false">
+                <div class="enrollall">
+                <div class="enrollnamea">
+                    <div class="enrolltitle">會員註冊</div>
+                </div>    
+                    <div class="enrollcont">           
+                        <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" id="r_memName" name="r_memName" size="10" style="margin: 1px;" autocomplete="off"></div>                     
+                        <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" id="r_memId" name="r_memId" size="10" style="margin: 1px;" autocomplete="off"></div>  
+                        <div id="accountCheck" style="font-size:12px;"></div>              
+                        <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="passwordCheck" style="font-size:12px;"></div>
+                        <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="passwordCheck2" style="font-size:12px;"></div>
+                        <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
+                            <label for="male" class="malelab">
+                                <input type="radio" id="male" name="r_memSex" value="1">男
+                            </label>
+                            <label for="female" class="femalelab">    
+                              <input type="radio" id="female" name="r_memSex" value="2">女
+                            </label>
+                            <label for="other" class="otherlab">
+                                <input type="radio" id="other" name="r_memSex" value="3">其他            
+                            </label>
+                        </div>
+                        <div class="enrollmail">聯絡信箱：<input type="email" class="emailbox" id="r_memEmail" name="r_memEmail" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="emailCheck" style="font-size:12px;"></div>
+                        <div class="enrollmail">聯絡電話：<input type="tel" class="phonebox" id="r_memTel" name="r_memTel" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="phoneCheck" style="font-size:12px;"></div>
+                        <div class="enrollbirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" class="birthbox" id="r_memBirth" placeholder=" YYYY-MM-DD" name="r_memBirth" size="10" autocomplete="off"></div>
+                        <div id="birthCheck" style="font-size:12px;"></div>  
+                        <div class="enrolltwobtn">
+                            <button type="submit" value="Submit" class="enrollleftbutton">送出</button>
+                            <button type="reset" value="Reset" class="enrollrightbutton loginrightbutton" id="registrightbutton" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>   
+  </div> 
+        `,
+      });
+
       //Reference///////////////////////////////////////////////////////////////////////////////////////
       // Vue.component("attraction-schedule", {
       //   template: `
