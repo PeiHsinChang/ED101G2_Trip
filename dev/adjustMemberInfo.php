@@ -7,12 +7,12 @@
         $BirContent = $_POST["memLeftAdjustBirContent"];
         $EmaContent = $_POST["memLeftAdjustEmaContent"];
         $TelContent = $_POST["memLeftAdjustTelContent"];
-        $PicContent = 'images/'.$_FILES["chooseFile"]["name"];
+        $PicContent = 'images/memberphoto/'.$_FILES["chooseFile"]["name"];
 
         if(isset($_FILES["chooseFile"])){
         switch($_FILES["chooseFile"]["error"]){
             case 0:
-                $dir = "images";
+                $dir = "images/memberphoto";
                 if(file_exists($dir) === false){
                     mkdir($dir);
                 }
