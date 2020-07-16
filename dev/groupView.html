@@ -2,11 +2,9 @@
 <html lang="en">
 @@include('./htmlTemplate/head.html')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
 </script>
 
 <style>
@@ -14,50 +12,53 @@
         width: 100% !important;
     }
     /* scrollbar hidden */
-  html {
-    overflow: -moz-hidden-unscrollable;
-    height: 100%;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
-  }
-
-  body {
-    -ms-overflow-style: none;
-    height: 100%;
-	width: calc(100vw + 18px);
-	overflow: auto;
-  }
+    
+    html {
+        overflow: -moz-hidden-unscrollable;
+        height: 100%;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    body {
+        -ms-overflow-style: none;
+        height: 100%;
+        width: calc(100vw + 18px);
+        overflow: auto;
+    }
 </style>
 
 <body>
-    @@include('./htmlTemplate/nav.html')
-    @@include('./htmlTemplate/slider.html')
-    @@include('./htmlTemplate/mainGroupView.html')
-    @@include('./htmlTemplate/footer.html')
-    <div id="setupGroup" class="lightBoxWall" style="overflow-y: scroll; ">
+    @@include('./htmlTemplate/nav.html') @@include('./htmlTemplate/slider.html') @@include('./htmlTemplate/mainGroupView.html') @@include('./htmlTemplate/footer.html')
+    <div id="setupGroup" class="lightBoxWall" style="overflow-y: scroll;">
         @@include('./htmlTemplate/setupGroup.html')
     </div>
     <!-- <div id="partinGroup" class="lightBoxWall" >
         @@include('./htmlTemplate/partinGroups.html')
     </div> -->
-
-    
 </body>
 <script src="./js/carousel.js"></script>
 <!-- <script src="./js/hotsche_groupView.js"></script> -->
+<!-- <script src="./js/groupCard.js"></script> -->
 <script>
     let setupGroup = document.getElementById("setupGroup");
-    function openNewGroup(){
+
+    function openNewGroup() {
         setupGroup.style.display = "block";
-        $("body").css({'overflow':'hidden'});
-        $('body').css('position','fixed');
+        $("body").css({
+            'overflow': 'hidden'
+        });
+        $('body').css('position', 'fixed');
     };
-    function closeNewGroup(){
+
+    function closeNewGroup() {
         setupGroup.style.display = "none";
-        $("body").css({'overflow-y':'visible'});
-        $('body').css('position','initial');
+        $("body").css({
+            'overflow-y': 'visible'
+        });
+        $('body').css('position', 'initial');
     };
     // let partinGroup = document.getElementById("partinGroup");
     // function openpartinGroup(){
