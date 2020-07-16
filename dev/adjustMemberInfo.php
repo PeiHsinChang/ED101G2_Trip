@@ -7,12 +7,41 @@
         $BirContent = $_POST["memLeftAdjustBirContent"];
         $EmaContent = $_POST["memLeftAdjustEmaContent"];
         $TelContent = $_POST["memLeftAdjustTelContent"];
+        $PicContent = 'images/'.$_FILES["chooseFile"]["name"];
+
+        if(isset($_FILES["chooseFile"])){
+        switch($_FILES["chooseFile"]["error"]){
+            case 0:
+                $dir = "images";
+                if(file_exists($dir) === false){
+                    mkdir($dir);
+                }
+                $from = $_FILES["chooseFile"]["tmp_name"]; //暫存區的路徑
+                $to = "$dir/{$_FILES["chooseFile"]["name"]}"; //用原始檔名稱當做資料儲存的來源會有名稱重複的問題，當相同檔案名稱被重複上傳，後者會覆蓋前者
+                copy($from, $to);	
+                break;
+            case 1:
+                echo "上傳失敗, 上傳的檔案太大, 不得超過" , ini_get("upload_max_filesize"), "<br>";
+                break;
+            case 2:
+                echo "上傳失敗, 上傳的檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "<br>";
+                break;
+            case 3:
+                echo "上傳失敗, 上傳的檔案不完整<br>";
+                break;
+            case 4:
+                echo "檔案未選<br>";
+                break;
+            default:
+                echo "system upload error : ", $_FILES["upFile"]["error"], "<br>";
+        }
+        }else{
+            echo "<script>console.log('不存在');</script>";
+        }
 
         $sql = "update MemberTable set Mem_Psw='$PswContent',Mem_Birth='$BirContent',Mem_Email='$EmaContent',
-        Mem_Tel='$TelContent' where Mem_Id='$AccContent'";
+        Mem_Tel='$TelContent', Mem_Photo='$PicContent' where Mem_Id='$AccContent'";
         $pdo->exec($sql);
-        // echo "<script>alert('儲存成功');location.href='member.html';</script>";
-        // echo $AccContent.$PswContent.$BirContent.$EmaContent.$TelContent;
 
         unset($_SESSION["Mem_NO"]);
         unset($_SESSION["Mem_Name"]);

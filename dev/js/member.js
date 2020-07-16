@@ -357,6 +357,22 @@ function MemberInfoToMemLeft(){
     xhr.send(null);
 }
 
+//選擇大頭照後顯示預覽在畫面上
+window.addEventListener("load", function(){
+	document.getElementById("chooseFileLabel").onchange = function(e){
+        console.log('123');
+        $id("memLeftPicAdjust").innerHTML = `<img id="imgPreview">`;
+		let file = e.target.files[0];
+		let reader = new FileReader();
+		reader.onload = function(){       //讀取完畢後執行function
+			document.getElementById("imgPreview").src = reader.result;
+		}
+		reader.readAsDataURL(file);
+	}
+})	
+
+
+
 function onlooooad(){
     document.getElementById('adjustProfile').onclick = adjust;
     document.getElementById('memLeftAdjustCancel').onclick = cancel;
