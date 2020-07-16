@@ -35,7 +35,7 @@ gulp.task('movejs', function () {
 //php 搬家
 gulp.task('movephp', function () {
   gulp
-    .src(['./dev/*.php']) //來源
+    .src(['./dev/*.php','./dev/**/*.php']) //來源
     .pipe(gulp.dest('dest/')) //目的地
 })
 

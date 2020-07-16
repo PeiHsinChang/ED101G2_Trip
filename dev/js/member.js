@@ -39,11 +39,12 @@ window.onload = function (){
                   keepSches,
               },
           });
-          blogCard =      new Vue({
+          blogCard =  new Vue({
               el: '#blogForKeep', 
               data: {
                   keepBlogs,
-              },
+                },
+                
           });
           new Vue({
               el: '#schedForMem', 
