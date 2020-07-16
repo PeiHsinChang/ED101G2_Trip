@@ -1,14 +1,37 @@
-.mainBody{
+//字級
+$title: 1.875rem; //30px
+$subtitle: 1.5rem; //24px
+$content: 1.25rem; //20px
+$s_content: 1rem; //16px
+
+//文字
+@mixin text {
+  line-height: 20px;
+  letter-spacing: 1.5px;
+}
+
+$colorMain1: rgb(188, 38, 84);
+$colorMain2: rgb(237, 237, 237);
+$colorSecondary1: rgb(255, 237, 237);
+$colorSecondary2: rgb(255, 255, 255);
+$colorSecondary3: rgb(57, 57, 57);
+$borderLine: rgb(204, 204, 204);
+
+.mainBody {
   width: 100%;
   max-width: 1920px;
   background-color: $colorMain2;
   position: relative;
-  .navBg{
+  .navBg {
     height: 80px;
-    background-image: linear-gradient(180deg, $colorSecondary2 , rgba(255, 255, 255, 0.1));
+    background-image: linear-gradient(
+      180deg,
+      $colorSecondary2,
+      rgba(255, 255, 255, 0.1)
+    );
     z-index: 5;
     position: fixed;
-    top:0;
+    top: 0;
     width: 100%;
     .nav {
       margin: 0 auto;
@@ -16,7 +39,7 @@
       max-width: 1200px;
       display: flex;
       justify-content: space-between;
-      .navLeft{
+      .navLeft {
         padding-left: 10px;
         a {
           // border: 1px solid red;
@@ -26,23 +49,23 @@
           img {
             height: 70px;
           }
-          div.daijoubu{
+          div.daijoubu {
             // border: 1px solid red;
             margin-left: 10px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             line-height: 25px;
-            .daijoubuMd{
+            .daijoubuMd {
               font-size: 24px;
             }
-            .daijoubuEn{
+            .daijoubuEn {
               font-size: 14px;
             }
           }
         }
       }
-      .navCenter{
+      .navCenter {
         // border: 1px solid red;
         width: 414px;
         display: flex;
@@ -55,17 +78,17 @@
           text-align: center;
           padding: 3px;
           padding-top: 10px;
-          line-height: 30px;  
+          line-height: 30px;
           color: $colorSecondary3;
         }
         a::after {
-          content: '';
+          content: "";
           display: block;
           width: 0;
           height: 2px;
           margin: 0 auto;
           background: $colorMain1;
-          transition: width .3s;
+          transition: width 0.3s;
         }
         a:hover::after {
           width: 100%;
@@ -77,45 +100,43 @@
         display: flex;
         justify-content: space-between;
         a {
-          img{
+          img {
             width: 20px;
             margin-right: 5px;
             transform: translateY(-2px);
           }
-          padding: 0;          
+          padding: 0;
           line-height: 70px;
-          color: $colorSecondary3; 
+          color: $colorSecondary3;
         }
-      }   
-    }  
+      }
+    }
     .navSmall {
       display: none;
     }
-  } 
+  }
 }
 
-
-
-@media screen and (max-width: 950px){
-  .mainBody{
-    .navBg{
+@media screen and (max-width: 950px) {
+  .mainBody {
+    .navBg {
       height: 70px;
       .nav {
         display: none;
       }
-      .navSmall{
+      .navSmall {
         display: flex;
         align-items: center;
-        justify-content: space-between ;
-        position: relative;  
-        .navSmallCenter{
+        justify-content: space-between;
+        position: relative;
+        .navSmallCenter {
           padding: 5px;
-          img{
-              height: 60px;
+          img {
+            height: 60px;
           }
         }
-        .navSmallRight{
-          img{
+        .navSmallRight {
+          img {
             height: 25px;
             padding-right: 25px;
           }
@@ -124,25 +145,25 @@
     }
   }
 }
-#panel{
+#panel {
   // border: 1px solid red;
   padding: 30px;
   display: none;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.9);
   position: absolute;
-  top:70px;
+  top: 70px;
   width: 100%;
   z-index: 30;
 }
-#panel a{
+#panel a {
   // border: 1px solid red;
   font-size: $content;
-  color: $colorSecondary3; 
+  color: $colorSecondary3;
   text-decoration: none;
   padding: 10px;
   display: block;
-  &:hover{
+  &:hover {
     color: $colorMain1;
   }
 }
@@ -160,27 +181,34 @@
   background-color: transparent;
   border: 0;
   margin: 0;
-  overflow: visible; }
-  .hamburger:hover {
-    opacity: 0.7; }
-  .hamburger.is-active:hover {
-    opacity: 0.7; }
-  .hamburger.is-active .hamburger-inner,
-  .hamburger.is-active .hamburger-inner::before,
-  .hamburger.is-active .hamburger-inner::after {
-    background-color: #000; }
-.hamburger-box{
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #000;
+}
+.hamburger-box {
   // border: 1px solid red;
   width: 30px;
   height: 24px;
   display: inline-block;
-  position: relative; 
+  position: relative;
 }
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: -2px; }
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  margin-top: -2px;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
   width: 30px;
   height: 2px;
   background-color: #000;
@@ -188,36 +216,49 @@
   position: absolute;
   transition-property: transform;
   transition-duration: 0.15s;
-  transition-timing-function: ease; }
-.hamburger-inner::before, .hamburger-inner::after {
+  transition-timing-function: ease;
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
   content: "";
-  display: block; }
-  .hamburger-inner::before {
-    top: -10px; }
-  .hamburger-inner::after {
-    bottom: -10px; }
+  display: block;
+}
+.hamburger-inner::before {
+  top: -10px;
+}
+.hamburger-inner::after {
+  bottom: -10px;
+}
 .hamburger--collapse .hamburger-inner {
   top: auto;
   bottom: 0;
   transition-duration: 0.13s;
   transition-delay: 0.13s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
 .hamburger--collapse .hamburger-inner::after {
-    top: -20px;
-    transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear; }
+  top: -20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    opacity 0.1s linear;
+}
 .hamburger--collapse .hamburger-inner::before {
-    transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
 .hamburger--collapse.is-active .hamburger-inner {
   transform: translate3d(0, -10px, 0) rotate(-45deg);
   transition-delay: 0.22s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
 .hamburger--collapse.is-active .hamburger-inner::after {
-    top: 0;
-    opacity: 0;
-    transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear; }
+  top: 0;
+  opacity: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    opacity 0.1s 0.22s linear;
+}
 .hamburger--collapse.is-active .hamburger-inner::before {
-    top: 0;
-    transform: rotate(-90deg);
-    transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-
+  top: 0;
+  transform: rotate(-90deg);
+  transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}

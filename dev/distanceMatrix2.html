@@ -57,42 +57,8 @@
       i:hover {
         font-weight: bold;
       }
-      .container {
-        padding-top: 30px;
-        padding-bottom: 30px;
-      }
-
       #map {
         background: #ccc;
-      }
-
-      ul {
-        padding-top: 16px;
-      }
-
-      .media img {
-        max-width: 64px;
-      }
-
-      .media h5,
-      p {
-        font-size: 14px;
-      }
-
-      .mdeia p {
-        margin-bottom: 6px;
-      }
-
-      .media h6 {
-        font-size: 12px;
-        color: #ccc;
-      }
-
-      .fixed-bottom {
-        position: fixed;
-        left: 16px;
-        bottom: 0;
-        max-width: 320px;
       }
       #addToSchedule:hover {
         font-weight: bold;
@@ -101,13 +67,121 @@
         transition: all 0.5s ease;
         cursor: grab;
       }
+      /* footer */
+      .btnSmall {
+        width: 70px;
+        height: 25px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnSmall:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      .btnMid {
+        width: 120px;
+        height: 40px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnMid:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      .btnLarge {
+        width: 190px;
+        height: 66px;
+        font-size: 1rem;
+        color: white;
+        background-color: #bc2654;
+        border: 1px solid #bc2654;
+        border-radius: 5px;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .btnLarge:hover {
+        color: #bc2654;
+        background-color: white;
+      }
+
+      footer {
+        line-height: 20px;
+        letter-spacing: 1.5px;
+        padding: 30px;
+        background: #bc2654;
+        display: swap;
+      }
+
+      footer .copyright {
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+
+      div.ft {
+        text-align: center;
+      }
+
+      div.ft .row .ft_column {
+        white-space: nowrap;
+      }
+
+      div.ft .row .ft_column img {
+        -webkit-transform: translateY(35px) translateX(-25px);
+        transform: translateY(35px) translateX(-25px);
+        width: 60px;
+      }
+
+      div.ft .row .ft_column p {
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+
+      div.ft .row .ft_column ul {
+        list-style: none;
+      }
+
+      div.ft .row .ft_column ul li a {
+        color: white;
+        opacity: 0.76;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 576px) {
+        .ft {
+          display: none;
+        }
+      }
+      /*# sourceMappingURL=style.css.map */
     </style>
   </head>
 
   <body>
-    <div id="app" class="container px-1">
-      <!-- 景點查詢 -->
+    <div id="app" class="container px-1" style="margin-top: 80px;">
+      <!-- @@include('./htmlTemplate/nav.html') -->
       <attraction-list></attraction-list>
+      <attrac-footer></attrac-footer>
     </div>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
@@ -119,7 +193,7 @@
     <script>
       Vue.component("attraction-input", {
         template: `
-        <div class="container">
+        <div class="container py-3">
           <div class="row">
             <div class="d-flex col-md-10 px-0">
               <div class="col-9 input-group p-0">
@@ -190,7 +264,7 @@
                           @def="addSelectedAttractionsToDirection" @def2="addSelectedAttractionsToModal" @def3="saveKeepAttrap" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
                         </cards>
 
-                        <div class="container" >
+                        <div class="container my-4" >
                           <div class="row" >
                             <div class="border px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
                               <div class="d-flex mt-3">
@@ -915,6 +989,55 @@
             e.target.classList.add("fas");
           },
         },
+      });
+      Vue.component("attrac-footer", {
+        template: `
+<footer>
+          <div class="container ft">
+          <div class="row">
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>排行程</p>               
+                <ul>
+                    <li><a href="">建立行程</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">  
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>揪團</p>
+                <ul>
+                    <li><a href="">我要參團</a></li>
+                    <li><a href="">我要開團</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>遊記</p>
+                <ul>
+                    <li><a href="">熱門遊記</a></li>
+                    <li><a href="">撰寫遊記</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>會員中心</p>
+                <ul>
+                    <li><a href="">我的收藏</a></li>
+                    <li><a href="">我的行程</a></li>
+                    <li><a href="">我的揪團</a></li>
+                    <li><a href="">我的遊記</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        自助大丈夫版權所有 Copyright © 2020 
+    </div>
+</footer>
+        `,
       });
       //Reference///////////////////////////////////////////////////////////////////////////////////////
       // Vue.component("attraction-schedule", {

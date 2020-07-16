@@ -5,8 +5,8 @@
 // @import "components/bootstrapCustom";
 
 // @import "components/card";
-// @import "footer";
-// @import "nav";
+@import "./footer";
+// @import "./nav";
 // @import "member";
 // @import "plan";
 // @import "writeBlog";
@@ -27,53 +27,52 @@
 // @import "groupShow";
 // @import "homepageBody";
 // @import "search";
-@import "./components/bootstrapCustom.scss";
+// @import "./components/bootstrapCustom.scss";
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "./testImage.scss";
-@import "footer.scss";
-@import "nav";
-@import "member";
-@import "plan";
-@import "writeBlog";
-@import "./components/card.scss";
-@import "groupView";
-@import "blogView";
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-@import "slider";
-@import "partinGroups";
-@import "profileMem";
-@import "setupGroup";
-@import "setupTourn";
-@import "tourStatus";
-@import "blogShow";
-@import "enrollMem";
-@import "./loginMember.scss";
-@import "groupShow";
-@import "./homepageBody.scss";
-* {
-    font-family: 'Noto Sans TC';
-}
-html {
-    font-size: 16px;
-}
-@media (max-width: $breakpoint-md) {
-    html {
-        font-size: 14.4px;
-    }
-    
-    .btnSmall {
-        @include button(48px, 26px, $colorSecondary2, $colorMain1, $colorMain1);
-    }
-    
-    .btnMid {
-        @include button(76px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
-    }
-    
-    .btnLarge {
-        @include button(100px, 40px, $colorSecondary2, $colorMain1, $colorMain1);
-    }
-}
+// @import "./testImage.scss";
+// @import "footer.scss";
+// @import "nav";
+// @import "member";
+// @import "plan";
+// @import "writeBlog";
+// @import "./components/card.scss";
+// @import "groupView";
+// @import "blogView";
+// @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+// @import "slider";
+// @import "partinGroups";
+// @import "profileMem";
+// @import "setupGroup";
+// @import "setupTourn";
+// @import "tourStatus";
+// @import "blogShow";
+// @import "enrollMem";
+// @import "./loginMember.scss";
+// @import "groupShow";
+// @import "./homepageBody.scss";
+// * {
+//   font-family: "Noto Sans TC";
+// }
+// html {
+//   font-size: 16px;
+// }
+// @media (max-width: $breakpoint-md) {
+//   html {
+//     font-size: 14.4px;
+//   }
 
+//   .btnSmall {
+//     @include button(48px, 26px, $colorSecondary2, $colorMain1, $colorMain1);
+//   }
+
+//   .btnMid {
+//     @include button(76px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
+//   }
+
+//   .btnLarge {
+//     @include button(100px, 40px, $colorSecondary2, $colorMain1, $colorMain1);
+//   }
+// }
 
 // a.nav-link{
 //  text-decoration: none;
