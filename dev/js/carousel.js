@@ -1,13 +1,15 @@
-window.onload = function () {
+window.onload = function() {
     titleCarousel();
     hotSche();
+    groupCard();
+    group_carousel();
 }
 
 function titleCarousel() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
@@ -137,7 +139,7 @@ function hotSche() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             hotSchePackage = JSON.parse(xhr.responseText);
@@ -187,3 +189,88 @@ function hotSche() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(); //因為開太快所以要送個空值回去
 };
+
+
+function groupCard() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            groupviewCards = JSON.parse(xhr.responseText);
+            console.log(groupviewCards[0]);
+            groupCardsAlls = groupviewCards[0];
+            new Vue({
+                el: '#groupCardsAll',
+                data: {
+                    groupCardsAlls,
+                },
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupCard.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+};
+
+
+function group_carousel() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            //mobile carousel
+            groupCarousel = JSON.parse(xhr.responseText);
+            console.log(groupCarousel);
+            groupCardCarousel_1 = groupCarousel[0];
+            groupCardCarousel_2 = groupCarousel[1];
+            groupCardCarousel_3 = groupCarousel[2];
+            groupCardCarousel_4 = groupCarousel[3];
+            groupCardCarousel_5 = groupCarousel[4];
+
+            new Vue({
+                el: '#groupCardCarousel_1',
+                data: {
+                    groupCardCarousel_1,
+                },
+            });
+
+            new Vue({
+                el: '#groupCardCarousel_2',
+                data: {
+                    groupCardCarousel_2,
+                },
+            });
+
+            new Vue({
+                el: '#groupCardCarousel_3',
+                data: {
+                    groupCardCarousel_3,
+                },
+            });
+
+            new Vue({
+                el: '#groupCardCarousel_4',
+                data: {
+                    groupCardCarousel_4,
+                },
+            });
+
+            new Vue({
+                el: '#groupCardCarousel_5',
+                data: {
+                    groupCardCarousel_5,
+                },
+            });
+
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "group_carousel.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+}
