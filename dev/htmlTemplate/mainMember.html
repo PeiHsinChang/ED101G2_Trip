@@ -177,7 +177,7 @@
                         <div id="blogForKeep" class="keepAllWall">
                         <!-- keep blog start -->
                             <div v-for="keepBlog in keepBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
-                                <a >
+                                <a :href="'/ED101G2_Trip/dest/blogInside.php?blogname=' + keepBlog.Blog_Name">
                                     <img :src="keepBlog.Blog_PicURL" class="card-img-top">
                                     <div :data-id="keepBlog.Blog_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">遊記</h5>
@@ -270,7 +270,7 @@
                         <!-- 遊記 -->
                         <!-- Mem blog start -->
                         <div v-for="memBlog in memBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
-                            <a>
+                            <a :href="'/ED101G2_Trip/dest/blogInside.php?blogname=' + memBlog.Blog_Name">
                                 <img :src="memBlog.Blog_PicURL" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5 class="card-title cardTitleWebUse">遊記</h5>

@@ -28,16 +28,16 @@ try {
 
     <div class="writerBlog">
         <div class="boxWriter">
-            <img class="profileAuthor">
+            <img src="<?=$blogsArticleInfo["Mem_Photo"];?>" class="profileAuthor">
             <table>
                 <tr>
-                    <td>作者:愛旅行</td>
+                    <td>作者: <?=$blogsArticleInfo["Mem_Name"];?></td>
                 </tr>
                 <tr>
-                    <td>2020/3/14</td>
+                    <td><?=$blogsArticleInfo["Blog_Date"];?></td>
                 </tr>
                 <tr>
-                    <td>319人氣</td>
+                    <td><?=$blogsArticleInfo["Blog_Views"];?>人氣</td>
                 </tr>
             </table>
             <button class="btnSmall">收藏</button>
@@ -45,6 +45,10 @@ try {
     </div>
     <div class="blogContent">
         <aside class="blogCont">
+            <h5><?=$blogsArticleInfo["Blog_Name"];?></h5>
+            <div>
+                <p><?=$blogsArticleInfo["Blog_Content"];?></p>
+            </div>
             &nbsp;
             <div><span>What is Lorem Ipsum? </span><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type andscrambled
                 it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem

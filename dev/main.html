@@ -5,6 +5,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <!-- skrollr cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
+<style>
+  /* scrollbar hidden */
+  html {
+    overflow: -moz-hidden-unscrollable;
+    height: 100%;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    -ms-overflow-style: none;
+    height: 100%;
+	width: calc(100vw + 18px);
+	overflow: auto;
+  }
+</style>
 <body>
   @@include('./htmlTemplate/nav.html')
   @@include('./htmlTemplate/homepageBody.html')
