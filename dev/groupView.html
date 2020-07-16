@@ -13,6 +13,22 @@
     .nav-linkgroupView::after {
         width: 100% !important;
     }
+    /* scrollbar hidden */
+  html {
+    overflow: -moz-hidden-unscrollable;
+    height: 100%;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    -ms-overflow-style: none;
+    height: 100%;
+	width: calc(100vw + 18px);
+	overflow: auto;
+  }
 </style>
 
 <body>
@@ -33,13 +49,15 @@
 <!-- <script src="./js/hotsche_groupView.js"></script> -->
 <script>
     let setupGroup = document.getElementById("setupGroup");
-
-    function openNewGroup() {
+    function openNewGroup(){
         setupGroup.style.display = "block";
+        $("body").css({'overflow':'hidden'});
+        $('body').css('position','fixed');
     };
-
-    function closeNewGroup() {
+    function closeNewGroup(){
         setupGroup.style.display = "none";
+        $("body").css({'overflow-y':'visible'});
+        $('body').css('position','initial');
     };
     // let partinGroup = document.getElementById("partinGroup");
     // function openpartinGroup(){
