@@ -207,52 +207,6 @@ function groupCard() {
                 },
             });
 
-
-            //mobile version
-            //mobile carousel
-            console.log(carouselGroupRows);
-            groupCardCarousel_1 = carouselGroupRows[0];
-            groupCardCarousel_2 = carouselGroupRows[1];
-            groupCardCarousel_3 = carouselGroupRows[2];
-            groupCardCarousel_4 = carouselGroupRows[3];
-            groupCardCarousel_5 = carouselGroupRows[4];
-
-            new Vue({
-                el: '#groupCardCarousel_1',
-                data: {
-                    groupCardCarousel_1,
-                },
-            });
-
-            new Vue({
-                el: '#groupCardCarousel_2',
-                data: {
-                    groupCardCarousel_2,
-                },
-            });
-
-            new Vue({
-                el: '#groupCardCarousel_3',
-                data: {
-                    groupCardCarousel_3,
-                },
-            });
-
-            new Vue({
-                el: '#groupCardCarousel_4',
-                data: {
-                    groupCardCarousel_4,
-                },
-            });
-
-            new Vue({
-                el: '#groupCardCarousel_5',
-                data: {
-                    groupCardCarousel_5,
-                },
-            });
-
-
         } else {
             alert(xhr.status);
         }
