@@ -11,10 +11,10 @@
         </a>
       </div>
       <div class="navCenter">
-        <a class="nav-link active" href="plan.html">排行程</a>
-        <a class="nav-link" href="groupView.html">揪團</a>
-        <a class="nav-link" href="blogView.html">遊記</a>
-        <a class="nav-link" href="member.html">會員專區</a>
+        <a class="nav-link active nav-linkplan" href="plan.html">排行程</a>
+        <a class="nav-link nav-linkgroupView" href="groupView.html">揪團</a>
+        <a class="nav-link nav-linkblogView" href="blogView.html">遊記</a>
+        <a class="nav-link nav-linkMember" id="nav-linkMember">會員專區</a>
       </div>
       <div class="navRight">
         <a id="aLogin" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
@@ -33,7 +33,7 @@
           <a href="plan.html">排行程</a> 
           <a href="groupView.html">揪團</a>
           <a href="blogView.html">遊記</a>
-          <a href="member.html">會員專區</a>
+          <a id="navSmallMember">會員專區</a>
         </div>
       </div>
       <a class="navSmallCenter" href="main.html"><img src="./images/logo.png" alt=""></a>

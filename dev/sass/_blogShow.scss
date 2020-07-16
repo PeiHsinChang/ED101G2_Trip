@@ -22,12 +22,13 @@ a {
     .coverPhoto {
         width: 100%;
         margin: 0 auto;
-        min-height: 40vh;
-        background-image: url(../images/coverBlog.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
+        height: 40vh;
+        overflow: hidden;
         margin: 0 auto;
         margin-bottom: 50px;
+        img{
+            width: 100%;
+        }
     }
     .writerBlog {
         width: 80%;
@@ -38,13 +39,11 @@ a {
             width: 70%;
         }
         .profileAuthor {
-            min-width: 100px;
-            min-height: 100px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: inline-block;
             margin-right: 5px;
-            background-image: url(../images/profile.jpg);
-            background-size: cover;
             vertical-align : top;
 
         }

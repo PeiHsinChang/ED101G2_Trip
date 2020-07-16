@@ -27,23 +27,24 @@ window.onload = function (){
                   }
           },
           });
-          new Vue({
+          groupCard =  new Vue({
               el: '#groupForKeep', 
               data: {      
                   keepGroups,
               },
           });
-          new Vue({
+        scheCard =   new Vue({
               el: '#scheForKeep', 
               data: {
                   keepSches,
               },
           });
-          new Vue({
+          blogCard =  new Vue({
               el: '#blogForKeep', 
               data: {
                   keepBlogs,
-              },
+                },
+                
           });
           new Vue({
               el: '#schedForMem', 
@@ -326,11 +327,14 @@ function MemberInfoToMemLeft(){
 
             //檢查所有欄位是否都已經填妥，未填妥則無法送出表單
             $(document).ready(function(){
-                $("#memLeftAdjustSave").click(function(){
+                $("#memLeftAdjustSave").click(function(e){
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
                     if($("#memLeftAdjustPswCheck").html().length != 0){
                         alert('密碼長度不得低於8個字');
                     }else if($("#memLeftAdjustEmaCheck").html().length != 0){
                         alert('請輸入正確e-mail格式');
+                        console.log('123');
                     }else if($("#memLeftAdjustTelCheck").html().length != 0){
                         alert('請輸入正確電話格式');
                     }else if($("#memLeftAdjustBirCheck").html().length != 0){
@@ -353,6 +357,22 @@ function MemberInfoToMemLeft(){
     xhr.send(null);
 }
 
+//選擇大頭照後顯示預覽在畫面上
+window.addEventListener("load", function(){
+	document.getElementById("chooseFileLabel").onchange = function(e){
+        console.log('123');
+        $id("memLeftPicAdjust").innerHTML = `<img id="imgPreview">`;
+		let file = e.target.files[0];
+		let reader = new FileReader();
+		reader.onload = function(){       //讀取完畢後執行function
+			document.getElementById("imgPreview").src = reader.result;
+		}
+		reader.readAsDataURL(file);
+	}
+})	
+
+
+
 function onlooooad(){
     document.getElementById('adjustProfile').onclick = adjust;
     document.getElementById('memLeftAdjustCancel').onclick = cancel;
@@ -361,3 +381,37 @@ function onlooooad(){
 }
 //window.onload
 window.addEventListener("load",onlooooad,false);
+/*排序的click*/
+function sortKeep(obj){
+    //  obj.className= "filterBtnClick";
+    keepSort = obj.dataset.keepsort;
+    keepSortObj = {
+        keepSort: keepSort
+    };
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "./MemberSort.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //把資料往後傳
+    xhr.send("keepSortObj=" + JSON.stringify(keepSortObj)); 
+    console.log(JSON.stringify(keepSortObj));  
+    xhr.onload = function(){
+        if(xhr.status==200){
+            var QueryScheCards = JSON.parse(xhr.responseText);
+            console.log(QueryScheCards)
+            if(keepSort =="scheNew" || keepSort =="schePop"){
+                scheCard.$data.keepSches = QueryScheCards; 
+            }else if(keepSort =="blogNew" || keepSort =="blogPop"){
+                blogCard.$data.keepBlogs = QueryScheCards; 
+            }else{
+                groupCard.$data.keepGroups = QueryScheCards;
+
+            }
+
+            // sche.$data.QueryScheCards = QueryScheCards;
+            // sche.$data.keepSche1 = keepSche1;
+
+        }else{
+            alert(xhr.status);
+        }
+    }
+}
