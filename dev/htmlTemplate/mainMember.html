@@ -15,12 +15,12 @@
                 <input class="adjustProfile" id="adjustProfile" type="button" value="修改會員資料">
             </div>
             <div class="memLeftAdjust" id="memLeftAdjust">
-                <form action="adjustMemberInfo.php" method="post" id="memLeftAdjustForm" name="memLeftAdjustForm" onclick="return false">
+                <form action="adjustMemberInfo.php" method="post" id="memLeftAdjustForm" name="memLeftAdjustForm" enctype="multipart/form-data">
                     <div class="memLeftHeadAdjust">修改會員資料</div>
                     <div class="memLeftPicAdjust" id="memLeftPicAdjust"></div>
 
-                    <input class="chooseFile" type="file">
-                    
+                    <label class="chooseFile" id="chooseFileLabel">選擇大頭照<input type="file" name="chooseFile" id="chooseFile"></label>    
+
                     <div class="memLeftNameAdjust" id="memLeftNameAdjust"></div>
                     <ul class="memLeftAdjustUl">
                         <li class="memLeftAdjustLi" id="memLeftAdjustAcc"></li>
@@ -95,8 +95,8 @@
                     </div>
                     <div id="keepsche" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button data-keepSort="scheNew" onclick="sortKeep(this)" class="filterBtn">最新刊登&darr;</button>
-                            <button data-keepSort="schePop" onclick="sortKeep(this)" class="filterBtn">最高人氣&darr;</button>
+                            <button class="filterBtn">最新刊登&darr;</button>
+                            <button class="filterBtn">最高人氣&darr;</button>
                         </div>
                         <!-- 行程收藏 -->
                         <div id="scheForKeep" class="keepAllWall" >
@@ -129,13 +129,14 @@
                     </div>
                     <div id="keepgroup" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button data-keepSort="groupNew" onclick="sortKeep(this)" class="filterBtn">最新刊登&darr;</button>
+                            <button class="filterBtn">最新刊登&darr;</button>
+                            <button class="filterBtn">最高評價&darr;</button>
                         </div>
                         <!-- 揪團收藏 -->
                         <div id="groupForKeep" class="keepAllWall">
                             <!-- keep group start -->
                             <div v-for="keepGroup in keepGroups" class="card cardOriginalTem cardGroup" >
-                                <a href="groupInside.html">
+                                <a>
                                     <img :src="keepGroup.Group_Pic" class="card-img-top" >
                                     <div :data-id="keepGroup.Group_title" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -169,8 +170,8 @@
                     </div>
                     <div id="keepblog" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button data-keepSort="blogNew" onclick="sortKeep(this)" class="filterBtn">最新刊登&darr;</button>
-                            <button data-keepSort="blogPop" onclick="sortKeep(this)" class="filterBtn">最高人氣&darr;</button>
+                            <button class="filterBtn">最新刊登&darr;</button>
+                            <button class="filterBtn">最高人氣&darr;</button>
                         </div>
                         <!-- 遊記收藏 -->
                         <div id="blogForKeep" class="keepAllWall">
@@ -296,4 +297,5 @@
         </div>
     </div>
 </div>
+
 
