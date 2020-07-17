@@ -208,8 +208,11 @@ function groupCard() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
+                    sortkey: 'hostlike',
+                    reverse: false,
                     groupCardsAlls,
                 },
+
 
             });
 
