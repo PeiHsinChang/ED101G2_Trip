@@ -7,14 +7,14 @@ window.onload = function() {
             console.log(groupSortLikeRows[0]);
 
             //desktop version
-            groupCardsAlls = groupSortLikeRows[0];
+            sortLike = groupSortLikeRows[0];
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    groupCardsAlls,
+                    sortLike,
                 },
                 computed: {
-                    sortedArray: function() {
+                    sortbyLike: function() {
                         function compare(a, b) {
                             if (a.hostlike < b.hostlike)
                                 return -1;
@@ -23,7 +23,7 @@ window.onload = function() {
                             return 0;
                         }
 
-                        return this.groupCardsAlls.sort(compare);
+                        return this.sortLike.sort(compare);
                     }
                 }
             });
