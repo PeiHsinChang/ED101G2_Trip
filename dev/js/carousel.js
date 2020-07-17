@@ -200,43 +200,28 @@ function groupCard() {
             //desktop version
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
-
-
-
             groupCardsAlls = groupviewCards[0];
 
             new Vue({
-                    el: '#groupCardsAll',
-                    data: {
+                el: '#groupCardsAll',
+                data: {
 
-                        groupCardsAlls,
-                    },
-                    methods: {
-                        sortCardLike: function compare(a, b) {
-                            if (a > b) return 1;
-                            if (b > a) return -1;
-                            return 0;
-                            groupCardsAlls.sort((a, b) => b - a);
-
-                        }
-
-
-                    },
-
+                    groupCardsAlls,
                 },
-
-
-
-
+                methods: {
+                    sortCardLike: function compare(a, b) {
+                        return b.hostlike - a.hostlike;
+                    },
+                },
             });
 
-    } else {
-        alert(xhr.status);
-    }
-};
-xhr.open("post", "groupCard.php", true);
-xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-xhr.send();
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupCard.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
 };
 
 
