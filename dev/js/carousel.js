@@ -5,9 +5,6 @@ window.onload = function() {
     group_carousel();
     groupSortByLike();
 
-    btnSortLike = document.getElementsById('btnSortLike');
-    btnSortLike.addEventListener('click', groupSortByLike());
-
 }
 
 function titleCarousel() {

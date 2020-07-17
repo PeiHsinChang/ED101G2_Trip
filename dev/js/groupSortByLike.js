@@ -11,7 +11,7 @@ window.onload = function() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    groupSorts,
+                    groupSorts: hostlike,
                 },
             });
 
