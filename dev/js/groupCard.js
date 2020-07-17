@@ -16,6 +16,7 @@ window.onload = function() {
                     sortbyLike: function() {
                         function compare(a, b) {
                             if (a.hostlike < b.hostlike)
+                            // console.log(a.hostlike);
                                 return -1;
                             if (a.hostlike > b.hostlike)
                                 return 1;
