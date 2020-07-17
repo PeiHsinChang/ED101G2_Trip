@@ -210,9 +210,9 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                computed: {
-                    sortbyLike: function(hostlike) {
-                        return value.slice().reverse();
+                methods: {
+                    groupCardsAlls(groupCard) {
+                        return _.orderBy(arrays, 'hostlike', 'desc');
                     }
                 }
             });
