@@ -212,7 +212,7 @@ function groupCard() {
                 },
                 methods: {
                     sortbyLike() {
-                        groupCardsAlls.reverse();
+                        this.reverse();
                     },
                 },
 
