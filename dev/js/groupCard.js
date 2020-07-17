@@ -4,7 +4,6 @@ window.onload = function() {
         if (xhr.status == 200) {
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
-            console.log(groupviewCards.hostlike);
 
             //desktop version
             groupCardsAlls = groupviewCards[0];
