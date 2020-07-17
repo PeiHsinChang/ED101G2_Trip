@@ -1,28 +1,1782 @@
 <!DOCTYPE html>
-<html lang="en">
-@@include('./htmlTemplate/head.html')
-<style>
-    .nav-linkplan::after{
-      width: 100% !important;
-    }
-</style>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+        自助大丈夫：Distance Matrix API
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" />
+    <link rel="canonical" href="https://letswrite.tw/google-map-api-distance-matrix/" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./js/nav.js"></script>
+    <style>
+        body {
+            font-family: "Noto Sans TC", sans-serif;
+        }
+        
+        i {
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+        
+        i:hover {
+            font-weight: bold;
+        }
+        
+        #map {
+            background: #ccc;
+        }
+        
+        #addToSchedule:hover {
+            font-weight: bold;
+        }
+        
+        .flip-list {
+            transition: all 0.5s ease;
+            cursor: grab;
+        }
+        /* footer */
+        
+        .btnSmall {
+            width: 70px;
+            height: 25px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnSmall:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .btnMid {
+            width: 120px;
+            height: 40px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnMid:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .btnLarge {
+            width: 190px;
+            height: 66px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnLarge:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        footer {
+            line-height: 20px;
+            letter-spacing: 1.5px;
+            padding: 30px;
+            background: #bc2654;
+            display: swap;
+        }
+        
+        footer .copyright {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        
+        div.ft {
+            text-align: center;
+        }
+        
+        div.ft .row .ft_column {
+            white-space: nowrap;
+        }
+        
+        div.ft .row .ft_column img {
+            -webkit-transform: translateY(35px) translateX(-25px);
+            transform: translateY(35px) translateX(-25px);
+            width: 60px;
+        }
+        
+        div.ft .row .ft_column p {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        
+        div.ft .row .ft_column ul {
+            list-style: none;
+        }
+        
+        div.ft .row .ft_column ul li a {
+            color: white;
+            opacity: 0.76;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 576px) {
+            .ft {
+                display: none;
+            }
+        }
+        /*# sourceMappingURL=style.css.map */
+        /* nav */
+        
+        .btnSmall {
+            width: 70px;
+            height: 25px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnSmall:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .btnMid {
+            width: 120px;
+            height: 40px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnMid:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .btnLarge {
+            width: 190px;
+            height: 66px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+        
+        .btnLarge:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .mainBody {
+            width: 100%;
+            max-width: 1920px;
+            background-color: #ededed;
+            position: relative;
+        }
+        
+        .mainBody .navBg {
+            height: 80px;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(255, 255, 255, 0.1)));
+            background-image: linear-gradient(180deg, white, rgba(255, 255, 255, 0.1));
+            z-index: 5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .mainBody .navBg .nav {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+        
+        .mainBody .navBg .nav .navLeft {
+            padding-left: 10px;
+        }
+        
+        .mainBody .navBg .nav .navLeft a {
+            padding: 5px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            color: #393939;
+        }
+        
+        .mainBody .navBg .nav .navLeft a img {
+            height: 70px;
+        }
+        
+        .mainBody .navBg .nav .navLeft a div.daijoubu {
+            margin-left: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            line-height: 25px;
+        }
+        
+        .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuMd {
+            font-size: 24px;
+        }
+        
+        .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuEn {
+            font-size: 14px;
+        }
+        
+        .mainBody .navBg .nav .navCenter {
+            width: 414px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        
+        .mainBody .navBg .nav .navCenter a {
+            width: 80px;
+            height: 50px;
+            text-align: center;
+            padding: 3px;
+            padding-top: 10px;
+            line-height: 30px;
+            color: #393939;
+        }
+        
+        .mainBody .navBg .nav .navCenter a::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            margin: 0 auto;
+            background: #bc2654;
+            -webkit-transition: width 0.3s;
+            transition: width 0.3s;
+        }
+        
+        .mainBody .navBg .nav .navCenter a:hover::after {
+            width: 100%;
+        }
+        
+        .mainBody .navBg .nav .navRight {
+            width: 145px;
+            padding: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+        
+        .mainBody .navBg .nav .navRight a {
+            padding: 0;
+            line-height: 70px;
+            color: #393939;
+        }
+        
+        .mainBody .navBg .nav .navRight a img {
+            width: 20px;
+            margin-right: 5px;
+            -webkit-transform: translateY(-2px);
+            transform: translateY(-2px);
+        }
+        
+        .mainBody .navBg .nav .navRight #memberPic {
+            display: none;
+            border: 1px solid red;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            -webkit-transform: translateX(-18px) translateY(10px);
+            transform: translateX(-18px) translateY(10px);
+        }
+        
+        .mainBody .navBg .nav .navRight #memberPic img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mainBody .navBg .navSmall {
+            display: none;
+        }
+        
+        @media screen and (max-width: 950px) {
+            .mainBody .navBg {
+                height: 70px;
+            }
+            .mainBody .navBg .nav {
+                display: none;
+            }
+            .mainBody .navBg .navSmall {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                position: relative;
+            }
+            .mainBody .navBg .navSmall .navSmallCenter {
+                padding: 5px;
+            }
+            .mainBody .navBg .navSmall .navSmallCenter img {
+                width: 30px;
+                float: right;
+                margin-top: -5px;
+                margin-right: 15px;
+            }
+            .mainBody .navBg .navSmall .navSmallRight img {
+                height: 25px;
+                padding-right: 25px;
+            }
+        }
+        
+        #panel {
+            padding: 30px;
+            display: none;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            top: 70px;
+            width: 100%;
+            z-index: 30;
+        }
+        
+        #panel a {
+            font-size: 1.25rem;
+            color: #393939;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        
+        #panel a:hover {
+            color: #bc2654;
+        }
+        
+        .hamburger {
+            padding: 15px 25px;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-transition-property: opacity, -webkit-filter;
+            transition-property: opacity, -webkit-filter;
+            transition-property: opacity, filter;
+            transition-property: opacity, filter, -webkit-filter;
+            -webkit-transition-duration: 0.15s;
+            transition-duration: 0.15s;
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            font: inherit;
+            color: inherit;
+            text-transform: none;
+            background-color: transparent;
+            border: 0;
+            margin: 0;
+            overflow: visible;
+        }
+        
+        .hamburger:hover {
+            opacity: 0.7;
+        }
+        
+        .hamburger.is-active:hover {
+            opacity: 0.7;
+        }
+        
+        .hamburger.is-active .hamburger-inner,
+        .hamburger.is-active .hamburger-inner::before,
+        .hamburger.is-active .hamburger-inner::after {
+            background-color: #000;
+        }
+        
+        .hamburger-box {
+            width: 30px;
+            height: 24px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .hamburger-inner {
+            display: block;
+            top: 50%;
+            margin-top: -2px;
+        }
+        
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            width: 30px;
+            height: 2px;
+            background-color: #000;
+            border-radius: 4px;
+            position: absolute;
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-transition-duration: 0.15s;
+            transition-duration: 0.15s;
+            -webkit-transition-timing-function: ease;
+            transition-timing-function: ease;
+        }
+        
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            content: "";
+            display: block;
+        }
+        
+        .hamburger-inner::before {
+            top: -10px;
+        }
+        
+        .hamburger-inner::after {
+            bottom: -10px;
+        }
+        
+        .hamburger--collapse .hamburger-inner {
+            top: auto;
+            bottom: 0;
+            -webkit-transition-duration: 0.13s;
+            transition-duration: 0.13s;
+            -webkit-transition-delay: 0.13s;
+            transition-delay: 0.13s;
+            -webkit-transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        
+        .hamburger--collapse .hamburger-inner::after {
+            top: -20px;
+            -webkit-transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear;
+            transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear;
+        }
+        
+        .hamburger--collapse .hamburger-inner::before {
+            -webkit-transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        
+        .hamburger--collapse.is-active .hamburger-inner {
+            -webkit-transform: translate3d(0, -10px, 0) rotate(-45deg);
+            transform: translate3d(0, -10px, 0) rotate(-45deg);
+            -webkit-transition-delay: 0.22s;
+            transition-delay: 0.22s;
+            -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        
+        .hamburger--collapse.is-active .hamburger-inner::after {
+            top: 0;
+            opacity: 0;
+            -webkit-transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear;
+            transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear;
+        }
+        
+        .hamburger--collapse.is-active .hamburger-inner::before {
+            top: 0;
+            -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            -webkit-transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        /*# sourceMappingURL=style.css.map */
+        /* login */
+        
+        .loginnamea {
+            background-color: #ffeded;
+            margin: 0 0 -1 0;
+            font-weight: 500;
+        }
+        
+        .logincont {
+            background-color: #ededed;
+            text-align: center;
+            font-size: 1.25rem;
+            padding: 5px;
+        }
+        
+        .logintitle {
+            color: #bc2654;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .loginacc .loginpsdw {
+            border-color: white;
+            font-size: 1.25rem;
+            margin-top: 20px;
+        }
+        
+        .loginrightbutton {
+            width: 88px;
+            height: 33px;
+            font-size: 1rem;
+            color: #bc2654;
+            background-color: white;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            margin-left: 25px;
+            cursor: pointer;
+        }
+        
+        .loginrightbutton:hover {
+            color: white;
+            background-color: #bc2654;
+        }
+        
+        .loginleftbutton {
+            width: 90px;
+            height: 35px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid white;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        
+        .loginleftbutton:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .logintwobtn {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .loginall {
+            width: 500px;
+            color: #393939;
+        }
+        
+        .modal-backdrop {
+            z-index: auto !important;
+        }
+        
+        @media screen and (max-width: 576px) {
+            .loginall {
+                width: 100%;
+            }
+            .logintwobtn {
+                text-align: center;
+                margin: 10px;
+            }
+        }
+        /*# sourceMappingURL=style.css.map */
+        /* enrollMem */
+        
+        .enrollnamea {
+            background-color: #ffeded;
+            margin: 0 0 -1 0;
+            font-weight: 500;
+        }
+        
+        .enrollcont {
+            background-color: #ededed;
+            text-align: center;
+            font-size: 1.25rem;
+            padding: 5px;
+        }
+        
+        .enrolltitle {
+            color: #bc2654;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .textbox .accbox .psdwbox .accconbox {
+            border-color: white;
+            font-size: 1.25rem;
+            margin-top: 20px;
+        }
+        
+        .enrollgend {
+            margin-right: 43px;
+        }
+        
+        .moreinfo {
+            resize: none;
+            -webkit-box-shadow: 2px 2px 1px white inset;
+            box-shadow: 2px 2px 1px white inset;
+        }
+        
+        .enrollphone {
+            margin-top: 21px;
+        }
+        
+        .enrollrightbutton {
+            width: 88px;
+            height: 33px;
+            font-size: 1rem;
+            color: #bc2654;
+            background-color: white;
+            border: 1px solid #bc2654;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            margin-left: 25px;
+            cursor: pointer;
+        }
+        
+        .enrollrightbutton:hover {
+            color: white;
+            background-color: #bc2654;
+        }
+        
+        .enrollleftbutton {
+            width: 90px;
+            height: 35px;
+            font-size: 1rem;
+            color: white;
+            background-color: #bc2654;
+            border: 1px solid white;
+            border-radius: 5px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        
+        .enrollleftbutton:hover {
+            color: #bc2654;
+            background-color: white;
+        }
+        
+        .enrolltwobtn {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .enrollall {
+            width: 500px;
+            color: #393939;
+        }
+        
+        @media screen and (max-width: 576px) {
+            .enrollall {
+                width: 100%;
+            }
+            .enrolltwobtn {
+                text-align: center;
+                margin: 10px;
+            }
+        }
+        /*# sourceMappingURL=style.css.map */
+        
+        #aLogin,
+        #aRegist {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
 <body>
-    @@include('./htmlTemplate/nav.html')
-    @@include('./htmlTemplate/mainPlan.html')
-    @@include('./htmlTemplate/footer.html')
-    <div id="tourStatus" class="lightBoxWall" >
-        @@include('./htmlTemplate/tourStatus.html')
-    </div> 
+    <div id="app" class="container px-1" style="margin-top: 80px;">
+        <attrac-nav></attrac-nav>
+        <attraction-list></attraction-list>
+        <attrac-footer></attrac-footer>
+    </div>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
 
+    <script>
+        Vue.component("attraction-input", {
+            template: `
+        <div class="container py-5">
+          <div class="row">
+            <div class="d-flex col-md-10 px-0">
+              <div class=" input-group p-0">
+                <input type="text" class="form-control" v-model="queryAttractionName" @keydown.enter='sendInputToAttractionList' placeholder="搜尋景點名稱">
+                <div class="input-group-append">
+                  <span class="input-group-text rounded-right px-2" id="basic-addon2"><i class="fas fa-search" style="font-size:0.9rem;"></i></span>
+                </div>
+              </div>
+              
+              <div class=" p-0">
+                <select @change="sendRegionSelectToAttractionList" class="align-top px-1 d-inline-block form-control form-control h-100" style="font-size:0.9rem;width:6rem;">
+                 <option>地區</option>
+                 <option value="新北市">新北市</option>
+                 <option value="新竹縣">新竹縣</option>
+                 <option value="苗栗縣">苗栗縣</option>
+                 <option value="臺中市">臺中市</option>
+                 <option value="彰化縣">彰化縣</option>
+                 <option value="南投縣">南投縣</option>
+                 <option value="雲林縣">雲林縣</option>
+                 <option value="嘉義縣">嘉義縣</option>
+                 <option value="臺南市">臺南市</option>
+                 <option value="高雄市">高雄市</option>
+                 <option value="屏東縣">屏東縣</option>
+                 <option value="花蓮縣">花蓮縣</option>
+                 <option value="臺東縣">臺東縣</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2 px-0">
+                <button @click="sendKeepAttracSearchToAttractionList" type="button" class="border align-top px-1 h-100 btn dblock w-100 btn-light" style="font-size:0.9rem; color:#bc2654"><i class="fas fa-heart" style="color:#bc2654; font-size:0.9rem;"></i> 我的收藏景點</button>
+            </div>
+          </div>
+        </div>
+                          `,
+            data() {
+                return {
+                    queryAttractionName: "",
+                    inputValueForRegionSearch: "",
+                };
+            },
+            methods: {
+                sendInputToAttractionList(e) {
+                    this.$emit("abc", this.queryAttractionName);
+                    // this.queryAttractionName = "";
+                    this.inputValueForRegionSearch = e.target.value;
+                    // console.log(this.inputValueForRegionSearch);
+                },
+                sendKeepAttracSearchToAttractionList() {
+                    this.$emit("abc2");
+                },
+                sendRegionSelectToAttractionList(e) {
+                    // console.log(e.target.value);
+                    // console.log(this.inputValueForRegionSearch);
+                    this.$emit("abc3", e.target.value, this.queryAttractionName);
+                },
+            },
+        });
+
+        Vue.component("attraction-list", {
+            template: `
+                      <div>
+                        <attrac-modal @jkl="addSelectedAttractionsToDirection" @def3="saveKeepAttrap" :label4="attracModal"></attrac-modal>
+
+                        <attraction-input @abc="getSearchedAttractionsFromPHP" @abc2="getSearchedKeepAttractionsFromPHP" @abc3="getSearchedRegionAttractionsFromPHP"></attraction-input>
+
+                        <cards class="d-block" style="height:16.5rem; overflow-x:scroll;white-space: nowrap;background-color:rgba(0,0,0,0.04);">
+                          <attraction-item
+                          @def="addSelectedAttractionsToDirection" @def2="addSelectedAttractionsToModal" @def3="saveKeepAttrap" v-for="searchedAttraction in searchedAttractions" v-bind:label="searchedAttraction"></attraction-item>
+                        </cards>
+
+                        <div class="container my-5" >
+                          <div class="row" >
+                            <div class="border-top border-left border-bottom px-1 col-lg-4" style="background-color:rgba(0,0,0,0.04);">
+                              <div class="d-flex mt-3">
+                                <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
+                                <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i>
+                                <i @click="reloadWindow" class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
+                              </div>
+
+
+                              <draggable v-model="selectedAttractions">
+                                <transition-group>
+
+                                  <attraction-direction 
+                                  @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" @sendAttracLeaveTimeToAttractionList="sendAttracLeaveTimeToBackend" 
+                                  class="border bg-light flip-list" 
+                                  :key="selectedAttraction.Id"
+                                  v-for="selectedAttraction in selectedAttractions" 
+                                  v-bind:label2="selectedAttraction">
+                                  </attraction-direction>
+
+                                </transition-group>
+                              </draggable>
+
+
+
+                            </div>
+                            <div class="border col-lg-8 px-0" style="height:500px">
+                              <div id="map" class="h-100"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                              `,
+            data() {
+                return {
+                    searchedAttractions: [],
+                    selectedAttractions: [],
+                    MemNO: "",
+                    map: null,
+                    mapCenter: {
+                        lat: 23.7074865,
+                        lng: 121.0007688,
+                    },
+                    markers: [],
+                    toBeSavedSchedule: {
+                        MemNO: "",
+                        scheName: "",
+                        scheStatus: "",
+                        selectedAttractions: [],
+                        attracStartTime: [],
+                    },
+                    attracModal: {},
+                };
+            },
+            methods: {
+                initialAttraction() {
+                    this.searchedAttractions = [{
+                        Id: "C1_315080500H_000012",
+                        Name: "石梯坪",
+                        Zone: "",
+                        Toldescribe: "石梯坪擁有經風力和海水雕刻而成的特殊岩岸風景，潮間帶上豐富的自然生態資源：螃蟹、海星、海參、寄居蟹、色彩斑斕的魚群，等待觀察力敏銳的人來一探奧秘。夜晚在海蝕平台上方的石梯坪露營區搭營，隔天就能在營帳前迎接美麗的晨曦，看清晨的陽光破雲而出將海面映照得金黃燦爛。世界級的戶外地質教室石梯坪位在花蓮縣豐濱鄉石梯灣的南側尾端，整個區域是一個面積極大的海岸階地，海蝕地形十分發達，海蝕平台、隆起珊瑚礁、海蝕溝、海蝕崖等舉目皆是，尤其是壺穴景觀堪稱台灣第一。石梯坪海岸蘊藏著豐富的珊瑚礁群和熱帶魚群，潮間帶上與壺穴形成的潮池，生長著各式各樣的海藻、魚蝦、貝類等海洋生物，使石梯坪成為觀察潮間帶豐富生態和潛水、磯釣的絕佳場所。遊客可沿著風景區的環狀步道實地觀察，或是登上17公尺高的單面山，不僅可飽覽石梯坪的地質景觀，太平洋的壯闊浩瀚景象也能盡入眼底。來生態賞鯨吧石梯坪也是個充滿生命力的港口，漁船每日捕撈新鮮的漁獲上岸外，這裡也是台灣賞鯨的發源地，每年夏天鯨豚們總現身外海，吸引遊人們搭上賞鯨船追逐牠們優雅的身影，不妨搭上船一同來個生態賞鯨之旅吧！ 【石梯坪露營區】電話：0922-211336 呂先生網站：http://camping33.pgo.tw/相關資訊：點我",
+                        Description: "石梯坪位在花蓮縣豐濱鄉石梯灣的南側，整個區域是一個面積極大的海岸階地，海蝕地形十分發達，海蝕平台、隆起珊瑚礁、海蝕溝、海蝕崖等比比皆是，尤其是壺穴景觀更是堪稱台灣第一。遊客可在此在此觀察潮間帶豐富生態或從事潛水活動，亦可選擇在設備完善的露營區夜宿。石梯坪主要族群是阿美族，夏天的捕魚祭和豐年祭為此處的主要活動，此處同時也是台灣賞鯨的發源地。【石梯坪工作站】電話：03-8781452   【石梯坪露營區】電話：03-8781599",
+                        Tel: "886-3-8781452",
+                        Add: "花蓮縣977豐濱鄉石梯坪52號",
+                        Zipcode: "977",
+                        Region: "花蓮縣",
+                        Town: "豐濱鄉",
+                        Travellinginfo: "南下：由花蓮火車站前搭往成功、靜浦或台東等地的花蓮、鼎東客運海線班車，在石梯坪下車。 北上：由台東火車站前搭往花蓮的鼎東、花蓮客運海線班車，在石梯坪下車。 詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8 )或鼎東客運海線(查詢電話：089-328629 / 089-333443)",
+                        Opentime: "全天候開放露營電話預約時間：09:00~18:00電話：0922-211336 呂先生",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28701/640x480",
+                        Picdescribe1: "宛如鬼斧神工般的石梯坪海蝕地形",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.51173,
+                        Py: 23.48525,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "大型車：假日200元、非假日170元小型車：假日60元、非假日50元機車：假日20元、非假日15元",
+                        Remarks: "1.石梯坪沒有遮陽設施，海邊日照強，要做好防曬；裝備也要齊全，除了遮陽的帽子、長褲、長袖，解渴的開水更不可少。2.初次造訪，建議沿木棧道前行，從第一座木造涼亭旁的石板步道下去，約2...",
+                        Keyword: "",
+                        Changetime: "2019-12-09T14:23:24+08:00",
+                    }, {
+                        Id: "C1_315080500H_000014",
+                        Name: "長虹橋",
+                        Zone: "",
+                        Toldescribe: "長虹橋優雅的拱形橋身橫跨在秀姑巒溪出海口處兩岸，在山海交際之處形成一道美麗的虹影，成為東海岸的著名拍照地標，而這裡也是泛舟的終點站，一艘艘疲倦又滿足的泛舟筏在這裡靠岸。沿著步道在溪畔漫步，水鳥輕巧的在河床邊覓食，自行車來來往往，兩旁的植物隨季節變換風景，若是累了，不妨到附近的新太平洋1號店稍作休息，喝杯下午茶，度過悠閒的時光。出海口的奚卜蘭島，又稱作獅球嶼，綠意蒼蒼的小島是當地海岸阿美族的聖地，也是火山集塊岩構成的島嶼，由於溪流阻隔，保有相當天然的生態相貌，在河口覓食的鳥類、洄游魚類和蝦蟹都會在此聚集，是做生態觀察的好地點。",
+                        Description: "長虹橋橫跨秀姑巒溪，連接靜浦與港口兩聚落，亦是秀姑巒溪泛舟的終點站；橋分新舊兩座橋，新橋採鮮艷亮眼的橙紅色，橋面規劃有快慢車道分隔的腳踏車及人行專用步道，並配合泛舟活動，設置了八座觀景台；橋上可遠眺出海囗的奚卜蘭島，因登島不易，島上仍維持原始林樣貌，俯瞰河面可見許多潔白如玉的大岩塊，其為巨型石灰岩，因其石潔白如玉，因而得到了「秀姑漱玉」的美名。",
+                        Tel: "886-3-8671326",
+                        Add: "花蓮縣977豐濱鄉台11線68公里處",
+                        Zipcode: "977",
+                        Region: "花蓮縣",
+                        Town: "豐濱鄉",
+                        Travellinginfo: "南下：由花蓮火車站前搭往成功、靜浦或台東等地的花蓮、鼎東客運海線班車，在長虹橋站下車，再依指標前往即可抵達。北上：由台東火車站前搭往花蓮的鼎東、花蓮客運海線班車，在長虹橋站下車，再依指標前往即可抵達。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8 / 花蓮汽車客運公司)",
+                        Opentime: "全天候開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28957/640x480",
+                        Picdescribe1: "橫跨秀姑巒溪，連接靜浦與港口兩聚落的新長虹橋",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.48904,
+                        Py: 23.46845,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "",
+                        Keyword: "",
+                        Changetime: "2019-07-10T16:40:52+08:00",
+                    }, {
+                        Id: "C1_315080500H_000015",
+                        Name: "北回歸線",
+                        Zone: "",
+                        Toldescribe: "台灣一共有三個北回歸線標，分別在嘉義水上鄉、花蓮舞鶴台地、豐濱鄉，而這座北回歸線標碑位於台11線70.5公里處。潔白的地標坐擁海岸山脈與太平洋的美景，常常吸引了許多遊客來此拍照、休憩，但是你知道為什麼這座北回歸線標碑中間會有一條細縫嗎？北回歸線就是指北緯23.5&deg;，象徵著熱帶以及溫帶的分界點，最明顯的就是台灣北回歸線以南主要種植的作物，為熱帶的鳳梨以及釋迦，以北主要的作物就是溫帶作物茶以及水稻，而夏至中午時陽光會正好射入北回歸線標的縫中，此刻，塔旁的遊客即可體驗太陽下無影子的奇觀！所以經過除了來此拍照做個紀念，也可以閱讀解說牌了解四季的奧妙！",
+                        Description: "北回歸線標碑位在北緯23.5度，是太陽直射地球的北界，也是亞熱帶與熱帶的分界。靜浦的北回歸線標碑在台11線公路70.5公里處，是北回歸線途經台灣的最東界。聳立在太平洋旁的白色塔身，十分吸引遊客目光。",
+                        Tel: "886-3-8671326",
+                        Add: "花蓮縣977豐濱鄉台11線70.5公里處",
+                        Zipcode: "977",
+                        Region: "花蓮縣",
+                        Town: "豐濱鄉",
+                        Travellinginfo: "南下：由花蓮火車站前搭往成功、靜浦或台東等地的花蓮、鼎東客運海線班車，在北回歸線標碑下車。北上：由台東火車站前搭往花蓮的鼎東、花蓮客運海線班車，在北回歸線標碑下車。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8 / 花蓮汽車客運公司)",
+                        Opentime: "全年開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28952/640x480",
+                        Picdescribe1: "北回歸線標碑",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.49617,
+                        Py: 23.45141,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "1.北回歸線位於北緯23.5度，它是太陽直射地球的北界；換言之，夏至時太陽沿著此緯度線東昇西落，這座標碑特地設計一個細縫，讓遊客可以透過這座建築觀察這種現象。2.在北回歸線附近有知...",
+                        Keyword: "",
+                        Changetime: "2019-10-29T10:38:48+08:00",
+                    }, {
+                        Id: "C1_315080500H_000016",
+                        Name: "金樽",
+                        Zone: "",
+                        Toldescribe: "金樽可俯瞰海岸全景，包含金樽漁港、白沙灣海灘以及附近的山澗峽谷，讓秀麗的景色完全盡收眼底，而這裡以臺灣唯一正在形成的陸連島聞名，看似酒杯形狀的海灣，故取名為「金樽」，又因為形狀像船錨，也被稱為「錨島」或「錨狀礁」。金樽擁有綿延達3公里長的純淨又迷人的沙灘，旅人可沿著觀景休憩區及木造階梯到沙灘上散步、聽浪聲、釣魚，近距離感受潔白浪花拍打岸邊的旖旎風情，或是在冬天約11-12月份時，來金樽漁港欣賞國際衝浪公開賽選手們駕馭海浪的英姿！遊玩金樽柔細的沙灘後，可回到觀景休憩區旁的咖啡店，喝上一杯香濃的麥飯石咖啡，十足愜意，也是人生一大享受。",
+                        Description: "金樽擁有臺灣唯一正在形成的陸連島，因看似酒杯，故取名為「金樽」，又因形狀像船錨，也被稱為「錨島」或「錨狀礁」。東管處在此地設有休憩區可俯瞰海岸全景，秀麗的海岸景色完全盡收眼底，還有木棧道通往沙灘，遊客可至綿延達三公里長的純淨沙灘遊玩，再回到觀景休憩區旁的咖啡店喝一杯香濃的麥飯石咖啡，堪稱一大享受。",
+                        Tel: "886-8-9841520",
+                        Add: "臺東縣959東河鄉七里橋11號",
+                        Zipcode: "959",
+                        Region: "臺東縣",
+                        Town: "東河鄉",
+                        Travellinginfo: "北上：由台東火車站前搭往成功、靜浦的鼎東客運海線班車，於金樽下車。南下：由花蓮火車站前搭往台東的花蓮客運海線班車，於金樽下車。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8)或鼎東客運海線(查詢電話：089-328629 / 089-333443)",
+                        Opentime: "全天候開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28914/640x480",
+                        Picdescribe1: "金樽",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.27975,
+                        Py: 22.9451,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "1.為了防止觀光人潮影響到地方環境，到訪的遊客應保持環境清潔，一同維護這塊淨土。2.於夏日天氣炎熱時，請做好防曬措施，以避免被烈日曬傷。3.由於金樽的海灘坡度大，遊客們是禁止下海游...",
+                        Keyword: "",
+                        Changetime: "2020-02-15T16:04:41+08:00",
+                    }, {
+                        Id: "C1_315080500H_000028",
+                        Name: "加路蘭",
+                        Zone: "",
+                        Toldescribe: "加路蘭擁有一大片寬廣的草坪、休憩涼亭、解說站以及觀景台，不但提供了東海岸旅行的最佳休息站，這裡美麗的海岸景觀與獨樹一格的裝置藝術，成為熱門的拍照景點，旅人們可在海邊散步聽浪聲、吹海風，一邊迎著和煦陽光渡過悠閒時光，或是夜晚拜訪毫無光害的加路蘭，仰望浩瀚無垠的星空。來到加路蘭除了欣賞自然美景之外，區內也有不少由漂流木所組成的裝置藝術作品，其中有兩條魚矗立在海邊，取名為「我的好朋友」的裝置藝術作品，上面寫道：「歡迎過路的旅者，有一個輕鬆愉快的旅程！」其他還有「類窗櫺」、「日昇之舞」、「風車組」、「哭泣的露珠」等，連休憩涼亭中的裝飾也可見漂流木的蹤影，讓加路蘭成為最美的藝文海岸遊憩區。 ▲2014年駐地藝術家-拉飛.邵馬(Lafin Sawmah) 黑髮橋的故事 (作品已於2018年拆除)",
+                        Description: "加路蘭鄰近小野柳風景區，有寬廣的草坪、涼亭、解說站以及觀景台，是東海岸旅行的最佳休息站，區內延續著風化、海蝕景觀，海岸線條紋路特殊，草地上也有不少漂流木裝置藝術作品。每年夏秋之際的加路蘭手創市集，集結一群東海岸藝術創作愛好者以趕集的形式聚集在加路蘭，呈現熱情原味的島嶼海洋風情，是東海岸之旅必遊之地。",
+                        Tel: "886-8-9281530",
+                        Add: "臺東縣950臺東市台11線157公里處",
+                        Zipcode: "950",
+                        Region: "臺東縣",
+                        Town: "臺東市",
+                        Travellinginfo: "北上：由台東火車站前搭往成功、靜浦，或花蓮的鼎東客運、台灣好行海線班車，在加路蘭站下車。南下：由花蓮火車站前搭往台東的花蓮客運海線班車，在加路蘭站下車。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8)或鼎東客運海線(查詢電話：089-328629 / 089-333443)",
+                        Opentime: "全天候開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28742/640x480",
+                        Picdescribe1: "加路蘭藝術作品-《伊祐‧噶照 Iyo Kacaw》在海邊看書，好嗎",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.197,
+                        Py: 22.8065,
+                        Orgclass: "",
+                        Class1: "01",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "1.為了防止觀光人潮影響到地方環境，到訪的遊客應保持環境清潔，一同維護這塊淨土。2.園區內四周沒有樹木遮陰，因此夏日天氣炎熱時，請做好防曬措施，以避免被烈日曬傷。3.冬季東北季風強...",
+                        Keyword: "",
+                        Changetime: "2019-12-13T17:27:19+08:00",
+                    }, {
+                        Id: "C1_315080500H_000034",
+                        Name: "都蘭",
+                        Zone: "",
+                        Toldescribe: "都蘭是東部海岸南段最大的部落，聳立東台灣的都蘭山，向來是部落族群景仰的「聖山」，不只是民俗、藝術與文化的精神象徵，同時也是遊客可以享受山林野趣的好去處！近來阿美族部落致力推動社區文化，使得歌謠舞蹈更顯精湛，手工藝品亦見創新精緻，而保有清新健康的阿美族風味美食，更是頗值一試。都蘭地區不只擁有縣定遺址「都蘭遺址」、海岸潮間帶及深具阿美族部落特色的生態，更有「水往上流奇觀」、電影「月光下 我記得」拍攝地-「月光小棧」、美麗的海灣「加母子灣」、紅糖文化藝術館「新東糖廠」，還有好山（都蘭聖山）、好水（太平洋）等景點，提供訪客充滿樂趣與驚奇的旅程！東管處沿著台11線興建幾座涼亭，使遊客能從不同角度瞭望都蘭灣之美，仲夏夜遊客更可在涼亭內搭帳棚過夜，在滿天星空下，享受都蘭灣美不勝收的景色！",
+                        Description: "都蘭是東部海岸南段最大的部落，聳立東台灣的都蘭山，向來是部落族群景仰的「聖山」，都蘭地區除了擁有縣定遺址「都蘭遺址」、海岸潮間帶及極具特色的阿美族部落文化外，更有「水往上流奇觀」、電影「月光下 我記得」的拍攝地「月光小棧」、美麗的海灣「加母子灣」、紅糖文化藝術館「新東糖廠」，在好山（都蘭聖山）、好水（太平洋）映襯下，提供訪客充滿樂趣與驚奇的旅程！",
+                        Tel: "886-8-9896200",
+                        Add: "臺東縣959東河鄉都蘭61號",
+                        Zipcode: "959",
+                        Region: "臺東縣",
+                        Town: "東河鄉",
+                        Travellinginfo: "北上：由台東火車站前搭往成功、靜浦，或花蓮的鼎東客運、台灣好行海線班車，在接近漁橋處下車或在都蘭站下車，循指標即可抵達。南下：由花蓮火車站前搭往台東的花蓮客運海線班車，在接近漁橋處下車或在都蘭站下車，循指標即可抵達。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8 )或鼎東客運海線(查詢電話：089-328629 / 089-333443)",
+                        Opentime: "全天候開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/236/640x480",
+                        Picdescribe1: "電影「月光下 我記得」的拍攝地 – 月光小棧",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.22765,
+                        Py: 22.87416,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "為了防止觀光人潮影響到部落的安寧，或帶來文化的摩擦，到訪的遊客應尊重當地文化，保持環境清潔，一同維護這塊淨土。",
+                        Keyword: "",
+                        Changetime: "2019-03-18T17:49:37+08:00",
+                    }, {
+                        Id: "C1_315080500H_000035",
+                        Name: "成功新港漁港",
+                        Zone: "",
+                        Toldescribe: "成功新港漁港是東海岸地區最大的漁港，漁港面臨太平洋，是黑潮暖流經過的海域，鬼頭刀、旗魚、鰹魚等豐富的海洋資源，造就了成功獨特的鏢旗魚技藝，以及漁業文化的蓬勃發展。當每年10月吹起東北季風時，正是旗魚的盛產季節，漁民鏢旗魚的獨到技藝，讓旗魚肉質保留了鮮Q的口感，深受各地老饕的喜愛，紛紛來成功飽啖美味的旗魚大餐！黑潮暖流經過的成功，也是賞鯨的好地方！搭乘賞鯨船乘風破浪，遙望美麗的東海岸島嶼之餘，還有機會欣賞到海豚成群在海中跳躍，那美麗的時刻總是令人難以忘懷。除了賞鯨、冬天大啖旗魚之外，成功鎮上還有各種特色小吃、伴手禮，多汁的鬼頭刀魚排、綿密的成功豆花、用當地食材製作的手工餅等等，都是來成功不可錯過的美食喔！",
+                        Description: "成功鎮以前為「麻荖漏社」，1921年日人改為「新港」，戰後改為「成功」，距今3,500年前之麒麟文化，以成功鎮之出土文物為最，可知此地起源甚早。成功漁港為東部海岸地區最大的漁港，面臨太平洋，同時又有黑潮暖流經過，因此水產資源相當豐富。主要的魚類產量為鰹魚、旗魚、鬼頭刀、鮪魚、柴魚等，每天下午3點左右是新港漁港的鮮魚拍賣會，來此可感受漁民們此起彼落的拍賣聲，想要品嚐新鮮魚貨的遊客更是不可錯過哦！",
+                        Tel: "886-8-9851004",
+                        Add: "臺東縣961成功鎮港邊路19號",
+                        Zipcode: "961",
+                        Region: "臺東縣",
+                        Town: "成功鎮",
+                        Travellinginfo: "北上：由台東火車站前搭往成功、靜浦，或花蓮的鼎東客運或台灣好行海線班車，於成功鎮下車。南下：由花蓮火車站前搭往台東等地的花蓮客運海線班車，於成功鎮下車。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8 )",
+                        Opentime: "全天候開放",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28792/640x480",
+                        Picdescribe1: "親潮和黑潮兩股暖流在此經過，造就了成功漁港豐富的水產資源",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.37685,
+                        Py: 23.1032,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: "免費",
+                        Remarks: "1.成功鎮商家林立，建議遊客可以預留較多時間在此地用餐、購物，並體驗具特色的東海岸海港風情",
+                        Keyword: "",
+                        Changetime: "2020-02-27T09:21:29+08:00",
+                    }, {
+                        Id: "C1_315080500H_000042",
+                        Name: "阿美族民俗中心",
+                        Zone: "",
+                        Toldescribe: "阿美族民俗中心位於東管處都歷處本部旁，佔地約2公頃，園區中設有戶外表演廣場、可供2千人觀賞的戶外看台、射箭體驗區、阿美族傳統家屋等，並目前由Amis旮亙樂團做經營，讓遊客前來當神射手、DIY製作阿美族串珠、傳統樂器排笛，或是欣賞阿美族傳統歌舞表演，不僅成為體驗阿美族文化的好去處，也是親子景點遊樂的好地方。阿美族民俗中心在民國84年（1995）11月興建完成，主要建築之祭屋及家屋，是依據日本民族學家千千岩助太郎在民國32年（1943）於花蓮縣光復鄉調查的手繪圖，仿造花蓮縣太巴塱社的祭司住家搭建，走訪這裡，可看出阿美族特有的居住文化。除了逛逛特色建築，了解阿美族的建築之美以外，民俗中心還有部落文物展、手工藝品、特產展售、美食服務等，最後也不容錯過定時的免費展演，嘹亮的歌聲，搭配以阿美族特有的旮亙（竹鐘）、鼻笛等樂器演奏，重現了阿美族最原味的音樂，下次若有機會拜訪時，不妨等候一下，來欣賞Amis旮亙樂團的表演吧！",
+                        Description: "位於東管處處本部園區內的阿美族民俗中心於1995年11月興建完成，現由知名的「Amis旮亙樂園」駐點經營，走訪這裡，可看出阿美族特有的居住文化，除了阿美族特色建築外，遊客在此還可進行拉鞦韆、射箭及竹炮等阿美族文化體驗，還有「Amis旮亙樂團」定點表演：舞蹈、歌唱、打擊樂器、排笛、鼻笛等，歡迎一起來唱跳。",
+                        Tel: "886-8-9841751",
+                        Add: "臺東縣961成功鎮新村路25號",
+                        Zipcode: "961",
+                        Region: "臺東縣",
+                        Town: "成功鎮",
+                        Travellinginfo: "北上：由台東火車站前搭往成功、靜浦，或花蓮的鼎東、花蓮客運海線班車，於東管處都歷處本部站下車。南下：由花蓮火車站前搭往台東等地的花蓮、鼎東客運海線班車，於東管處都歷處本部站下車。詳細時刻表及車資請洽花蓮客運(查詢電話：03-8338146~8)或鼎東客運海線(查詢電話：089-328629 / 089-333443)",
+                        Opentime: "週一、二、四、五、六、日 09:00~17:00；週三休園",
+                        Picture1: "https://www.eastcoast-nsa.gov.tw/image/28800/640x480",
+                        Picdescribe1: "阿美族民俗中心",
+                        Picture2: "",
+                        Picdescribe2: "",
+                        Picture3: "",
+                        Picdescribe3: "",
+                        Map: "",
+                        Gov: "315080500H",
+                        Px: 121.3255,
+                        Py: 23.01779,
+                        Orgclass: "",
+                        Class1: "8",
+                        Class2: "",
+                        Class3: "",
+                        Level: "",
+                        Website: "",
+                        Parkinginfo: "",
+                        Parkinginfo_Px: null,
+                        Parkinginfo_Py: null,
+                        Ticketinfo: '定期展演自由樂捐，其他項目請參考網頁底下 \'"旅遊叮嚀"',
+                        Remarks: "展場開放時間：●週一、二、四、五、六、日 09:00~17:00；週三休園展演活動時間：● 週一、二、四、五、六：11:00、14:00 定時展演(兩場)● 週日：上午演出(預約制...",
+                        Keyword: "",
+                        Changetime: "2019-12-09T14:31:26+08:00",
+                    }, ];
+                },
+                getSearchedAttractionsFromPHP(x) {
+                    $.get(`searchAttrac.php?searchedName=${x}`).then((data) => {
+                        if (JSON.parse(data) == 0) {
+                            alert("無此景點");
+                        } else {
+                            this.searchedAttractions = JSON.parse(data);
+                            // console.log(this.searchedAttractions);
+                        }
+                    });
+                },
+                getSearchedKeepAttractionsFromPHP() {
+                    // check if logged, if true, get and input MemNO:
+                    if (true) {
+                        this.MemNO = 2;
+                    }
+                    $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
+                        if (JSON.parse(data) == 0) {
+                            alert("尚無收藏任何景點");
+                        } else {
+                            this.searchedAttractions = JSON.parse(data);
+                            // console.log(this.searchedAttractions);
+                        }
+                    });
+                },
+                getSearchedRegionAttractionsFromPHP(x, y) {
+                    console.log(typeof x);
+                    console.log(typeof y);
+                    if (y == "") {
+                        // alert("nothing");
+                        $.get(`searchAttracRegionWoInput.php?Region=${x}`).then(
+                            (data) => {
+                                if (JSON.parse(data) == 0) {
+                                    alert("查無景點");
+                                } else {
+                                    this.searchedAttractions = JSON.parse(data);
+                                    // console.log(this.searchedAttractions);
+                                }
+                            }
+                        );
+                    } else if (y != "") {
+                        $.get(
+                            `searchAttracRegionWInput.php?Region=${x}&searchedName=${y}`
+                        ).then((data) => {
+                            if (JSON.parse(data) == 0) {
+                                alert("查無景點");
+                            } else {
+                                this.searchedAttractions = JSON.parse(data);
+                                // console.log(this.searchedAttractions);
+                            }
+                        });
+                    }
+                },
+                addSelectedAttractionsToDirection(x) {
+                    this.selectedAttractions.push(x);
+                    let latLng = new google.maps.LatLng(x.Py, x.Px);
+                    let marker = new google.maps.Marker({
+                        position: latLng,
+                        map: this.map,
+                        icon: "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+                    });
+                    // move map center to selected attraction:
+                    this.map.panTo(latLng);
+
+                    // add marker to markers:
+                    this.markers.push(marker);
+                    console.log(this.markers.length);
+
+                    // add infowindow:
+                    let contentString = `
+              <div>
+                <h6 style="font-size:0.8rem;margin-bottom:0.2rem">${x.Name}</h6>
+                <hr style="margin:0.2rem auto;">
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Add}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Tel}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Website}</h6>
+                
+              </div>
+              `;
+                    let infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                    });
+                    marker.addListener("click", function() {
+                        infowindow.open(map, marker);
+                    });
+                },
+
+                removeSelectedAttraction(x) {
+                    // remove closed mark:
+                    let n = this.selectedAttractions.indexOf(x);
+                    this.markers[n].setMap(null);
+                    this.markers.splice(this.selectedAttractions.indexOf(x), 1);
+
+                    // remove closed attraction:
+                    this.selectedAttractions.splice(
+                        this.selectedAttractions.indexOf(x),
+                        1
+                    );
+                },
+                saveSchedule() {
+                    // check if logged, if true, get and input MemNO:
+                    if (true) {
+                        this.toBeSavedSchedule.MemNO = 1;
+                    }
+                    // check if shceName and any attraction in direction:
+                    if (this.toBeSavedSchedule.scheName == "") {
+                        alert("請輸入行程名稱");
+                    } else if (this.selectedAttractions.length == 0) {
+                        alert("請輸入至少一個景點");
+                    } else {
+                        //input scheStatus:
+                        confirm("已完成行程編輯？") ?
+                            (this.toBeSavedSchedule.scheStatus = 1) :
+                            (this.toBeSavedSchedule.scheStatus = 0);
+                        alert(this.toBeSavedSchedule.scheStatus);
+                        // input selectedAttractions:
+                        this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
+                        // console.log(this.toBeSavedSchedule.selectedAttractions);
+                        $.ajax({
+                            method: "POST",
+                            url: "saveSchedule.php",
+                            data: this.toBeSavedSchedule,
+                            dataType: "json",
+                        });
+                    }
+                },
+                sendAttracStartTimeToBackend(x, y) {
+                    let n = this.selectedAttractions.indexOf(x);
+                    this.selectedAttractions[n].attracStartTime = y;
+                    // console.log(this.selectedAttractions);
+                },
+                sendAttracLeaveTimeToBackend(x, y) {
+                    let n = this.selectedAttractions.indexOf(x);
+                    this.selectedAttractions[n].attracLeaveTime = y;
+                    // console.log(this.selectedAttractions);
+                },
+                addSelectedAttractionsToModal(x) {
+                    this.attracModal = x;
+                    // console.log(this.attracModal);
+                },
+                saveKeepAttrap(x) {
+                    // check if logged, if true, get and input MemNO:
+                    if (true) {
+                        this.MemNO = 2;
+                    }
+                    // if keep is not existed then save it, if keep is existed then alert :
+                    // check if keep is existed:
+                    let n = this.searchedAttractions.indexOf(x);
+                    $.get(
+                        `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+                    ).then((data) => {
+                        if (JSON.parse(data) == 0) {
+                            $.ajax({
+                                method: "POST",
+                                url: "saveClickedKeepAttrac.php",
+                                data: {
+                                    saveKeepMemNO: `${this.MemNO}`,
+                                    saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+                                },
+                                dataType: "json",
+                            });
+                        } else {
+                            alert("已收藏過此景點");
+                        }
+                    });
+                },
+                reloadWindow() {
+                    location.reload();
+                },
+            },
+            mounted() {
+                this.initialAttraction();
+                this.map = new google.maps.Map(document.getElementById("map"), {
+                    center: this.mapCenter,
+                    zoom: 7.6,
+                });
+            },
+        });
+
+        Vue.component("attraction-item", {
+            template: `
+                    <card @click="sendSelectedAttractionToAttractionList2" class="card align-top m-2 p-2 d-inline-block shadow-sm" data-toggle="modal" data-target="#attracModal" style="width: 11rem;height:14rem;cursor:pointer;">
+                      <div class="position-relative cardImg overflow-hidden" style="height:11.5rem">
+                        <h5 class="position-absolute text-light" style="top:0px;left:0px;">景點</h5>
+                        <img :src='this.label.Picture1' class="d-block h-100 mx-auto"/>
+                        <div class="position-absolute w-100 px-1" style="bottom:0px;background-color:rgba(0,0,0,0.4);">
+                          <h6 class=" text-light text-truncate mb-0 mt-1" style="font-size:0.9rem;">{{label.Name}}</h6>
+                          <p class=" text-light text-truncate mb-1" style="font-size:0.7rem">{{label.Region}}</p>
+                        </div>
+                      </div>
+                      <div class="container py-0">
+                        <div class="row justify-content-between">
+                          <p @click.stop="sendSelectedAttractionToAttractionList" id="addToSchedule" class=" p-1 m-0" style="color:#bc2654; font-size:0.8rem;cursor:pointer;">+ 加入行程</p>
+                          <i :class="alreadyKeep" @click.stop="sendSelectedAttractionToAttractionList3" class="p-1 pt-2 m-0 mr-2 far fa-heart" style="color:#bc2654; font-size:0.8rem;cursor:pointer;"></i>
+                        </div>
+                      </div>
+                    </card>
+                            `,
+            props: ["label"],
+            methods: {
+                sendSelectedAttractionToAttractionList() {
+                    this.$emit("def", this.label);
+                },
+                sendSelectedAttractionToAttractionList2() {
+                    this.$emit("def2", this.label);
+                },
+                sendSelectedAttractionToAttractionList3(e) {
+                    this.$emit("def3", this.label);
+                    e.target.classList.add("fas");
+                },
+            },
+            computed: {
+                alreadyKeep() {
+                    if (this.label.Keep_Attrac_NO != null) {
+                        return "fas";
+                    }
+                },
+            },
+        });
+
+        Vue.component("attraction-direction", {
+            data() {
+                return {
+                    attracStartTime: "",
+                    attracLeaveTime: "",
+                };
+            },
+            props: ["label2"],
+            template: `
+                    <div class="container my-3 py-3 pr-0 rounded shadow">
+                      <button @click="sendClosedAttractionToAttractionList" type="button"  class="close"   aria-label="Close" style="margin-top:-17px;margin-right:3px;">
+                        <span aria-hidden="true" style="font-size:1rem">&times;</span>
+                      </button>
+                      <div class="row">
+                        <div class="left px-0 overflow-hidden col-4" style="height:100px">
+                          <img :src="this.label2.Picture1" class="d-block h-100 mx-auto">
+                        </div>
+                        <div class="right col-8 pr-0 pl-1 position-relative">
+                          <h6 class="">{{label2.Name}}</h6>
+                          <div class=" position-absolute" style="bottom:0px;cursor:pointer;color:#bc2654" >
+
+                            <label class=" my-0" style="font-size:0.7rem;">抵達：</label><input type="time" v-model="attracStartTime" @change="sendAttracStartTimeToAttractionList" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
+                            <br>
+                            <label class=" my-0" style="font-size:0.7rem;">離開：</label><input type="time" v-model="attracLeaveTime" @change="sendAttracLeaveTimeToAttractionList" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    `,
+            methods: {
+                sendClosedAttractionToAttractionList() {
+                    this.$emit("ghi", this.label2);
+                },
+                sendAttracStartTimeToAttractionList() {
+                    this.$emit(
+                        "sendAttracStartTimeToAttractionList",
+                        this.label2,
+                        this.attracStartTime
+                    );
+                    // alert(`${this.attracStartTime}`);
+                },
+                sendAttracLeaveTimeToAttractionList() {
+                    this.$emit(
+                        "sendAttracLeaveTimeToAttractionList",
+                        this.label2,
+                        this.attracLeaveTime
+                    );
+                    // alert(`${this.attracStartTime}`);
+                },
+            },
+        });
+
+        Vue.component("attrac-modal", {
+            props: ["label4"],
+            template: `
+              <div class="modal fade" id="attracModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">{{label4.Name}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="w-100 overflow-hidden" style="height:20rem">
+                        <img :src="this.label4.Picture1" class="d-block h-100 mx-auto">
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-1" style="font-size:0.9rem">
+                          <h6>地址：</h6>
+                          {{label4.Add}}
+                          </li>
+                        <li class="list-group-item px-1" style="font-size:0.9rem">
+                          <h6>電話：</h6>
+                          {{label4.Tel}}
+                          </li>
+                        <li class="list-group-item px-1" style="font-size:0.9rem">
+                          <h6>開放時間：</h6>
+                          {{label4.Opentime}}
+                        </li>
+                        <li class="list-group-item px-1" style="font-size:0.9rem">
+                          <h6>景點描述：</h6>
+                          {{label4.Description}}
+                          </li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="container py-0">
+                        <div class="row justify-content-between">
+                          <p @click.stop="sendSelectedAttractionToAttractionList" id="addToSchedule" class=" p-1 m-0" style="color:#bc2654; font-size:1rem;cursor:pointer;">+ 加入行程</p>
+                          <!--<i @click.stop="sendSelectedAttractionToAttractionList3" class="p-1 pt-2 m-0 far fa-heart" style="color:#bc2654; font-size:1rem;cursor:pointer;"></i>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              `,
+            methods: {
+                sendSelectedAttractionToAttractionList() {
+                    this.$emit("jkl", this.label4);
+                },
+                sendSelectedAttractionToAttractionList3(e) {
+                    alert("xx");
+                    this.$emit("def3", this.label4);
+                    e.target.classList.add("fas");
+                },
+            },
+        });
+
+        Vue.component("attrac-footer", {
+            template: `
+<footer>
+          <div class="container ft">
+          <div class="row">
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>排行程</p>               
+                <ul>
+                    <li><a href="">建立行程</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">  
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>揪團</p>
+                <ul>
+                    <li><a href="">我要參團</a></li>
+                    <li><a href="">我要開團</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>遊記</p>
+                <ul>
+                    <li><a href="">熱門遊記</a></li>
+                    <li><a href="">撰寫遊記</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm ft_column">
+                <img src="./images/ft_circle.png" class="circle"><br>
+                <p>會員中心</p>
+                <ul>
+                    <li><a href="">我的收藏</a></li>
+                    <li><a href="">我的行程</a></li>
+                    <li><a href="">我的揪團</a></li>
+                    <li><a href="">我的遊記</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        自助大丈夫版權所有 Copyright © 2020 
+    </div>
+</footer>
+        `,
+        });
+
+        Vue.component("attrac-nav", {
+            template: `
+        <div class="mainBody">
+    <div class="navBg">   
+      <nav class="nav">
+        <div class="navLeft">
+          <a class="nav-link" href="index.html">
+            <img src="./images/logo.png" alt="">
+            <div class="daijoubu">
+              <div class="daijoubuMd">自助大丈夫</div>
+              <div class="daijoubuEn">Easy Planning Trip</div>
+            </div>
+          </a>
+        </div>
+        <div class="navCenter">
+          <a class="nav-link active" href="plan.html">排行程</a>
+          <a class="nav-link" href="groupView.html">揪團</a>
+          <a class="nav-link" href="blogView.html">遊記</a>
+          <a class="nav-link" href="member.html">會員專區</a>
+        </div>
+        <div class="navRight">
+          <a id="aLogin" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
+          <div id="memberPic"></div>
+          <a id="aRegist" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
+        </div>
+      </nav>
+      <div class="navSmall">
+        <div class="navSmallLeft">
+          <button class="hamburger hamburger--collapse " type="button">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+          </button>
+          <div id="panel">		
+            <a href="plan.html">排行程</a> 
+            <a href="groupView.html">揪團</a>
+            <a href="blogView.html">遊記</a>
+            <a href="member.html">會員專區</a>
+          </div>
+        </div>
+        <a class="nav-link, navSmallCenter" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt=""></a>
+      </div>
+      <div class="container">
+        <div class="modal fade" id="loginForm" role="dialog">
+          <div class="modal-dialog">
+            <!-- 登入燈箱 -->
+            <div class="modal-content">
+                <form action="#" method="get" class="loginform">
+                  <div class="loginall">
+                  <div class="loginnamea">
+                      <div class="logintitle">會員登入</div>
+                  </div>    
+                      <div class="logincont">           
+                          <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" id="memId" style="margin: 1px;"></div>
+                          <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
+                          <div class="logintwobtn">
+                          <button type="button" value="Submit"  id="loginbutton" class="loginleftbutton">送出</button>
+                          <button type="reset" value="Reset" class="loginrightbutton" id="loginrightbutton" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+      <div class="modal fade" id="registerForm" role="dialog">
+        <div class="modal-dialog">
+          <!-- 註冊燈箱 -->
+          <div class="modal-content">
+              <form action="regist.php" method="post" class="enrollfrom" id="enrollfrom" name="enrollfrom" onclick="return false">
+                <div class="enrollall">
+                <div class="enrollnamea">
+                    <div class="enrolltitle">會員註冊</div>
+                </div>    
+                    <div class="enrollcont">           
+                        <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" id="r_memName" name="r_memName" size="10" style="margin: 1px;" autocomplete="off"></div>                     
+                        <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" id="r_memId" name="r_memId" size="10" style="margin: 1px;" autocomplete="off"></div>  
+                        <div id="accountCheck" style="font-size:12px;"></div>              
+                        <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="passwordCheck" style="font-size:12px;"></div>
+                        <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="passwordCheck2" style="font-size:12px;"></div>
+                        <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
+                            <label for="male" class="malelab">
+                                <input type="radio" id="male" name="r_memSex" value="1">男
+                            </label>
+                            <label for="female" class="femalelab">    
+                              <input type="radio" id="female" name="r_memSex" value="2">女
+                            </label>
+                            <label for="other" class="otherlab">
+                                <input type="radio" id="other" name="r_memSex" value="3">其他            
+                            </label>
+                        </div>
+                        <div class="enrollmail">聯絡信箱：<input type="email" class="emailbox" id="r_memEmail" name="r_memEmail" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="emailCheck" style="font-size:12px;"></div>
+                        <div class="enrollmail">聯絡電話：<input type="tel" class="phonebox" id="r_memTel" name="r_memTel" size="10" style="margin: 1px;" autocomplete="off"></div>
+                        <div id="phoneCheck" style="font-size:12px;"></div>
+                        <div class="enrollbirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" class="birthbox" id="r_memBirth" placeholder=" YYYY-MM-DD" name="r_memBirth" size="10" autocomplete="off"></div>
+                        <div id="birthCheck" style="font-size:12px;"></div>  
+                        <div class="enrolltwobtn">
+                            <button type="submit" value="Submit" class="enrollleftbutton">送出</button>
+                            <button type="reset" value="Reset" class="enrollrightbutton loginrightbutton" id="registrightbutton" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>   
+  </div> 
+        `,
+        });
+
+        //Reference///////////////////////////////////////////////////////////////////////////////////////
+        // Vue.component("attraction-schedule", {
+        //   template: `
+        //   <!-- 交通方式選擇
+        //       <div class="col google-map">
+        //         <input type="radio" v-model="travelMode" value="WALKING" @change="getCurrent"/>走路
+        //         <input type="radio" v-model="travelMode" value="BICYCLING" @change="getCurrent"/>自行車
+        //         <input type="radio" v-model="travelMode" value="DRIVING" @change="getCurrent"/>開車
+        //       </div>-->
+        //   <!-- 顯示距離列表
+        //       <section class="row">
+        //         <div class="col-md-4">
+        //           <div class="list-group">
+        //             <div v-for="f in selectedAttractions" class="list-group-item">
+        //               <h5 class="mb-1">{{ f.Name }}</h5>
+        //               <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
+        //               <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
+        //             </div>
+        //           </div>
+        //         </div>-->
+        //   <!-- 顯示地圖
+        //         <div class="col-md-8 google-map">
+        //           <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+        //         </div>
+        //       </section>-->
+        //         `,
+        //   data() {
+        //     return {
+        //       map: null,
+        //       selectedAttractions: [], // 放景點的array
+        //       travelMode: "",
+        //     };
+        //   },
+        //   methods: {
+        //     // initMap() {
+        //     //   // 地圖初始化：
+        //     //   let location = {
+        //     //     lat: 25.0374865,
+        //     //     lng: 121.5647688,
+        //     //   };
+        //     //   this.map = new google.maps.Map(document.getElementById("map"), {
+        //     //     center: location,
+        //     //     zoom: 12,
+        //     //   });
+        //     //   axios.get("./json/aoi.json").then((response) => {
+        //     //     // (2)將取得的景點寫入selectedAttractions
+        //     //     this.selectedAttractions = response.data;
+        //     //     //(1) 將各景點寫入marker
+        //     //     this.selectedAttractions.forEach((r) => {
+        //     //       let latLng = new google.maps.LatLng(r.Py, r.Px);
+        //     //       let marker = new google.maps.Marker({
+        //     //         position: latLng,
+        //     //         map: this.map,
+        //     //         icon:
+        //     //           "https://cdn0.iconfinder.com/data/icons/lumin-social-media-icons/512/Location-32.png",
+        //     //       });
+        //     //       this.map.panTo(latLng);
+        //     //     });
+        //     //   });
+        //     // },
+        //     getCurrent() {
+        //       const _this = this;
+        //       let destinations = [];
+        //       _this.selectedAttractions.forEach((f) => {
+        //         destinations.push(new google.maps.LatLng(f.Py, f.Px));
+        //       });
+        //       const service = new google.maps.DistanceMatrixService();
+        //       service.getDistanceMatrix(
+        //         {
+        //           origins: destinations,
+        //           destinations: destinations,
+        //           travelMode: `${this.travelMode}`, // 交通方式：BICYCLING(自行車)、DRIVING(開車，預設)、TRANSIT(大眾運輸)、WALKING(走路)
+        //           unitSystem: google.maps.UnitSystem.METRIC, // 單位 METRIC(公里，預設)、IMPERIAL(哩)
+        //           avoidHighways: true, // 是否避開高速公路
+        //           avoidTolls: true, // 是否避開收費路線
+        //         },
+        //         callback
+        //       );
+        //       function callback(response, status) {
+        //         // 把距離寫進json裡
+        //         for (
+        //           let i = 1, len = _this.selectedAttractions.length;
+        //           i < len;
+        //           i++
+        //         ) {
+        //           _this.selectedAttractions[i].distance =
+        //             response.rows[0].elements[i].distance.value;
+        //           _this.selectedAttractions[i].distance_text =
+        //             response.rows[0].elements[i].distance.text;
+        //           _this.selectedAttractions[i].distance_time =
+        //             response.rows[0].elements[i].duration.text;
+        //         }
+        //         // 按距離重排
+        //         _this.selectedAttractions = _this.selectedAttractions.sort(
+        //           (a, b) => {
+        //             return a.distance > b.distance ? 1 : -1;
+        //           }
+        //         );
+        //         // console.log(_this.selectedAttractions);
+        //       }
+        //     },
+        //   },
+        //   // mounted() {
+        //   //   // window.addEventListener("load", () => {
+        //   //   this.initMap();
+        //   //   // });
+        //   // },
+        // });
+
+        new Vue({
+            el: "#app",
+        });
+    </script>
 </body>
-<script>
-    let tourStatus = document.getElementById("tourStatus");
-    function saveMyPlan(){
-        tourStatus.style.display = "block";
-    };
-    function closeNewGroup(){
-        tourStatus.style.display = "none";
-    };
 
-</script>
 </html>
