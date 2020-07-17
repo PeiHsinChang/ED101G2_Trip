@@ -307,7 +307,7 @@ function MemberInfoToMemLeft(){
                     $("#memLeftAdjustEmaCheck").html("");
                 }
                 }else{
-                $("#memLeftAdjustEmaCheck").html("");
+                    $("#memLeftAdjustEmaCheck").html("");
                 }
             });
 
@@ -334,7 +334,6 @@ function MemberInfoToMemLeft(){
                         alert('密碼長度不得低於8個字');
                     }else if($("#memLeftAdjustEmaCheck").html().length != 0){
                         alert('請輸入正確e-mail格式');
-                        console.log('123');
                     }else if($("#memLeftAdjustTelCheck").html().length != 0){
                         alert('請輸入正確電話格式');
                     }else if($("#memLeftAdjustBirCheck").html().length != 0){
@@ -360,7 +359,7 @@ function MemberInfoToMemLeft(){
 //選擇大頭照後顯示預覽在畫面上
 window.addEventListener("load", function(){
 	document.getElementById("chooseFileLabel").onchange = function(e){
-        console.log('123');
+        // console.log('123');
         $id("memLeftPicAdjust").innerHTML = `<img id="imgPreview">`;
 		let file = e.target.files[0];
 		let reader = new FileReader();
