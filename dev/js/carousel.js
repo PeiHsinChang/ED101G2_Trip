@@ -211,16 +211,8 @@ function groupCard() {
                     groupCardsAlls,
                 },
                 computed: {
-                    sortbyLike: function() {
-                        function compare(a, b) {
-                            if (a.hostlike < b.hostlike)
-                                return -1;
-                            if (a.hostlike > b.hostlike)
-                                return 1;
-                            return 0;
-                        }
-
-                        return this.groupCardsAlls.sort(compare);
+                    sortbyLike: function groupCardsAlls() {
+                        return _.orderBy(this.groupCardsAlls, 'hostlike', 'desc');
                     }
                 }
             });
