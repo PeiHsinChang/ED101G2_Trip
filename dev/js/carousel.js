@@ -280,6 +280,7 @@ function group_carousel() {
 
 function groupSortByLike() {
     let xhr = new XMLHttpRequest();
+
     xhr.onload = function() {
         if (xhr.status == 200) {
             groupSortLikeRows = JSON.parse(xhr.responseText);
@@ -293,8 +294,8 @@ function groupSortByLike() {
                     groupSorts,
                 },
                 methods: {
-                    sortbyLike() {
-                        groupSorts.sort();
+                    sortbyLike: function() {
+                        this.groupSorts.sort();
                     }
                 },
             });
@@ -307,4 +308,4 @@ function groupSortByLike() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 
-};
+}
