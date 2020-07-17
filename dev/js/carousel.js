@@ -210,19 +210,19 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                // computed: {
-                //     sortbyLike: function() {
-                //         function compare(a, b) {
-                //             if (a.hostlike < b.hostlike)
-                //                 return -1;
-                //             if (a.hostlike > b.hostlike)
-                //                 return 1;
-                //             return 0;
-                //         }
+                computed: {
+                    sortbyLike: function() {
+                        function compare(a, b) {
+                            if (a.hostlike < b.hostlike)
+                                return -1;
+                            if (a.hostlike > b.hostlike)
+                                return 1;
+                            return 0;
+                        }
 
-                //         return this.groupCardsAlls.sort(compare);
-                //     }
-                // }
+                        return this.groupCardsAlls.sort(compare);
+                    }
+                }
             });
 
         } else {
