@@ -145,6 +145,11 @@
             font-size: 1rem;
         }
         
+        div.ft .row .ft_column ul li a:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
         @media (max-width: 576px) {
             .ft {
                 display: none;
@@ -213,12 +218,10 @@
         
         .mainBody .navBg {
             height: 80px;
-            background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(255, 255, 255, 0.1)));
-            background-image: linear-gradient(180deg, white, rgba(255, 255, 255, 0.1));
+            background-color: white;
             z-index: 5;
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
         }
         
@@ -247,7 +250,7 @@
         }
         
         .mainBody .navBg .nav .navLeft a img {
-            height: 70px;
+            height: 65px;
         }
         
         .mainBody .navBg .nav .navLeft a div.daijoubu {
@@ -313,6 +316,7 @@
         
         .mainBody .navBg .nav .navRight {
             width: 145px;
+            margin-right: 15px;
             padding: 10px;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -328,6 +332,10 @@
             color: #393939;
         }
         
+        .mainBody .navBg .nav .navRight a:hover {
+            cursor: pointer;
+        }
+        
         .mainBody .navBg .nav .navRight a img {
             width: 20px;
             margin-right: 5px;
@@ -337,17 +345,17 @@
         
         .mainBody .navBg .nav .navRight #memberPic {
             display: none;
-            border: 1px solid red;
             height: 60px;
             width: 60px;
             border-radius: 50%;
-            -webkit-transform: translateX(-18px) translateY(10px);
-            transform: translateX(-18px) translateY(10px);
+            overflow: hidden;
         }
         
         .mainBody .navBg .nav .navRight #memberPic img {
             width: 100%;
             height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
         }
         
         .mainBody .navBg .navSmall {
@@ -375,16 +383,25 @@
             }
             .mainBody .navBg .navSmall .navSmallCenter {
                 padding: 5px;
+                -webkit-transform: translateX(-35px);
+                transform: translateX(-35px);
             }
             .mainBody .navBg .navSmall .navSmallCenter img {
-                width: 30px;
-                float: right;
-                margin-top: -5px;
-                margin-right: 15px;
+                height: 60px;
             }
-            .mainBody .navBg .navSmall .navSmallRight img {
-                height: 25px;
-                padding-right: 25px;
+            .mainBody .navBg .navSmall .navSmallRight {
+                margin-right: 20px;
+                font-size: 16px;
+            }
+            .mainBody .navBg .navSmall .navSmallRight:hover {
+                cursor: pointer;
+            }
+            .mainBody .navBg .navSmall .navSmallRight1 {
+                margin-right: 20px;
+                font-size: 16px;
+            }
+            .mainBody .navBg .navSmall .navSmallRight1:hover {
+                cursor: pointer;
             }
         }
         
@@ -1310,29 +1327,57 @@
                 },
                 saveKeepAttrap(x) {
                     // check if logged, if true, get and input MemNO:
-                    if (true) {
-                        this.MemNO = 2;
-                    }
+                    $.get("getMemberInfo.php").then((data) => {
+                        let memNOFromPHP = JSON.parse(data).Mem_NO;
+                        console.log(memNOFromPHP);
+                        if (data == "{}") {
+                            alert('請先登入會員');
+                        } else {
+                            this.MemNO = memNOFromPHP;
+                            console.log(this.MemNO);
+                            let n = this.searchedAttractions.indexOf(x);
+                            $.get(
+                                `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+                            ).then((data) => {
+                                if (JSON.parse(data) == 0) {
+                                    $.ajax({
+                                        method: "POST",
+                                        url: "saveClickedKeepAttrac.php",
+                                        data: {
+                                            saveKeepMemNO: `${this.MemNO}`,
+                                            saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+                                        },
+                                        dataType: "json",
+                                    });
+                                } else {
+                                    alert("已收藏過此景點");
+                                }
+                            });
+                        }
+                    })
+
                     // if keep is not existed then save it, if keep is existed then alert :
                     // check if keep is existed:
-                    let n = this.searchedAttractions.indexOf(x);
-                    $.get(
-                        `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
-                    ).then((data) => {
-                        if (JSON.parse(data) == 0) {
-                            $.ajax({
-                                method: "POST",
-                                url: "saveClickedKeepAttrac.php",
-                                data: {
-                                    saveKeepMemNO: `${this.MemNO}`,
-                                    saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
-                                },
-                                dataType: "json",
-                            });
-                        } else {
-                            alert("已收藏過此景點");
-                        }
-                    });
+
+
+                    // let n = this.searchedAttractions.indexOf(x);
+                    // $.get(
+                    //     `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+                    // ).then((data) => {
+                    //     if (JSON.parse(data) == 0) {
+                    //         $.ajax({
+                    //             method: "POST",
+                    //             url: "saveClickedKeepAttrac.php",
+                    //             data: {
+                    //                 saveKeepMemNO: `${this.MemNO}`,
+                    //                 saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+                    //             },
+                    //             dataType: "json",
+                    //         });
+                    //     } else {
+                    //         alert("已收藏過此景點");
+                    //     }
+                    // });
                 },
                 reloadWindow() {
                     location.reload();
@@ -1502,13 +1547,13 @@
         Vue.component("attrac-footer", {
             template: `
 <footer>
-          <div class="container ft">
-          <div class="row">
+    <div class="container ft">
+        <div class="row">
             <div class="col-sm ft_column">
                 <img src="./images/ft_circle.png" class="circle"><br>
                 <p>排行程</p>               
                 <ul>
-                    <li><a href="">建立行程</a></li>
+                    <li><a href="plan.html">建立行程</a></li>
                 </ul>
             </div>
 
@@ -1516,8 +1561,8 @@
                 <img src="./images/ft_circle.png" class="circle"><br>
                 <p>揪團</p>
                 <ul>
-                    <li><a href="">我要參團</a></li>
-                    <li><a href="">我要開團</a></li>
+                    <li><a href="groupView.html">我要參團</a></li>
+                    <li><a href="groupView.html">我要開團</a></li>
                 </ul>
             </div>
 
@@ -1525,8 +1570,8 @@
                 <img src="./images/ft_circle.png" class="circle"><br>
                 <p>遊記</p>
                 <ul>
-                    <li><a href="">熱門遊記</a></li>
-                    <li><a href="">撰寫遊記</a></li>
+                    <li><a href="blogView.html">熱門遊記</a></li>
+                    <li><a href="writeBlog.html">撰寫遊記</a></li>
                 </ul>
             </div>
 
@@ -1534,10 +1579,10 @@
                 <img src="./images/ft_circle.png" class="circle"><br>
                 <p>會員中心</p>
                 <ul>
-                    <li><a href="">我的收藏</a></li>
-                    <li><a href="">我的行程</a></li>
-                    <li><a href="">我的揪團</a></li>
-                    <li><a href="">我的遊記</a></li>
+                    <li><a id="ftaaa">我的收藏</a></li>
+                    <li><a id="ftbbb">我的行程</a></li>
+                    <li><a id="ftccc">我的揪團</a></li>
+                    <li><a id="ftddd">我的遊記</a></li>
                 </ul>
             </div>
         </div>
@@ -1552,115 +1597,124 @@
         Vue.component("attrac-nav", {
             template: `
         <div class="mainBody">
-    <div class="navBg">   
-      <nav class="nav">
-        <div class="navLeft">
-          <a class="nav-link" href="index.html">
-            <img src="./images/logo.png" alt="">
-            <div class="daijoubu">
-              <div class="daijoubuMd">自助大丈夫</div>
-              <div class="daijoubuEn">Easy Planning Trip</div>
-            </div>
-          </a>
-        </div>
-        <div class="navCenter">
-          <a class="nav-link active" href="plan.html">排行程</a>
-          <a class="nav-link" href="groupView.html">揪團</a>
-          <a class="nav-link" href="blogView.html">遊記</a>
-          <a class="nav-link" href="member.html">會員專區</a>
-        </div>
-        <div class="navRight">
-          <a id="aLogin" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
-          <div id="memberPic"></div>
-          <a id="aRegist" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
-        </div>
-      </nav>
-      <div class="navSmall">
-        <div class="navSmallLeft">
-          <button class="hamburger hamburger--collapse " type="button">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-              </span>
-          </button>
-          <div id="panel">		
-            <a href="plan.html">排行程</a> 
-            <a href="groupView.html">揪團</a>
-            <a href="blogView.html">遊記</a>
-            <a href="member.html">會員專區</a>
+  <div class="navBg">   
+    <nav class="nav">
+      <div class="navLeft">
+        <a class="nav-link" href="main.html">         
+          <img src="./images/logo.png" alt="">
+          <div class="daijoubu">
+            <div class="daijoubuMd">自助大丈夫</div>
+            <div class="daijoubuEn">Easy Planning Trip</div>           
           </div>
-        </div>
-        <a class="nav-link, navSmallCenter" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt=""></a>
+        </a>
       </div>
-      <div class="container">
-        <div class="modal fade" id="loginForm" role="dialog">
-          <div class="modal-dialog">
-            <!-- 登入燈箱 -->
-            <div class="modal-content">
-                <form action="#" method="get" class="loginform">
-                  <div class="loginall">
-                  <div class="loginnamea">
-                      <div class="logintitle">會員登入</div>
-                  </div>    
-                      <div class="logincont">           
-                          <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" id="memId" style="margin: 1px;"></div>
-                          <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
-                          <div class="logintwobtn">
-                          <button type="button" value="Submit"  id="loginbutton" class="loginleftbutton">送出</button>
-                          <button type="reset" value="Reset" class="loginrightbutton" id="loginrightbutton" data-dismiss="modal">取消</button>
-                          </div>
-                      </div>
-                  </div>
-              </form>
-            </div>
-          </div>
+      <div class="navCenter">
+        <a class="nav-link active nav-linkplan" href="plan.html">排行程</a>
+        <a class="nav-link nav-linkgroupView" href="groupView.html">揪團</a>
+        <a class="nav-link nav-linkblogView" href="blogView.html">遊記</a>
+        <a class="nav-link nav-linkMember" id="nav-linkMember">會員專區</a>
+      </div>
+      <div class="navRight">
+        <a id="aLogin" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm"><img src="./images/login.png" alt="">登入</a>
+        <div id="memberPic"></div>
+        <a id="aRegist" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
+      </div>
+    </nav>
+    <!-- 漢堡導覽列 -->
+    <div class="navSmall">
+      <div class="navSmallLeft">
+        <button class="hamburger hamburger--collapse " type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </button>
+        <div id="panel">		
+          <a href="plan.html">排行程</a> 
+          <a href="groupView.html">揪團</a>
+          <a href="blogView.html">遊記</a>
+          <a id="navSmallMember">會員專區</a>
+          <hr>
+          <a class="nav-link navSmallRight" style="text-decoration:none;transform:translateX(10px);" data-toggle="modal" data-target="#loginForm">登入</a>
+          <a class="nav-link navSmallRight1" id="qwer" style="text-decoration:none;transform:translateX(10px);" data-toggle="modal" data-target="#registerForm">註冊</a>
         </div>
-  
-      <div class="modal fade" id="registerForm" role="dialog">
+      </div>
+      <a class="navSmallCenter" href="main.html"><img src="./images/logo.png" alt=""></a>
+      <div>
+        <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a>
+        <a class="nav-link navSmallRight1" id="qwer" style="text-decoration:none;" data-toggle="modal" data-target="#registerForm">註冊</a> -->
+      </div>
+      <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a> -->
+    </div>
+    <div class="container">
+      <div class="modal fade" id="loginForm" role="dialog">
         <div class="modal-dialog">
-          <!-- 註冊燈箱 -->
-          <div class="modal-content">
-              <form action="regist.php" method="post" class="enrollfrom" id="enrollfrom" name="enrollfrom" onclick="return false">
-                <div class="enrollall">
-                <div class="enrollnamea">
-                    <div class="enrolltitle">會員註冊</div>
+          <!-- 登入燈箱 -->
+          <div id="loginLightBox" class="modal-content">
+              <form action="#" method="get" class="loginform">
+                <div class="loginall">
+                <div class="loginnamea">
+                    <div class="logintitle">會員登入</div>
                 </div>    
-                    <div class="enrollcont">           
-                        <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" id="r_memName" name="r_memName" size="10" style="margin: 1px;" autocomplete="off"></div>                     
-                        <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" id="r_memId" name="r_memId" size="10" style="margin: 1px;" autocomplete="off"></div>  
-                        <div id="accountCheck" style="font-size:12px;"></div>              
-                        <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
-                        <div id="passwordCheck" style="font-size:12px;"></div>
-                        <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
-                        <div id="passwordCheck2" style="font-size:12px;"></div>
-                        <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
-                            <label for="male" class="malelab">
-                                <input type="radio" id="male" name="r_memSex" value="1">男
-                            </label>
-                            <label for="female" class="femalelab">    
-                              <input type="radio" id="female" name="r_memSex" value="2">女
-                            </label>
-                            <label for="other" class="otherlab">
-                                <input type="radio" id="other" name="r_memSex" value="3">其他            
-                            </label>
-                        </div>
-                        <div class="enrollmail">聯絡信箱：<input type="email" class="emailbox" id="r_memEmail" name="r_memEmail" size="10" style="margin: 1px;" autocomplete="off"></div>
-                        <div id="emailCheck" style="font-size:12px;"></div>
-                        <div class="enrollmail">聯絡電話：<input type="tel" class="phonebox" id="r_memTel" name="r_memTel" size="10" style="margin: 1px;" autocomplete="off"></div>
-                        <div id="phoneCheck" style="font-size:12px;"></div>
-                        <div class="enrollbirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" class="birthbox" id="r_memBirth" placeholder=" YYYY-MM-DD" name="r_memBirth" size="10" autocomplete="off"></div>
-                        <div id="birthCheck" style="font-size:12px;"></div>  
-                        <div class="enrolltwobtn">
-                            <button type="submit" value="Submit" class="enrollleftbutton">送出</button>
-                            <button type="reset" value="Reset" class="enrollrightbutton loginrightbutton" id="registrightbutton" data-dismiss="modal">取消</button>
+                    <div class="logincont">           
+                        <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" id="memId" style="margin: 1px;"></div>
+                        <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
+                        <div class="logintwobtn">
+                        <button type="button" value="Submit"  id="loginbutton" class="loginleftbutton">送出</button>
+                        <button type="reset" value="Reset" class="loginrightbutton" id="loginrightbutton" data-dismiss="modal">取消</button>
                         </div>
                     </div>
                 </div>
             </form>
           </div>
         </div>
-    </div>
-  </div>   
-  </div> 
+      </div>
+
+    <div class="modal fade" id="registerForm" role="dialog">
+      <div class="modal-dialog">
+        <!-- 註冊燈箱 -->
+        <div class="modal-content">
+            <form action="regist.php" method="post" class="enrollfrom" id="enrollfrom" name="enrollfrom" onclick="return false">
+              <div class="enrollall">
+              <div class="enrollnamea">
+                  <div class="enrolltitle">會員註冊</div>
+              </div>    
+                  <div class="enrollcont">           
+                      <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" id="r_memName" name="r_memName" size="10" style="margin: 1px;" autocomplete="off"></div>                     
+                      <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" id="r_memId" name="r_memId" size="10" style="margin: 1px;" autocomplete="off"></div>  
+                      <div id="accountCheck" style="font-size:12px;"></div>              
+                      <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div id="passwordCheck" style="font-size:12px;"></div>
+                      <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div id="passwordCheck2" style="font-size:12px;"></div>
+                      <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
+                          <label for="male" >
+                            <input type="radio" id="male" name="r_memSex" value="1" checked="checked" />男
+                          </label>
+                          <label for="female" >    
+                            <input type="radio" id="female" name="r_memSex" value="2" />女
+                          </label>
+                          <label for="other" >
+                            <input type="radio" id="other" name="r_memSex" value="3" />其他            
+                          </label>
+                      </div>
+                      <div class="enrollmail">聯絡信箱：<input type="email" class="emailbox" id="r_memEmail" name="r_memEmail" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div id="emailCheck" style="font-size:12px;"></div>
+                      <div class="enrollmail">聯絡電話：<input type="tel" class="phonebox" id="r_memTel" name="r_memTel" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div id="phoneCheck" style="font-size:12px;"></div>
+                      <div class="enrollbirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" class="birthbox" id="r_memBirth" placeholder=" YYYY-MM-DD" name="r_memBirth" size="10" autocomplete="off"></div>
+                      <div id="birthCheck" style="font-size:12px;"></div>  
+                      <div class="enrolltwobtn">
+                          <button type="submit" value="Submit" class="enrollleftbutton">送出</button>
+                          <button type="reset" value="Reset" class="enrollrightbutton loginrightbutton" id="registrightbutton" data-dismiss="modal">取消</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>   
+</div> 
         `,
         });
 
