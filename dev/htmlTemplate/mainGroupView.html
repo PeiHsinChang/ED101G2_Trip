@@ -13,10 +13,11 @@
     </div>
     <hr />
     <div class="chooseBlock row">
-        <button class="groupFBtn col-3 col-md-2" @click="sortbyLatest">
+        <input type="hidden" id="sort" value="desc">
+        <button class="groupFBtn col-3 col-md-2" onclick="sortCard('Group_NO')">
             最新刊登 &darr;
         </button>
-        <button class="groupFBtn col-3 col-md-2" @click="sortbyLike(groupCard.hostlike)">
+        <button class="groupFBtn col-3 col-md-2" onclick="sortCard('hostlike')">
             最高評價 &darr;
         </button>
 
