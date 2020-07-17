@@ -208,15 +208,14 @@ function groupCard() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    columnName: columnName,
-                    sort: sort,
+
                     groupCardsAlls,
                 },
                 methods: {
-                    sortCard: function sortCard(columnName) {
-                        if (sort == 'desc') {
-                            $('#sort').val("desc");
-                        }
+                    sortCardLike: function(groupCardsAlls) {
+                        return groupCardsAlls.sort(function(a, b) {
+                            return a.hostlike - b.hostlike;
+                        });
                     }
                 },
 
