@@ -217,7 +217,7 @@ function groupCard() {
                         if (sort == 'desc') {
                             $('#sort').val("desc");
                         }
-                    };
+                    }
                 },
 
 
