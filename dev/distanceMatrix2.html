@@ -602,7 +602,7 @@
       <attraction-list></attraction-list>
       <attrac-footer></attrac-footer>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVE3uJnGBC-aSoc_OTsrjJo7cUZBez4uo"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
@@ -689,7 +689,7 @@
                               <div class="d-flex mt-3">
                                 <input v-model="toBeSavedSchedule.scheName" type="text" class="w-100 border-top-0 border-left-0 border-right-0 form-control  text-truncate text-center" placeholder="請輸入行程名稱" required="required" style="color:#bc2654">
                                 <i role="button" @click="saveSchedule" class="my-auto far fa-save mx-2 text-black-50 " style="cursor:pointer;"></i>
-                                <i class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
+                                <i @click="reloadWindow" class="my-auto fas fa-trash-alt mx-2 text-black-50 "></i>
                               </div>
 
 
@@ -1248,6 +1248,9 @@
               }
             });
           },
+          reloadWindow() {
+            location.reload();
+          },
         },
         mounted() {
           this.initialAttraction();
@@ -1309,7 +1312,7 @@
         props: ["label2"],
         template: `
                     <div class="container my-3 py-3 pr-0 rounded shadow">
-                      <button @click="sendClosedAttractionToAttractionList" type="button" class="close"   aria-label="Close" style="margin-top:-17px;margin-right:3px;">
+                      <button @click="sendClosedAttractionToAttractionList" type="button"  class="close"   aria-label="Close" style="margin-top:-17px;margin-right:3px;">
                         <span aria-hidden="true" style="font-size:1rem">&times;</span>
                       </button>
                       <div class="row">
