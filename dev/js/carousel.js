@@ -211,7 +211,7 @@ function groupCard() {
                     groupCardsAlls,
                 },
                 computed: {
-                    sortbyLike: function groupCardsAlls() {
+                    sortbyLike: function() {
                         return _.orderBy(this.groupCardsAlls, 'hostlike', 'desc');
                     }
                 }
