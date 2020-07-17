@@ -210,11 +210,7 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                methods: {
-                    groupCardsAlls(groupCard) {
-                        return _.orderBy(arrays, 'hostlike', 'desc');
-                    }
-                }
+
             });
 
         } else {
