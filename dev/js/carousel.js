@@ -211,8 +211,8 @@ function groupCard() {
                     groupCardsAlls,
                 },
                 computed: {
-                    sortbyLike: function() {
-                        return _.orderBy(this.groupCardsAlls, 'hostlike', 'desc');
+                    sortbyLike: function(hostlike) {
+                        return value.slice().reverse();
                     }
                 }
             });
