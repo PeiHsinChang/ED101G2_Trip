@@ -57,7 +57,7 @@
                     <!-- 揪團卡片 -->
                     <!-- group cards start-->
                     <div v-for="group in homePageGroups" class="card cardOriginalTem cardGroup ">
-                        <a>
+                        <a :href="'groupInside.php?Group_NO=' + group.Group_NO">
                             <img :src="group.Group_Pic" class="card-img-top" >
                             <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                 <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -167,7 +167,7 @@
         <!-- 揪團卡片 -->
         <!-- group cards start-->
         <div v-for="group in homePageGroups"  class="card cardOriginalTem cardGroup cardGroupRWDindex" style="margin-bottom: 10px;">
-            <a>
+            <a :href="'groupInside.php?Group_NO=' + group.Group_NO">
                 <img :src="group.Group_Pic" class="card-img-top" >
                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
                     <h5 class="card-title cardTitleWebUse">揪團</h5>

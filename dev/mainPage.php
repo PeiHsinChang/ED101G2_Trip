@@ -2,8 +2,7 @@
  try{
   require_once("connectMemberTable.php");
   // 團SQL指令      
-  $sql_group = "select Group_title, Group_Pic, 
-    Mem_name,Group_StartDate, Group_Deadline, 
+  $sql_group = "select *, 
     round(Mem_LikeAmount/Mem_LikeSum) hostlike
     FROM grouptable g ,membertable m
     where g.mem_no = m.mem_no
@@ -27,9 +26,10 @@
     $homePageGroupInfo=array();
       while($homePageGroupRows = $homePageGroup->fetch(PDO::FETCH_ASSOC)){
         $homePageGroupInfo[] = array(
+              "Group_NO"=>$homePageGroupRows["Group_NO"],
               "Group_title"=>$homePageGroupRows["Group_title"],
               "Group_Pic"=>$homePageGroupRows["Group_Pic"],
-              "Mem_name"=>$homePageGroupRows["Mem_name"],
+              "Mem_Name"=>$homePageGroupRows["Mem_Name"],
               "Group_StartDate"=>$homePageGroupRows["Group_StartDate"],
               "Group_Deadline"=>$homePageGroupRows["Group_Deadline"],
               "hostlike"=>$homePageGroupRows["hostlike"],

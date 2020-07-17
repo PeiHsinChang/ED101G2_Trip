@@ -136,7 +136,7 @@
                         <div id="groupForKeep" class="keepAllWall">
                             <!-- keep group start -->
                             <div v-for="keepGroup in keepGroups" class="card cardOriginalTem cardGroup" >
-                                <a :href="'/ED101G2_Trip/dest/groupInside.php?groupTitle=' + keepGroup.Group_title">
+                                <a :href="'groupInside.php?Group_NO=' + keepGroup.Group_NO">
                                     <img :src="keepGroup.Group_Pic" class="card-img-top" >
                                     <div :data-id="keepGroup.Group_title" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -177,7 +177,7 @@
                         <div id="blogForKeep" class="keepAllWall">
                         <!-- keep blog start -->
                             <div v-for="keepBlog in keepBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
-                                <a :href="'/ED101G2_Trip/dest/blogInside.php?blogName=' + keepBlog.Blog_Name">
+                                <a :href="'blogInside.php?Blog_NO=' + keepBlog.Blog_NO">
                                     <img :src="keepBlog.Blog_PicURL" class="card-img-top">
                                     <div :data-id="keepBlog.Blog_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
                                         <h5 class="card-title cardTitleWebUse">遊記</h5>
@@ -235,7 +235,7 @@
                         <!-- 揪團卡片 -->
                         <!-- Mem group start -->
                         <div v-for="memGroup in memGroups" class="card cardOriginalTem cardGroup" >
-                        <a :href="'/ED101G2_Trip/dest/groupInside.php?groupTitle=' + memGroup.Group_title">
+                        <a :href="'groupInside.php?Group_NO=' + memGroup.Group_NO">
                             <img :src="memGroup.Group_Pic" class="card-img-top" >
                             <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                 <h5 class="card-title cardTitleWebUse">揪團</h5>
@@ -270,7 +270,7 @@
                         <!-- 遊記 -->
                         <!-- Mem blog start -->
                         <div v-for="memBlog in memBlogs" class="card cardOriginalTem cardBlog" style="width: 18rem;">
-                            <a :href="'/ED101G2_Trip/dest/blogInside.php?blogName=' + memBlog.Blog_Name">
+                            <a :href="'blogInside.php?Blog_NO=' + memBlog.Blog_NO">
                                 <img :src="memBlog.Blog_PicURL" class="card-img-top">
                                 <div class="card-body card-img-overlay cardImgOverlayWebUse">
                                     <h5 class="card-title cardTitleWebUse">遊記</h5>

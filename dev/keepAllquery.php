@@ -15,10 +15,10 @@
         $keepAttr = $pdo->prepare($sql_keepAttr);
         $keepAttr -> bindValue(":memId", $memInfo);
         $keepAttr -> execute();
-        //下收藏團SQL指令      
-        $sql_keepGroup ="select Group_title, Group_Pic, 
-            Group_StartDate, Group_Deadline,
-            Mem_Name, round(Mem_LikeAmount / Mem_LikeSum) MemLike
+        //下收藏團SQL指令  
+        
+        $sql_keepGroup =
+            "select *,  round(Mem_LikeAmount / Mem_LikeSum) MemLike
             FROM keep_group kg, grouptable g , membertable m
             where  kg.Group_NO = g.Group_NO  
             and g.Mem_NO = m.Mem_NO
@@ -35,8 +35,8 @@
         $keepSche -> bindValue(":memId", $memInfo);
         $keepSche -> execute();
         //下收藏遊記SQL指令 
-        $sql_keepBlog = "select Blog_Name, Blog_PicURL, 
-            Blog_Views, mem_name,Blog_Date
+        $sql_keepBlog = 
+            "select *
             FROM keep_blog kb, blog b , membertable m
             where kb.blog_NO = b.blog_NO 
             and m.mem_NO = b.mem_NO
@@ -52,9 +52,8 @@
         $MemSche -> bindValue(":memId", $memInfo);
         $MemSche -> execute();
         //下我的開團SQL指令
-        $sql_MemGroup ="select Group_title, mem_name, 
-            Group_StartDate , Group_Deadline, Group_Pic, 
-            round(Mem_LikeAmount / Mem_LikeSum) hostlike
+        $sql_MemGroup =
+            "select *, round(Mem_LikeAmount / Mem_LikeSum) hostlike
             FROM grouptable g , membertable m
             where g.Mem_NO=m.Mem_NO
             and m.mem_NO =:memId";
@@ -62,8 +61,8 @@
         $MemGroup -> bindValue(":memId", $memInfo);
         $MemGroup -> execute();
         //下我的遊記SQL指令
-        $sql_MemBlog ="select Blog_Name, mem_name, Blog_Date , 
-            Blog_PicURL, Blog_Views 
+        $sql_MemBlog =
+            "select *
             FROM blog b , membertable m
             where b.Mem_NO = m.Mem_NO
             and m.mem_NO =:memId";
@@ -106,13 +105,17 @@
             $GroupInfo=array();
             while($keepGroupRows = $keepGroup->fetch(PDO::FETCH_ASSOC)){
                 $GroupInfo[] = array(
+                    "Group_NO"=>$keepGroupRows["Group_NO"],
                     "Group_title"=>$keepGroupRows["Group_title"],
                     "Group_Pic"=>$keepGroupRows["Group_Pic"],
                     "Group_StartDate"=>$keepGroupRows["Group_StartDate"],
                     "Group_Deadline"=>$keepGroupRows["Group_Deadline"],
                     "Mem_Name"=>$keepGroupRows["Mem_Name"],
                     "MemLike"=>$keepGroupRows["MemLike"],
-                );	
+                   
+                );
+                	
+                
             }                
         }
         //所有Keep資料串接
@@ -139,11 +142,12 @@
         }else{
             $BlogInfo=array();
             while($keepBlogRows = $keepBlog->fetch(PDO::FETCH_ASSOC)){
-                $BlogInfo[] = array(
+                $BlogInfo[] = array(           
+                    "Blog_NO"=>$keepBlogRows["Blog_NO"],
                     "Blog_Name"=>$keepBlogRows["Blog_Name"],
                     "Blog_PicURL"=>$keepBlogRows["Blog_PicURL"],
                     "Blog_Views"=>$keepBlogRows["Blog_Views"],
-                    "mem_name"=>$keepBlogRows["mem_name"],
+                    "Mem_name"=>$keepBlogRows["Mem_Name"],
                     "Blog_Date"=>$keepBlogRows["Blog_Date"]
                 );	
             }            
@@ -173,8 +177,9 @@
             $MemGroupInfo=array();
             while($MemGroupRows = $MemGroup->fetch(PDO::FETCH_ASSOC)){
                 $MemGroupInfo[] = array(
+                    "Group_NO"=>$MemGroupRows["Group_NO"],
                     "Group_title"=>$MemGroupRows["Group_title"],
-                    "mem_name"=>$MemGroupRows["mem_name"],
+                    "mem_name"=>$MemGroupRows["Mem_Name"],
                     "Group_StartDate"=>$MemGroupRows["Group_StartDate"],
                     "Group_Deadline"=>$MemGroupRows["Group_Deadline"],
                     "Group_Pic"=>$MemGroupRows["Group_Pic"],
@@ -192,8 +197,9 @@
             $MemBlogInfo=array();
             while($MemBlogRows = $MemBlog->fetch(PDO::FETCH_ASSOC)){
                 $MemBlogInfo[] = array(
+                    "Blog_NO"=>$MemBlogRows["Blog_NO"],
                     "Blog_Name"=>$MemBlogRows["Blog_Name"],
-                    "mem_name"=>$MemBlogRows["mem_name"],
+                    "mem_name"=>$MemBlogRows["Mem_Name"],
                     "Blog_Date"=>$MemBlogRows["Blog_Date"],
                     "Blog_PicURL"=>$MemBlogRows["Blog_PicURL"],
                     "Blog_Views"=>$MemBlogRows["Blog_Views"],

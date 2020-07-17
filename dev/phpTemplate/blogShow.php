@@ -5,10 +5,10 @@ try {
         "select * 
         from blog b,membertable m
         where b.mem_no = m.mem_no
-        and b.blog_Name=:blogName;";
+        and b.Blog_NO=:Blog_NO;";
      
 	$blogArticle = $pdo->prepare($sql_b);
-	$blogArticle->bindValue(":blogName", $_GET["blogName"]);
+	$blogArticle->bindValue(":Blog_NO", $_GET["Blog_NO"]);
     $blogArticle->execute();
     $blogArticleInfo = $blogArticle->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
