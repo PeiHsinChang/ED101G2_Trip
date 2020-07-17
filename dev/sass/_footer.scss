@@ -38,6 +38,10 @@ div.ft{
                         color: $colorSecondary2;
                         opacity: .76;
                         font-size: $s_content;
+                        &:hover{
+                            cursor: pointer;
+                            text-decoration: underline;
+                        }
                     }   
                 }
                 

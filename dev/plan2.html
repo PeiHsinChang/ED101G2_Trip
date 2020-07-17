@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('./htmlTemplate/head.html')
+<style>
+    .nav-linkplan::after{
+      width: 100% !important;
+    }
+</style>
+<body>
+    @@include('./htmlTemplate/nav.html')
+    @@include('./htmlTemplate/mainPlan.html')
+    @@include('./htmlTemplate/footer.html')
+    <div id="tourStatus" class="lightBoxWall" >
+        @@include('./htmlTemplate/tourStatus.html')
+    </div> 
+
+</body>
+<script>
+    let tourStatus = document.getElementById("tourStatus");
+    function saveMyPlan(){
+        tourStatus.style.display = "block";
+    };
+    function closeNewGroup(){
+        tourStatus.style.display = "none";
+    };
+
+</script>
+</html>
