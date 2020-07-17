@@ -292,6 +292,11 @@ function groupSortByLike() {
                 data: {
                     groupSorts,
                 },
+                methods: {
+                    sortbyLike() {
+                        groupSorts.sort();
+                    }
+                },
             });
 
         } else {

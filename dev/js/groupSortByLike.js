@@ -13,6 +13,11 @@ window.onload = function() {
                 data: {
                     groupSorts: hostlike,
                 },
+                methods: {
+                    sortbyLike() {
+                        groupSorts.sort();
+                    }
+                },
             });
 
         } else {
