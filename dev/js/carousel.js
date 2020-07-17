@@ -3,7 +3,7 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
-    groupSortByLike();
+    // groupSortByLike();
 
 }
 
@@ -278,34 +278,34 @@ function group_carousel() {
 };
 
 
-function groupSortByLike() {
-    let xhr = new XMLHttpRequest();
+// function groupSortByLike() {
+//     let xhr = new XMLHttpRequest();
 
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            groupSortLikeRows = JSON.parse(xhr.responseText);
-            console.log(groupSortLikeRows[0]);
+//     xhr.onload = function() {
+//         if (xhr.status == 200) {
+//             groupSortLikeRows = JSON.parse(xhr.responseText);
+//             console.log(groupSortLikeRows[0]);
 
-            //desktop version
-            groupSorts = groupSortLikeRows[0];
-            new Vue({
-                el: '#groupCardsAll',
-                data: {
-                    groupSorts,
-                },
-                methods: {
-                    sortbyLike: function() {
-                        this.groupSorts.sort();
-                    }
-                },
-            });
+//             //desktop version
+//             groupSorts = groupSortLikeRows[0];
+//             new Vue({
+//                 el: '#groupCardsAll',
+//                 data: {
+//                     groupSorts,
+//                 },
+//                 methods: {
+//                     sortbyLike: function() {
+//                         this.groupSorts.sort();
+//                     }
+//                 },
+//             });
 
-        } else {
-            alert(xhr.status);
-        }
-    };
-    xhr.open("post", "groupSortByLike.php", true);
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send();
+//         } else {
+//             alert(xhr.status);
+//         }
+//     };
+//     xhr.open("post", "groupSortByLike.php", true);
+//     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+//     xhr.send();
 
-}
+// }
