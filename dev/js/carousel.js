@@ -213,8 +213,8 @@ function groupCard() {
                     },
                     methods: {
                         sortCardLike: groupCardsAlls.sort(function(a, b) {
-                            return (b.hostlike) - (a.hostlike);
-                        });
+                            return parseFloat(b.hostlike) - parseFloat(a.hostlike);
+                        }),
 
                     },
                 },
