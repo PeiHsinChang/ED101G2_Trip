@@ -200,7 +200,11 @@ function groupCard() {
             //desktop version
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
+            console.log(groupviewCards.hostlike);
+
+
             groupCardsAlls = groupviewCards[0];
+
             new Vue({
                 el: '#groupCardsAll',
                 data: {
