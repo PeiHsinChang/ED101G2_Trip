@@ -205,14 +205,13 @@ function groupCard() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-
                     groupCardsAlls,
                 },
                 methods: {
-                    sortCardLike: function compare(a, b) {
+                    sortCardLike: groupCardsAlls.sort(function(a, b) {
                         return b.hostlike - a.hostlike;
-                    },
-                },
+                    })
+                }
             });
 
         } else {
