@@ -3,6 +3,7 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
+    groupSortByLike();
 }
 
 function titleCarousel() {
@@ -273,4 +274,31 @@ function group_carousel() {
     xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
+}
+
+
+function groupSortByLike() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            groupSortLikeRows = JSON.parse(xhr.responseText);
+            console.log(groupSortLikeRows[0]);
+
+            //desktop version
+            groupSorts = groupSortLikeRows[0];
+            new Vue({
+                el: '#groupCardsAll',
+                data: {
+                    groupSorts,
+                },
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLike.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+
 }
