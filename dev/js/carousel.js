@@ -221,7 +221,6 @@ function groupCard() {
                         }
 
                         return this.groupCardsAlls.sort(compare);
-
                     }
                 }
             });
