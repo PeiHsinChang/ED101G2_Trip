@@ -1,3 +1,44 @@
+//字級
+$title: 1.875rem; //30px
+$subtitle: 1.5rem; //24px
+$content: 1.25rem; //20px
+$s_content: 1rem; //16px
+
+//文字
+@mixin text {
+  line-height: 20px;
+  letter-spacing: 1.5px;
+}
+
+//顏色
+$colorMain1: rgb(188, 38, 84);
+$colorMain2: rgb(237, 237, 237);
+$colorSecondary1: rgb(255, 237, 237);
+$colorSecondary2: rgb(255, 255, 255);
+$colorSecondary3: rgb(57, 57, 57);
+$borderLine: rgb(204, 204, 204);
+
+//breakpoint
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
+
+//按鈕
+@mixin button($btWidtn, $btHeight, $btColor, $btBgColor, $btBorderColor) {
+  width: $btWidtn;
+  height: $btHeight;
+  font-size: $s_content;
+  color: $btColor;
+  background-color: $btBgColor;
+  border: 1px solid $btBorderColor;
+  border-radius: 5px;
+  transition: 0.5s;
+  &:hover {
+    color: $btBgColor;
+    background-color: $btColor;
+  }
+}
 // @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
 // @import "variables";
@@ -5,7 +46,7 @@
 // @import "components/bootstrapCustom";
 
 // @import "components/card";
-@import "./footer";
+// @import "./footer";
 // @import "./nav";
 // @import "member";
 // @import "plan";
@@ -22,8 +63,8 @@
 // @import "setupTourn";
 // @import "tourStatus";
 // @import "blogShow";
-// @import "enrollMem";
-// @import "loginMember";
+@import "enrollMem";
+// @import "./loginMember";
 // @import "groupShow";
 // @import "homepageBody";
 // @import "search";
