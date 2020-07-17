@@ -11,11 +11,11 @@ window.onload = function() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    groupSorts: hostlike,
+                    groupSorts,
                 },
                 methods: {
-                    sortbyLike() {
-                        groupSorts.sort();
+                    sortbyLike: function() {
+                        this.groupSorts.sort();
                     }
                 },
             });
