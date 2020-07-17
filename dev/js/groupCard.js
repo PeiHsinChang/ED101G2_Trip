@@ -13,16 +13,8 @@ window.onload = function() {
                     groupCardsAlls,
                 },
                 computed: {
-                    sortbyLike: function() {
-                        function compare(a, b) {
-                            if (a.hostlike < b.hostlike)
-                                return -1;
-                            if (a.hostlike > b.hostlike)
-                                return 1;
-                            return 0;
-                        }
-
-                        return this.groupCardsAlls.sort(compare);
+                    sortbyLike() {
+                        return this.groupCardsAlls.sort((a, b) => a.hostlike - b.hostlike);
                     }
                 }
             });
