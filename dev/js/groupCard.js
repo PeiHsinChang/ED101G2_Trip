@@ -4,6 +4,7 @@ window.onload = function() {
         if (xhr.status == 200) {
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
+            console.log(groupviewCards.hostlike);
 
             //desktop version
             groupCardsAlls = groupviewCards[0];
@@ -16,7 +17,6 @@ window.onload = function() {
                     sortbyLike: function() {
                         function compare(a, b) {
                             if (a.hostlike < b.hostlike)
-                            // console.log(a.hostlike);
                                 return -1;
                             if (a.hostlike > b.hostlike)
                                 return 1;
