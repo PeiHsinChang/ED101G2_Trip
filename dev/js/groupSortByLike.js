@@ -15,7 +15,7 @@ window.onload = function() {
                 },
                 methods: {
                     sortbyLike: function() {
-                        this.groupSorts.sort();
+                        this.sort(groupSorts);
                     }
                 },
             });
