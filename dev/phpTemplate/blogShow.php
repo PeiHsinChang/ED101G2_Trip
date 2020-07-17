@@ -20,6 +20,7 @@ try {
 ?>
 <div class="containerBlog">
     <div class="coverPhoto">
+        <img src="<?=$blogArticleInfo["Blog_PicURL"];?>">
     </div>
 
 
@@ -28,16 +29,16 @@ try {
 
     <div class="writerBlog">
         <div class="boxWriter">
-            <img src="<?=$blogsArticleInfo["Mem_Photo"];?>" class="profileAuthor">
+            <img src="<?=$blogArticleInfo["Mem_Photo"];?>" class="profileAuthor">
             <table>
                 <tr>
-                    <td>作者: <?=$blogsArticleInfo["Mem_Name"];?></td>
+                    <td>作者: <?=$blogArticleInfo["Mem_Name"];?></td>
                 </tr>
                 <tr>
-                    <td><?=$blogsArticleInfo["Blog_Date"];?></td>
+                    <td><?=$blogArticleInfo["Blog_Date"];?></td>
                 </tr>
                 <tr>
-                    <td><?=$blogsArticleInfo["Blog_Views"];?>人氣</td>
+                    <td><?=$blogArticleInfo["Blog_Views"];?>人氣</td>
                 </tr>
             </table>
             <button class="btnSmall">收藏</button>
@@ -45,9 +46,9 @@ try {
     </div>
     <div class="blogContent">
         <aside class="blogCont">
-            <h5><?=$blogsArticleInfo["Blog_Name"];?></h5>
+            <h5><?=$blogArticleInfo["Blog_Name"];?></h5>
             <div>
-                <p><?=$blogsArticleInfo["Blog_Content"];?></p>
+                <p><?=$blogArticleInfo["Blog_Content"];?></p>
             </div>
             &nbsp;
             <div><span>What is Lorem Ipsum? </span><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type andscrambled
