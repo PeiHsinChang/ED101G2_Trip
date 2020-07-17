@@ -1,13 +1,5 @@
 <?php 
 try{
-<<<<<<< HEAD
-=======
-    // $dsn = "mysql:host=localhost;port=8889;dbname=easyPlanningTrip;charset=utf8";
-	// $user = "root";
-	// $password = "root";
-	// $options = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
-    // $pdo = new PDO( $dsn, $user, $password, $options);
->>>>>>> ehren
     //change to require once after done 
     require_once("connectMemberTable.php");
     
