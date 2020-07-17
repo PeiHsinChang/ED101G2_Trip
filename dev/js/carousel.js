@@ -4,6 +4,7 @@ window.onload = function() {
     groupCard();
     group_carousel();
     groupSortByLike();
+
 }
 
 function titleCarousel() {
@@ -274,7 +275,7 @@ function group_carousel() {
     xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
-}
+};
 
 
 function groupSortByLike() {
@@ -301,4 +302,4 @@ function groupSortByLike() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 
-}
+};
