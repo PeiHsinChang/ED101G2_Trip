@@ -214,7 +214,7 @@ function groupCard() {
                     methods: {
                         sortCardLike: groupCardsAlls.sort(function(a, b) {
                             return (b.hostlike) - (a.hostlike);
-                        })
+                        });
 
                     },
                 },
