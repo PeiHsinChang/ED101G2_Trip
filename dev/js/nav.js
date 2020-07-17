@@ -227,6 +227,10 @@ function init(){
   //點擊會員專區，判斷是否已登入
   $id('nav-linkMember').onclick = checkLogin;
   $id('navSmallMember').onclick = checkLogin;
+  $id('ftaaa').onclick = checkLogin;
+  $id('ftbbb').onclick = checkLogin;
+  $id('ftccc').onclick = checkLogin;
+  $id('ftddd').onclick = checkLogin;
 
   //註冊，檢查帳號長度
   $("#r_memId").keyup(function(){
