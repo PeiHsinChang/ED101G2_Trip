@@ -198,7 +198,7 @@ function groupCard() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupviewCards = JSON.parse(xhr.responseText);
+            // groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
             groupCardsAlls = groupviewCards[0];
 
