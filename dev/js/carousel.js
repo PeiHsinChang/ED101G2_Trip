@@ -210,8 +210,11 @@ function groupCard() {
                 methods: {
                     sortCardLike: groupCardsAlls.sort(function(a, b) {
                         return b.hostlike - a.hostlike;
-                    })
-                }
+                    }),
+                    sortCardLatest: groupCardsAlls.sort(function(a, b) {
+                        return b.Group_NO - a.Group_NO;
+                    }),
+                },
             });
 
         } else {
