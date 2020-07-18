@@ -212,7 +212,7 @@ function groupCard() {
                         return b.hostlike - a.hostlike;
                     }),
                     sortCardLatest: groupCardsAlls.sort(function(a, b) {
-                        return b.Group_NO - a.Group_NO;
+                        return a.Group_NO - b.Group_NO;
                     }),
                 },
             });
