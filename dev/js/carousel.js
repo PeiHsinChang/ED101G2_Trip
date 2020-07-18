@@ -215,7 +215,7 @@ function groupCard() {
             alert(xhr.status);
         }
     };
-    xhr.open("post", "groupCardsqqqq.php", true);
+    xhr.open("post", "groupCard.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
