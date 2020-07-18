@@ -198,15 +198,27 @@ function groupCard() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupviewCards = JSON.parse(xhr.responseText);
-            console.log(groupviewCards[0]);
-            groupCardsAlls = groupviewCards[0];
+            // groupviewCards = JSON.parse(xhr.responseText);
+            // console.log(groupviewCards[0]);
+            // groupCardsAlls = groupviewCards[0];
 
             new Vue({
                 el: '#groupCardsAll',
                 data: {
                     groupCardsAlls,
                 },
+                computed: {
+                    sortByLike() {
+                        groupCardsAlls.sort(function(a, b) {
+                            return b.hostlike - a.hostlike;
+                        })
+                    },
+                    sortByLatest() {
+                        groupCardsAlls.sort(function(a, b) {
+                            return a.Group_NO - b.Group_NO;
+                        })
+                    },
+                }
 
             });
 
