@@ -3,7 +3,7 @@ try{
     require_once("connectMemberTable.php");
     // $sql = "select * from `attractions` where Name like :searchedName";
     // $sql = "select * from attractions a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName and char_length(Picture1)>1";
-    $sql = "select * from attractions a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName and Picture1 like 'http%' and Picture1 not like 'http://210%'";
+    $sql = "select * from attraction a left join keep_attrac k on a.Id=k.Attrac_NO where Name like :searchedName and Picture1 like 'http%' and Picture1 not like 'http://210%'";
     $attraction = $pdo->prepare($sql); 
     $attraction->bindValue(":searchedName", '%'.$_GET["searchedName"].'%');
     $attraction->execute();
