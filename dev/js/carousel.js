@@ -208,6 +208,7 @@ function groupCard() {
                     groupCardsAlls,
                 },
 
+
             });
 
         } else {
