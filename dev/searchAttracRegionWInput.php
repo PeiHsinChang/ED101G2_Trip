@@ -1,7 +1,7 @@
 <?php 
 try{
     require_once("connectMemberTable.php");
-    $sql = "select * from attraction where Region=:Region and Name like :searchedName and Picture1 like 'http%' and Picture1 not like 'http://210%'";
+    $sql = "select * from attraction where Attrac_Region=:Region and Attrac_Name like :searchedName and Picture1 like 'http%' and Picture1 not like 'http://210%'";
     $attraction = $pdo->prepare($sql); 
     $attraction->bindValue(":Region", $_GET["Region"]);
     $attraction->bindValue(":searchedName", '%'.$_GET["searchedName"].'%');

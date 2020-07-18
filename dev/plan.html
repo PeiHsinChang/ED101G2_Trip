@@ -1306,7 +1306,7 @@
           getSearchedKeepAttractionsFromPHP() {
             // check if logged, if true, get and input MemNO:
             if (true) {
-              this.MemNO = 2;
+              this.MemNO = 1;
             }
             $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
               if (JSON.parse(data) == 0) {
@@ -1364,10 +1364,10 @@
             // add infowindow:
             let contentString = `
               <div>
-                <h6 style="font-size:0.8rem;margin-bottom:0.2rem">${x.Name}</h6>
+                <h6 style="font-size:0.8rem;margin-bottom:0.2rem">${x.Attrac_Name}</h6>
                 <hr style="margin:0.2rem auto;">
-                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Add}</h6>
-                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Tel}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Attrac_Addre}</h6>
+                <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Attrac_Tel}</h6>
                 <h6 style="font-size:0.6rem;margin:0.2rem auto;">${x.Website}</h6>
                 
               </div>
@@ -1506,8 +1506,8 @@
                         <h5 class="position-absolute text-light" style="top:0px;left:0px;">景點</h5>
                         <img :src='this.label.Picture1' class="d-block h-100 mx-auto"/>
                         <div class="position-absolute w-100 px-1" style="bottom:0px;background-color:rgba(0,0,0,0.4);">
-                          <h6 class=" text-light text-truncate mb-0 mt-1" style="font-size:0.9rem;">{{label.Name}}</h6>
-                          <p class=" text-light text-truncate mb-1" style="font-size:0.7rem">{{label.Region}}</p>
+                          <h6 class=" text-light text-truncate mb-0 mt-1" style="font-size:0.9rem;">{{label.Attrac_Name}}</h6>
+                          <p class=" text-light text-truncate mb-1" style="font-size:0.7rem">{{label.Attrac_Region}}</p>
                         </div>
                       </div>
                       <div class="container py-0">
@@ -1558,7 +1558,7 @@
                           <img :src="this.label2.Picture1" class="d-block h-100 mx-auto">
                         </div>
                         <div class="right col-8 pr-0 pl-1 position-relative">
-                          <h6 class="">{{label2.Name}}</h6>
+                          <h6 class="">{{label2.Attrac_Name}}</h6>
                           <div class=" position-absolute" style="bottom:0px;cursor:pointer;color:#bc2654" >
 
                             <label class=" my-0" style="font-size:0.7rem;">抵達：</label><input type="time" v-model="attracStartTime" @change="sendAttracStartTimeToAttractionList" class=" border-0" style="font-size:0.7rem;cursor:pointer;">
@@ -1599,7 +1599,7 @@
                 <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">{{label4.Name}}</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">{{label4.Attrac_Name}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -1611,19 +1611,19 @@
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item px-1" style="font-size:0.9rem">
                           <h6>地址：</h6>
-                          {{label4.Add}}
+                          {{label4.Attrac_Addre}}
                           </li>
                         <li class="list-group-item px-1" style="font-size:0.9rem">
                           <h6>電話：</h6>
-                          {{label4.Tel}}
+                          {{label4.Attrac_Tel}}
                           </li>
                         <li class="list-group-item px-1" style="font-size:0.9rem">
                           <h6>開放時間：</h6>
-                          {{label4.Opentime}}
+                          {{label4.Attrac_Open}}
                         </li>
                         <li class="list-group-item px-1" style="font-size:0.9rem">
                           <h6>景點描述：</h6>
-                          {{label4.Description}}
+                          {{label4.Attrac_Desc}}
                           </li>
                       </ul>
                     </div>
@@ -1839,7 +1839,7 @@
       //         <div class="col-md-4">
       //           <div class="list-group">
       //             <div v-for="f in selectedAttractions" class="list-group-item">
-      //               <h5 class="mb-1">{{ f.Name }}</h5>
+      //               <h5 class="mb-1">{{ f.Attrac_Name }}</h5>
       //               <span class="float-left mb-0 text-primary">{{ f.distance_text }}</span>
       //               <span class="float-right mb-0 text-primary">{{ f.distance_time }}</span>
       //             </div>
