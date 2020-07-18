@@ -1,6 +1,6 @@
 window.onload = function() {
-    titleCarousel();
-    hotSche();
+    // titleCarousel();
+    // hotSche();
     // groupCard();
     group_carousel();
 
