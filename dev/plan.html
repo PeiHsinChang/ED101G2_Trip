@@ -910,7 +910,7 @@
                                   <attraction-direction 
                                   @ghi="removeSelectedAttraction" @sendAttracStartTimeToAttractionList="sendAttracStartTimeToBackend" @sendAttracLeaveTimeToAttractionList="sendAttracLeaveTimeToBackend" 
                                   class="border bg-light flip-list" 
-                                  :key="selectedAttraction.Id"
+                                  :key="selectedAttraction.Attrac_NO"
                                   v-for="selectedAttraction in selectedAttractions" 
                                   v-bind:label2="selectedAttraction">
                                   </attraction-direction>
@@ -1445,7 +1445,7 @@
                 console.log(this.MemNO);
                 let n = this.searchedAttractions.indexOf(x);
                 $.get(
-                  `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+                  `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Attrac_NO}`
                 ).then((data) => {
                   if (JSON.parse(data) == 0) {
                     $.ajax({
@@ -1453,7 +1453,7 @@
                       url: "saveClickedKeepAttrac.php",
                       data: {
                         saveKeepMemNO: `${this.MemNO}`,
-                        saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+                        saveKeepAttracNO: `${this.searchedAttractions[n].Attrac_NO}`,
                       },
                       dataType: "json",
                     });
@@ -1469,7 +1469,7 @@
 
             // let n = this.searchedAttractions.indexOf(x);
             // $.get(
-            //     `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Id}`
+            //     `checkClickedKeepAttrac.php?KeepMemNO=${this.MemNO}&KeepAttracNO=${this.searchedAttractions[n].Attrac_NO}`
             // ).then((data) => {
             //     if (JSON.parse(data) == 0) {
             //         $.ajax({
@@ -1477,7 +1477,7 @@
             //             url: "saveClickedKeepAttrac.php",
             //             data: {
             //                 saveKeepMemNO: `${this.MemNO}`,
-            //                 saveKeepAttracNO: `${this.searchedAttractions[n].Id}`,
+            //                 saveKeepAttracNO: `${this.searchedAttractions[n].Attrac_NO}`,
             //             },
             //             dataType: "json",
             //         });

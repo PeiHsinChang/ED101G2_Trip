@@ -30,7 +30,7 @@ for($i=0;$i<count($_POST["selectedAttractions"]);$i++){
 	$schedule = $pdo->prepare($sql);
 	
 	$schedule->bindValue(":ScheNO",$scheNO);
-    $schedule->bindValue(":AttracNO", $_POST["selectedAttractions"][$i]["Id"]);
+    $schedule->bindValue(":AttracNO", $_POST["selectedAttractions"][$i]["Attrac_NO"]);
     $schedule->bindValue(":attracStartTime", $_POST["selectedAttractions"][$i]["attracStartTime"]);
     $schedule->bindValue(":attracLeaveTime", $_POST["selectedAttractions"][$i]["attracLeaveTime"]);
     // $schedule->bindValue(":attracStartTime", $_POST["attracStartTime"][$i]);
