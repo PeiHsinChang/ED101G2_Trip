@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     titleCarousel();
     hotSche();
     groupCard();
@@ -10,7 +10,7 @@ function titleCarousel() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
@@ -140,7 +140,7 @@ function hotSche() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             hotSchePackage = JSON.parse(xhr.responseText);
@@ -194,7 +194,7 @@ function hotSche() {
 
 function groupCard() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
 
             //desktop version
@@ -207,18 +207,7 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                computed: {
-                    sortByLike() {
-                        groupCardsAlls.sort(function(a, b) {
-                            return b.hostlike - a.hostlike;
-                        })
-                    },
-                    sortByLatest() {
-                        groupCardsAlls.sort(function(a, b) {
-                            return a.Group_NO - b.Group_NO;
-                        })
-                    },
-                }
+
 
             });
 
@@ -226,7 +215,7 @@ function groupCard() {
             alert(xhr.status);
         }
     };
-    xhr.open("post", "groupCard.php", true);
+    xhr.open("post", "groupCardsqqqq.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
@@ -238,7 +227,7 @@ function groupCard() {
 
 function group_carousel() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //mobile carousel
             groupCarousel = JSON.parse(xhr.responseText);
