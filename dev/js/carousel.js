@@ -208,12 +208,12 @@ function groupCard() {
                     groupCardsAlls,
                 },
                 methods: {
-                    sortByLike: function() {
+                    sortByLike() {
                         groupCardsAlls.sort(function(a, b) {
                             return b.hostlike - a.hostlike;
                         });
                     },
-                    sortByLatest: function() {
+                    sortByLatest() {
                         groupCardsAlls.sort(function(a, b) {
                             return a.Group_NO - b.Group_NO;
                         });
