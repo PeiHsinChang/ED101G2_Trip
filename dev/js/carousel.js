@@ -1,7 +1,7 @@
 window.onload = function() {
-    // titleCarousel();
-    // hotSche();
-    // groupCard();
+    titleCarousel();
+    hotSche();
+    groupCard();
     group_carousel();
 
 }
@@ -198,9 +198,9 @@ function groupCard() {
         if (xhr.status == 200) {
 
             //desktop version
-            // groupviewCards = JSON.parse(xhr.responseText);
-            // console.log(groupviewCards[0]);
-            // groupCardsAlls = groupviewCards[0];
+            groupviewCards = JSON.parse(xhr.responseText);
+            console.log(groupviewCards[0]);
+            groupCardsAlls = groupviewCards[0];
 
             new Vue({
                 el: '#groupCardsAll',
