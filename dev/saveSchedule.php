@@ -23,7 +23,7 @@ try{
 
 //   inser savedSchedule to attrac_sche:
   try{
-    require_once("connect.php");
+    require_once("connectMemberTable.php");
 
 for($i=0;$i<count($_POST["selectedAttractions"]);$i++){
     $sql = "insert into attrac_sche (Sche_NO,Attrac_NO,Attrac_Start_Time,Attrac_Leave_Time) values (:ScheNO,:AttracNO,:attracStartTime,:attracLeaveTime)";
