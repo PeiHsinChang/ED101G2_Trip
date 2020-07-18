@@ -1,10 +1,10 @@
-window.onload = function () {
-    titleCarousel();
-    hotSche();
-    groupCard();
-    group_carousel();
+// window.onload = function () {
+//     titleCarousel();
+//     hotSche();
+//     groupCard();
+//     group_carousel();
 
-}
+// }
 
 function titleCarousel() {
     //點開頁面就要load
