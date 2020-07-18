@@ -7,7 +7,7 @@ try{
 	
 	$schedule->bindValue(":MemNO", $_POST["MemNO"]);
     $schedule->bindValue(":scheName", $_POST["scheName"]);
-    $schedule->bindValue(":scheImg", $_POST["selectedAttractions"][0]["Picture1"]);
+    $schedule->bindValue(":scheImg", $_POST["selectedAttractions"][0]["Attrac_PicURL"]);
     $schedule->bindValue(":scheViews", rand(1000,3000));
     $schedule->bindValue(":scheStatus", $_POST["scheStatus"]);
 	$schedule->execute();
