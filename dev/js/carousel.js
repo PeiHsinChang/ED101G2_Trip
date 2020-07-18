@@ -207,7 +207,7 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                computed: {
+                methods: {
                     sortByLike: function() {
                         groupCardsAlls.sort(function(a, b) {
                             return b.hostlike - a.hostlike;
