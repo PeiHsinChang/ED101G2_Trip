@@ -3,6 +3,7 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
+
 }
 
 function titleCarousel() {
@@ -200,11 +201,25 @@ function groupCard() {
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
             groupCardsAlls = groupviewCards[0];
+
             new Vue({
                 el: '#groupCardsAll',
                 data: {
                     groupCardsAlls,
                 },
+                computed: {
+                    sortByLike() {
+                        groupCardsAlls.sort(function(a, b) {
+                            return b.hostlike - a.hostlike;
+                        })
+                    },
+                    sortByLatest() {
+                        groupCardsAlls.sort(function(a, b) {
+                            return a.Group_NO - b.Group_NO;
+                        })
+                    },
+                }
+
             });
 
         } else {
@@ -215,6 +230,10 @@ function groupCard() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
+
+
+
+
 
 
 function group_carousel() {
@@ -273,4 +292,4 @@ function group_carousel() {
     xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
-}
+};
