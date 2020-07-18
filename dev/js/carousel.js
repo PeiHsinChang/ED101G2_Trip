@@ -207,11 +207,11 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                // methods: {
-                //     sortCardLike: groupCardsAlls.sort(function(a, b) {
-                //         return b.hostlike - a.hostlike;
-                //     })
-                // }
+                methods: {
+                    sortCardLike: groupCardsAlls.sort(function(a, b) {
+                        return b.hostlike - a.hostlike;
+                    })
+                }
             });
 
         } else {
