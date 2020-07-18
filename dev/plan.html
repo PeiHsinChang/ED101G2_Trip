@@ -1347,7 +1347,7 @@
           },
           addSelectedAttractionsToDirection(x) {
             this.selectedAttractions.push(x);
-            let latLng = new google.maps.LatLng(x.Py, x.Px);
+            let latLng = new google.maps.LatLng(x.Attrac_Latit, x.Attrac_Long);
             let marker = new google.maps.Marker({
               position: latLng,
               map: this.map,
