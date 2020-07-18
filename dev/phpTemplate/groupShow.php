@@ -5,11 +5,10 @@ try {
         "select * 
         from grouptable g,membertable m
         where g.mem_no = m.mem_no
-        and g.Group_title =:groupTitle;
-        ";
+        and g.Group_NO =:Group_NO;";
     
 	$groupShow = $pdo->prepare($sql_g);
-	$groupShow->bindValue(":groupTitle", $_GET["groupTitle"]);
+	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -19,10 +18,10 @@ try {
 }
 
 ?>
+    <img src="<?=$groupShowInfo["Group_Pic"];?>" >
 
 <div class="containerGroup">
     <div class="coverPhoto">
-    <img src="<?=$groupShowInfo["Group_Pic"];?>" >
     </div>
    
 </div>
@@ -45,10 +44,10 @@ try {
                     <p>London is the capital city of England.</p>
                 </aside>
                 <aside class="btnsAct">
-                    <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')"><img
-                            src="#">我要報名</button>
-                    <button><img src="#">分享此團</button>
-                    <button><img src="#">收藏此團</button>
+                <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
+                            src="./images/icon/people.png" style="width:30px;height:20px;margin:2px;">我要報名</button>
+                    <button style="width:120px;height:40px;"><img src="./images/icon/share.png" style="width:28px;height:23px;margin:2px;">分享此團</button>
+                    <button style="width:120px;height:40px;"><img src="./images/icon/whiteheart.png" style="width:28px;height:23px;margin:2px;">收藏此團</button>
                 </aside>
             </div>
             <hr>
@@ -75,7 +74,7 @@ try {
                         </td>
                     </tr>
                     <tr>
-                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                        <td class="replies"></td>
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
