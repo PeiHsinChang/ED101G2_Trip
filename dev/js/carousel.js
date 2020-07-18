@@ -205,7 +205,7 @@ function groupCard() {
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    groupCardsAlls,
+                    // groupCardsAlls,
                 },
                 computed: {
                     sortByLike() {
