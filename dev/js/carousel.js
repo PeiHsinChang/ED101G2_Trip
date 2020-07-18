@@ -224,6 +224,10 @@ function groupCard() {
 };
 
 
+
+
+
+
 function group_carousel() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
