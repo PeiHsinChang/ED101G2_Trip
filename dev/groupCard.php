@@ -5,7 +5,7 @@ try{
     //揪團卡片指令
     $sql="select Group_title, Group_Pic, 
         Mem_name,Group_StartDate, Group_Deadline, 
-        round(Mem_LikeAmount/Mem_LikeSum) hostlike
+        round(Mem_LikeAmount/Mem_LikeSum) hostlike,Group_NO
         FROM grouptable g ,membertable m
         where g.mem_no = m.mem_no";
 
@@ -20,6 +20,7 @@ try{
         $groupCardsInfo=array();
         while($groupCardsRows = $groupCards->fetch(PDO::FETCH_ASSOC)){
         $groupCardsInfo[] = array(
+                "Group_NO"=>$groupCardsRows["Group_NO"],
                 "Group_title"=>$groupCardsRows["Group_title"],
                 "Group_Pic"=>$groupCardsRows["Group_Pic"],
                 "Mem_name"=>$groupCardsRows["Mem_name"],
