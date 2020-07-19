@@ -1,7 +1,7 @@
 <?php 
 try {
 	require_once("connectMemberTable.php");
-	$sql = "select * from `groupTable`";
+	$sql = "select * from groupTable";
 	$groupShow = $pdo->prepare($sql);
 	$groupShow->execute();
 } catch (PDOException $e) {
