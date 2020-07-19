@@ -169,7 +169,7 @@
                 <div id="groupCardsAll">
                     <div v-for="groupCard in groupCardsAlls" class="card cardOriginalTem cardGroup">
                         <!-- <a  onclick="openpartinGroup();"> -->
-                        <a href="groupShow.php?psn=<?=$groupShowRow['Group_NO'];?>">
+                        <a href="groupShow.php?<?=groupShowRow['Group_NO'];?>">
                             <img :src="groupCard.Group_Pic " class="card-img-top " alt="... ">
                             <div class="card-body card-img-overlay cardImgOverlayWebUse ">
                                 <h5 class="card-title cardTitleWebUse ">揪團</h5>
