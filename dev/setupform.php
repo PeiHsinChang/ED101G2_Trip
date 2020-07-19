@@ -1,7 +1,7 @@
 <?php
 
 try {
-	require_once("connectBooks.php");
+	require_once("connectMemberTable.php");
 	
 	$sql = "select * from `member` where memId=:memId and memPsw=:memPsw"; //''
 
