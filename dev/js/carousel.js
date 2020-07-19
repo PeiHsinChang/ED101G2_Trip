@@ -3,7 +3,8 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
-    groupSortLike();
+    groupSortByLike();
+
 
 }
 
@@ -280,7 +281,7 @@ function group_carousel() {
 };
 
 
-function groupSortLike() {
+function groupSortByLike() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status == 200) {
@@ -288,18 +289,14 @@ function groupSortLike() {
             //desktop version
             groupviewSortLike = JSON.parse(xhr.responseText);
             console.log(groupviewSortLike[0]);
-            groupSortByLike = groupviewSortLike[0];
+            groupSortLike = groupviewSortLike[0];
 
             new Vue({
                 el: '#groupCardsAll',
                 data: {
-                    groupSortByLike,
+                    groupSortLike,
                 },
-                methods: {
-                    sortByLike: function() {
-                        return this.groupSortByLike;
-                    },
-                },
+
 
 
             });
