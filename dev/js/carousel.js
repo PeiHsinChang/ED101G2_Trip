@@ -219,8 +219,6 @@ function groupCard() {
                     }),
 
                 },
-
-
             });
 
         } else {
