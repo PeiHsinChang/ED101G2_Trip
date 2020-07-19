@@ -3,7 +3,8 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
-    groupSortByLike();
+    // groupSortByLike();
+    SortByLike();
 
 
 }
@@ -209,6 +210,16 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
+                // methods: {
+                //     SortByLike: groupCardsAlls.sort(function(a, b) {
+                //         return b.hostlike - a.hostlike;
+                //     }),
+                //     sortByLatest: groupCardsAlls.sort(function(a, b) {
+                //         return a.Group_NO - b.Group_NO;
+                //     }),
+
+                // },
+
 
             });
 
@@ -281,7 +292,7 @@ function group_carousel() {
 };
 
 
-function groupSortByLike() {
+function SortByLike() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status == 200) {
@@ -296,6 +307,11 @@ function groupSortByLike() {
                 data: {
                     groupSortLike,
                 },
+                // methods: {
+                //     function() {
+                //         return this.groupSortLike;
+                //     }
+                // },
             });
 
         } else {
