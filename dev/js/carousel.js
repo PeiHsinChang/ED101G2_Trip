@@ -296,7 +296,7 @@ function groupviewSortLike() {
                 },
                 methods: {
                     sortByLike: function() {
-                        return groupSortByLike;
+                        return this.groupSortByLike;
                     }
                 }
             });
