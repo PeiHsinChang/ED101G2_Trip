@@ -3,7 +3,7 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
-    sortByLike();
+    groupviewSortLike();
 
 }
 
@@ -279,7 +279,7 @@ function group_carousel() {
 };
 
 
-function sortByLike() {
+function groupviewSortLike() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status == 200) {
