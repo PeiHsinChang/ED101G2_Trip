@@ -1,17 +1,15 @@
 <?php 
 try {
 	require_once("connectMemberTable.php");
-	$sql = "select * from groupTable";
-	$groupShow = $pdo->query($sql);
-	
+	$sql = "select * from `groupTable`";
+	$groupShow = $pdo->prepare($sql);
+	$groupShow->execute();
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	echo "錯誤原因 : ", $e->getMessage(), "<br>";	
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";			
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -38,15 +36,15 @@ try {
 	while($groupShowRow = $groupShow->fetch(PDO::FETCH_ASSOC)){
 ?>
 		<tr>
-		<td> <?=$groupShowRow["Group_NO"];?></td>
+		<td> <?=$groupShowRow["psn"];?></td>
 		<td> 
-			<a href="prodQuery.php?psn=<?=$prodRow["psn"];?>">
+			<a href="prodQuery.php?psn=<?=$groupShowRow["psn"];?>">
 			<?=$groupShowRow["pname"];?>
 			</a>
 		</td>
 		<td> <?=$groupShowRow["price"];?></td>	
 		<td> <?=$groupShowRow["author"];?></td>
-		<td> <img width="50" src="images/<?=$groupCardsRow["image"];?>"></td>
+		<td> <img width="50" src="images/<?=$groupShowRow["image"];?>"></td>
 		</tr>	
 <?php		
 	}
@@ -55,11 +53,17 @@ try {
 </body>
 </html>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
 
+  table td {border-bottom:1px dotted deeppink;padding:2px 4px;}
 
-
-
-
+</style>
+<body>
 <div style="width:1000px;height:500px;"></div>
 <div class="container">
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
@@ -87,6 +91,8 @@ try {
                     <p>London is the capital city of England.</p>
                     <p>London is the capital city of England.</p>
                     <p>London is the capital city of England.</p>
+                    
+
                 </aside>
                 <aside class="btnsAct">
                     <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')"><img
@@ -183,6 +189,12 @@ try {
         </div>
     </div>
 </div>
+	
+</body>
+</html>
+
+
+
 
 
 
