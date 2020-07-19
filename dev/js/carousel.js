@@ -308,4 +308,4 @@ function groupviewSortLike() {
     xhr.open("post", "groupSortByLike.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
-}
+};
