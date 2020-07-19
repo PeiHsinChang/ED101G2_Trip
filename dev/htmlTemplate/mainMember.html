@@ -66,7 +66,7 @@
                         <div id="spotForKeep" class="keepAllWall" >        
                         <!-- cardSpot start-->
                         <div v-for="keepAttra in keepAttras" class="card cardSpot cardOriginalTem " style="width: 18rem;">
-                            <a >
+                            <a>
                                 <img v-if="keepAttra.Attrac_PicURL == ''" :src="output" class="card-img-top">
                                 <img  v-else :src="keepAttra.Attrac_PicURL" class="card-img-top">
                                 <div onclick="openCardLightBox(this);" :data-id="keepAttra.Attrac_Name" class="card-body card-img-overlay cardImgOverlayWebUse">

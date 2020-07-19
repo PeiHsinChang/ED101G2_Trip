@@ -99,7 +99,7 @@
                 <div id="homePageSpot" class="firstPageSpotCardsPart">
                     <!-- spot cards start-->        
                     <div v-for="spot in homePageSpots" class="card cardSpot cardOriginalTem ">
-                        <a>
+                        <a class="homePageSpotCarda" >
                             <img v-if="spot.Attrac_PicURL == ''" :src="output" class="card-img-top">
                             <img  v-else :src="spot.Attrac_PicURL" class="card-img-top">
                             <div class="card-body card-img-overlay cardImgOverlayWebUse">
@@ -112,14 +112,6 @@
                             <div>
                                 <div class="cardStar">
                                     <p>人氣{{spot.likecount}}</p>
-                                </div>
-                                <div class="cardLike">
-                                    <a >
-                                        <p>+加入行程</p>
-                                    </a>
-                                    <a >
-                                        <img src="./images/heart.png" >
-                                    </a>
                                 </div>
                             </div>
                         </a>
@@ -207,7 +199,7 @@
             <!-- 景點卡片 -->
             <!-- spot cards start-->
             <div  v-for="spot in homePageSpots" class="card cardSpot cardOriginalTem cardSpotRWDindex" style="width:18rem;margin-bottom: 10px;">
-                <a>
+                <a class="homePageSpotCarda" >
                     <img v-if="spot.Attrac_PicURL == ''" :src="output" class="card-img-top">
                     <img  v-else :src="spot.Attrac_PicURL" class="card-img-top">
                     <div class="card-body card-img-overlay cardImgOverlayWebUse">
@@ -222,14 +214,9 @@
                         <div class="cardStar">
                             <p>人氣{{spot.likecount}}</p>
                         </div>
-                        <div class="cardLike">
-                            <a >
-                                <p>+加入行程</p>
-                            </a>
-                            <a >
-                                <img src="./images/heart.png" alt="">
-                            </a>
-                        </div>
+                        <!-- <div class="cardLike">
+                           
+                        </div> -->
                     </div>
                 </a>
             </div>
