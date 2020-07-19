@@ -4,7 +4,7 @@ window.onload = function() {
     groupCard();
     group_carousel();
 
-    // SortByLike();
+    SortByLike();
 
 
 }
@@ -210,15 +210,15 @@ function groupCard() {
                 data: {
                     groupCardsAlls,
                 },
-                methods: {
-                    SortByLike: groupCardsAlls.sort(function(a, b) {
-                        return b.hostlike - a.hostlike;
-                    }),
-                    sortByLatest: groupCardsAlls.sort(function(a, b) {
-                        return a.Group_NO - b.Group_NO;
-                    }),
+                // methods: {
+                //     SortByLike: groupCardsAlls.sort(function(a, b) {
+                //         return b.hostlike - a.hostlike;
+                //     }),
+                //     sortByLatest: groupCardsAlls.sort(function(a, b) {
+                //         return a.Group_NO - b.Group_NO;
+                //     }),
 
-                },
+                // },
             });
 
         } else {
@@ -290,33 +290,33 @@ function group_carousel() {
 };
 
 
-// function SortByLike() {
-//     let xhr = new XMLHttpRequest();
-//     xhr.onload = function() {
-//         if (xhr.status == 200) {
+function SortByLike() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
 
-//             //desktop version
-//             groupviewSortLike = JSON.parse(xhr.responseText);
-//             console.log(groupviewSortLike[0]);
-//             groupSortLike = groupviewSortLike[0];
+            //desktop version
+            groupviewSortLike = JSON.parse(xhr.responseText);
+            console.log(groupviewSortLike[0]);
+            groupSortLike = groupviewSortLike[0];
 
-//             new Vue({
-//                 el: '#groupCardsAll',
-//                 data: {
-//                     groupSortLike,
-//                 },
-//                 // methods: {
-//                 //     function() {
-//                 //         return this.groupSortLike;
-//                 //     }
-//                 // },
-//             });
+            new Vue({
+                el: '#groupCardsAll',
+                data: {
+                    groupSortLike,
+                },
+                // methods: {
+                //     function() {
+                //         return this.groupSortLike;
+                //     }
+                // },
+            });
 
-//         } else {
-//             alert(xhr.status);
-//         }
-//     };
-//     xhr.open("post", "groupSortByLike.php", true);
-//     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-//     xhr.send();
-// };
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLike.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+};
