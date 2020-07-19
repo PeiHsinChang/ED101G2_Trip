@@ -1299,7 +1299,7 @@
                 alert("無此景點");
               } else {
                 this.searchedAttractions = JSON.parse(data);
-                // console.log(this.searchedAttractions);
+                console.log(this.searchedAttractions);
               }
             });
           },
@@ -1313,13 +1313,13 @@
                 alert("尚無收藏任何景點");
               } else {
                 this.searchedAttractions = JSON.parse(data);
-                // console.log(this.searchedAttractions);
+                console.log(this.searchedAttractions);
               }
             });
           },
           getSearchedRegionAttractionsFromPHP(x, y) {
-            console.log(typeof x);
-            console.log(typeof y);
+            // console.log(typeof x);
+            // console.log(typeof y);
             if (y == "") {
               // alert("nothing");
               $.get(`searchAttracRegionWoInput.php?Region=${x}`).then(
@@ -1328,7 +1328,7 @@
                     alert("查無景點");
                   } else {
                     this.searchedAttractions = JSON.parse(data);
-                    // console.log(this.searchedAttractions);
+                    console.log(this.searchedAttractions);
                   }
                 }
               );
@@ -1340,7 +1340,7 @@
                   alert("查無景點");
                 } else {
                   this.searchedAttractions = JSON.parse(data);
-                  // console.log(this.searchedAttractions);
+                  console.log(this.searchedAttractions);
                 }
               });
             }
