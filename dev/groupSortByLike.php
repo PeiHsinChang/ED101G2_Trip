@@ -10,23 +10,23 @@ try{
         where g.mem_no = m.mem_no 
         order by hostlike desc";
 
-    $groupCards = $pdo->query($sql); 
-    $groupCards -> execute();
+    $groupCardsLike = $pdo->query($sql); 
+    $groupCardsLike -> execute();
 
     //卡片們所需要資料
     $groupviewSortLike=array();//array不得與pdoStatement同名
-    if($groupCards -> rowCount()==0){
+    if($groupCardsLike -> rowCount()==0){
         echo "{}";
     }else{
         $groupSortLikeInfo=array();
-        while($groupCardsRows = $groupCards->fetch(PDO::FETCH_ASSOC)){
+        while($groupCardsLikeRows = $groupCardsLike->fetch(PDO::FETCH_ASSOC)){
         $groupviewSortLike[] = array(
-                "Group_title"=>$groupCardsRows["Group_title"],
-                "Group_Pic"=>$groupCardsRows["Group_Pic"],
-                "Mem_name"=>$groupCardsRows["Mem_name"],
-                "Group_StartDate"=>$groupCardsRows["Group_StartDate"],
-                "Group_Deadline"=>$groupCardsRows["Group_Deadline"],
-                "hostlike"=>$groupCardsRows["hostlike"],
+                "Group_title"=>$groupCardsLikeRows["Group_title"],
+                "Group_Pic"=>$groupCardsLikeRows["Group_Pic"],
+                "Mem_name"=>$groupCardsLikeRows["Mem_name"],
+                "Group_StartDate"=>$groupCardsLikeRows["Group_StartDate"],
+                "Group_Deadline"=>$groupCardsLikeRows["Group_Deadline"],
+                "hostlike"=>$groupCardsLikeRows["hostlike"],
             );	
         }   
     }
