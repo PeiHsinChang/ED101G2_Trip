@@ -20,7 +20,7 @@ try{
     }else{
         $groupSortLikeInfo=array();
         while($groupCardsLikeRows = $groupCardsLike->fetch(PDO::FETCH_ASSOC)){
-        $groupviewSortLike[] = array(
+        $groupSortLikeInfo[] = array(
                 "Group_title"=>$groupCardsLikeRows["Group_title"],
                 "Group_Pic"=>$groupCardsLikeRows["Group_Pic"],
                 "Mem_name"=>$groupCardsLikeRows["Mem_name"],
