@@ -219,10 +219,6 @@ function groupCard() {
 };
 
 
-
-
-
-
 function group_carousel() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -280,3 +276,35 @@ function group_carousel() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
+
+
+function sortByLike() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            groupviewSortLike = JSON.parse(xhr.responseText);
+            console.log(groupviewSortLike[0]);
+            groupSortByLike = groupviewSortLike[0];
+
+            new Vue({
+                el: '#groupCardsAll',
+                data: {
+                    groupSortByLike,
+                },
+                methods: {
+                    sortByLike: function() {
+                        return groupSortByLike;
+                    }
+                }
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLike.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+}
