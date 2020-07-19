@@ -305,11 +305,11 @@ function SortByLike() {
                 data: {
                     groupSortLike,
                 },
-                // methods: {
-                //     function() {
-                //         return this.groupSortLike;
-                //     }
-                // },
+                methods: {
+                    function() {
+                        return groupSortLike;
+                    }
+                },
             });
 
         } else {
