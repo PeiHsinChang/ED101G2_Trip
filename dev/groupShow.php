@@ -1,7 +1,7 @@
 <?php 
 try {
 	require_once("connectMemberTable.php");
-	$sql = "select * from groupTable ";
+	$sql = "select * from groupTable where Group_NO=:Group_NO";
     $groupShow = $pdo->prepare($sql);
     $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
 	$groupShow->execute();
@@ -28,13 +28,13 @@ try {
 <body>
 <?php 
 if($groupShow->rowCount()==0){
-	echo "<center>查無此商品資料</center>";
+	echo "{}";
 }else{
 	$groupShowRow = $groupShow->fetch(PDO::FETCH_ASSOC);
 }
 ?>    
 <table align="center" class="groupShowTable">
-    <!-- <tr><th>團編號</th><td><?=$groupShowRow["Group_NO"]?></td></tr> -->
+    <tr><th>團編號</th><td><?=$groupShowRow["Group_NO"]?></td></tr>
 	<tr><th>團名</th><td><?=$groupShowRow["Group_title"]?></td></tr>
 	<tr><th>報名期限</th><td><?=$groupShowRow["Group_Deadline"]?></td></tr>
 	<tr><th>出發日期</th><td><?=$groupShowRow["Group_StartDate"]?></td></tr>
