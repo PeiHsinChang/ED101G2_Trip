@@ -1,8 +1,9 @@
 <?php 
 try {
 	require_once("connectMemberTable.php");
-	$sql = "select * from groupTable";
-	$groupShow = $pdo->prepare($sql);
+	$sql = "select * from groupTable ";
+    $groupShow = $pdo->prepare($sql);
+    $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
 	$groupShow->execute();
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
@@ -33,7 +34,7 @@ if($groupShow->rowCount()==0){
 }
 ?>    
 <table align="center" class="groupShowTable">
-    <tr><th>團編號</th><td><?=$groupShowRow["Group_NO"]?></td></tr>
+    <!-- <tr><th>團編號</th><td><?=$groupShowRow["Group_NO"]?></td></tr> -->
 	<tr><th>團名</th><td><?=$groupShowRow["Group_title"]?></td></tr>
 	<tr><th>報名期限</th><td><?=$groupShowRow["Group_Deadline"]?></td></tr>
 	<tr><th>出發日期</th><td><?=$groupShowRow["Group_StartDate"]?></td></tr>
