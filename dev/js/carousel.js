@@ -296,9 +296,6 @@ function groupSortByLike() {
                 data: {
                     groupSortLike,
                 },
-
-
-
             });
 
         } else {
