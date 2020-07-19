@@ -292,6 +292,7 @@ function group_carousel() {
 
 
 function SortByLike() {
+
     let xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status == 200) {
@@ -306,14 +307,10 @@ function SortByLike() {
                 data: {
                     groupSortLike,
                 },
-                // methods: {
-                //     function() {
-                //         return groupSortLike;
-                //     }
-                // },
 
 
             });
+
 
         } else {
             alert(xhr.status);
@@ -322,4 +319,6 @@ function SortByLike() {
     xhr.open("post", "groupSortByLike.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
+
+
 };
