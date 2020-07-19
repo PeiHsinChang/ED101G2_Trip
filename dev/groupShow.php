@@ -1,3 +1,65 @@
+<?php 
+try {
+	require_once("connectMemberTable.php");
+	$sql = "select * from groupTable";
+	$groupShow = $pdo->query($sql);
+	
+} catch (PDOException $e) {
+	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";	
+}
+?>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+
+  table td {border-bottom:1px dotted deeppink;padding:2px 4px;}
+
+</style>
+<body>
+
+	<table align="center" width="800">
+	<tr bgcolor="#bfbfef">
+		<th>書號</th>
+		<th>書名</th>
+		<th>價格</th>
+		<th>作者</th>
+		<th>圖片</th>
+	</tr>	
+	
+<?php 
+	while($groupShowRow = $groupShow->fetch(PDO::FETCH_ASSOC)){
+?>
+		<tr>
+		<td> <?=$groupShowRow["Group_NO"];?></td>
+		<td> 
+			<a href="prodQuery.php?psn=<?=$prodRow["psn"];?>">
+			<?=$groupShowRow["pname"];?>
+			</a>
+		</td>
+		<td> <?=$groupShowRow["price"];?></td>	
+		<td> <?=$groupShowRow["author"];?></td>
+		<td> <img width="50" src="images/<?=$groupCardsRow["image"];?>"></td>
+		</tr>	
+<?php		
+	}
+?>    
+</table>
+</body>
+</html>
+
+
+
+
+
+
 <div style="width:1000px;height:500px;"></div>
 <div class="container">
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
@@ -14,6 +76,16 @@
             <div class="actAll">
                 <aside class="actCont">
                     <h3>活動說明</h3>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
+                    <p>London is the capital city of England.</p>
                     <p>London is the capital city of England.</p>
                 </aside>
                 <aside class="btnsAct">
