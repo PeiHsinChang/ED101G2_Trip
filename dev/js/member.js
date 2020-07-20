@@ -380,11 +380,11 @@ window.addEventListener("load",onlooooad,false);
 
 /*排序的click*/
 function sortKeep(obj){
-    //  obj.className= "filterBtnClick";
     keepSort = obj.dataset.keepsort;
     keepSortObj = {
         keepSort: keepSort
     };
+    console.log( keepSort)
     let xhr = new XMLHttpRequest();
     xhr.open("post", "./MemberSort.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");

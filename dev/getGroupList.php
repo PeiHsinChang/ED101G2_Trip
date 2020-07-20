@@ -1,9 +1,15 @@
 <?php
 session_start();
     try{
-        $mem_NO = $_SESSION["Mem_NO"];
         require_once("connectMemberTable.php");
-        $sql = "select * from `GroupTable` where Mem_NO=:mem_NO and Group_Status=3 order by Group_NO;";
+
+        $mem_NO = $_SESSION["Mem_NO"];
+        $sql = 
+            " select * 
+            from `sche` 
+            where Mem_NO=:mem_NO 
+            and Sche_Status=1
+            order by Sche_NO;";
         $groups = $pdo->prepare($sql);
         $groups->bindParam(":mem_NO", $mem_NO);
         $groups->execute();
@@ -12,7 +18,6 @@ session_start();
             echo json_encode($rtn);
         }else{
             $results = $groups->fetchAll(PDO::FETCH_ASSOC);
-
             echo json_encode($results,JSON_UNESCAPED_UNICODE);
         }
     }catch(PDOException $e){

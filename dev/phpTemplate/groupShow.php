@@ -1,13 +1,14 @@
 <?php
-    require_once("connectMemberTable.php");
-    session_start();
+    
+    
+    // print_r($_SESSION["Mem_NO"]) ;
 try {
+    require_once("connectMemberTable.php");
     $sql_g = 
         "select * 
         from grouptable g,membertable m
         where g.mem_no = m.mem_no
         and g.Group_NO =:Group_NO;";
-    
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();

@@ -61,7 +61,10 @@
                     console.log(schedules);
                     schedulesArray = schedules;
                     $.each(schedules, function( index, value ) {
-                        $('#grouplistSelect').append($("<option></option>").attr("value",schedules[index].Group_NO).text(schedules[index].Group_title));
+                        $('#grouplistSelect')
+                        .append($("<option></option>")
+                        .attr("value",schedules[index].Sche_NO)
+                        .text(schedules[index].Sche_Name));
                     });
                     let schedele = schedulesArray[0];
                     $('#partdate').val(schedele.Group_Deadline);
