@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-      自助大丈夫：Distance Matrix API
+      自助大丈夫
     </title>
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap"
@@ -1060,31 +1060,64 @@
             );
           },
           saveSchedule() {
+            // // check if logged, if true, get and input MemNO:
+            // if (true) {
+            //   this.toBeSavedSchedule.MemNO = 1;
+            // }
+            // // check if shceName and any attraction in direction:
+            // if (this.toBeSavedSchedule.scheName == "") {
+            //   alert("請輸入行程名稱");
+            // } else if (this.selectedAttractions.length == 0) {
+            //   alert("請輸入至少一個景點");
+            // } else {
+            //   //input scheStatus:
+            //   confirm("已完成行程編輯？")
+            //     ? (this.toBeSavedSchedule.scheStatus = 1)
+            //     : (this.toBeSavedSchedule.scheStatus = 0);
+            //   alert(this.toBeSavedSchedule.scheStatus);
+            //   // input selectedAttractions:
+            //   this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
+            //   // console.log(this.toBeSavedSchedule.selectedAttractions);
+            //   $.ajax({
+            //     method: "POST",
+            //     url: "saveSchedule.php",
+            //     data: this.toBeSavedSchedule,
+            //     dataType: "json",
+            //   });
+            // }
+
+            // /////////////////////////////////////////////////////////////
             // check if logged, if true, get and input MemNO:
-            if (true) {
-              this.toBeSavedSchedule.MemNO = 1;
-            }
-            // check if shceName and any attraction in direction:
-            if (this.toBeSavedSchedule.scheName == "") {
-              alert("請輸入行程名稱");
-            } else if (this.selectedAttractions.length == 0) {
-              alert("請輸入至少一個景點");
-            } else {
-              //input scheStatus:
-              confirm("已完成行程編輯？")
-                ? (this.toBeSavedSchedule.scheStatus = 1)
-                : (this.toBeSavedSchedule.scheStatus = 0);
-              alert(this.toBeSavedSchedule.scheStatus);
-              // input selectedAttractions:
-              this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
-              // console.log(this.toBeSavedSchedule.selectedAttractions);
-              $.ajax({
-                method: "POST",
-                url: "saveSchedule.php",
-                data: this.toBeSavedSchedule,
-                dataType: "json",
-              });
-            }
+            $.get("getMemberInfo.php").then((data) => {
+              let memNOFromPHP = JSON.parse(data).Mem_NO;
+              console.log(`memno:${memNOFromPHP}`);
+              if (data == "{}") {
+                alert("請先登入會員");
+              } else {
+                this.toBeSavedSchedule.MemNO = memNOFromPHP;
+                // check if shceName and any attraction in direction:
+                if (this.toBeSavedSchedule.scheName == "") {
+                  alert("請輸入行程名稱");
+                } else if (this.selectedAttractions.length == 0) {
+                  alert("請輸入至少一個景點");
+                } else {
+                  //input scheStatus:
+                  confirm("已完成行程編輯？")
+                    ? (this.toBeSavedSchedule.scheStatus = 1)
+                    : (this.toBeSavedSchedule.scheStatus = 0);
+                  // alert(this.toBeSavedSchedule.scheStatus);
+                  // input selectedAttractions:
+                  this.toBeSavedSchedule.selectedAttractions = this.selectedAttractions;
+                  // console.log(this.toBeSavedSchedule.selectedAttractions);
+                  $.ajax({
+                    method: "POST",
+                    url: "saveSchedule.php",
+                    data: this.toBeSavedSchedule,
+                    dataType: "json",
+                  });
+                }
+              }
+            });
           },
           sendAttracStartTimeToBackend(x, y) {
             let n = this.selectedAttractions.indexOf(x);
