@@ -143,16 +143,15 @@ function keepLikeBtn(obj){
   if(iskeep){
     obj.firstChild.src = "./images/heart.png";
     iskeep = false;
-}else{
+    }else{
     obj.firstChild.src = "./images/heart_r.png";
     iskeep = true;
-}
+    }
   let keepLikeInfo = {
     Like_Title: likeTitle,
     Like_Id: likeName,
     iskeep: iskeep
   };
-
   let xhr = new XMLHttpRequest();
   xhr.open("post", "./likeBtnQuery.php", true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -166,18 +165,16 @@ function keepLikeBtn(obj){
     }else{
       alert(xhr.status);
     }
+  }
 }
 
-}
 var sche = new Vue({
     el: '#scheLightBox', 
     data: {      
         keepSche1:{},
-        QueryScheCards:{}
-        
+        QueryScheCards:{}    
     }, 
 })
-
 //sche card open
 function openScheCardLightBox(obj){
     scheLightBox.style.display = "block";
@@ -202,7 +199,6 @@ function openScheCardLightBox(obj){
             };
             sche.$data.QueryScheCards = QueryScheCards;
             sche.$data.keepSche1 = keepSche1;
-
         }else{
             alert(xhr.status);
         }
@@ -380,6 +376,8 @@ function onlooooad(){
 }
 //window.onload
 window.addEventListener("load",onlooooad,false);
+
+
 /*排序的click*/
 function sortKeep(obj){
     //  obj.className= "filterBtnClick";
@@ -403,14 +401,33 @@ function sortKeep(obj){
                 blogCard.$data.keepBlogs = QueryScheCards; 
             }else{
                 groupCard.$data.keepGroups = QueryScheCards;
-
             }
-
-            // sche.$data.QueryScheCards = QueryScheCards;
-            // sche.$data.keepSche1 = keepSche1;
-
         }else{
             alert(xhr.status);
         }
     }
+}
+
+let filterArea = document.getElementById("filterArea");
+
+function filterSpot(obj){
+    console.log(obj);
+    spotFilter = {
+        spotFilter: obj,
+    };
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "./MemberSort.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //把資料往後傳
+    xhr.send("SpotFilter=" + JSON.stringify(spotFilter)); 
+    console.log(JSON.stringify(spotFilter));  
+    xhr.onload = function(){
+        if(xhr.status==200){
+            var spotFiilter = JSON.parse(xhr.responseText);
+            alert(spotFiilter);
+        }else{
+            alert(xhr.status);
+        }
+    }
+    
 }
