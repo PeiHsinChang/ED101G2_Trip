@@ -1,24 +1,29 @@
 <?php
     session_start();
     $memInfo = $_SESSION["Mem_NO"];
-    // $loginInfo = json_decode($_POST["memInfo"]); 
 
     try{
         require_once("connectMemberTable.php");
+                
         //下收藏景點SQL指令
-        $sql_keepAttr = "select Attrac_Name, Attrac_Region, 
-            round(Attrac_LikeSum/Attrac_LikeAmount,1) likecount, 
-            Attrac_PicURL
+        $sql_keepAttr = 
+            "Select a.Attrac_Name `AttracName`, 
+            a.Attrac_Region `AttracRegion`, 
+            round(Attrac_LikeSum/Attrac_LikeAmount,1) `likecount`, 
+            a.Attrac_PicURL `AttracPicURL`
             FROM keep_attrac k, attraction a 
             where  k.Attrac_NO=a.Attrac_NO 
             and Mem_NO=:memId ";
         $keepAttr = $pdo->prepare($sql_keepAttr);
         $keepAttr -> bindValue(":memId", $memInfo);
         $keepAttr -> execute();
-        //下收藏團SQL指令  
         
+        //下收藏團SQL指令    
         $sql_keepGroup =
-            "select *,  round(Mem_LikeAmount / Mem_LikeSum) MemLike
+            "Select kg.Group_NO `GroupNO`,g.Group_title `GroupTitle`,
+            g.Group_Pic `GroupPic`,g.Group_StartDate `GroupStartDate`,
+            g.Group_Deadline `GroupDeadline`, m.Mem_Name `MemName`,  
+            round(Mem_LikeAmount / Mem_LikeSum) `MemLike`
             FROM keep_group kg, grouptable g , membertable m
             where  kg.Group_NO = g.Group_NO  
             and g.Mem_NO = m.Mem_NO
@@ -26,34 +31,47 @@
         $keepGroup = $pdo->prepare($sql_keepGroup);
         $keepGroup -> bindValue(":memId", $memInfo);
         $keepGroup -> execute();
+        
         //下收藏行程SQL指令 
-        $sql_keepSche = "select Sche_Name, Sche_Img, Sche_Views
+        $sql_keepSche = 
+            "Select s.Sche_Name `ScheName`, 
+            s.Sche_Img `ScheImg`, s.Sche_Views `ScheViews`
             FROM keep_sche ks, sche s
             where ks.Sche_NO = s.Sche_NO  
             and ks.Mem_NO=:memId";
         $keepSche = $pdo->prepare($sql_keepSche);
         $keepSche -> bindValue(":memId", $memInfo);
         $keepSche -> execute();
+        
         //下收藏遊記SQL指令 
         $sql_keepBlog = 
-            "select *
+            "Select kb.Blog_NO `BlogNO`,b.Blog_Name `BlogName`,
+            b.Blog_PicURL `BlogPicURL`,
+            b.Blog_Views `BlogViews`, m.Mem_Name `MemName`,
+            b.Blog_Date `BlogDate`
             FROM keep_blog kb, blog b , membertable m
             where kb.blog_NO = b.blog_NO 
-            and m.mem_NO = b.mem_NO
-            and kb.Mem_NO=:memId";
+            and b.mem_NO=m.mem_NO
+            and kb.Mem_NO=:memId";  
         $keepBlog = $pdo->prepare($sql_keepBlog);
         $keepBlog -> bindValue(":memId", $memInfo);
         $keepBlog -> execute();
+        
         //下我的行程SQL指令
-        $sql_MemSche ="select Sche_Name, Sche_Img, Sche_Views
-            FROM sche 
+        $sql_MemSche =
+            "Select s.Sche_Name `ScheName`, s.Sche_Img `ScheImg`, 
+            s.Sche_Views `ScheViews`
+            FROM sche s 
             where Mem_NO=:memId";
         $MemSche = $pdo->prepare($sql_MemSche);
         $MemSche -> bindValue(":memId", $memInfo);
         $MemSche -> execute();
         //下我的開團SQL指令
         $sql_MemGroup =
-            "select *, round(Mem_LikeAmount / Mem_LikeSum) hostlike
+            "Select g.Group_NO `GroupNO`,g.Group_title `GroupTitle`,
+            m.mem_name `MemName`, g.Group_StartDate `GroupStartDate`,
+            g.Group_Deadline `GroupDeadline`, g.Group_Pic `GroupPic`, 
+            round(Mem_LikeAmount / Mem_LikeSum) `hostlike`
             FROM grouptable g , membertable m
             where g.Mem_NO=m.Mem_NO
             and m.mem_NO =:memId";
@@ -62,7 +80,9 @@
         $MemGroup -> execute();
         //下我的遊記SQL指令
         $sql_MemBlog =
-            "select *
+            "Select b.Blog_NO `BlogNO`, m.Mem_Name `MemName`,
+            b.Blog_Name `BlogName`, b.Blog_Date `BlogDate`, 
+            b.Blog_PicURL `BlogPicURL`, Blog_Views `BlogViews`
             FROM blog b , membertable m
             where b.Mem_NO = m.Mem_NO
             and m.mem_NO =:memId";
@@ -71,13 +91,13 @@
         $MemBlog -> execute();
         
         //下篩選地區SQL 
-        $sql_FilterArea ="select distinct(Attrac_Region),
+        $sql_FilterArea =
+        "select distinct(Attrac_Region),
         case  attraction.Attrac_Region  when '' then '其他' 
-            else attraction.Attrac_Region end as A_R 
+        else attraction.Attrac_Region end as A_R 
         FROM easyplanningtrip.attraction ";
         $FilterArea = $pdo->prepare($sql_FilterArea);
         $FilterArea -> execute();
-
 
 
         //建存放所有收藏資料
@@ -89,10 +109,10 @@
             $attracInfo=array();
             while($keepAttrRows = $keepAttr->fetch(PDO::FETCH_ASSOC)){
                 $attracInfo[] = array(
-                    "Attrac_Name"=>$keepAttrRows["Attrac_Name"],
-                    "Attrac_Region"=>$keepAttrRows["Attrac_Region"],
+                    "Attrac_Name"=>$keepAttrRows["AttracName"],
+                    "Attrac_Region"=>$keepAttrRows["AttracRegion"],
                     "likecount"=>$keepAttrRows["likecount"],
-                    "Attrac_PicURL"=>$keepAttrRows["Attrac_PicURL"]
+                    "Attrac_PicURL"=>$keepAttrRows["AttracPicURL"]
                 );	
             }
         }
@@ -105,17 +125,14 @@
             $GroupInfo=array();
             while($keepGroupRows = $keepGroup->fetch(PDO::FETCH_ASSOC)){
                 $GroupInfo[] = array(
-                    "Group_NO"=>$keepGroupRows["Group_NO"],
-                    "Group_title"=>$keepGroupRows["Group_title"],
-                    "Group_Pic"=>$keepGroupRows["Group_Pic"],
-                    "Group_StartDate"=>$keepGroupRows["Group_StartDate"],
-                    "Group_Deadline"=>$keepGroupRows["Group_Deadline"],
-                    "Mem_Name"=>$keepGroupRows["Mem_Name"],
-                    "MemLike"=>$keepGroupRows["MemLike"],
-                   
+                    "Group_NO"=>$keepGroupRows["GroupNO"],
+                    "Group_title"=>$keepGroupRows["GroupTitle"],
+                    "Group_Pic"=>$keepGroupRows["GroupPic"],
+                    "Group_StartDate"=>$keepGroupRows["GroupStartDate"],
+                    "Group_Deadline"=>$keepGroupRows["GroupDeadline"],
+                    "Mem_Name"=>$keepGroupRows["MemName"],
+                    "MemLike"=>$keepGroupRows["MemLike"],              
                 );
-                	
-                
             }                
         }
         //所有Keep資料串接
@@ -127,9 +144,9 @@
             $ScheInfo=array();
             while($keepScheRows = $keepSche->fetch(PDO::FETCH_ASSOC)){
                 $ScheInfo[] = array(
-                    "Sche_Name"=>$keepScheRows["Sche_Name"],
-                    "Sche_Img"=>$keepScheRows["Sche_Img"],
-                    "Sche_Views"=>$keepScheRows["Sche_Views"],
+                    "Sche_Name"=>$keepScheRows["ScheName"],
+                    "Sche_Img"=>$keepScheRows["ScheImg"],
+                    "Sche_Views"=>$keepScheRows["ScheViews"],
                 );	
             }            
         }
@@ -143,12 +160,12 @@
             $BlogInfo=array();
             while($keepBlogRows = $keepBlog->fetch(PDO::FETCH_ASSOC)){
                 $BlogInfo[] = array(           
-                    "Blog_NO"=>$keepBlogRows["Blog_NO"],
-                    "Blog_Name"=>$keepBlogRows["Blog_Name"],
-                    "Blog_PicURL"=>$keepBlogRows["Blog_PicURL"],
-                    "Blog_Views"=>$keepBlogRows["Blog_Views"],
-                    "Mem_name"=>$keepBlogRows["Mem_Name"],
-                    "Blog_Date"=>$keepBlogRows["Blog_Date"]
+                    "Blog_NO"=>$keepBlogRows["BlogNO"],
+                    "Blog_Name"=>$keepBlogRows["BlogName"],
+                    "Blog_PicURL"=>$keepBlogRows["BlogPicURL"],
+                    "Blog_Views"=>$keepBlogRows["BlogViews"],
+                    "Mem_Name"=>$keepBlogRows["MemName"],
+                    "Blog_Date"=>$keepBlogRows["BlogDate"]
                 );	
             }            
         }
@@ -162,9 +179,9 @@
             $MemScheInfo=array();
             while($MemScheRows = $MemSche->fetch(PDO::FETCH_ASSOC)){
                 $MemScheInfo[] = array(
-                    "Sche_Name"=>$MemScheRows["Sche_Name"],
-                    "Sche_Img"=>$MemScheRows["Sche_Img"],
-                    "Sche_Views"=>$MemScheRows["Sche_Views"]
+                    "Sche_Name"=>$MemScheRows["ScheName"],
+                    "Sche_Img"=>$MemScheRows["ScheImg"],
+                    "Sche_Views"=>$MemScheRows["ScheViews"]
                 );	
             }            
         }
@@ -177,12 +194,12 @@
             $MemGroupInfo=array();
             while($MemGroupRows = $MemGroup->fetch(PDO::FETCH_ASSOC)){
                 $MemGroupInfo[] = array(
-                    "Group_NO"=>$MemGroupRows["Group_NO"],
-                    "Group_title"=>$MemGroupRows["Group_title"],
-                    "mem_name"=>$MemGroupRows["Mem_Name"],
-                    "Group_StartDate"=>$MemGroupRows["Group_StartDate"],
-                    "Group_Deadline"=>$MemGroupRows["Group_Deadline"],
-                    "Group_Pic"=>$MemGroupRows["Group_Pic"],
+                    "Group_NO"=>$MemGroupRows["GroupNO"],
+                    "Group_title"=>$MemGroupRows["GroupTitle"],
+                    "mem_name"=>$MemGroupRows["MemName"],
+                    "Group_StartDate"=>$MemGroupRows["GroupStartDate"],
+                    "Group_Deadline"=>$MemGroupRows["GroupDeadline"],
+                    "Group_Pic"=>$MemGroupRows["GroupPic"],
                     "hostlike"=>$MemGroupRows["hostlike"],
                 );	
             }            
@@ -197,13 +214,12 @@
             $MemBlogInfo=array();
             while($MemBlogRows = $MemBlog->fetch(PDO::FETCH_ASSOC)){
                 $MemBlogInfo[] = array(
-                    "Blog_NO"=>$MemBlogRows["Blog_NO"],
-                    "Blog_Name"=>$MemBlogRows["Blog_Name"],
-                    "mem_name"=>$MemBlogRows["Mem_Name"],
-                    "Blog_Date"=>$MemBlogRows["Blog_Date"],
-                    "Blog_PicURL"=>$MemBlogRows["Blog_PicURL"],
-                    "Blog_Views"=>$MemBlogRows["Blog_Views"],
-            
+                    "Blog_NO"=>$MemBlogRows["BlogNO"],
+                    "Blog_Name"=>$MemBlogRows["BlogName"],
+                    "mem_name"=>$MemBlogRows["MemName"],
+                    "Blog_Date"=>$MemBlogRows["BlogDate"],
+                    "Blog_PicURL"=>$MemBlogRows["BlogPicURL"],
+                    "Blog_Views"=>$MemBlogRows["BlogViews"],
                 );	
             }            
         }
@@ -234,3 +250,4 @@
 
 
 ?>
+

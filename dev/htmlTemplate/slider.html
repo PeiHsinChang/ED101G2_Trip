@@ -2,7 +2,7 @@
 <div class="container1">
   <div class="carousel1">
     <div id="GroupCarousel_deskA" name="GroupCarousel_deskA">
-      <a href="">
+      <a :href="'groupInside.php?Group_NO=' + GroupCarousel_As.Group_NO">
         <div v-for="GroupCarousel_A in GroupCarousel_As" class="item a" id="a">
           <span class="mask">
             <p>{{GroupCarousel_As.GroupDays}}天<br>{{GroupCarousel_As.Group_title}}</p>
@@ -12,7 +12,7 @@
       </a>
     </div>
     <div id="GroupCarousel_deskB" name="GroupCarousel_deskB">
-      <a href="">
+      <a :href="'groupInside.php?Group_NO=' +  GroupCarousel_Bs.Group_NO">
         <div v-for="GroupCarousel_B in GroupCarousel_Bs" class="item b" id="b">
           <!--增加名稱id for database-->
           <span class="mask">
@@ -23,7 +23,7 @@
       </a>
     </div>
     <div id="GroupCarousel_deskC" name="GroupCarousel_deskC">
-      <a href="">
+      <a :href="'groupInside.php?Group_NO=' + GroupCarousel_Cs.Group_NO">
         <div v-for="GroupCarousel_C in GroupCarousel_Cs" class="item c" id="c">
           <span class="mask">
             <p>{{GroupCarousel_Cs.GroupDays}}天<br>{{GroupCarousel_Cs.Group_title}}</p>
@@ -33,7 +33,7 @@
       </a>
     </div>
     <div id="GroupCarousel_deskD" name="GroupCarousel_deskD">
-      <a href="">
+      <a :href="'groupInside.php?Group_NO=' +  GroupCarousel_Ds.Group_NO">
         <div v-for="GroupCarousel_D in GroupCarousel_Ds" class="item d" id="d">
           <span class="mask">
             <p>{{GroupCarousel_Ds.GroupDays}}天<br>{{GroupCarousel_Ds.Group_title}}</p>
@@ -43,7 +43,7 @@
       </a>
     </div>
     <div id="GroupCarousel_deskE" name="GroupCarousel_deskE">
-      <a href="">
+      <a :href="'groupInside.php?Group_NO=' +  GroupCarousel_Es.Group_NO">
         <div v-for="GroupCarousel_E in GroupCarousel_Es" class="item e" id="e">
           <span class="mask">
             <p>{{GroupCarousel_Es.GroupDays}}天<br>{{GroupCarousel_Es.Group_title}}</p>

@@ -12,13 +12,13 @@
         if(isset($_FILES["chooseFile"])){
         switch($_FILES["chooseFile"]["error"]){
             case 0:
-                $dir = "images/memberphoto";
-                if(file_exists($dir) === false){
+                $dir = "images/memberphoto"; //指定一個資料夾路徑存放檔案
+                if(file_exists($dir) === false){ //檢察資料夾是否已存在，若否，則建立一個
                     mkdir($dir);
                 }
                 $from = $_FILES["chooseFile"]["tmp_name"]; //暫存區的路徑
                 $to = "$dir/{$_FILES["chooseFile"]["name"]}"; //用原始檔名稱當做資料儲存的來源會有名稱重複的問題，當相同檔案名稱被重複上傳，後者會覆蓋前者
-                copy($from, $to);	
+                copy($from, $to); //將暫存區檔案抓到資料夾
                 break;
             case 1:
                 echo "上傳失敗, 上傳的檔案太大, 不得超過" , ini_get("upload_max_filesize"), "<br>";

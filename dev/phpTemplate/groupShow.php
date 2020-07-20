@@ -1,16 +1,19 @@
 <?php
-	require_once("connectMemberTable.php");
+    
+    
+    // print_r($_SESSION["Mem_NO"]) ;
 try {
+    require_once("connectMemberTable.php");
     $sql_g = 
         "select * 
         from grouptable g,membertable m
         where g.mem_no = m.mem_no
         and g.Group_NO =:Group_NO;";
-    
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
+    //echo $groupShowInfo["Mem_NO"]==$_SESSION["Mem_NO"]?'是團主':'不是團主';
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -26,7 +29,7 @@ try {
    
 </div>
 <div class="container">
-<h5><?php print_r( $groupShowInfo);?> </h5>
+<h5><?php print_r( $groupShowInfo);?></h5>
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
         <a  onclick="openNewGroup();">
             <img src="./images/openNewGroup.png"  class="d-md-block" />
@@ -42,6 +45,17 @@ try {
                 <aside class="actCont">
                     <h3>活動說明</h3>
                     <p>London is the capital city of England.</p>
+					
+					<table class="prodTable">
+						<tr><th>團號</th><td><?=$groupShowRows["Group_NO"]?></td></tr>
+						<tr><th>團名</th><td><?=$groupShowRows["Group_title"]?></td></tr>
+						<tr><th>出發日期</th><td><?=$groupShowRows["Group_StartDate"]?></td></tr>
+						<tr><th>價格</th><td><?=$groupShowRows["price"]?></td></tr>
+						<tr><th>作者</th><td><?=$groupShowRows["author"]?></td></tr>
+						<tr><th>頁數</th><td><?=$groupShowRows["pages"]?></td></tr>
+					</table>
+
+
                 </aside>
                 <aside class="btnsAct">
                 <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
@@ -51,7 +65,7 @@ try {
                 </aside>
             </div>
             <hr>
-            <div class="joinList">
+            <!-- <div class="joinList">
                 <p>目前團員名單</p>
                 <table class="joinMem">
                     <tr>
@@ -60,9 +74,9 @@ try {
                         <td><img src="./images/profile.jpg">狠愛吃</td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
         </div>
-        <div id="chat" class="tabcontent" style="display: none;">
+        <!-- <div id="chat" class="tabcontent" style="display: none;">
             <h3>留言板</h3>
             <div class="chatCont">
                 <table>
@@ -111,7 +125,7 @@ try {
                         </td>
                     </tr>
                     <tr>
-                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                        <td class="replies">請問團主，花費預算大概是多少呢？哈哈哈!</td>
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
@@ -135,56 +149,9 @@ try {
                 </table>
 
             </div>
-        </div>
+        </div> -->
+
     </div>
-</div>
 
-
-
-
-
-<script>
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName(" tabcontent ");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none ";
-        }
-
-        tabs = document.getElementsByClassName("tabs ");
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" active ", " ");
-        }
-
-        document.getElementById(cityName).style.display = "block ";
-        evt.currentTarget.className += " active ";
-    }
-
-    //lightbox
-    var myModal = document.getElementById("myModal");
-    var btnOpen = document.getElementById("btnOpen");
-    var btnClose = document.getElementById("btnClose");
-    btnOpen.onclick = function() {
-        myModal.style.display = "block ";
-    }
-    btnClose.onclick = function() {
-        myModal.style.display = "none ";
-    }
-
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent ");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none ";
-        }
-        tabs = document.getElementsByClassName("tabs ");
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" active ", " ");
-        }
-
-        document.getElementById(cityName).style.display = "block ";
-        evt.currentTarget.className += " active ";
-    }
-
-   
-</script>
+</body>
+</html>

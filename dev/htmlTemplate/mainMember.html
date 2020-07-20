@@ -18,7 +18,7 @@
                 <form action="adjustMemberInfo.php" method="post" id="memLeftAdjustForm" name="memLeftAdjustForm" enctype="multipart/form-data">
                     <div class="memLeftHeadAdjust">修改個人資料</div>
                     <div class="memLeftPicAdjust" id="memLeftPicAdjust"></div>
-
+                    <!-- 上傳照片 -->
                     <label class="chooseFile" id="chooseFileLabel">選擇大頭照<input type="file" name="chooseFile" id="chooseFile"></label>    
 
                     <div class="memLeftNameAdjust" id="memLeftNameAdjust"></div>
@@ -57,16 +57,16 @@
                     <div id="keepattr" class="keepContainer">
                         <div class="keepfilter_1" >
                             縮小範圍顯示
-                            地區: <select id="filterArea" name="area" >
-                                <option v-for="item in areas" value="item.A_R">{{item.A_R}}</option>
+                            地區: <select id="filterArea" name="area"  onchange="filterSpot(this.value)">
+                                <option v-for="item in areas" :value="item.A_R">{{item.A_R}}</option>
                             </select>
-                            <button class="btnSmall">篩選</button>
+                            <!-- <button class="btnSmall">篩選</button> -->
                         </div>
                         <!-- 景點收藏 -->
                         <div id="spotForKeep" class="keepAllWall" >        
                         <!-- cardSpot start-->
                         <div v-for="keepAttra in keepAttras" class="card cardSpot cardOriginalTem " style="width: 18rem;">
-                            <a >
+                            <a>
                                 <img v-if="keepAttra.Attrac_PicURL == ''" :src="output" class="card-img-top">
                                 <img  v-else :src="keepAttra.Attrac_PicURL" class="card-img-top">
                                 <div onclick="openCardLightBox(this);" :data-id="keepAttra.Attrac_Name" class="card-body card-img-overlay cardImgOverlayWebUse">
@@ -95,8 +95,8 @@
                     </div>
                     <div id="keepsche" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button class="filterBtn">最新刊登&darr;</button>
-                            <button class="filterBtn">最高人氣&darr;</button>
+                            <button class="filterBtn"  data-keepsort="scheNew" onclick="sortKeep(this)">最新刊登&darr;</button>
+                            <button class="filterBtn" data-keepsort="schePop" onclick="sortKeep(this)">最高人氣&darr;</button>
                         </div>
                         <!-- 行程收藏 -->
                         <div id="scheForKeep" class="keepAllWall" >
@@ -129,8 +129,8 @@
                     </div>
                     <div id="keepgroup" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button class="filterBtn">最新刊登&darr;</button>
-                            <button class="filterBtn">最高評價&darr;</button>
+                            <button class="filterBtn" data-keepsort="groupNew" onclick="sortKeep(this)">最新刊登&darr;</button>
+                            <!-- <button class="filterBtn" data-keepsort="groupPop" onclick="sortKeep(this)">最高評價&darr;</button> -->
                         </div>
                         <!-- 揪團收藏 -->
                         <div id="groupForKeep" class="keepAllWall">
@@ -170,8 +170,8 @@
                     </div>
                     <div id="keepblog" class="keepContainer" style="display:none">
                         <div class="keepfilter_2">
-                            <button class="filterBtn">最新刊登&darr;</button>
-                            <button class="filterBtn">最高人氣&darr;</button>
+                            <button class="filterBtn" data-keepsort="blogNew" onclick="sortKeep(this)">最新刊登&darr;</button>
+                            <button class="filterBtn" data-keepsort="blogPop" onclick="sortKeep(this)">最高人氣&darr;</button>
                         </div>
                         <!-- 遊記收藏 -->
                         <div id="blogForKeep" class="keepAllWall">
@@ -187,7 +187,7 @@
                                     </div>
                                     <div>
                                         <div class="cardBlogContent">
-                                            <p>作者：{{keepBlog.mem_name}}</p>
+                                            <p>作者：{{keepBlog.Mem_Name}}</p>
                                             <p>發佈日期：{{keepBlog.Blog_Date}}</p>
                                             <div>
                                                 <p>人氣{{keepBlog.Blog_Views}}</p>
@@ -205,7 +205,7 @@
                 </div>
                 <div id="schedule" class="memRightContainer" style="display:none">
                     <!-- 會員中心＿行程 -->
-                    <div id="schedForMem" class="memRightWall">
+                    <div id="schedForMem" class="memRightWall" >
                         <!-- 會員中心＿行程 -->
                         <!-- mem sche start -->
                         <div v-for="memSche in memSches" class="card  cardOriginalTem cardSchedule cardMemberSchedule" style="width: 18rem;">

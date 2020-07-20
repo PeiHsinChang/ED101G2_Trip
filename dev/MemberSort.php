@@ -4,6 +4,7 @@ session_start();
   $memInfo = $_SESSION["Mem_NO"];
   $sortKeep = json_decode($_POST["keepSortObj"],true); 
   $sortType = $sortKeep['keepSort'];
+ 
   try{
     require_once("connectMemberTable.php");
     if($sortType=="groupNew"){

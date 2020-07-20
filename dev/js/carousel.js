@@ -3,6 +3,9 @@ window.onload = function () {
     hotSche();
     groupCard();
     group_carousel();
+    groupShow();
+
+
 }
 
 function titleCarousel() {
@@ -197,14 +200,26 @@ function groupCard() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupviewCards = JSON.parse(xhr.responseText);
+            var groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
             groupCardsAlls = groupviewCards[0];
-            new Vue({
+
+            groupCardsAllsVue = new Vue({
                 el: '#groupCardsAll',
                 data: {
                     groupCardsAlls,
                 },
+                // methods: {
+                //     SortByLike: groupCardsAlls.sort(function(a, b) {
+                //         return b.hostlike - a.hostlike;
+                //     }),
+
+                //     sortByLatest: groupCardsAlls.sort(function(a, b) {
+                //         return a.Group_NO - b.Group_NO;
+                //     }),
+
+                // },
+
             });
 
         } else {
@@ -273,4 +288,98 @@ function group_carousel() {
     xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
+};
+
+
+function SortByLike() {
+
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var groupviewSortLike = JSON.parse(xhr.responseText);
+            console.log(groupviewSortLike[0]);
+            groupSortLike = groupviewSortLike[0];
+            groupCardsAllsVue.$data.groupCardsAlls = groupSortLike;
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLike.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+
+
+};
+
+function sortByLatest() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var groupviewSortLatest = JSON.parse(xhr.responseText);
+            console.log(groupviewSortLatest[0]);
+            groupSortLatest = groupviewSortLatest[0];
+            groupCardsAllsVue.$data.groupCardsAlls = groupSortLatest;
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLatest.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
 }
+
+
+function groupShow() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var groupShowCards = JSON.parse(xhr.responseText);
+            console.log(groupShowCards[0]);
+            groupShowAlls = groupShowCards;
+            // groupShowAlls_1 = groupShowCards[0];
+
+
+            new Vue({
+                el: '#groupShowAlls_1',
+                data: {
+                    groupShowAlls_1,
+                },
+            });
+
+
+            new Vue({
+                el: '#groupShowAll',
+                data: {
+                    groupShowAlls,
+                },
+
+
+                // methods: {
+                //     SortByLike: groupCardsAlls.sort(function(a, b) {
+                //         return b.hostlike - a.hostlike;
+                //     }),
+
+                //     sortByLatest: groupCardsAlls.sort(function(a, b) {
+                //         return a.Group_NO - b.Group_NO;
+                //     }),
+
+                // },
+
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupShow.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+};

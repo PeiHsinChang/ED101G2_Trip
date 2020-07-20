@@ -1,7 +1,7 @@
 <?php 
 try{
     require_once("connectMemberTable.php");
-    $sql = "select * from keep_attrac k left join attractions a on k.Attrac_NO=a.Id where Mem_NO=:MemNO and Picture1 like 'http%' and Picture1 not like 'http://210%'";
+    $sql = "select * from keep_attrac k left join attraction a on k.Attrac_NO=a.Attrac_NO where Mem_NO=:MemNO and Attrac_PicURL like 'http%' and Attrac_PicURL not like 'http://210%'";
     $attraction = $pdo->prepare($sql); 
     $attraction->bindValue(":MemNO",$_GET["MemNO"]);
     $attraction->execute();

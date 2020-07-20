@@ -2,6 +2,7 @@
   try{
   require_once("connectMemberTable.php");  
   session_start();
+ 
   $memInfo = $_SESSION["Mem_NO"];
   $likeSpot = json_decode($_POST["keepLikeInfo"],true); 
   $iskeep =  $likeSpot['iskeep'];
