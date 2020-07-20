@@ -303,16 +303,6 @@ function SortByLike() {
             groupSortLike = groupviewSortLike[0];
             groupCardsAllsVue.$data.groupCardsAlls = groupSortLike;
 
-            // new Vue({
-            //     el: '#groupCardsAll',
-            //     data: {
-            //         groupSortLike,
-            //     },
-
-
-            // });
-
-
         } else {
             alert(xhr.status);
         }
@@ -323,6 +313,26 @@ function SortByLike() {
 
 
 };
+
+function sortByLatest() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var groupviewSortLatest = JSON.parse(xhr.responseText);
+            console.log(groupviewSortLatest[0]);
+            groupSortLatest = groupviewSortLatest[0];
+            groupCardsAllsVue.$data.groupCardsAlls = groupSortLatest;
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupSortByLatest.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+}
 
 
 function groupShow() {
