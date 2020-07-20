@@ -7,7 +7,7 @@ try {
         from blog b,membertable m
         where b.mem_no = m.mem_no
         and b.Blog_NO=:Blog_NO;";
-     
+
 	$blogArticle = $pdo->prepare($sql_b);
 	$blogArticle->bindValue(":Blog_NO", $_GET["Blog_NO"]);
     $blogArticle->execute();

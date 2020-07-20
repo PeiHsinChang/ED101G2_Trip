@@ -95,7 +95,7 @@
         "select distinct(Attrac_Region),
         case  attraction.Attrac_Region  when '' then '其他' 
         else attraction.Attrac_Region end as A_R 
-        FROM easyplanningtrip.attraction ";
+        FROM attraction ";
         $FilterArea = $pdo->prepare($sql_FilterArea);
         $FilterArea -> execute();
 

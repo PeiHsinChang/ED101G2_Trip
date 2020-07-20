@@ -1,7 +1,5 @@
 <?php
-    
-    
-    // print_r($_SESSION["Mem_NO"]) ;
+        
 try {
     require_once("connectMemberTable.php");
     $sql_g = 
@@ -86,7 +84,6 @@ try {
                     </tr>
                 </table>
 
-
                 <table>
                     <tr>
                         <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
@@ -164,15 +161,15 @@ try {
     }
 
     //lightbox
-    var myModal = document.getElementById("myModal");
-    var btnOpen = document.getElementById("btnOpen");
-    var btnClose = document.getElementById("btnClose");
-    btnOpen.onclick = function() {
-        myModal.style.display = "block ";
-    }
-    btnClose.onclick = function() {
-        myModal.style.display = "none ";
-    }
+    // var myModal = document.getElementById("myModal");
+    // var btnOpen = document.getElementById("btnOpen");
+    // var btnClose = document.getElementById("btnClose");
+    // btnOpen.onclick = function() {
+    //     myModal.style.display = "block ";
+    // }
+    // btnClose.onclick = function() {
+    //     myModal.style.display = "none ";
+    // }
 
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;

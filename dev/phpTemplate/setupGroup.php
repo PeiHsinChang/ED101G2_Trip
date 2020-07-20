@@ -1,5 +1,4 @@
 <?php
-session_start();
     try{
         $mem_NO = $_SESSION["Mem_NO"];
         require_once("connectMemberTable.php");
@@ -20,7 +19,7 @@ session_start();
     }
 ?>
 
-<form class="setupform" action="#" method="get">
+<form class="setupform">
     <div class="startgroupall">
         <div class="startgroupa">
             <div class="startgtitle">開始揪團</div>
@@ -80,11 +79,45 @@ session_start();
                 <div class="noticetext" style="clear:both">備註：</div>
                 <div class="noticetexta"><textarea id="memogroup" name="Group_Com" class="noticetxthere"style="font-size:14px;"></textarea></div>
                 <div class="threestatus">
-                    <button id ="setgroupSubmit" class="setgroupadd">發佈</button>
-                    <button id ="setgroupSave"class="setgroupsave">儲存</button>
+                    <!-- <button id ="setgroupSubmit" class="setgroupadd">發佈</button> -->
+                    <input id ="setgroupSubmit" class="setgroupadd" value="發佈">
+
+                    <!-- <button id ="setgroupSave"class="setgroupsave">儲存</button> -->
                     <button onclick="closeNewGroup();" class="setgroupcancel">取消</button>
                 </div>
             </div>
         </div>
     </div>
  </form>
+
+ <script>
+function setupGroupFt(){
+    let groupInfo = {
+        scheName: document.getElementById("grouplistSelect").value,
+    }
+    console.log(groupInfo);
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        if(xhr.status==200){
+        // document.getElementById("idMsg").innerText=xhr.responseText;
+      }else{
+        alert(xhr.status);
+      }
+  }
+
+  //設定好所要連結的程式
+  let url = "saveGroup.php";
+  xhr.open("Post", url, true);
+  //送出資料
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  let data_info = "memId=" ;
+  console.log(data_info);
+  xhr.send(data_info);
+}//function_checkId
+
+
+
+window.addEventListener("load", function(){
+  document.getElementById("setgroupSubmit").addEventListener("click", setupGroupFt, false);
+}, false) 
+ </script>
