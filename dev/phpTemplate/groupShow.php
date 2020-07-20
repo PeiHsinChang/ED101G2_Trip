@@ -11,6 +11,7 @@ try {
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
+    //echo $groupShowInfo["Mem_NO"]==$_SESSION["Mem_NO"]?'是團主':'不是團主';
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -26,7 +27,7 @@ try {
    
 </div>
 <div class="container">
-<h5><?php print_r( $groupShowInfo);?> </h5>
+<h5><?php print_r( $groupShowInfo);?></h5>
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
         <a  onclick="openNewGroup();">
             <img src="./images/openNewGroup.png"  class="d-md-block" />
