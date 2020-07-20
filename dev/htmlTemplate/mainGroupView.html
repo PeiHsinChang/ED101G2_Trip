@@ -13,10 +13,11 @@
     </div>
     <hr />
     <div class="chooseBlock row">
-        <button class="groupFBtn col-3 col-md-2">
+
+        <button class="groupFBtn col-3 col-md-2" @click="sortByLatest"> 
             最新刊登 &darr;
         </button>
-        <button class="groupFBtn col-3 col-md-2">
+        <button class="groupFBtn col-3 col-md-2" @click="sortByLike">
             最高評價 &darr;
         </button>
 
@@ -168,7 +169,7 @@
                 <div id="groupCardsAll">
                     <div v-for="groupCard in groupCardsAlls" class="card cardOriginalTem cardGroup">
                         <!-- <a  onclick="openpartinGroup();"> -->
-                        <a href="./groupInside.html">
+                        <a :href="'groupInside.php?Group_NO=' + groupCard.Group_NO">
                             <img :src="groupCard.Group_Pic" class="card-img-top" alt="...">
                             <div class="card-body card-img-overlay
                                 cardImgOverlayWebUse">
@@ -210,7 +211,7 @@
         <div class="carousel-inner innerCardScheGroupPhoneSlide">
             <div id="groupCardCarousel_1" class="carousel-item active" name="groupCardCarousel_1">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a>
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_1.Group_NO">
                         <img :src="groupCardCarousel_1.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
@@ -240,7 +241,7 @@
             </div>
             <div id="groupCardCarousel_2" class="carousel-item" name="groupCardCarousel_2">
                 <div class="card cardOriginalTem cardGroup d-block" style="width:18rem;">
-                    <a>
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_2.Group_NO">
                         <img :src="groupCardCarousel_2.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
@@ -270,7 +271,7 @@
             </div>
             <div id="groupCardCarousel_3" class="carousel-item" name="groupCardCarousel_3">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a href="">
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_3.Group_NO">
                         <img :src="groupCardCarousel_3.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
@@ -300,7 +301,7 @@
             </div>
             <div id="groupCardCarousel_4" class="carousel-item" name="groupCardCarousel_4">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a href="">
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_4.Group_NO">
                         <img :src="groupCardCarousel_4.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
@@ -330,7 +331,7 @@
             </div>
             <div id="groupCardCarousel_5" class="carousel-item" name="groupCardCarousel_5">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a href="">
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_5.Group_NO">
                         <img :src="groupCardCarousel_5.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
