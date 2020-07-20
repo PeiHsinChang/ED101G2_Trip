@@ -11,8 +11,8 @@ try{
 
 
 
-    卡片們所需要資料
-    $groupShowCards=array();
+	//卡片們所需要資料
+	$groupShowCards=array();
     if($groupShow -> rowCount()==0){
         echo "{}";
     }else{
@@ -33,7 +33,7 @@ try{
         }   
     }
 
-    串接資料
+    //串接資料
     array_push($groupShowCards,$groupShowInfo);
     echo json_encode($groupShowCards,JSON_UNESCAPED_UNICODE);
 

@@ -334,7 +334,7 @@ function groupShow() {
             groupShowCards = JSON.parse(xhr.responseText);
             console.log(groupShowCards[0]);
             groupShowAlls = groupShowCards;
-            groupShowAlls_1 = groupCarousel[0];
+            groupShowAlls_1 = groupShowCards[0];
 
 
             new Vue({
@@ -343,8 +343,6 @@ function groupShow() {
                     groupShowAlls_1,
                 },
             });
-
-
 
 
             new Vue({
