@@ -3,7 +3,7 @@ try{
     require_once("connectMemberTable.php");
 
     //揪團卡片指令
-	$sql="select * from `GroupTable` where Group_NO:Group_NO";
+	$sql="select * from GroupTable where Group_NO:Group_NO";
 	$groupShow = $pdo->query($sql); 
 	$groupShow -> bindValue(":Group_NO", $_GET["Group_NO"]);
 	$groupShow -> execute();
