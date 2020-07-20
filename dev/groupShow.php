@@ -60,14 +60,7 @@ try{
 </style>
 </head>
 <body>
-<?php 
-if($groupShow->rowCount()==0){
-	echo "";
-}else{
-	$groupShowRows = $groupShow->fetch(PDO::FETCH_ASSOC);
 
-}
-?>    
 
 
 <div id="groupShowAll" class="tabAll">
