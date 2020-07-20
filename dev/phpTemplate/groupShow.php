@@ -1,5 +1,6 @@
 <?php
-	require_once("connectMemberTable.php");
+    require_once("connectMemberTable.php");
+    session_start();
 try {
     $sql_g = 
         "select * 
