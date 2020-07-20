@@ -20,7 +20,7 @@ session_start();
     }
 ?>
 
-<form class="setupform" action="#" method="get">
+<form class="setupform" >
     <div class="startgroupall">
         <div class="startgroupa">
             <div class="startgtitle">開始揪團</div>
@@ -81,7 +81,7 @@ session_start();
                 <div class="noticetexta"><textarea id="memogroup" name="Group_Com" class="noticetxthere"style="font-size:14px;"></textarea></div>
                 <div class="threestatus">
                     <button id ="setgroupSubmit" class="setgroupadd">發佈</button>
-                    <button id ="setgroupSave"class="setgroupsave">儲存</button>
+                    <!-- <button id ="setgroupSave"class="setgroupsave">儲存</button> -->
                     <button onclick="closeNewGroup();" class="setgroupcancel">取消</button>
                 </div>
             </div>

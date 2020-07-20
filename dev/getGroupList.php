@@ -2,7 +2,6 @@
 session_start();
     try{
         require_once("connectMemberTable.php");
-
         $mem_NO = $_SESSION["Mem_NO"];
         $sql = 
             " select * 
