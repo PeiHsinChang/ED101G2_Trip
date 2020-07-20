@@ -19,7 +19,7 @@ try{
         $groupShowInfo=array();
         while($groupShowRows = $groupShow->fetch(PDO::FETCH_ASSOC)){
         $groupShowInfo[] = array(
-             "Group_title"=>$groupShowRows["Group_title"],
+                "Group_title"=>$groupShowRows["Group_title"],
 				"Group_StartDate"=>$groupShowRows["Group_StartDate"],
 				"Group_EndDate"=>$groupShowRows["Group_EndDate"],
 				"Group_Deadline"=>$groupShowRows["Group_Deadline"],

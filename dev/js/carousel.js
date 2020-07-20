@@ -331,9 +331,9 @@ function groupShow() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupShowInfo = JSON.parse(xhr.responseText);
-            console.log(groupShowInfo[0]);
-            groupShowAlls = groupShowInfo[0];
+            groupShowCards = JSON.parse(xhr.responseText);
+            console.log(groupShowCards[0]);
+            groupShowAlls = groupShowCards;
 
 
             new Vue({
