@@ -6,7 +6,7 @@ try {
         "select * 
         from GroupTable g, MemberTable m
         where g.mem_no = m.mem_no
-        and g.Group_NO =:Group_NO;";
+        and g.Group_NO =g.Group_NO;";
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
@@ -53,12 +53,17 @@ try {
 </head>
 <body>
   
-<table align="center" class="prodTable">
+<table  class="prodTable">
 	<tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td></tr>
-	<tr><th>書名</th><td><?=$groupShowInfo["pname"]?></td></tr>
-	<tr><th>價格</th><td><?=$groupShowInfo["price"]?></td></tr>
-	<tr><th>作者</th><td><?=$groupShowInfo["author"]?></td></tr>
-	<tr><th>頁數</th><td><?=$groupShowInfo["pages"]?></td></tr>
+	<tr><th>出發日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td></tr>
+	<tr><th>結束日期</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
+	<tr><th>報名截止</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
+    <tr><th>人數限制</th><td><?=$groupShowInfo["Group_Ppl"]?></td></tr>
+    <tr><th>性別限制</th><td><?=$groupShowInfo["Group_Sex"]?></td></tr>
+    <tr><th>年齡限制</th><td><?=$groupShowInfo["Group_Age"]?></td></tr>
+    <tr><th>團費</th><td><?=$groupShowInfo["Group_Fee"]?></td></tr>
+    <tr><th>集合地點</th><td><?=$groupShowInfo["Group_Place"]?></td></tr>
+    <tr><th>備註</th><td><?=$groupShowInfo["Group_Com"]?></td></tr>
 </table>
 </body>
 </html>
