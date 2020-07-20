@@ -3,7 +3,6 @@ window.onload = function() {
     hotSche();
     groupCard();
     group_carousel();
-    SortByLike();
     groupShow();
 
 
@@ -201,11 +200,11 @@ function groupCard() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupviewCards = JSON.parse(xhr.responseText);
+            var groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
             groupCardsAlls = groupviewCards[0];
 
-            new Vue({
+            groupCardsAllsVue = new Vue({
                 el: '#groupCardsAll',
                 data: {
                     groupCardsAlls,
@@ -299,18 +298,19 @@ function SortByLike() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupviewSortLike = JSON.parse(xhr.responseText);
+            var groupviewSortLike = JSON.parse(xhr.responseText);
             console.log(groupviewSortLike[0]);
             groupSortLike = groupviewSortLike[0];
+            groupCardsAllsVue.$data.groupCardsAlls = groupSortLike;
 
-            new Vue({
-                el: '#groupCardsAll',
-                data: {
-                    groupSortLike,
-                },
+            // new Vue({
+            //     el: '#groupCardsAll',
+            //     data: {
+            //         groupSortLike,
+            //     },
 
 
-            });
+            // });
 
 
         } else {
@@ -331,10 +331,10 @@ function groupShow() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupShowCards = JSON.parse(xhr.responseText);
+            var groupShowCards = JSON.parse(xhr.responseText);
             console.log(groupShowCards[0]);
             groupShowAlls = groupShowCards;
-            groupShowAlls_1 = groupShowCards[0];
+            // groupShowAlls_1 = groupShowCards[0];
 
 
             new Vue({
