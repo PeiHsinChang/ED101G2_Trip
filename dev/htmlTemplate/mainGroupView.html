@@ -238,8 +238,8 @@
                     </a>
                 </div>
             </div>
-            <div id="groupCardCarousel_2" class="carousel-item" name="groupCardCarousel_2">
-                <div class="card cardOriginalTem cardGroup d-block" style="width:18rem;">
+            <div id="groupCardCarousel_2" class="carousel-item active" name="groupCardCarousel_2">
+                <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_2.Group_NO">
                         <img :src="groupCardCarousel_2.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
@@ -258,16 +258,17 @@
                                     </p>
 
                                 </div>
-                                <p>出團日期：{{groupCardCarousel_2.Group_StartDate}</p>
+                                <p>出團日期：{{groupCardCarousel_2.Group_StartDate}}</p>
 
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_2.Group_Deadline}}</p>
+                                </div>
                             </div>
                         </div>
+                    </a>
                 </div>
-                </a>
             </div>
-            <div id="groupCardCarousel_3" class="carousel-item" name="groupCardCarousel_3">
+            <div id="groupCardCarousel_3" class="carousel-item active" name="groupCardCarousel_3">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_3.Group_NO">
                         <img :src="groupCardCarousel_3.Group_Pic" class="card-img-top" alt="...">
@@ -279,11 +280,11 @@
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent">
+                            <div class="cardGroupContent ">
                                 <p>團主：{{groupCardCarousel_3.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png" alt="">{{groupCardCarousel_3.hostlike}}
+                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_3.hostlike}}
                                     </p>
 
                                 </div>
@@ -296,37 +297,38 @@
                         </div>
                     </a>
                 </div>
-                <div id="groupCardCarousel_4" class="carousel-item" name="groupCardCarousel_4">
-                    <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                        <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_4.Group_NO">
-                            <img :src="groupCardCarousel_4.Group_Pic" class="card-img-top" alt="...">
-                            <div class="card-body card-img-overlay
+            </div>
+            <div id="groupCardCarousel_4" class="carousel-item active" name="groupCardCarousel_4">
+                <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
+                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_4.Group_NO">
+                        <img :src="groupCardCarousel_4.Group_Pic" class="card-img-top" alt="...">
+                        <div class="card-body card-img-overlay
                                         cardImgOverlayWebUse">
-                                <h5 class="card-title cardTitleWebUse">揪團</h5>
-                                <div class="mask">
-                                    <p class="card-text cardTextWebUse">{{groupCardCarousel_4.Group_title}}</p>
-                                </div>
+                            <h5 class="card-title cardTitleWebUse">揪團</h5>
+                            <div class="mask">
+                                <p class="card-text cardTextWebUse">{{groupCardCarousel_4.Group_title}}</p>
                             </div>
-                            <div>
-                                <div class="cardGroupContent">
-                                    <p>團主：{{groupCardCarousel_4.Mem_name}}</p>
-                                    <div>
-                                        <p>團主評價：
-                                            <img src="./images/good.png" alt="">{{groupCardCarousel_4.hostlike}}
-                                        </p>
+                        </div>
+                        <div>
+                            <div class="cardGroupContent ">
+                                <p>團主：{{groupCardCarousel_4.Mem_name}}</p>
+                                <div>
+                                    <p>團主評價：
+                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_4.hostlike}}
+                                    </p>
 
-                                    </div>
-                                    <p>出團日期：{{groupCardCarousel_4.Group_StartDate}}</p>
+                                </div>
+                                <p>出團日期：{{groupCardCarousel_4.Group_StartDate}}</p>
 
-                                    <div>
-                                        <p>報名截止：{{groupCardCarousel_4.Group_Deadline}</p>
+                                <div>
+                                    <p>報名截止：{{groupCardCarousel_4.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div id="groupCardCarousel_5" class="carousel-item" name="groupCardCarousel_5">
+            <div id="groupCardCarousel_5" class="carousel-item active" name="groupCardCarousel_5">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
                     <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_5.Group_NO">
                         <img :src="groupCardCarousel_5.Group_Pic" class="card-img-top" alt="...">
@@ -335,115 +337,21 @@
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_5.Group_title}}</p>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="cardGroupContent ">
+                                <p>團主：{{groupCardCarousel_5.Mem_name}}</p>
                                 <div>
-                                    <div class="cardGroupContent ">
-                                        <p>團主：{{groupCardCarousel_5.Mem_name}}</p>
-                                        <div>
-                                            <p>團主評價：
-                                                <img src="./images/good.png " alt=" ">{{groupCardCarousel_5.hostlike}}
-                                            </p>
+                                    <p>團主評價：
+                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_5.hostlike}}
+                                    </p>
 
-                                        </div>
-                                        <p>出團日期：{{groupCardCarousel_5.Group_StartDate}}</p>
+                                </div>
+                                <p>出團日期：{{groupCardCarousel_5.Group_StartDate}}</p>
 
-                                        <div>
-                                            <p>報名截止：{{groupCardCarousel_5.Group_Deadline}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselPhoneGroupControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon
-                            groupCarouselIcon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselPhoneGroupControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon
-                            groupCarouselIcon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <!-- <div class="groupPhoneCardCarousel d-xl-none d-lg-none d-md-none ">
-    <div id="carouselPhoneScheControls " class="carousel slide " data-ride="carousel ">
-        <div class="carousel-inner innerCardSchePhoneSlide ">
-            <div class="carousel-item active fixHeight4others ">
-                <div class="card cardOriginalTem cardSchedule " style="width: 18rem; ">
-                    <a href=" ">
-                        <img src="./images/lake.jpg " class="card-img-top " alt="... ">
-                        <div class="card-body card-img-overlay cardImgOverlayWebUse ">
-                            <h5 class="card-title cardTitleWebUse ">行程</h5>
-                            <div class="mask ">
-                                <p class="card-text cardTextWebUse ">日月潭<br><span style="font-weight: 300; ">九族文化村和健行步道</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cardScheduleContent ">
-                                <p>319人氣</p>
                                 <div>
-                                    <a href=" ">
-                                        <p>+加入行程</p>
-                                    </a>
-                                    <a href=" ">
-                                        <img src="./images/heart.png " alt=" ">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="card cardOriginalTem cardSchedule " style="width: 18rem; ">
-                    <a href=" ">
-                        <img src="./images/lake.jpg " class="card-img-top " alt="... ">
-                        <div class="card-body card-img-overlay cardImgOverlayWebUse ">
-                            <h5 class="card-title cardTitleWebUse ">行程</h5>
-                            <div class="mask ">
-                                <p class="card-text cardTextWebUse ">日月潭<br><span style="font-weight: 300; ">九族文化村和健行步道</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cardScheduleContent ">
-                                <p>319人氣</p>
-                                <div>
-                                    <a href=" ">
-                                        <p>+加入行程</p>
-                                    </a>
-                                    <a href=" ">
-                                        <img src="./images/heart.png " alt=" ">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="card cardOriginalTem cardSchedule " style="width: 18rem; ">
-                    <a href=" ">
-                        <img src="./images/lake.jpg " class="card-img-top " alt="... ">
-                        <div class="card-body card-img-overlay cardImgOverlayWebUse ">
-                            <h5 class="card-title cardTitleWebUse ">行程</h5>
-                            <div class="mask ">
-                                <p class="card-text cardTextWebUse ">日月潭<br><span style="font-weight: 300; ">九族文化村和健行步道</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cardScheduleContent ">
-                                <p>319人氣</p>
-                                <div>
-                                    <a href=" ">
-                                        <p>+加入行程</p>
-                                    </a>
-                                    <a href=" ">
-                                        <img src="./images/heart.png " alt=" ">
-                                    </a>
+                                    <p>報名截止：{{groupCardCarousel_5.Group_Deadline}}</p>
                                 </div>
                             </div>
                         </div>
@@ -460,10 +368,6 @@
             <span class="sr-only ">Next</span>
         </a>
     </div>
-</div> -->
-    <!-- phone version end -->
-    <!-- Group Main End -->
-
 </div>
-</div>
-</div>
+<!-- phone version end -->
+<!-- Group Main End -->

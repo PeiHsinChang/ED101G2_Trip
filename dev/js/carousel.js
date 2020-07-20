@@ -402,7 +402,7 @@ $("#groupSearch").click(function () {
             let searchResult = JSON.parse(xhr.responseText);
             console.log(searchResult);
             //檢查搜尋內容有沒有進網頁
-            Result.$data.groupCardsAlls = searchResult;
+            groupCardsAllsVue.$data.groupCardsAlls = searchResult;
             // 原本的資料名稱＋$data+後面引入的新搜尋資料
         } else {
             alert(xhr.status);
