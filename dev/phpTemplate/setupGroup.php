@@ -1,5 +1,4 @@
 <?php
-session_start();
     try{
         $mem_NO = $_SESSION["Mem_NO"];
         require_once("connectMemberTable.php");
@@ -88,3 +87,35 @@ session_start();
         </div>
     </div>
  </form>
+
+ <script>
+function setupGroupFt(){
+    let groupInfo = {
+        scheName: document.getElementById("grouplistSelect").value,
+    }
+    console.log(groupInfo);
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        if(xhr.status==200){
+        // document.getElementById("idMsg").innerText=xhr.responseText;
+      }else{
+        alert(xhr.status);
+      }
+  }
+
+  //設定好所要連結的程式
+  let url = "saveGroup.php";
+  xhr.open("Post", url, true);
+  //送出資料
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  let data_info = "memId=" ;
+  console.log(data_info);
+  xhr.send(data_info);
+}//function_checkId
+
+
+
+window.addEventListener("load", function(){
+  document.getElementById("setgroupSubmit").addEventListener("click", setupGroupFt, false);
+}, false) 
+ </script>
