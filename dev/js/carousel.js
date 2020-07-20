@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     titleCarousel();
     hotSche();
     groupCard();
@@ -12,7 +12,7 @@ function titleCarousel() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
@@ -133,7 +133,7 @@ function titleCarousel() {
             //如果資料傳送失敗的話顯示原因
         }
     };
-    xhr.open("post", "group_carousel.php", true);
+    xhr.open("post", "groupViewCarousel2.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(); //因為開太快所以要送個空值回去
 };
@@ -142,7 +142,7 @@ function hotSche() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //如果資料傳送成功
             hotSchePackage = JSON.parse(xhr.responseText);
@@ -196,7 +196,7 @@ function hotSche() {
 
 function groupCard() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
 
             //desktop version
@@ -221,6 +221,10 @@ function groupCard() {
                 // },
 
             });
+            // $('#search_text').change(function () {
+            //     word = $("#search_text").val();
+            //     console.log(word);
+            // })
 
         } else {
             alert(xhr.status);
@@ -228,13 +232,17 @@ function groupCard() {
     };
     xhr.open("post", "groupCard.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send();
+    xhr.send(null);
 };
 
+// $('#search_text').change(function () {
+//     word = $("#search_text").val();
+//     console.log(word);
+// })
 
 function group_carousel() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
             //mobile carousel
             groupCarousel = JSON.parse(xhr.responseText);
@@ -294,7 +302,7 @@ function group_carousel() {
 function SortByLike() {
 
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
 
             //desktop version
@@ -316,7 +324,7 @@ function SortByLike() {
 
 function sortByLatest() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
 
             //desktop version
@@ -337,7 +345,7 @@ function sortByLatest() {
 
 function groupShow() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status == 200) {
 
             //desktop version
@@ -383,3 +391,56 @@ function groupShow() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
+$("#groupSearch").click(function () {
+    //按好什麼按鈕觸發事件
+    console.log($("#search_text").val())
+    //input內容有沒有進去網頁
+    let xhr = new XMLHttpRequest();
+    //跟後端要資料
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            let searchResult = JSON.parse(xhr.responseText);
+            console.log(searchResult);
+            //檢查搜尋內容有沒有進網頁
+            Result.$data.groupCardsAlls = searchResult;
+            // 原本的資料名稱＋$data+後面引入的新搜尋資料
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    xhr.open("post", "groupSearch.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data_info = `search_text=${$("#search_text").val()}`;
+    // 把搜尋內容丟到後端
+    xhr.send(data_info);
+});
+
+
+$("#btnGroupFilter").click(function () {
+    //按好什麼按鈕觸發事件
+    console.log($('#groupView_FliterPpl :selected').val());
+    console.log($('#groupView_FliterSex :selected').val());
+    console.log($('#groupView_FliterDay :selected').val());
+    console.log($('#groupView_FliterMonth :selected').val());
+    //input內容有沒有進去網頁
+    let xhr = new XMLHttpRequest();
+    //跟後端要資料
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            // let filterResult = JSON.parse(xhr.responseText);
+            // console.log(filterResult);
+            //檢查搜尋內容有沒有進網頁
+            // Result.$data.groupCardsAlls = filterResult;
+            // 原本的資料名稱＋$data+後面引入的新搜尋資料
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    xhr.open("post", "groupViewFilter.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data_info = `filter=${$("groupView_FliterPpl").val()}${$("groupView_FliterSex").val()}${$("groupView_FliterDay").val()}${$("groupView_FliterMonth").val()}`;
+    // 把搜尋內容丟到後端
+    xhr.send(data_info);
+});
