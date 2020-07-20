@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php session_start();?>
 <?php require_once("./phpTemplate/head.php");?> 
 
 
