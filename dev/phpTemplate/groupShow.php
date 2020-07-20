@@ -43,6 +43,17 @@ try {
                 <aside class="actCont">
                     <h3>活動說明</h3>
                     <p>London is the capital city of England.</p>
+					
+					<table class="prodTable">
+						<tr><th>團號</th><td><?=$groupShowRows["Group_NO"]?></td></tr>
+						<tr><th>團名</th><td><?=$groupShowRows["Group_title"]?></td></tr>
+						<tr><th>出發日期</th><td><?=$groupShowRows["Group_StartDate"]?></td></tr>
+						<tr><th>價格</th><td><?=$groupShowRows["price"]?></td></tr>
+						<tr><th>作者</th><td><?=$groupShowRows["author"]?></td></tr>
+						<tr><th>頁數</th><td><?=$groupShowRows["pages"]?></td></tr>
+					</table>
+
+
                 </aside>
                 <aside class="btnsAct">
                 <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
@@ -52,7 +63,7 @@ try {
                 </aside>
             </div>
             <hr>
-            <div class="joinList">
+            <!-- <div class="joinList">
                 <p>目前團員名單</p>
                 <table class="joinMem">
                     <tr>
@@ -61,9 +72,9 @@ try {
                         <td><img src="./images/profile.jpg">狠愛吃</td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
         </div>
-        <div id="chat" class="tabcontent" style="display: none;">
+        <!-- <div id="chat" class="tabcontent" style="display: none;">
             <h3>留言板</h3>
             <div class="chatCont">
                 <table>
@@ -135,13 +146,9 @@ try {
                 </table>
 
             </div>
-        </div>
+        </div> -->
+
     </div>
-</div>
-
-
-
-
 
 <script>
     function openCity(evt, cityName) {

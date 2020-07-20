@@ -12,6 +12,7 @@ try{
     $groupCards = $pdo->query($sql); 
     $groupCards -> execute();
 
+
     //卡片們所需要資料
     $groupviewCards=array();//array不得與pdoStatement同名
     if($groupCards -> rowCount()==0){
@@ -29,6 +30,8 @@ try{
                 "hostlike"=>$groupCardsRows["hostlike"],
             );	
         }   
+       
+        
     }
 
     //串接資料

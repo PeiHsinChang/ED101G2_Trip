@@ -1,10 +1,10 @@
 <!-- <link rel="stylesheet" href="./setupGroup.css">  -->
 <form class="setupform" id="groupformdata" action="" enctype="multipart/form-data">
-    <div class="startgroupall"  style="margin:auto;">
+    <div class="startgroupall" style="margin:auto;">
         <div class="startgroupa">
             <div class="startgtitle">開始揪團</div>
-        </div>    
-        <div class="startgroupcont">           
+        </div>
+        <div class="startgroupcont">
             <div class="startgroupn">選擇一個行程：
                 <select name="shedulename" id="grouplistSelect" class="schedulename">
                     <option value="1" class="set1"selected>行程一</option>
@@ -17,7 +17,7 @@
             </div>
             請選擇一張美麗的封面照片
             <label for="file-upload" class="custom-file-upload">選擇照片</label>
-            <input id="file-upload" name="file-upload" type="file"/></br>
+            <input id="file-upload" name="file-upload" type="file" /></br>
             <img id="myImg" src="#" alt="your image" style="width:420px;height:250px" />
             <div class="selectreq">設定參團條件</div>
             <div class="selectreqst">
@@ -42,7 +42,7 @@
             </div>
             <div class="selectreq2">
                 <div class="genderlimit">性別限制：
-                    <select id = "gendercho" name="Group_Sex" style="font-size:14px; width: 125px;height: 20px" class="gendselect">
+                    <select id="gendercho" name="Group_Sex" style="font-size:14px; width: 125px;height: 20px" class="gendselect">
                         <option value="0" class="gendm">男</option>
                         <option value="1" class="gendf"selected>女</option>
                         <option value="2" class="gendnone">不限</option>
@@ -60,11 +60,11 @@
             </div>
             <div class="selectreq3">
                 <div class="noticetext" style="clear:both">備註：</div>
-                <div class="noticetexta"><textarea id="memogroup" name="Group_Com" class="noticetxthere"style="font-size:14px;"></textarea></div>
+                <div class="noticetexta"><textarea class="noticetxthere" style="font-size:14px;"></textarea></div>
                 <div class="threestatus">
-                    <button id ="setgroupSubmit" name="postbtn" class="setgroupadd">發佈</button>
-                    <button id ="setgroupSave" name="savebtn" class="setgroupsave">儲存</button>
-                    <button onclick="closeNewGroup();" class="setgroupcancel">取消</button>
+                    <button value="submit" class="setgroupadd">發佈</button>
+                    <button value="submit" class="setgroupsave">儲存</button>
+                    <button onclick="closeNewGroup();" value="reset" class="setgroupcancel">取消</button>
                 </div>
             </div>
         </div>
