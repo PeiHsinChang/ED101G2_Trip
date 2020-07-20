@@ -16,12 +16,14 @@
         $keepAttr -> bindValue(":memId", $memInfo);
         $keepAttr -> execute();
         //下收藏團SQL指令  
-        
+          
         $sql_keepGroup =
-            "select *,  round(Mem_LikeAmount / Mem_LikeSum) MemLike
+            "select kg.Group_NO,Group_title,Group_Pic,
+            Group_StartDate,Group_Deadline,Mem_Name,  
+            round(Mem_LikeAmount / Mem_LikeSum) MemLike
             FROM keep_group kg, grouptable g , membertable m
             where  kg.Group_NO = g.Group_NO  
-            and g.Mem_NO = m.Mem_NO
+            and kg.Mem_NO = m.Mem_NO
             and kg.Mem_NO=:memId";
         $keepGroup = $pdo->prepare($sql_keepGroup);
         $keepGroup -> bindValue(":memId", $memInfo);
@@ -36,16 +38,19 @@
         $keepSche -> execute();
         //下收藏遊記SQL指令 
         $sql_keepBlog = 
-            "select *
+            "select kb.Blog_NO,Blog_Name,Blog_PicURL,Blog_Views,Mem_name,Blog_Date
             FROM keep_blog kb, blog b , membertable m
             where kb.blog_NO = b.blog_NO 
-            and m.mem_NO = b.mem_NO
+            and kb.mem_NO=m.mem_NO
             and kb.Mem_NO=:memId";
+
+            
         $keepBlog = $pdo->prepare($sql_keepBlog);
         $keepBlog -> bindValue(":memId", $memInfo);
         $keepBlog -> execute();
         //下我的行程SQL指令
-        $sql_MemSche ="select Sche_Name, Sche_Img, Sche_Views
+        $sql_MemSche =
+            "select Sche_Name, Sche_Img, Sche_Views
             FROM sche 
             where Mem_NO=:memId";
         $MemSche = $pdo->prepare($sql_MemSche);
@@ -111,11 +116,8 @@
                     "Group_StartDate"=>$keepGroupRows["Group_StartDate"],
                     "Group_Deadline"=>$keepGroupRows["Group_Deadline"],
                     "Mem_Name"=>$keepGroupRows["Mem_Name"],
-                    "MemLike"=>$keepGroupRows["MemLike"],
-                   
+                    "MemLike"=>$keepGroupRows["MemLike"],              
                 );
-                	
-                
             }                
         }
         //所有Keep資料串接
@@ -203,7 +205,6 @@
                     "Blog_Date"=>$MemBlogRows["Blog_Date"],
                     "Blog_PicURL"=>$MemBlogRows["Blog_PicURL"],
                     "Blog_Views"=>$MemBlogRows["Blog_Views"],
-            
                 );	
             }            
         }
@@ -234,3 +235,4 @@
 
 
 ?>
+
