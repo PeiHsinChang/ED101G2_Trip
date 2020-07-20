@@ -8,7 +8,7 @@ try{
         round(Mem_LikeAmount/Mem_LikeSum) hostlike
         FROM grouptable g ,membertable m
         where g.mem_no = m.mem_no";
-
+    
     $groupCards = $pdo->query($sql); 
     $groupCards -> execute();
 

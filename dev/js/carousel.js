@@ -3,6 +3,7 @@ window.onload = function () {
     hotSche();
     groupCard();
     group_carousel();
+
 }
 
 function titleCarousel() {
@@ -200,12 +201,27 @@ function groupCard() {
             groupviewCards = JSON.parse(xhr.responseText);
             console.log(groupviewCards[0]);
             groupCardsAlls = groupviewCards[0];
-            new Vue({
+            // class groupCard {
+            //     constructor(Group_title, Mem_name, Group_Pic, hostlike, Group_StartDate, Group_Deadline) {
+            //         this.Group_title = title;
+            //         this.Mem_name = name;
+            //         this.Group_Pic = Pic;
+            //         this.hostlike = like;
+            //         this.Group_StartDate = StartDate;
+            //         this.Group_Deadline = Deadline;
+            //     }
+            // }
+
+            Result = new Vue({
                 el: '#groupCardsAll',
                 data: {
                     groupCardsAlls,
                 },
             });
+            // $('#search_text').change(function () {
+            //     word = $("#search_text").val();
+            //     console.log(word);
+            // })
 
         } else {
             alert(xhr.status);
@@ -213,9 +229,13 @@ function groupCard() {
     };
     xhr.open("post", "groupCard.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send();
+    xhr.send(null);
 };
 
+// $('#search_text').change(function () {
+//     word = $("#search_text").val();
+//     console.log(word);
+// })
 
 function group_carousel() {
     let xhr = new XMLHttpRequest();
@@ -273,4 +293,28 @@ function group_carousel() {
     xhr.open("post", "group_carousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
-}
+};
+
+$("#groupSearch").click(function () {
+    console.log($("#search_text").val())
+
+    let xhr = new XMLHttpRequest();
+    //跟後端要資料
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            let searchResult = JSON.parse(xhr.responseText);
+            console.log(searchResult);
+            //檢查搜尋內容有沒有進網頁
+            Result.$data.groupCardsAlls = searchResult;
+            // 原本的資料名稱＋$data+後面引入的新搜尋資料
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    xhr.open("post", "groupSearch.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data_info = `search_text=${$("#search_text").val()}`;
+    // 把搜尋內容丟到後端
+    xhr.send(data_info);
+});

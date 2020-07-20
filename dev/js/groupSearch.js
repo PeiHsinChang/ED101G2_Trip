@@ -1,4 +1,4 @@
-window.onload = function groupSearch() {
+function groupSearch() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
