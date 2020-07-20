@@ -1,8 +1,8 @@
 <div style="width:1000px;height:500px;"></div>
 <div class="container">
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
-        <a  onclick="openNewGroup();">
-            <img src="./images/openNewGroup.png"  class="d-md-block" />
+        <a onclick="openNewGroup();">
+            <img src="./images/openNewGroup.png" class="d-md-block" />
         </a>
     </div>
     <div class="tabAll">
@@ -13,8 +13,90 @@
         <div id="activity" class="tabcontent" style="display:block;">
             <div class="actAll">
                 <aside class="actCont">
+
                     <h3>活動說明</h3>
                     <p>London is the capital city of England.</p>
+                    <!-- <div id="groupShowAlls">
+                        <table class="">
+                            <tr>
+                                <th>團號</th>
+                                <td>
+                                    {{groupShowAlls_1.Group_NO}}
+                                    <?=$groupShowRows["Group_title"]?>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>團名</th>
+                                <td>
+                                    {{groupShowAlls.Group_NO}}
+                                    <?=$groupShowRows["Group_title"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>出發日期</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["Group_StartDate"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>結束日期</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["price"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>報名截止</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["author"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>限定人數</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["pages"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>性別限制</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["pages"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>年齡限制</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["pages"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>團費</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["pages"]?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>集合地點</th>
+                                <td>
+                                    {{groupShow.Group_NO}}
+                                    <?=$groupShowRows["pages"]?>
+                                </td>
+                            </tr>
+                            <th>備註</th>
+                            <td>
+                                {{groupShow.Group_NO}}
+                                <?=$groupShowRows["pages"]?>
+                            </td>
+                            </tr>
+                        </table>
+                    </div> -->
                 </aside>
                 <aside class="btnsAct">
                     <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
@@ -43,7 +125,8 @@
                         <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
                         <td>
                             <span>愛旅遊</span>
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +134,8 @@
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                 </table>
@@ -62,7 +146,8 @@
                         <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
                         <td>
                             <span>愛旅遊</span>
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                     <tr>
@@ -70,7 +155,8 @@
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                 </table>
@@ -80,7 +166,8 @@
                         <td rowspan="3"><img class="commentor" src="./images/profile.jpg"></td>
                         <td>
                             <span>愛旅遊</span>
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                     <tr>
@@ -88,7 +175,8 @@
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
-                            <time>2020/05/09 10:24</time>
+                            <time>2020/05/09
+                                10:24</time>
                         </td>
                     </tr>
                 </table>
@@ -109,6 +197,7 @@
 
             </div>
         </div>
+
     </div>
 </div>
 
@@ -158,6 +247,4 @@
         document.getElementById(cityName).style.display = "block ";
         evt.currentTarget.className += " active ";
     }
-
-   
 </script>
