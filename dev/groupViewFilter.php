@@ -2,47 +2,33 @@
 try{
     require_once("connectMemberTable.php");
     
-    // $ppl=$_POST["groupView_FliterPpl"];
-    // $sex=$_POST["groupView_FliterSex"];
-    // $day=$_POST["groupView_FliterDay"];
-    // $month=$_POST["groupView_FliterMonth"];
-    // $a=json_decode()
-    // $likeSpot = json_decode($_POST["keepLikeInfo"],true);
-    //ajax get value
-    
     //預設全選
     //全部都是任意不限制
-    // $sql="select * from GroupTable 
-    // where Group_Status =1";
-
-    $sql="select * from GroupTable where Group_Status=1 :groupView_FliterPpl :groupView_FliterSex :groupView_FliterDay :groupView_FliterMonth";
+    $filter=$_POST["filter"];// 從畫面把選項指令塞過來
     // $sql="select * from GroupTable where Group_Status=1";
-    
-    
-    
-    // $sql="select * from GroupTable limit 5";
+    // $sql="select * from GroupTable where Group_Status=1 $filter";
+    $sql="select Group_title, Group_Pic, 
+    Mem_name,Group_StartDate, Group_Deadline, 
+    round(Mem_LikeAmount/Mem_LikeSum) hostlike,Group_NO
+    FROM grouptable g 
+    inner join membertable m
+    on g.mem_no = m.mem_no
+    where g.mem_no and Group_Status=1 $filter";
     //畫面需要的sql
     $result = $pdo->prepare($sql);
-    $result->bindValue(":groupView_FliterPpl",$_POST["groupView_FliterPpl"]);
-    $result->bindValue(":groupView_FliterSex",$_POST["groupView_FliterSex"]);
-    $result->bindValue(":groupView_FliterDay",$_POST["groupView_FliterDay"]);
-    $result->bindValue(":groupView_FliterMonth",$_POST["groupView_FliterMonth"]);
     $result->execute();
 
-    $GroupRows=$result->fetchAll(PDO::FETCH_ASSOC);
-    // print_r($carouselGroupRows);
-    // die;
-    if($result->rowCount()==0){
+    if($result->rowCount()==0){ //如果沒有
         echo "{}";
     }else{
-        $searchResultRows=$result->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($GroupRows,JSON_UNESCAPED_UNICODE);
+        //從資料庫拉資料出來
+        $filterResultRows=$result->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($filterResultRows,JSON_UNESCAPED_UNICODE);
     }
     
     
 }catch(PDOException $e){
     echo "錯誤行號：",$e->getLine(),"<br>";
     echo "錯誤原因：",$e->getMessage(),"<br>";
-    // echo $e->getMessage();
 }
 ?>
