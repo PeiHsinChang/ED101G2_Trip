@@ -75,7 +75,7 @@ try {
                         </td>
                     </tr>
                     <tr>
-                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                        <td class="replies">請問團主，花費預算大概是多少呢？檢舉</td>
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
@@ -112,7 +112,7 @@ try {
                         </td>
                     </tr>
                     <tr>
-                        <td class="replies">請問團主，花費預算大概是多少呢？</td>
+                        <td class="replies">請問團主，花費預算大概是多少呢？哈哈哈!</td>
                     </tr>
                     <tr>
                         <td class="replies">答覆：約落在2萬～3萬左右！
