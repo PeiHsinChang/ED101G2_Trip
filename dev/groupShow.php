@@ -6,18 +6,20 @@ try{
     $sql="select * from GroupTable";
 
     $groupShow = $pdo->query($sql); 
-    $groupShow -> execute();
+	$groupShow -> execute();
+	// $groupShowInfo=$groupShow->fetchAll(PDO::FETCH_ASSOC);
+
 
 
     //卡片們所需要資料
-    $groupShowCards=array();//array不得與pdoStatement同名
+    $groupShowCards=array();
     if($groupShow -> rowCount()==0){
         echo "{}";
     }else{
         $groupShowInfo=array();
         while($groupShowRows = $groupShow->fetch(PDO::FETCH_ASSOC)){
         $groupShowInfo[] = array(
-                "Group_title"=>$groupShowRows["Group_title"],
+             "Group_title"=>$groupShowRows["Group_title"],
 				"Group_StartDate"=>$groupShowRows["Group_StartDate"],
 				"Group_EndDate"=>$groupShowRows["Group_EndDate"],
 				"Group_Deadline"=>$groupShowRows["Group_Deadline"],
@@ -27,12 +29,8 @@ try{
 				"Group_Place"=>$groupShowRows["Group_Place"],
 				"Group_Com"=>$groupShowRows["Group_Com"],
 				"Group_Pic"=>$groupShowRows["Group_Pic"],
-
-
             );	
         }   
-       
-        
     }
 
     //串接資料

@@ -331,15 +331,18 @@ function groupShow() {
         if (xhr.status == 200) {
 
             //desktop version
-            groupShowCards = JSON.parse(xhr.responseText);
-            console.log(groupShowCards[0]);
-            groupShowAlls = groupShowCards[0];
+            groupShowInfo = JSON.parse(xhr.responseText);
+            console.log(groupShowInfo[0]);
+            groupShowAlls = groupShowInfo[0];
+
 
             new Vue({
                 el: '#groupShowAll',
                 data: {
                     groupShowAlls,
                 },
+
+
                 // methods: {
                 //     SortByLike: groupCardsAlls.sort(function(a, b) {
                 //         return b.hostlike - a.hostlike;
