@@ -1,7 +1,5 @@
 <?php
     
-    
-    // print_r($_SESSION["Mem_NO"]) ;
 try {
     require_once("connectMemberTable.php");
     $sql_g = 
@@ -21,7 +19,7 @@ try {
 }
 
 ?>
-    <img src="<?=$groupShowInfo["Group_Pic"];?>" >
+<img src="<?=$groupShowInfo["Group_Pic"];?>" >
 
 <div class="containerGroup">
     <div class="coverPhoto">
