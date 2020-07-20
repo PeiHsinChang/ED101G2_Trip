@@ -22,6 +22,7 @@
         <a id="aRegist" class="nav-link" style="text-decoration: none;" data-toggle="modal" data-target="#registerForm"><img src="./images/member.png" alt="">註冊</a>
       </div>
     </nav>
+    <!-- 漢堡導覽列 -->
     <div class="navSmall">
       <div class="navSmallLeft">
         <button class="hamburger hamburger--collapse " type="button">
@@ -34,10 +35,17 @@
           <a href="groupView.html">揪團</a>
           <a href="blogView.html">遊記</a>
           <a id="navSmallMember">會員專區</a>
+          <hr>
+          <a class="nav-link navSmallRight" style="text-decoration:none;transform:translateX(10px);" data-toggle="modal" data-target="#loginForm">登入</a>
+          <a class="nav-link navSmallRight1" id="qwer" style="text-decoration:none;transform:translateX(10px);" data-toggle="modal" data-target="#registerForm">註冊</a>
         </div>
       </div>
       <a class="navSmallCenter" href="main.html"><img src="./images/logo.png" alt=""></a>
-      <a class="nav-link, navSmallRight" style="text-decoration: none;" data-toggle="modal" data-target="#loginForm">登入</a>
+      <div>
+        <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a>
+        <a class="nav-link navSmallRight1" id="qwer" style="text-decoration:none;" data-toggle="modal" data-target="#registerForm">註冊</a> -->
+      </div>
+      <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a> -->
     </div>
     <div class="container">
       <div class="modal fade" id="loginForm" role="dialog">
