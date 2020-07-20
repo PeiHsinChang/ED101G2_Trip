@@ -1,12 +1,13 @@
 <?php
     session_start();
     $memInfo = $_SESSION["Mem_NO"];
-    // $loginInfo = json_decode($_POST["memInfo"]); 
 
     try{
         require_once("connectMemberTable.php");
+        
         //下收藏景點SQL指令
-        $sql_keepAttr = "select Attrac_Name, Attrac_Region, 
+        $sql_keepAttr = 
+            "select Attrac_Name, Attrac_Region, 
             round(Attrac_LikeSum/Attrac_LikeAmount,1) likecount, 
             Attrac_PicURL
             FROM keep_attrac k, attraction a 
@@ -15,8 +16,8 @@
         $keepAttr = $pdo->prepare($sql_keepAttr);
         $keepAttr -> bindValue(":memId", $memInfo);
         $keepAttr -> execute();
-        //下收藏團SQL指令  
-          
+        
+        //下收藏團SQL指令    
         $sql_keepGroup =
             "select kg.Group_NO,Group_title,Group_Pic,
             Group_StartDate,Group_Deadline,Mem_Name,  
@@ -28,26 +29,29 @@
         $keepGroup = $pdo->prepare($sql_keepGroup);
         $keepGroup -> bindValue(":memId", $memInfo);
         $keepGroup -> execute();
+        
         //下收藏行程SQL指令 
-        $sql_keepSche = "select Sche_Name, Sche_Img, Sche_Views
+        $sql_keepSche = 
+            "select Sche_Name, Sche_Img, Sche_Views
             FROM keep_sche ks, sche s
             where ks.Sche_NO = s.Sche_NO  
             and ks.Mem_NO=:memId";
         $keepSche = $pdo->prepare($sql_keepSche);
         $keepSche -> bindValue(":memId", $memInfo);
         $keepSche -> execute();
+        
         //下收藏遊記SQL指令 
         $sql_keepBlog = 
-            "select kb.Blog_NO,Blog_Name,Blog_PicURL,Blog_Views,Mem_name,Blog_Date
+            "select kb.Blog_NO,Blog_Name,Blog_PicURL,
+            Blog_Views,Mem_Name,Blog_Date
             FROM keep_blog kb, blog b , membertable m
             where kb.blog_NO = b.blog_NO 
             and kb.mem_NO=m.mem_NO
-            and kb.Mem_NO=:memId";
-
-            
+            and kb.Mem_NO=:memId";  
         $keepBlog = $pdo->prepare($sql_keepBlog);
         $keepBlog -> bindValue(":memId", $memInfo);
         $keepBlog -> execute();
+        
         //下我的行程SQL指令
         $sql_MemSche =
             "select Sche_Name, Sche_Img, Sche_Views
@@ -76,13 +80,13 @@
         $MemBlog -> execute();
         
         //下篩選地區SQL 
-        $sql_FilterArea ="select distinct(Attrac_Region),
+        $sql_FilterArea =
+        "select distinct(Attrac_Region),
         case  attraction.Attrac_Region  when '' then '其他' 
-            else attraction.Attrac_Region end as A_R 
+        else attraction.Attrac_Region end as A_R 
         FROM easyplanningtrip.attraction ";
         $FilterArea = $pdo->prepare($sql_FilterArea);
         $FilterArea -> execute();
-
 
 
         //建存放所有收藏資料
@@ -149,7 +153,7 @@
                     "Blog_Name"=>$keepBlogRows["Blog_Name"],
                     "Blog_PicURL"=>$keepBlogRows["Blog_PicURL"],
                     "Blog_Views"=>$keepBlogRows["Blog_Views"],
-                    "Mem_name"=>$keepBlogRows["Mem_Name"],
+                    "Mem_Name"=>$keepBlogRows["Mem_Name"],
                     "Blog_Date"=>$keepBlogRows["Blog_Date"]
                 );	
             }            

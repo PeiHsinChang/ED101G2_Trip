@@ -57,10 +57,10 @@
                     <div id="keepattr" class="keepContainer">
                         <div class="keepfilter_1" >
                             縮小範圍顯示
-                            地區: <select id="filterArea" name="area" >
-                                <option v-for="item in areas" value="item.A_R">{{item.A_R}}</option>
+                            地區: <select id="filterArea" name="area"  onchange="filterSpot(this.value)">
+                                <option v-for="item in areas" :value="item.A_R">{{item.A_R}}</option>
                             </select>
-                            <button class="btnSmall">篩選</button>
+                            <!-- <button class="btnSmall">篩選</button> -->
                         </div>
                         <!-- 景點收藏 -->
                         <div id="spotForKeep" class="keepAllWall" >        
@@ -187,7 +187,7 @@
                                     </div>
                                     <div>
                                         <div class="cardBlogContent">
-                                            <p>作者：{{keepBlog.mem_name}}</p>
+                                            <p>作者：{{keepBlog.Mem_Name}}</p>
                                             <p>發佈日期：{{keepBlog.Blog_Date}}</p>
                                             <div>
                                                 <p>人氣{{keepBlog.Blog_Views}}</p>
