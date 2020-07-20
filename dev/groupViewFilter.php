@@ -2,10 +2,10 @@
 try{
     require_once("connectMemberTable.php");
     
-    $ppl=$_POST["groupView_FliterPpl"];
-    $sex=$_POST["groupView_FliterSex"];
-    $day=$_POST["groupView_FliterDay"];
-    $month=$_POST["groupView_FliterMonth"];
+    // $ppl=$_POST["groupView_FliterPpl"];
+    // $sex=$_POST["groupView_FliterSex"];
+    // $day=$_POST["groupView_FliterDay"];
+    // $month=$_POST["groupView_FliterMonth"];
     // $a=json_decode()
     // $likeSpot = json_decode($_POST["keepLikeInfo"],true);
     //ajax get value
@@ -15,7 +15,7 @@ try{
     // $sql="select * from GroupTable 
     // where Group_Status =1";
 
-    $sql="select * from GroupTable where Group_Status=1 $ppl $sex $day $month";
+    $sql="select * from GroupTable where Group_Status=1 :groupView_FliterPpl :groupView_FliterSex :groupView_FliterDay :groupView_FliterMonth";
     // $sql="select * from GroupTable where Group_Status=1";
     
     
@@ -32,10 +32,11 @@ try{
     $GroupRows=$result->fetchAll(PDO::FETCH_ASSOC);
     // print_r($carouselGroupRows);
     // die;
-    if(){
-        echo json_encode($GroupRows,JSON_UNESCAPED_UNICODE);
+    if($result->rowCount()==0){
+        echo "{}";
     }else{
-        echo "查無結果";
+        $searchResultRows=$result->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($GroupRows,JSON_UNESCAPED_UNICODE);
     }
     
     

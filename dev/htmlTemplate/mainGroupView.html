@@ -56,7 +56,7 @@
                                 <p class="fliterBlock_p">團員人數：</p>
                             </td>
                             <td>
-                                <select name="groupView_FliterPpl">
+                                <select name="groupView_FliterPpl" id="groupView_FliterPpl">
                                     <option value="" selected>任意</option>
                                     <option value="and Group_Ppl<=5">1-5人</option>
                                     <option value="and Group_Ppl between 5 and 10">6-10人</option>
@@ -71,7 +71,7 @@
                                 <p class="fliterBlock_p">性別限制:</p>
                             </td>
                             <td>
-                                <select name="groupView_FliterSex">
+                                <select name="groupView_FliterSex" id="groupView_FliterSex">
                                     <option value="" selected>不限制</option>
                                     <option value="and Group_Sex=1">限女</option>
                                     <option value="and Group_Sex=2">限男</option>
@@ -83,7 +83,7 @@
                                 <p class="fliterBlock_p">旅遊天數:</p>
                             </td>
                             <td>
-                                <select name="groupView_FliterDay">
+                                <select name="groupView_FliterDay" id="groupView_FliterDay">
                                     <option value="" selected>任意</option>
                                     <option value="and datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
                                     <option value="and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">1-5
@@ -99,7 +99,7 @@
                                 <p class="fliterBlock_p">出發月份:</p>
                             </td>
                             <td>
-                                <select name="groupView_FliterMonth">
+                                <select name="groupView_FliterMonth" id="groupView_FliterMonth">
                                     <option value="" selected>任意</option>
                                     <option value="and date_format(Group_StartDate,'%m')=01">一月</option>
                                     <option value="and date_format(Group_StartDate,'%m')=02">二月</option>
