@@ -16,11 +16,50 @@
                     <h3>活動說明</h3>
                     <p>London is the capital city of England.</p>
                     <p>{{groupShow.Group_title}}</p>
+                    <table class="prodTable">
+                        <tr>
+                            <th>團號</th>
+                            <td>
+                                {{groupShow.Group_NO}}
+                                <?=$groupShowRows["Group_NO"]?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>團名</th>
+                            <td>
+                                <?=$groupShowRows["Group_title"]?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>出發日期</th>
+                            <td>
+                                <?=$groupShowRows["Group_StartDate"]?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>價格</th>
+                            <td>
+                                <?=$groupShowRows["price"]?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>作者</th>
+                            <td>
+                                <?=$groupShowRows["author"]?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>頁數</th>
+                            <td>
+                                <?=$groupShowRows["pages"]?>
+                            </td>
+                        </tr>
+                    </table>
 
                 </aside>
                 <aside class="btnsAct">
                     <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')"><img
-                            src="#">我要報名</button>
+                                                    src="#">我要報名</button>
                     <button><img src="#">分享此團</button>
                     <button><img src="#">收藏此團</button>
                 </aside>
