@@ -4,6 +4,7 @@ window.onload = function() {
     groupCard();
     group_carousel();
     SortByLike();
+    groupShow();
 
 
 }
@@ -321,4 +322,42 @@ function SortByLike() {
     xhr.send();
 
 
+};
+
+
+function groupShow() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+
+            //desktop version
+            groupShowCards = JSON.parse(xhr.responseText);
+            console.log(groupShowCards[0]);
+            groupShowAlls = groupShowCards[0];
+
+            new Vue({
+                el: '#groupShowAll',
+                data: {
+                    groupShowAlls,
+                },
+                // methods: {
+                //     SortByLike: groupCardsAlls.sort(function(a, b) {
+                //         return b.hostlike - a.hostlike;
+                //     }),
+
+                //     sortByLatest: groupCardsAlls.sort(function(a, b) {
+                //         return a.Group_NO - b.Group_NO;
+                //     }),
+
+                // },
+
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "groupShow.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
 };
