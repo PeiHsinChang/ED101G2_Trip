@@ -4,7 +4,7 @@ try {
     require_once("connectMemberTable.php");
     $sql_g = 
         "select * 
-        from grouptable g,membertable m
+        from GroupTable g, MemberTable m
         where g.mem_no = m.mem_no
         and g.Group_NO =:Group_NO;";
 	$groupShow = $pdo->prepare($sql_g);
@@ -35,3 +35,36 @@ try {
         </a>
     </div>
 </div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<style type="text/css">
+	.prodTable th {
+		background-color : #bfbfef;
+	}
+	.prodTable td {
+		border-bottom : dotted 1px deeppink;
+	}
+</style>
+</head>
+<body>
+<?php 
+if($groupShow->rowCount()==0){
+	echo "<center>查無此商品資料</center>";
+}else{
+	$groupShowRow = $groupShow->fetch(PDO::FETCH_ASSOC);
+}
+?>    
+<table align="center" class="prodTable">
+	<tr><th>書號</th><td><?=$groupShowRow["psn"]?></td></tr>
+	<tr><th>書名</th><td><?=$groupShowRow["pname"]?></td></tr>
+	<tr><th>價格</th><td><?=$groupShowRow["price"]?></td></tr>
+	<tr><th>作者</th><td><?=$groupShowRow["author"]?></td></tr>
+	<tr><th>頁數</th><td><?=$groupShowRow["pages"]?></td></tr>
+</table>
+</body>
+</html>
