@@ -49,7 +49,7 @@
     <script src="./js/nav.js"></script>
     <style>
       body {
-        font-family: "Noto Sans TC", sans-serif;
+        font-family: "Noto Sans TC";
       }
 
       i {
@@ -74,9 +74,6 @@
         cursor: grab;
       }
 
-      .nav-linkplan::after{
-        width: 100% !important;
-      }
       /* footer */
 
       .btnSmall {
@@ -192,6 +189,13 @@
       /*# sourceMappingURL=style.css.map */
       /* nav */
 
+      .nav-linkplan::after{
+        width: 100% !important;
+      }
+      .nav-linkMember:hover{
+        cursor: pointer;
+      }
+
       .btnSmall {
         width: 70px;
         height: 25px;
@@ -289,6 +293,7 @@
       }
 
       .mainBody .navBg .nav .navLeft a div.daijoubu {
+        width: 180px;
         margin-left: 10px;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -301,6 +306,7 @@
         -ms-flex-pack: end;
         justify-content: flex-end;
         line-height: 25px;
+        letter-spacing: 1.5px;
       }
 
       .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuMd {
@@ -308,6 +314,7 @@
       }
 
       .mainBody .navBg .nav .navLeft a div.daijoubu .daijoubuEn {
+        padding: 3px;
         font-size: 14px;
       }
 

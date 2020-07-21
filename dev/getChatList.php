@@ -7,9 +7,9 @@ try{
     $sql = "select gr.Mem_NO AS main_mem,mem.Mem_Id,mem.Mem_Photo,msg.* from Message msg ".
             "join MemberTable mem on mem.Mem_NO = msg.Mem_NO ".
             "join GroupTable gr on gr.Group_NO = msg.Group_NO ".
-            "where msg.Group_NO=4  order by Block_NO,Msg_NO;";
+            "where msg.Group_NO=:Group_NO  order by Block_NO,Msg_NO;";
     $chats = $pdo->prepare($sql);
-   //$chats->bindParam(":mem_NO", $mem_NO);
+   $chats->bindParam(":Group_NO", $_POST["groupNO"]);
     $chats->execute();
     if($chats->rowCount()==0){
         $rtn = array();

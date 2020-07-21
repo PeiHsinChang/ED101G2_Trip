@@ -3,7 +3,7 @@
 <?php session_start();?>
 <?php require_once("./phpTemplate/head.php");?> 
 <style>
-       /* scrollbar hidden */
+  /* scrollbar hidden */
   html {
     overflow: -moz-hidden-unscrollable;
     height: 100%;
