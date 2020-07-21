@@ -13,6 +13,8 @@ try {
     $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);    
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
+
+    
     
 
 
@@ -46,6 +48,8 @@ try {
                 <aside class="actCont">
                     <h3>活動說明</h3>
                     <br>
+                 
+            
                     <table  class="groupCardTable">
                         <tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td>
