@@ -38,7 +38,7 @@
                     <label class="phoneFilter_p" for="">團員人數：</label>
                 </div>
                 <div>
-                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="">
+                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="" checked>
                     <label class="phoneFilter" for="">任意</label>
                     <input type="radio" name="groupView_FliterPpl_phone" id="" value="and Group_Ppl between 1 and 10">
                     <label class="phoneFilter" for="">1-10</label>
@@ -53,7 +53,7 @@
                     <label class="phoneFilter_p" for="">性別限制：</label>
                 </div>
                 <div>
-                    <input type="radio" name="groupView_FliterSex_phone" id="" value="">
+                    <input type="radio" name="groupView_FliterSex_phone" id="" value="" checked>
                     <label for="">不限制</label>
                     <input type="radio" name="groupView_FliterSex_phone" id="" value="and Group_Sex=1">
                     <label for="">限男</label>
@@ -66,7 +66,7 @@
                     <label class="phoneFilter_p" for="">旅遊天數:</label>
                 </div>
                 <div>
-                    <input type="radio" name="groupView_FliterDay_phone" id="" value="">
+                    <input type="radio" name="groupView_FliterDay_phone" id="" value="" checked>
                     <label for="">任意</label>
                     <input type="radio" name="groupView_FliterDay_phone" id=""
                         value="and datediff(Group_EndDate,Group_StartDate)+1=1">
@@ -87,6 +87,8 @@
                     <label class="phoneFilter_p" for="">出發月份:</label>
                 </div>
                 <div>
+                    <input type="radio" name="groupView_FliterMonth_phone" id="" value="" checked>
+                    <label for="">任意</label>
                     <input type="radio" name="groupView_FliterMonth_phone" id=""
                         value="and date_format(Group_StartDate,'%m')=01 or date_format(Group_StartDate,'%m')=02 or date_format(Group_StartDate,'%m')=03">
                     <label for="">1-3</label>
