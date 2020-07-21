@@ -1,5 +1,5 @@
 <?php
-    // print_r($_SESSION["Mem_NO"]) ;
+ 
 try {
     require_once("connectMemberTable.php");
     $mem_NO = $_SESSION["Mem_NO"];
@@ -10,23 +10,13 @@ try {
         where g.mem_no = m.mem_no
         and g.Group_NO =g.Group_NO;";
 	$groupShow = $pdo->prepare($sql_g);
-	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
+    $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);    
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
-    
-    // for($i=0; $i<count($_GET["Group_NO"]); $i++){
-    //     echo $_GET["Group_NO"][$i];
-    // }
 
-
-    // foreach ($groupShowInfo as $row){
-    //     echo "<tr>";
-    //     foreach($row as $data){
-    //         echo "<td>",$data,"</td>";
-    //     }
-    //     echo "</tr>";   
-    // }
     
+    
+
 
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
@@ -58,6 +48,8 @@ try {
                 <aside class="actCont">
                     <h3>活動說明</h3>
                     <br>
+                 
+            
                     <table  class="groupCardTable">
                         <tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td>
@@ -71,7 +63,7 @@ try {
                         <tr><th>備註</th><td><?=$groupShowInfo["Group_Com"]?></td></tr>  
                     </table>
                     <?php
-                    echo $groupShowInfo[$i][0];
+                   
                     ?>
                 </aside>
                 <aside class="btnsAct">
