@@ -55,8 +55,6 @@ try {
 						<tr><th>作者</th><td><?=$groupShowRows["author"]?></td></tr>
 						<tr><th>頁數</th><td><?=$groupShowRows["pages"]?></td></tr>
 					</table>
-
-
                 </aside>
                 <aside class="btnsAct">
                 <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
