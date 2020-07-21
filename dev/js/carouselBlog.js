@@ -1,5 +1,6 @@
 window.onload = function () {
     titleCarouselBlog();
+    blogCard();
 }
 
 function titleCarouselBlog() {
@@ -128,4 +129,31 @@ function titleCarouselBlog() {
     xhr.open("post", "BlogCarousel.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(); //因為開太快所以要送個空值回去
+};
+
+function blogCard() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var blogviewCards = JSON.parse(xhr.responseText);
+            console.log(blogviewCards[0]);
+            blogCardsAlls = blogviewCards[0];
+
+            blogCardsAllsVue = new Vue({
+                el: '#blogCardsAll',
+                data: {
+                    blogCardsAlls,
+                },
+
+            });
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "blogCard.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send(null);
 };

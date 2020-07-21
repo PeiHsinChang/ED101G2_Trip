@@ -93,6 +93,14 @@ body {
     .blogCardsBlockView {
         // border: 1px solid red;
         margin-bottom: 40px;
+        margin-top: 50px;
+
+        #blogCardsAll {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            justify-content: center;
+        }
 
     }
 

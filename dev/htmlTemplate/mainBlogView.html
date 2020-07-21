@@ -23,330 +23,35 @@
     <div class="blogCardsBlockView">
         <div class="mainBlogCardsArea">
             <!-- 卡片區塊start -->
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
+            <div id="blogCardsAll">
+                <div v-for="blogCard in blogCardsAlls" class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
                 d-md-block" style="width: 18rem;">
-                <a href="./blogInside.html">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
+                    <a href="./blogInside.html">
+                        <img :src="blogCard.Blog_PicURL" class="card-img-top" alt="...">
+                        <div class="card-body card-img-overlay
                         cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
+                            <h5 class="card-title cardTitleWebUse">遊記</h5>
+                            <div class="mask">
+                                <p class="card-text cardTextWebUse">{{blogCard.Blog_Name}}</p>
+                            </div>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                         </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
+                        <div>
+                            <div class="cardBlogContent">
+                                <p>作者：{{blogCard.Mem_name}}</p>
+                                <p>發佈日期：{{blogCard.Blog_Date}}</p>
+                                <div>
+                                    <p>人氣{{blogCard.Blog_Views}}</p>
+                                    <a href="">
+                                        <img src="./images/heart.png" alt="">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card cardOriginalTem cardBlog cardBlogOnBlogView d-none
-                d-md-block" style="width: 18rem;">
-                <a href="">
-                    <img src="./images/1.png" class="card-img-top" alt="...">
-                    <div class="card-body card-img-overlay
-                        cardImgOverlayWebUse">
-                        <h5 class="card-title cardTitleWebUse">遊記</h5>
-                        <div class="mask">
-                            <p class="card-text cardTextWebUse">日月潭<br><span style="font-weight: 300;">九族文化村和健行步道</span>
-                            </p>
-                        </div>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                    <div>
-                        <div class="cardBlogContent">
-                            <p>作者：中央劉德華</p>
-                            <p>發佈日期：2020/08/20</p>
-                            <div>
-                                <p>人氣319</p>
-                                <a href="">
-                                    <img src="./images/heart.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+
             <!-- 卡片區塊 end -->
         </div>
 
