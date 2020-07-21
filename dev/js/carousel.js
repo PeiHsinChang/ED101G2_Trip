@@ -2,7 +2,7 @@ window.onload = function () {
     titleCarousel();
     hotSche();
     groupCard();
-    group_carousel();
+    // group_carousel();
     groupShow();
 
 

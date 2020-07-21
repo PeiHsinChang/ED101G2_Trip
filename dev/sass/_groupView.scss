@@ -75,17 +75,24 @@ body {
 
         .checkBox4phone {
             //手機版篩選器
-            border: 1px solid whitesmoke;
+            border: 1px solid $borderLine;
             box-shadow: 0px 0px 1px 2px lightgray;
             margin: 10px 0px 10px 0px;
             margin: 15px auto;
             width: 80%;
             position: relative;
 
+            .phoneFilter_p {
+                font-size: $subtitle;
+                color: $colorMain1;
+                margin-top: 10px;
+            }
+
             .btnPhoneFilterBlock {
                 // border: 1px solid red;
                 width: 100px;
                 margin: 0 auto;
+                margin-top: 10px;
 
 
                 .btnPhoneFilter {
