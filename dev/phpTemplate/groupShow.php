@@ -219,16 +219,6 @@ try {
         });
         });
 
-        //lightbox
-        // var myModal = document.getElementById("myModal");
-        // var btnOpen = document.getElementById("btnOpen");
-        // var btnClose = document.getElementById("btnClose");
-        // btnOpen.onclick = function() {
-        //     myModal.style.display = "block ";
-        // }
-        // btnClose.onclick = function() {
-        //     myModal.style.display = "none ";
-        // }
 
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
@@ -260,17 +250,17 @@ try {
 
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent ");
+        tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none ";
+            tabcontent[i].style.display = "none";
         }
-        tabs = document.getElementsByClassName("tabs ");
+        tabs = document.getElementsByClassName("tabs");
         for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" active ", " ");
+            tabs[i].className = tabs[i].className.replace("active", " ");
         }
 
-        document.getElementById(cityName).style.display = "block ";
-        evt.currentTarget.className += " active ";
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += "active";
 
 
         let memberNo = <?php echo $_SESSION["Mem_NO"]; ?>;
