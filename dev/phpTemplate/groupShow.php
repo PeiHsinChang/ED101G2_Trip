@@ -219,22 +219,6 @@ try {
         });
 
 
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        tabs = document.getElementsByClassName("tabs");
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace("active", " ");
-        }
-
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += "active";
-    }
-
     //lightbox
     var myModal = document.getElementById("myModal");
     var btnOpen = document.getElementById("btnOpen");
