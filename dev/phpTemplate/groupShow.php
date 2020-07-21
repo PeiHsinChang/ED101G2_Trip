@@ -198,7 +198,10 @@ try {
     .groupCardTable{
     border:1px solid  rgb(188, 38, 84);
     margin-bottom:30px;
-    max-width:300px;
+    min-width:300px;
+ 
+   
+  
    
     }
 	.groupCardTable th {
