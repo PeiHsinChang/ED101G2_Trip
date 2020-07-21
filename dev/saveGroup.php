@@ -2,9 +2,39 @@
 session_start();
 $groupInfo = json_decode($_POST["groupInfo"],true);
 // echo $groupInfo["sche_NO"];
-$PicContent = 'images/groupphoto/'.$_FILES["file-upload"]["name"];
-echo $PicContent;
+$PicGroupContent = 'images/groupphoto/'.$_FILES["file-upload"]["name"];
+
+echo $PicGroupContent;
 die;
+if(isset($_FILES["file-upload"])){
+switch($_FILES["file-upload"]["error"]){
+    case 0:
+        $dir = "images/groupphoto"; //指定一個資料夾路徑存放檔案
+        if(file_exists($dir) === false){ //檢察資料夾是否已存在，若否，則建立一個
+            mkdir($dir);
+        }
+        $from = $_FILES["file-upload"]["tmp_name"]; //暫存區的路徑
+        $to = "$dir/{$_FILES["file-upload"]["name"]}"; //用原始檔名稱當做資料儲存的來源會有名稱重複的問題，當相同檔案名稱被重複上傳，後者會覆蓋前者
+        copy($from, $to); //將暫存區檔案抓到資料夾
+        break;
+    case 1:
+        echo "上傳失敗, 上傳的檔案太大, 不得超過" , ini_get("upload_max_filesize"), "<br>";
+        break;
+    case 2:
+        echo "上傳失敗, 上傳的檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"], "<br>";
+        break;
+    case 3:
+        echo "上傳失敗, 上傳的檔案不完整<br>";
+        break;
+    case 4:
+        echo "檔案未選<br>";
+        break;
+    default:
+        echo "system upload error : ", $_FILES["upFile"]["error"], "<br>";
+}
+}else{
+    echo "<script>console.log('不存在');</script>";
+}
 try {
     require_once("connectMemberTable.php");
     $sql_g = 
