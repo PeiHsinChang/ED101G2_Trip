@@ -6,89 +6,253 @@ body {
     background-color: #ededed;
 }
 
-a {
-    color: gray;
-}
-
-.containerGroup {
-    margin: 100px 0 0px 0;
-    .coverPhoto {
-        margin: 0 auto;
-        height: 40vh;
-        // margin-bottom: 50px;
+.containerGroupTop{
+    // border: 1px solid red;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    position: relative;
+    .containerGroupTitle{
+        font-size: $subtitle;
+        text-align: center;
+        width: 100%;
+        padding: 15px;
+        color: white;
+        background-color: rgba(0,0,0,.7);
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+    }
+    .containerGroupPhoto{
+        width: 100%;
+        max-height: 550px;
         overflow: hidden;
-        img {
+        img{
             width: 100%;
         }
-    }
-    a {
-        position: fixed;
-        right: 5px;
-        top: 400px;
     }
 }
 
 .tabAll {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     .tab {
         overflow: hidden;
-        // border: 1px solid #ccc;
-        // background-color: #f1f1f1;
-        button {
-            border: 1px solid #ccc;
-            background-color: #ccc;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-            &:focus {
-                background-color: white;
-            }
-            &:first-child {
-                border-radius: 5px 0 0 0;
-            }
-            &:last-child {
-                border-radius: 0 5px 0 0;
-            }
+        .tabs1{
+            background-color: white;
+            color: $colorMain1;
+            padding: 10px 15px;
+            border-top-left-radius: 5px;
+            width: 94px;
+            border-bottom: 1px solid lightgray;
+        }
+        .tabs2{
+            background-color: lightgray;
+            color: white;
+            padding: 10px 15px;
+            border-top-right-radius: 5px;
+            width: 94px;
+            border-bottom: 1px solid lightgray;
         }
     }
     .tabcontent {
         display: none;
-        padding: 6px 12px;
+        padding: 20px;
         background-color: white;
         // border: 1px solid blue;
     }
     #activity {
         .actAll {
             // border: 1px solid red;
-            display: flex;
+            display: flex;          
             .actCont {
                 // border: 1px solid black;
                 width: 100%;
                 margin-bottom: 10px;
-            }
-            .btnsAct {
-                max-width: 130px;
-                // border: 1px solid blue;
-                display: block;
-                margin: 5px;
-                button {
-                    margin: 5px;
+                letter-spacing: 1.5px;
+                line-height: 30px;
+                font-size: 16px;
+                .prodTable{
+                    // border: 1px solid red;
+                    margin: 30px;
+                    margin-left: 100px;
+                    li{
+                        span{
+                            font-weight: 500;
+                            margin-right: 10px;
+                        }
+                    }
                 }
             }
+            .btnsAct {
+                // max-width: 130px;
+                // border: 1px solid blue;
+                display: inline-block;
+                margin: 5px;
+                margin-top: 60px;
+                button{
+                    margin: 5px;
+                    margin-bottom: 15px;
+                    @include button(160px, 50px, $colorSecondary2, $colorMain1, $colorMain1);
+                    font-size: $content;
+                }
+                .btnsActBtn1_1{
+                    @include button(160px, 50px, $colorMain1, $colorSecondary2, $colorMain1);
+                    font-size: $content;
+                    display: none;
+                }
+                .btnsActBtn1_2{
+                    @include button(160px, 50px, lightgray, $colorSecondary2, lightgray);
+                    font-size: $content;
+                    display: none;
+                }
+                .btnsActBtn2_2{
+                    @include button(160px, 50px, $colorMain1, $colorSecondary2, $colorMain1);
+                    font-size: $content;
+                    display: none;
+                }
+            }
+            .goingToJoin{
+                width: 700px;
+                display: inline-block;
+                border: 1px solid rgb(204,204,204);
+                border-radius: 5px;
+                overflow: hidden;
+                background-color: rgb(250,250,250);
+                .goingToJoinH5{
+                    text-align: center;
+                    font-size: $content;
+                    color: $colorMain1;
+                    background-color: $colorSecondary1;
+                    padding: 10px;
+                }
+                ul{
+                    padding: 20px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    li.goingToJoinLi{
+                        // border: 1px solid red;
+                        position: relative;
+                        list-style: none; 
+                        margin-bottom: 10px;
+                        border-bottom: 1px solid rgba(57,57,57,.5);
+                        .pic{
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            display: inline-block;
+                            overflow: hidden; 
+                            margin-bottom: 10px;
+                            .memPic{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }          
+                        }
+                        .name{
+                            display: inline-block;
+                            margin-left: 5px;
+                        }
+                        .accept{
+                            border: 1px solid $colorMain1;
+                            margin-left: 20px;
+                            background-color: $colorMain1;
+                            color: $colorSecondary2;
+                        }
+                        .refuse{
+                            border: 1px solid $colorMain1;
+                            background-color: $colorSecondary2;
+                            color: $colorMain1;
+                        }
+                        .showInfo{
+                            color: $colorMain1;
+                            opacity: .8;
+                            font-size: 14px;  
+                            margin-left: 23%;             
+                            &:hover{
+                                cursor: pointer;
+                            }
+                            position: absolute;
+                            top: 55px;
+                        }
+                        .info{
+                            // border: 1px solid red;
+                            display: none;
+                            padding-left: 80px;
+                            transform: translateY(-15px);
+                            ul{
+                                padding: 0;
+                            }
+                            .closeInfo{
+                                margin-left: calc(50% - 55px);
+                                margin-top: 5px;
+                                // transform: translateX(-50%);
+                                border: 1px solid $colorMain1;
+                                background-color: $colorSecondary2;
+                                color: $colorMain1;
+                            }
+                        }
+                    }
+                }
+            }          
         }
-        .joinList {
-            .joinMem {
-                td {
-                    vertical-align: middle;
-                    img {
+        .joined{
+            // width: 450px;
+            display: inline-block;
+            border: 1px solid rgb(204,204,204);
+            border-radius: 5px;
+            overflow: hidden;
+            .joinedH5{
+                text-align: center;
+                font-size: $content;
+                color: $colorMain1;
+                background-color: $colorSecondary1;
+                padding: 10px;
+            }
+            ul{
+                li{
+                    list-style: none; 
+                    display: inline-block;
+                    margin-left: 10px;
+                    .pic{
+                        width: 70px;
+                        height: 70px;
                         border-radius: 50%;
-                        width: 60px;
-                        height: 60px;
+                        display: inline-block;
+                        overflow: hidden; 
+                        margin-bottom: 5px;                      
+                        .memPic{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }          
+                    }
+                    .name{
+                        display: inline-block;
+                        margin-left: 5px;
+                    }
+                    .showInfo{
+                        color: $colorMain1;
+                        font-size: 14px;
+                        opacity: .8;
+                        margin-left: 5px;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                    .info{
+                        display: none;
+                        border-bottom: 1px solid rgba(57,57,57,.5);
+                        margin-bottom: 10px;
+                        padding-bottom: 5px;
+                        padding-top: 5px;
+                        .closeInfo{
+                            border: 1px solid $colorMain1;
+                            background-color: $colorSecondary2;
+                            color: $colorMain1;
+                            display: block;
+                        }
                     }
                 }
             }
