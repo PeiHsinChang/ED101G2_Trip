@@ -8,6 +8,7 @@
         $EmaContent = $_POST["memLeftAdjustEmaContent"];
         $TelContent = $_POST["memLeftAdjustTelContent"];
         $PicContent = 'images/memberphoto/'.$_FILES["chooseFile"]["name"];
+        
         if(isset($_FILES["chooseFile"])){
         switch($_FILES["chooseFile"]["error"]){
             case 0:
