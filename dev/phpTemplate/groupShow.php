@@ -67,6 +67,8 @@ echo "<br>";
 <meta charset="utf-8">
 <title>Examples</title>
 <style type="text/css">
+
+
     .groupCardTable{
     border:1px solid  rgb(188, 38, 84);
     margin-bottom:30px;
