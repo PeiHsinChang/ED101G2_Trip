@@ -39,9 +39,9 @@ try {
 
 
 <div class="containerGroup">
-    <div class="coverPhoto">
+    <!-- <div class="coverPhoto">
     <img src="<?=$groupShowInfo["Group_Pic"];?>" >
-    </div>
+    </div> -->
     <br>
     <br>
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
@@ -211,15 +211,12 @@ try {
 
 
 <script>
-        $(function () {
-
+        $(function(){
         $('body').on('click', '.tabs[data-type]', function (e) {
             let $obj = $(this);
             let type = $obj.data('type');
-
             openCity(e, type);
         });
-
         });
 
         //lightbox
@@ -235,18 +232,18 @@ try {
 
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName(" tabcontent ");
+        tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none ";
+            tabcontent[i].style.display = "none";
         }
 
-        tabs = document.getElementsByClassName("tabs ");
+        tabs = document.getElementsByClassName("tabs");
         for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" active ", " ");
+            tabs[i].className = tabs[i].className.replace("active", " ");
         }
 
-        document.getElementById(cityName).style.display = "block ";
-        evt.currentTarget.className += " active ";
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += "active";
     }
 
     //lightbox
@@ -259,6 +256,7 @@ try {
     btnClose.onclick = function() {
         myModal.style.display = "none ";
     }
+    //lightbox ends
 
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
@@ -372,6 +370,8 @@ try {
             });
         }
     }
+
+
     function submitRep(msgFrom) {
         let msg = $('#'+msgFrom+ 'inputMsg').val();
         let data = {};
