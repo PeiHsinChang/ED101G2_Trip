@@ -10,7 +10,7 @@ try {
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
-    $groupShowInfo = $groupShow->fetchAll(PDO::FETCH_ASSOC);
+    $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
     
     // for($i=0; $i<count($_GET["Group_NO"]); $i++){
     //     echo $_GET["Group_NO"][$i];
@@ -68,6 +68,9 @@ try {
                         <tr><th>集合地點</th><td><?=$groupShowInfo["Group_Place"]?></td></tr>
                         <tr><th>備註</th><td><?=$groupShowInfo["Group_Com"]?></td></tr>  
                     </table>
+                    <?php
+                    echo $groupShowInfo[$i][0];
+                    ?>
                 </aside>
                 <aside class="btnsAct">
                     <button onclick="alert('已報名成功\n可前往會員中心查看報名結果喔！')" style="width:120px;height:40px;"><img
@@ -195,7 +198,7 @@ try {
     .groupCardTable{
     border:1px solid  rgb(188, 38, 84);
     margin-bottom:30px;
-    width:300px;
+    max-width:300px;
    
     }
 	.groupCardTable th {
@@ -209,6 +212,7 @@ try {
 </style>
 </head>
 <body>
+
 
 <script>
     function openCity(evt, cityName) {
