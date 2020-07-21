@@ -96,32 +96,32 @@
     };
 
 
-    $('#setgroupSubmit').click(function() {
+    // $('#setgroupSubmit').click(function() {
         //檢查是否有上傳照片
-        if(!($('#file-upload').get(0).files.length== 0)){
-                let file_data = $('#file-upload').prop('files')[0];
-                let form_data = new FormData();
-                form_data.append('Mem_NO', userObj.Mem_NO);
-                form_data.append('Mem_Name', userObj.Mem_Name);
-                form_data.append('groupno', userObj.Mem_Name);
-                form_data.append('file', file_data);
-                $.ajax({
-                    url: "uploadGroupPic.php",
-                    type: "POST",
-                    data: form_data,
-                    contentType: false,
-                    cache: false,
-                    processData:false,
-                    success: function(data){
+        // if(!($('#file-upload').get(0).files.length== 0)){
+        //         let file_data = $('#file-upload').prop('files')[0];
+        //         let form_data = new FormData();
+        //         form_data.append('Mem_NO', userObj.Mem_NO);
+        //         form_data.append('Mem_Name', userObj.Mem_Name);
+        //         form_data.append('groupno', userObj.Mem_Name);
+        //         form_data.append('file', file_data);
+        //         $.ajax({
+        //             url: "uploadGroupPic.php",
+        //             type: "POST",
+        //             data: form_data,
+        //             contentType: false,
+        //             cache: false,
+        //             processData:false,
+        //             success: function(data){
 
-                    }
-                });
-        }
+        //             }
+        //         });
+        // }
 
-        $( "#setupform" ).submit(function (e) {
-            e.preventDefault();
-            console.log('hihi');
-        });
+        // $( "#setupform" ).submit(function (e) {
+        //     e.preventDefault();
+        //     console.log('hihi');
+        // });
         // $.ajax({
         //     type: "POST",
         //     url: 'submission.php',
@@ -130,7 +130,7 @@
         //         alert(data);
         //     }
         // });
-    });
+    // });
 
 </script>
 </html>
