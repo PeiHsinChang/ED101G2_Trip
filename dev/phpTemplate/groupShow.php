@@ -10,7 +10,7 @@ try {
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
-    $groupShowInfo = $groupShow->fetchAll(PDO::FETCH_ASSOC);
+    $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
     
 
     // for($i=0; $i<count($_GET["Group_NO"]); $i++){
@@ -68,13 +68,18 @@ echo "<br>";
 <title>Examples</title>
 <style type="text/css">
     .groupCardTable{
-    border:1px solid blue;
+    border:1px solid  rgb(188, 38, 84);
+    margin-bottom:30px;
+    width:300px;
+   
     }
 	.groupCardTable th {
-		background-color : #bfbfef;
+        background-color : rgb(188, 38, 84);
+        color:rgb(237, 237, 237);
+        letter-spacing: 1.5px;
 	}
 	.groupCardTable td {
-		border-bottom : dotted 1px deeppink;
+		/* border-bottom : dotted 1px deeppink; */
 	}
 </style>
 </head>

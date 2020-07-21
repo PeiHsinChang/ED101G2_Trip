@@ -1,32 +1,28 @@
 //字級
-$title: 1.875rem;  //30px
-$subtitle: 1.5rem;  //24px
-$content: 1.25rem;  //20px
-$s_content: 1rem;  //16px
-
+$title: 1.875rem; //30px
+$subtitle: 1.5rem; //24px
+$content: 1.25rem; //20px
+$s_content: 1rem; //16px
 //文字
-@mixin text{
+@mixin text {
     line-height: 20px;
     letter-spacing: 1.5px;
 }
 
 //顏色
-$colorMain1: rgb(188,38,84);
-$colorMain2: rgb(237,237,237);
-$colorSecondary1: rgb(255,237,237);
-$colorSecondary2: rgb(255,255,255);
-$colorSecondary3: rgb(57,57,57);
-$borderLine: rgb(204,204,204);
-
-
+$colorMain1: rgb(188, 38, 84);
+$colorMain2: rgb(237, 237, 237);
+$colorSecondary1: rgb(255, 237, 237);
+$colorSecondary2: rgb(255, 255, 255);
+$colorSecondary3: rgb(57, 57, 57);
+$borderLine: rgb(204, 204, 204);
 //breakpoint
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
-
 //按鈕
-@mixin button($btWidtn, $btHeight, $btColor, $btBgColor, $btBorderColor){
+@mixin button($btWidtn, $btHeight, $btColor, $btBgColor, $btBorderColor) {
     width: $btWidtn;
     height: $btHeight;
     font-size: $s_content;
@@ -35,17 +31,19 @@ $breakpoint-sm: 576px;
     border: 1px solid $btBorderColor;
     border-radius: 5px;
     transition: .5s;
-    &:hover{
+    &:hover {
         color: $btBgColor;
         background-color: $btColor;
     }
 }
-.btnSmall{
+
+.btnSmall {
     @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
-  }
+}
+
 .btnMid {
     @include button(120px, 40px, $colorSecondary2, $colorMain1, $colorMain1);
-  }
+}
 
 .btnLarge {
     @include button(190px, 66px, $colorSecondary2, $colorMain1, $colorMain1);
