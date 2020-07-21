@@ -200,9 +200,6 @@ try {
     margin-bottom:30px;
     min-width:300px;
  
-   
-  
-   
     }
 	.groupCardTable th {
         background-color : rgb(188, 38, 84);
