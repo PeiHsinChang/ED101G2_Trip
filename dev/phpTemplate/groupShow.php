@@ -1,12 +1,15 @@
 <?php
-        
+    
 try {
     require_once("connectMemberTable.php");
+    $mem_NO = $_SESSION["Mem_NO"];
+
     $sql_g = 
         "select * 
         from grouptable g,membertable m
         where g.mem_no = m.mem_no
         and g.Group_NO =:Group_NO;";
+
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
@@ -18,7 +21,7 @@ try {
 }
 
 ?>
-    <img src="<?=$groupShowInfo["Group_Pic"];?>" >
+<img src="<?=$groupShowInfo["Group_Pic"];?>" >
 
 <div class="containerGroup">
     <div class="coverPhoto">

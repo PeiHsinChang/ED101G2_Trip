@@ -52,11 +52,8 @@
     let setupGroup = document.getElementById("setupGroup");
     function openNewGroup() {
         setupGroup.style.display = "block";
-        $("body").css({
-            'overflow': 'hidden'
-        });
-        $('body').css('position', 'fixed');
-        let schedulesArray = [];
+        $("body").css({'overflow':'hidden'});
+        $("body").css('position','fixed');
         $.ajax({
             type: "POST",
             url: 'getGroupList.php',
@@ -68,22 +65,10 @@
                     schedulesArray = schedules;
                     $.each(schedules, function( index, value ) {
                         $('#grouplistSelect')
-                        .append($("<option></option>")
+                        .append($("<option id="+schedules[index].Sche_NO+"></option>")
                         .attr("value",schedules[index].Sche_NO)
                         .text(schedules[index].Sche_Name));
                     });
-                    let schedele = schedulesArray[0];
-                    $('#partdate').val(schedele.Group_Deadline);
-                    $('#startdate').val(schedele.Group_StartDate);
-                    $('#enddate').val(schedele.Group_EndDate);
-                    $('#partname').val(schedele.Group_title);
-                    $('#partlimit').val(schedele.Group_Ppl);
-                    $('#gendercho').val(schedele.Group_Sex);
-                    $('#yearlimitcho').val(schedele.Group_Age);
-                    $('#estmoney').val(schedele.Group_Fee);
-                    $('#gatherplace').val(schedele.Group_Place);
-                    $('#memogroup').val(schedele.Group_Com);
-                    $('#myImg').attr('src',schedele.Group_Pic)
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
@@ -91,43 +76,6 @@
                 alert(thrownError);
             }
         });
-
-        $('#grouplistSelect').click(function () {
-            let group_no =  $('#grouplistSelect').val();
-            for (var i =0;i<schedulesArray.length;i++){
-                let schedele = schedulesArray[i];
-                if (schedele.Group_NO==group_no){
-                    $('#partdate').val(schedele.Group_Deadline);
-                    $('#startdate').val(schedele.Group_StartDate);
-                    $('#enddate').val(schedele.Group_EndDate);
-                    $('#partname').val(schedele.Group_title);
-                    $('#partlimit').val(schedele.Group_Ppl);
-                    $('#gendercho').val(schedele.Group_Sex);
-                    $('#yearlimitcho').val(schedele.Group_Age);
-                    $('#estmoney').val(schedele.Group_Fee);
-                    $('#gatherplace').val(schedele.Group_Place);
-                    $('#memogroup').val(schedele.Group_Com);
-                    $('#myImg').attr("src",schedele.Group_Pic)
-                }
-            }
-        });
-
-        /*$.ajax({
-            url: 'getGroupList.php',
-            type:'GET',
-            dataType: 'json',
-            success: function(response){
-                let schedules = response;
-                $('#grouplistSelect').html('');
-                $.each(schedules, function( index, value ) {
-                    $('#grouplistSelect').append($("<option></option>").attr("value",schedules[index].Group_NO).text(schedules[index].Group_title));
-                });
-            },
-            error: function () {
-                console.log('fail');
-            }
-        });*/
-
     };
 
     $(":file").change(function () {
@@ -143,10 +91,8 @@
 
     function closeNewGroup() {
         setupGroup.style.display = "none";
-        $("body").css({
-            'overflow-y': 'visible'
-        });
-        $('body').css('position', 'initial');
+        $("body").css({'overflow-y':'visible'});
+        $('body').css('position','initial');
     };
 
 
@@ -176,21 +122,15 @@
             e.preventDefault();
             console.log('hihi');
         });
-        $.ajax({
-            type: "POST",
-            url: 'submission.php',
-            data: {email: email},
-            success: function(data){
-                alert(data);
-            }
-        });
+        // $.ajax({
+        //     type: "POST",
+        //     url: 'submission.php',
+        //     data: {email: email},
+        //     success: function(data){
+        //         alert(data);
+        //     }
+        // });
     });
-    // let partinGroup = document.getElementById("partinGroup");
-    // function openpartinGroup(){
-    //     partinGroup.style.display = "block";
-    // };
-    // function closepartinGroup(){
-    //     partinGroup.style.display = "none";
-    // };
+
 </script>
 </html>
