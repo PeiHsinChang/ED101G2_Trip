@@ -31,14 +31,9 @@ try {
     <div class="coverPhoto">
     <img src="<?=$groupShowInfo["Group_Pic"];?>" >
     </div>
-<<<<<<< HEAD
    
 </div>
 <div class="container">
-=======
-    <br>
-    <br>
->>>>>>> 3fe67506cbcfb94b2c7fff1e52d82461b3e72587
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
         <!-- <a onclick="openNewGroup();">
             <img src="./images/openNewGroup.png" class="d-md-block" />
