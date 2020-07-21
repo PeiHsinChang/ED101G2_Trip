@@ -157,3 +157,28 @@ function blogCard() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(null);
 };
+
+$("#blogSearch").click(function () {
+    //按好什麼按鈕觸發事件
+    console.log($("#search_text").val())
+    //input內容有沒有進去網頁
+    let xhr = new XMLHttpRequest();
+    //跟後端要資料
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+            let searchResult = JSON.parse(xhr.responseText);
+            console.log(searchResult);
+            //檢查搜尋內容有沒有進網頁
+            blogCardsAllsVue.$data.blogCardsAlls = searchResult;
+            // 原本的資料名稱＋$data+後面引入的新搜尋資料
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    xhr.open("post", "blogSearch.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data_info = `search_text=${$("#search_text").val()}`;
+    // 把搜尋內容丟到後端
+    xhr.send(data_info);
+});
