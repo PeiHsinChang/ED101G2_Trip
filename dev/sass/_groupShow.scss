@@ -128,7 +128,7 @@ a {
             border-radius: 5px 0 0 5px;
             vertical-align: top;
             outline: none;
-            &[type=submit] {
+            &[type=button] {
                 width: 50px;
                 height: 35px;
                 background: url(../images/btnSend.png) no-repeat;
