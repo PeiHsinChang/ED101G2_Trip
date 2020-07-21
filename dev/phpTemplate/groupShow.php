@@ -10,7 +10,30 @@ try {
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
-    $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
+    $groupShowInfo = $groupShow->fetchAll(PDO::FETCH_ASSOC);
+    
+
+    // for($i=0; $i<count($_GET["Group_NO"]); $i++){
+    //     echo $_GET["Group_NO"][$i];
+    // }
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+    foreach ($groupShowInfo as $row){
+        echo "<tr>";
+        foreach($row as $data){
+            echo "<td>",$data,"</td>";
+        }
+        echo "</tr>";   
+    }
+    
 
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
@@ -44,6 +67,9 @@ try {
 <meta charset="utf-8">
 <title>Examples</title>
 <style type="text/css">
+    .groupCardTable{
+    border:1px solid blue;
+    }
 	.groupCardTable th {
 		background-color : #bfbfef;
 	}
@@ -53,18 +79,22 @@ try {
 </style>
 </head>
 <body>
-  
-<table  class="groupCardTable">
-	<tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td></tr>
-	<tr><th>出發日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td></tr>
-	<tr><th>結束日期</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
-	<tr><th>報名截止</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
-    <tr><th>人數限制</th><td><?=$groupShowInfo["Group_Ppl"]?></td></tr>
-    <tr><th>性別限制</th><td><?=$groupShowInfo["Group_Sex"]?></td></tr>
-    <tr><th>年齡限制</th><td><?=$groupShowInfo["Group_Age"]?></td></tr>
-    <tr><th>團費</th><td><?=$groupShowInfo["Group_Fee"]?></td></tr>
-    <tr><th>集合地點</th><td><?=$groupShowInfo["Group_Place"]?></td></tr>
-    <tr><th>備註</th><td><?=$groupShowInfo["Group_Com"]?></td></tr>
-</table>
+
+
+
+
+    <table  class="groupCardTable">
+        <tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td>
+        <tr><th>結束日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td>
+        <tr><th>結束日期</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
+        <tr><th>報名截止</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
+        <tr><th>人數限制</th><td><?=$groupShowInfo["Group_Ppl"]?></td></tr>
+        <tr><th>性別限制</th><td><?=$groupShowInfo["Group_Sex"]?></td></tr>
+        <tr><th>年齡限制</th><td><?=$groupShowInfo["Group_Age"]?></td></tr>
+        <tr><th>團費</th><td><?=$groupShowInfo["Group_Fee"]?></td></tr>
+        <tr><th>集合地點</th><td><?=$groupShowInfo["Group_Place"]?></td></tr>
+        <tr><th>備註</th><td><?=$groupShowInfo["Group_Com"]?></td></tr>  
+    </table>
+
 </body>
 </html>
