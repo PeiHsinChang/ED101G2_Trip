@@ -10,10 +10,8 @@ try {
         where g.mem_no = m.mem_no
         and g.Group_NO =g.Group_NO;";
 	$groupShow = $pdo->prepare($sql_g);
-    $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
-    $groupShow->bindValue(":Group_title", $_GET["Group_title"]);
-    $groupShow->bindValue(":Group_StartDate", $_GET["Group_StartDate"]);
-   
+    $groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);   
+    $groupShow->bindValue("Group_StartDate", $_GET["Group_StartDate"]);  
     $groupShow->execute();
     $groupShowInfo = $groupShow->fetch(PDO::FETCH_ASSOC);
     
@@ -56,7 +54,7 @@ try {
                         echo $_GET["Group_StartDate"];
                         ?>
 
-                        
+
                         <tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>

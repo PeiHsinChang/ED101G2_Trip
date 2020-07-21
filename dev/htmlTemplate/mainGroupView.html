@@ -27,8 +27,7 @@
         <div class="d-flex mobileFilter col-3 col-md-3 col-lg-1 d-none
             d-sm-block d-md-none">
             <div class="dropdown mr-1">
-                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                     篩選
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
@@ -60,9 +59,12 @@
                                 <select name="groupView_FliterPpl" id="groupView_FliterPpl">
                                     <option value="" selected>任意</option>
                                     <option value="and Group_Ppl<=5">1-5人</option>
-                                    <option value="and Group_Ppl between 5 and 10">6-10人</option>
-                                    <option value="and Group_Ppl between 10 and 15">10-15人</option>
-                                    <option value="and Group_Ppl between 15 and 20">15-20人</option>
+                                    <option value="and Group_Ppl between 5 and
+                                        10">6-10人</option>
+                                    <option value="and Group_Ppl between 10 and
+                                        15">10-15人</option>
+                                    <option value="and Group_Ppl between 15 and
+                                        20">15-20人</option>
                                     <option value="and 20<Group_Ppl">20人以上</option>
                                 </select>
                             </td>
@@ -86,10 +88,15 @@
                             <td>
                                 <select name="groupView_FliterDay" id="groupView_FliterDay">
                                     <option value="" selected>任意</option>
-                                    <option value="and datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
-                                    <option value="and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">1-5
+                                    <option value="and
+                                        datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
+                                    <option value="and
+                                        datediff(Group_EndDate,Group_StartDate)+1
+                                        between 1 and 5">1-5
                                     </option>
-                                    <option value="and datediff(Group_EndDate,Group_StartDate)+1 between 5 and 10">5-10
+                                    <option value="and
+                                        datediff(Group_EndDate,Group_StartDate)+1
+                                        between 5 and 10">5-10
                                     </option>
                                     <option value="and 10<datediff(Group_EndDate,Group_StartDate)+1">10以上</option>
                                 </select>
@@ -102,18 +109,30 @@
                             <td>
                                 <select name="groupView_FliterMonth" id="groupView_FliterMonth">
                                     <option value="" selected>任意</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=01">一月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=02">二月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=03">三月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=04">四月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=05">五月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=06">六月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=07">七月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=08">八月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=09">九月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=10">十月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=11">十一月</option>
-                                    <option value="and date_format(Group_StartDate,'%m')=12">十二月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=01">一月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=02">二月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=03">三月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=04">四月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=05">五月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=06">六月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=07">七月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=08">八月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=09">九月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=10">十月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=11">十一月</option>
+                                    <option value="and
+                                        date_format(Group_StartDate,'%m')=12">十二月</option>
                                 </select>
                             </td>
                         </tr>
@@ -166,9 +185,11 @@
                 <!-- 揪團卡片 -->
                 <div id="groupCardsAll">
                     <!-- <input type="text" v-model="search" placeholder="Search title.." /> -->
-                    <div v-for="groupCard in groupCardsAlls" class="card cardOriginalTem cardGroup">
+                    <div v-for="groupCard in groupCardsAlls" class="card
+                        cardOriginalTem cardGroup">
                         <!-- <a  onclick="openpartinGroup();"> -->
-                        <a :href="'groupInside.php?Group_NO=' + groupCard.Group_NO">
+                        <a :href="'groupInside.php?Group_NO=' +
+                            groupCard.Group_NO + groupCard.Group_StartDate">
                             <img :src="groupCard.Group_Pic" class="card-img-top" alt="...">
                             <div class="card-body card-img-overlay
                                 cardImgOverlayWebUse">
@@ -178,16 +199,15 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="cardGroupContent ">
+                                <div class="cardGroupContent">
                                     <p>團主：{{groupCard.Mem_name}}</p>
                                     <div>
                                         <p>團主評價：
-                                            <img src="./images/good.png " alt=" "> {{groupCard.hostlike}}
+                                            <img src="./images/good.png" alt=""> {{groupCard.hostlike}}
                                         </p>
 
                                     </div>
                                     <p>出團日期：{{groupCard.Group_StartDate}}</p>
-
                                     <p>報名截止：{{groupCard.Group_Deadline}}</p>
                                 </div>
                             </div>
@@ -210,26 +230,26 @@
         <div class="carousel-inner innerCardScheGroupPhoneSlide">
             <div id="groupCardCarousel_1" class="carousel-item active" name="groupCardCarousel_1">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_1.Group_NO">
+                    <a :href="'groupInside.php?Group_NO=' +
+                        groupCardCarousel_1.Group_NO">
                         <img :src="groupCardCarousel_1.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
-                                        cardImgOverlayWebUse">
+                            cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_1.Group_title}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent ">
+                            <div class="cardGroupContent">
                                 <p>團主：{{groupCardCarousel_1.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_1.hostlike}}
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_1.hostlike}}
                                     </p>
 
                                 </div>
                                 <p>出團日期：{{groupCardCarousel_1.Group_StartDate}}</p>
-
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_1.Group_Deadline}}</p>
                                 </div>
@@ -240,26 +260,26 @@
             </div>
             <div id="groupCardCarousel_2" class="carousel-item active" name="groupCardCarousel_2">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_2.Group_NO">
+                    <a :href="'groupInside.php?Group_NO=' +
+                        groupCardCarousel_2.Group_NO">
                         <img :src="groupCardCarousel_2.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
-                                        cardImgOverlayWebUse">
+                            cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_2.Group_title}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent ">
+                            <div class="cardGroupContent">
                                 <p>團主：{{groupCardCarousel_2.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_2.hostlike}}
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_2.hostlike}}
                                     </p>
 
                                 </div>
                                 <p>出團日期：{{groupCardCarousel_2.Group_StartDate}}</p>
-
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_2.Group_Deadline}}</p>
                                 </div>
@@ -270,26 +290,26 @@
             </div>
             <div id="groupCardCarousel_3" class="carousel-item active" name="groupCardCarousel_3">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_3.Group_NO">
+                    <a :href="'groupInside.php?Group_NO=' +
+                        groupCardCarousel_3.Group_NO">
                         <img :src="groupCardCarousel_3.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
-                                        cardImgOverlayWebUse">
+                            cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_3.Group_title}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent ">
+                            <div class="cardGroupContent">
                                 <p>團主：{{groupCardCarousel_3.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_3.hostlike}}
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_3.hostlike}}
                                     </p>
 
                                 </div>
                                 <p>出團日期：{{groupCardCarousel_3.Group_StartDate}}</p>
-
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_3.Group_Deadline}}</p>
                                 </div>
@@ -300,26 +320,26 @@
             </div>
             <div id="groupCardCarousel_4" class="carousel-item active" name="groupCardCarousel_4">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_4.Group_NO">
+                    <a :href="'groupInside.php?Group_NO=' +
+                        groupCardCarousel_4.Group_NO">
                         <img :src="groupCardCarousel_4.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
-                                        cardImgOverlayWebUse">
+                            cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_4.Group_title}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent ">
+                            <div class="cardGroupContent">
                                 <p>團主：{{groupCardCarousel_4.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_4.hostlike}}
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_4.hostlike}}
                                     </p>
 
                                 </div>
                                 <p>出團日期：{{groupCardCarousel_4.Group_StartDate}}</p>
-
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_4.Group_Deadline}}</p>
                                 </div>
@@ -330,26 +350,26 @@
             </div>
             <div id="groupCardCarousel_5" class="carousel-item active" name="groupCardCarousel_5">
                 <div class="card cardOriginalTem cardGroup d-block" style="width: 18rem;">
-                    <a :href="'groupInside.php?Group_NO=' + groupCardCarousel_5.Group_NO">
+                    <a :href="'groupInside.php?Group_NO=' +
+                        groupCardCarousel_5.Group_NO">
                         <img :src="groupCardCarousel_5.Group_Pic" class="card-img-top" alt="...">
                         <div class="card-body card-img-overlay
-                                        cardImgOverlayWebUse">
+                            cardImgOverlayWebUse">
                             <h5 class="card-title cardTitleWebUse">揪團</h5>
                             <div class="mask">
                                 <p class="card-text cardTextWebUse">{{groupCardCarousel_5.Group_title}}</p>
                             </div>
                         </div>
                         <div>
-                            <div class="cardGroupContent ">
+                            <div class="cardGroupContent">
                                 <p>團主：{{groupCardCarousel_5.Mem_name}}</p>
                                 <div>
                                     <p>團主評價：
-                                        <img src="./images/good.png " alt=" ">{{groupCardCarousel_5.hostlike}}
+                                        <img src="./images/good.png" alt="">{{groupCardCarousel_5.hostlike}}
                                     </p>
 
                                 </div>
                                 <p>出團日期：{{groupCardCarousel_5.Group_StartDate}}</p>
-
                                 <div>
                                     <p>報名截止：{{groupCardCarousel_5.Group_Deadline}}</p>
                                 </div>
@@ -359,13 +379,13 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev " href="#carouselPhoneScheControls " role="button " data-slide="prev ">
-            <span class="carousel-control-prev-icon groupCarouselIcon " aria-hidden="true "></span>
-            <span class="sr-only ">Previous</span>
+        <a class="carousel-control-prev" href="#carouselPhoneScheControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon groupCarouselIcon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next " href="#carouselPhoneScheControls " role="button " data-slide="next ">
-            <span class="carousel-control-next-icon groupCarouselIcon " aria-hidden="true "></span>
-            <span class="sr-only ">Next</span>
+        <a class="carousel-control-next" href="#carouselPhoneScheControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon groupCarouselIcon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
     </div>
 </div>
