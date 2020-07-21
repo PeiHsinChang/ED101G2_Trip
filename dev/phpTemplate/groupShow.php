@@ -35,13 +35,12 @@ try {
 }
 
 ?>
-<img src="<?=$groupShowInfo["Group_Pic"];?>" >
 
 
 <div class="containerGroup">
-    <!-- <div class="coverPhoto">
+    <div class="coverPhoto">
     <img src="<?=$groupShowInfo["Group_Pic"];?>" >
-    </div> -->
+    </div>
     <br>
     <br>
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
