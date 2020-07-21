@@ -654,12 +654,6 @@
                 $(this).parent('.goingToJoinLi').css("display","none");
             });
         });
-
 </script>
-    
-
 </body>
 </html>
-
-
-<h5><?php print_r($groupShowInfo);?></h5>
