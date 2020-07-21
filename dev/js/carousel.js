@@ -333,6 +333,7 @@ function groupShow() {
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
 };
+
 $("#groupSearch").click(function () {
     //按好什麼按鈕觸發事件
     console.log($("#search_text").val())
