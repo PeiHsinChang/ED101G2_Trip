@@ -182,3 +182,46 @@ $("#blogSearch").click(function () {
     // 把搜尋內容丟到後端
     xhr.send(data_info);
 });
+
+function SortByLike() {
+
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var blogviewSortLike = JSON.parse(xhr.responseText);
+            console.log(blogviewSortLike[0]);
+            blogSortLike = blogviewSortLike[0];
+            blogCardsAllsVue.$data.blogCardsAlls = blogSortLike;
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "blogSortByLike.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+
+
+};
+
+function sortByLatest() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status == 200) {
+
+            //desktop version
+            var blogviewSortLatest = JSON.parse(xhr.responseText);
+            console.log(blogviewSortLatest[0]);
+            blogSortLatest = blogviewSortLatest[0];
+            blogCardsAllsVue.$data.blogCardsAlls = blogSortLatest;
+
+        } else {
+            alert(xhr.status);
+        }
+    };
+    xhr.open("post", "blogSortByLatest.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+}
