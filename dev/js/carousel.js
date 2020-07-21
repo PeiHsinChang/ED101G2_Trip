@@ -423,15 +423,15 @@ $("#btnGroupFilter").click(function () {
     console.log($('#groupView_FliterSex :selected').val());
     console.log($('#groupView_FliterDay :selected').val());
     console.log($('#groupView_FliterMonth :selected').val());
-    //input內容有沒有進去網頁
+    //check if the selector value are sent
     let xhr = new XMLHttpRequest();
     //跟後端要資料
     xhr.onload = function () {
-        if (xhr.status == 200) {
-            // let filterResult = JSON.parse(xhr.responseText);
-            // console.log(filterResult);
+        if (xhr.status == 200) { //當連線成功
+            let filterResult = JSON.parse(xhr.responseText);
+            console.log(filterResult);
             //檢查搜尋內容有沒有進網頁
-            // Result.$data.groupCardsAlls = filterResult;
+            groupCardsAllsVue.$data.groupCardsAlls = filterResult;
             // 原本的資料名稱＋$data+後面引入的新搜尋資料
         } else {
             alert(xhr.status);
@@ -440,7 +440,9 @@ $("#btnGroupFilter").click(function () {
 
     xhr.open("post", "groupViewFilter.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    let data_info = `filter=${$("groupView_FliterPpl").val()}${$("groupView_FliterSex").val()}${$("groupView_FliterDay").val()}${$("groupView_FliterMonth").val()}`;
+    let data_info = `filter=${$("#groupView_FliterPpl :selected").val()} ${$("#groupView_FliterSex :selected").val()} ${$("#groupView_FliterDay :selected").val()} ${$("#groupView_FliterMonth :selected").val()}`;
     // 把搜尋內容丟到後端
+    // 指令串接
+    console.log(data_info); //檢查送出的指令
     xhr.send(data_info);
 });

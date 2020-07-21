@@ -9,6 +9,10 @@
     height: 100%;
   }
 
+  .nav-linkgroupView::after{
+    width: 100% !important;
+  }
+
   body::-webkit-scrollbar {
     display: none;
   }
