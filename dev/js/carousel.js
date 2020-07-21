@@ -446,3 +446,33 @@ $("#btnGroupFilter").click(function () {
     console.log(data_info); //檢查送出的指令
     xhr.send(data_info);
 });
+
+$("#btnPhoneFilter").click(function () {
+    //按好什麼按鈕觸發事件
+    console.log($('input[name=groupView_FliterPpl_phone]:checked').val());
+    console.log($('input[name=groupView_FliterSex_phone]:checked').val());
+    console.log($('input[name=groupView_FliterDay_phone]:checked').val());
+    console.log($('input[name=groupView_FliterMonth_phone]:checked').val());
+    //check if the selector value are sent
+    let xhr = new XMLHttpRequest();
+    //跟後端要資料
+    xhr.onload = function () {
+        if (xhr.status == 200) { //當連線成功
+            let phoneFilterResult = JSON.parse(xhr.responseText);
+            console.log(phoneFilterResult);
+            //檢查搜尋內容有沒有進網頁
+            groupCardsAllsVue.$data.groupCardsAlls = phoneFilterResult;
+            // 原本的資料名稱＋$data+後面引入的新搜尋資料
+        } else {
+            alert(xhr.status);
+        }
+    }
+
+    xhr.open("post", "groupViewFilterPhone.php", true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data_info = `filter=${$('input[name=groupView_FliterPpl_phone]:checked').val()} ${$('input[name=groupView_FliterSex_phone]:checked').val()} ${$('input[name=groupView_FliterDay_phone]:checked').val()} ${$('input[name=groupView_FliterMonth_phone]:checked').val()}`;
+    // 把搜尋內容丟到後端
+    // 指令串接
+    console.log(data_info); //檢查送出的指令
+    xhr.send(data_info);
+});

@@ -27,17 +27,84 @@
         <div class="d-flex mobileFilter col-3 col-md-3 col-lg-1 d-none
             d-sm-block d-md-none">
             <div class="dropdown mr-1">
-                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                <!-- <button type="button" class="" id="">
+                    篩選
+                </button> -->
+            </div>
+        </div>
+        <div class="checkBox4phone d-sm-block d-md-none col-12">
+            <div>
+                <div>
+                    <label for="">團員人數：</label>
+                </div>
+                <div>
+                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="">
+                    <label for="">任意</label>
+                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="and Group_Ppl between 1 and 10">
+                    <label for="">1-10</label>
+                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="and Group_Ppl between 10 and 20">
+                    <label for="">10-20</label>
+                    <input type="radio" name="groupView_FliterPpl_phone" id="" value="and 20<Group_Ppl">
+                    <label for="">20人以上</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="">性別限制：</label>
+                </div>
+                <div>
+                    <input type="radio" name="groupView_FliterSex_phone" id="" value="">
+                    <label for="">不限制</label>
+                    <input type="radio" name="groupView_FliterSex_phone" id="" value="and Group_Sex=1">
+                    <label for="">限男</label>
+                    <input type="radio" name="groupView_FliterSex_phone" id="" value="and Group_Sex=2">
+                    <label for="">限女</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="">旅遊天數:</label>
+                </div>
+                <div>
+                    <input type="radio" name="groupView_FliterDay_phone" id="" value="">
+                    <label for="">任意</label>
+                    <input type="radio" name="groupView_FliterDay_phone" id=""
+                        value="and datediff(Group_EndDate,Group_StartDate)+1=1">
+                    <label for="">1</label>
+                    <input type="radio" name="groupView_FliterDay_phone" id=""
+                        value="and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">
+                    <label for="">1-5</label>
+                    <input type="radio" name="groupView_FliterDay_phone" id=""
+                        value="and datediff(Group_EndDate,Group_StartDate)+1 between 5 and 10">
+                    <label for="">5-10</label>
+                    <input type="radio" name="groupView_FliterDay_phone" id=""
+                        value="and 10<datediff(Group_EndDate,Group_StartDate)+1">
+                    <label for="">10以上</label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="">出發月份:</label>
+                </div>
+                <div>
+                    <input type="radio" name="groupView_FliterMonth_phone" id=""
+                        value="and date_format(Group_StartDate,'%m')=01 or date_format(Group_StartDate,'%m')=02 or date_format(Group_StartDate,'%m')=03">
+                    <label for="">1-3</label>
+                    <input type="radio" name="groupView_FliterMonth_phone" id=""
+                        value="and date_format(Group_StartDate,'%m')=04 or date_format(Group_StartDate,'%m')=05 or date_format(Group_StartDate,'%m')=06">
+                    <label for="">4-6</label>
+                    <input type="radio" name="groupView_FliterMonth_phone" id=""
+                        value="and date_format(Group_StartDate,'%m')=07 or date_format(Group_StartDate,'%m')=08 or date_format(Group_StartDate,'%m')=09">
+                    <label for="">7-9</label>
+                    <input type="radio" name="groupView_FliterMonth_phone" id=""
+                        value="and date_format(Group_StartDate,'%m')=10 or date_format(Group_StartDate,'%m')=11 or date_format(Group_StartDate,'%m')=12">
+                    <label for="">10-12</label>
+                </div>
+            </div>
+            <div class="btnPhoneFilterBlock">
+                <button class="btnPhoneFilter" id="btnPhoneFilter">
                     篩選
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                    <a class="dropdown-item" href="#">ppl</a>
-                    <a class="dropdown-item" href="#">location</a>
-                    <a class="dropdown-item" href="#">sex</a>
-                    <a class="dropdown-item" href="#">days</a>
-                    <a class="dropdown-item" href="#">month</a>
-                </div>
             </div>
         </div>
         <!-- 手機版篩選器結尾 -->
@@ -162,7 +229,7 @@
         <div class="groupViewRight col-9 d-block">
             <!-- Group Main Start -->
             <!-- pc version start  -->
-            <div class="groupViewPCcardBlock d-md-flex d-none">
+            <div class="groupViewPCcardBlock d-flex">
                 <!-- 揪團卡片 -->
                 <div id="groupCardsAll">
                     <!-- <input type="text" v-model="search" placeholder="Search title.." /> -->

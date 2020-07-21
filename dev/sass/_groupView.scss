@@ -73,6 +73,28 @@ body {
         display: flex;
         justify-content: flex-end;
 
+        .checkBox4phone {
+            //手機版篩選器
+            border: 1px solid whitesmoke;
+            box-shadow: 0px 0px 1px 2px lightgray;
+            margin: 10px 0px 10px 0px;
+            margin: 15px auto;
+            width: 80%;
+            position: relative;
+
+            .btnPhoneFilterBlock {
+                // border: 1px solid red;
+                width: 100px;
+                margin: 0 auto;
+
+
+                .btnPhoneFilter {
+                    // margin: 0 200px;
+                    @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
+                }
+            }
+        }
+
         .groupFBtn {
             border: none;
 
@@ -194,9 +216,10 @@ body {
             // }
             .groupViewPCcardBlock {
                 width: 100px;
-                border: red;
+                // border: red;
                 width: 100%;
                 display: flex;
+                margin-left: 50px;
 
                 #groupCardsAll {
                     width: 100%;
@@ -209,6 +232,8 @@ body {
                     }
                 }
             }
+
+
 
             .groupPhoneCardCarousel {
                 // border: 1px solid red;
