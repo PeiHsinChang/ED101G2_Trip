@@ -2,11 +2,14 @@
     
 try {
     require_once("connectMemberTable.php");
+    $mem_NO = $_SESSION["Mem_NO"];
+
     $sql_g = 
         "select * 
         from grouptable g,membertable m
         where g.mem_no = m.mem_no
         and g.Group_NO =:Group_NO;";
+
 	$groupShow = $pdo->prepare($sql_g);
 	$groupShow->bindValue(":Group_NO", $_GET["Group_NO"]);
     $groupShow->execute();
@@ -167,31 +170,6 @@ try {
         evt.currentTarget.className += " active ";
     }
 
-    //lightbox
-    // var myModal = document.getElementById("myModal");
-    // var btnOpen = document.getElementById("btnOpen");
-    // var btnClose = document.getElementById("btnClose");
-    // btnOpen.onclick = function() {
-    //     myModal.style.display = "block ";
-    // }
-    // btnClose.onclick = function() {
-    //     myModal.style.display = "none ";
-    // }
-
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent ");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none ";
-        }
-        tabs = document.getElementsByClassName("tabs ");
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" active ", " ");
-        }
-
-        document.getElementById(cityName).style.display = "block ";
-        evt.currentTarget.className += " active ";
-    }
-
+ 
    
 </script>

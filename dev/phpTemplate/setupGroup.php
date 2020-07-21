@@ -27,9 +27,9 @@
         <div class="startgroupcont">           
             <div class="startgroupn">選擇一個行程：
                 <select name="shedulename" id="grouplistSelect" class="schedulename">
-                    <option value="1" class="set1"selected>行程一</option>
+                    <!-- <option value="1" class="set1"selected>行程一</option>
                     <option value="2" class="set2">行程二</option>
-                    <option value="3" class="set3"> 行程三</option>
+                    <option value="3" class="set3"> 行程三</option> -->
                 </select>
             </div>
             <div class="groupno">還沒有行程？&nbsp;&nbsp;&nbsp;
@@ -79,9 +79,10 @@
                 <div class="noticetext" style="clear:both">備註：</div>
                 <div class="noticetexta"><textarea id="memogroup" name="Group_Com" class="noticetxthere"style="font-size:14px;"></textarea></div>
                 <div class="threestatus">
-                    <button id ="setgroupSubmit" class="setgroupadd">發佈</button>
+                    <input type="button" id ="setgroupSubmit" class="setgroupadd" value="發佈" />
                     <!-- <button id ="setgroupSave"class="setgroupsave">儲存</button> -->
-                    <button onclick="closeNewGroup();" class="setgroupcancel">取消</button>
+                    <input type="button" onclick="closeNewGroup();" class="setgroupcancel" value="取消" />
+                    <!-- <button onclick="closeNewGroup();" class="setgroupcancel">取消</button> -->
                 </div>
             </div>
         </div>
@@ -90,14 +91,27 @@
 
  <script>
 function setupGroupFt(){
+     y=document.getElementById("grouplistSelect").value
     let groupInfo = {
-        scheName: document.getElementById("grouplistSelect").value,
+        sche_NO: document.getElementById("grouplistSelect").value,
+        sche_Name: document.getElementById("grouplistSelect").options.namedItem(y).text,
+        
+        GroupDeadline: document.getElementById("partdate").value,
+        Group_StartDate: document.getElementById("startdate").value,
+        Group_EndDate: document.getElementById("enddate").value,
+        Group_Title: document.getElementById("partname").value,
+        Group_Ppl: document.getElementById("partlimit").value,
+        Group_Sex: document.getElementById("gendercho").value,
+        Group_Age: document.getElementById("yearlimitcho").value,
+        Group_Fee: document.getElementById("estmoney").value,
+        Group_Place: document.getElementById("gatherplace").value,
+        Group_Com: document.getElementById("memogroup").value,
     }
     console.log(groupInfo);
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
         if(xhr.status==200){
-        // document.getElementById("idMsg").innerText=xhr.responseText;
+        alert(xhr.responseText);
       }else{
         alert(xhr.status);
       }
@@ -108,11 +122,11 @@ function setupGroupFt(){
   xhr.open("Post", url, true);
   //送出資料
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let data_info = "memId=" ;
+  groupInfo = JSON.stringify(groupInfo);
+  let data_info = `groupInfo=${groupInfo}` ;
   console.log(data_info);
   xhr.send(data_info);
 }//function_checkId
-
 
 
 window.addEventListener("load", function(){
