@@ -48,11 +48,6 @@ try {
                     <h3>活動說明</h3>
                     <br>
                     <table  class="groupCardTable">
-                        <?php 
-                        echo $_GET["Group_NO"];
-                        echo $_GET["Group_title"];
-                        echo $_GET["Group_StartDate"];
-                        ?>
                         <tr><th>團名</th><td><?=$groupShowInfo["Group_title"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_StartDate"]?></td>
                         <tr><th>結束日期</th><td><?=$groupShowInfo["Group_EndDate"]?></td></tr>
