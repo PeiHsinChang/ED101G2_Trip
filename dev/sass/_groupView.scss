@@ -21,6 +21,7 @@ body {
         z-index: 10;
         top: 300px;
         right: 0;
+
         a {
             img {
                 width: 50%;
@@ -29,19 +30,22 @@ body {
             }
         }
     }
+
     .groupViewSearchBar {
         // border: none;
-        width: 100%;
+        width: 80%;
         margin-top: 120px;
         height: 32px;
         margin: 120px 50px auto auto;
         display: flex;
         justify-content: flex-end;
+
         input {
             background-color: lightgray;
             border: none;
             border-radius: 5px 5px 5px 5px;
         }
+
         button {
             width: 30px;
             padding: 0;
@@ -51,6 +55,7 @@ body {
             border-radius: 0px 5px 5px 0px;
             height: 0px;
             font-size: $s_content;
+
             img {
                 width: 25px;
                 height: 25px;
@@ -58,6 +63,7 @@ body {
             }
         }
     }
+
     .chooseBlock {
         // border: 1px solid red;
         // display: flex;
@@ -66,28 +72,35 @@ body {
         margin: 0;
         display: flex;
         justify-content: flex-end;
+
         .groupFBtn {
             border: none;
+
             &:hover {
                 color: $colorMain1;
             }
         }
     }
+
     .mainGroupView {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+
         // width: 50vw;
         .groupViewLeft {
             padding: 0;
+
             .fliterBlock {
                 border-radius: 5px;
                 margin-bottom: 50px;
+
                 table {
                     border: 1px solid $borderLine;
                     margin-bottom: 50px;
                     border-radius: 5px;
                     overflow: hidden;
+
                     tr {
                         th {
                             text-align: center;
@@ -97,25 +110,31 @@ body {
                             background-color: $colorSecondary1;
                             border-bottom: 1px solid $borderLine;
                         }
+
                         td {
                             background-color: rgb(245, 245, 245);
                             width: 50%;
+
                             .dropdown-toggle {
                                 width: 100%;
                             }
+
                             .fliterBlock_p {
                                 width: 100px;
                                 // border: 1px solid red;
                             }
+
                             p {
                                 font-size: $s_content;
                                 margin-top: 13px;
                                 margin-left: 20px;
                             }
+
                             select {
                                 margin-right: 20px;
                                 width: 80px;
                             }
+
                             .btn1111 {
                                 margin-left: 90px;
                                 @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
@@ -124,14 +143,17 @@ body {
                     }
                 }
             }
+
             .hotScheBlock {
                 border-radius: 5px;
                 margin-bottom: 50px;
+
                 table {
                     border: 1px solid $borderLine;
                     margin-bottom: 50px;
                     border-radius: 5px;
                     overflow: hidden;
+
                     tr {
                         th {
                             text-align: center;
@@ -141,9 +163,11 @@ body {
                             background-color: $colorSecondary1;
                             border-bottom: 1px solid $borderLine;
                         }
+
                         td {
                             background-color: rgb(245, 245, 245);
                             width: 250px;
+
                             a {
                                 img {
                                     width: 250px;
@@ -157,10 +181,12 @@ body {
                 }
             }
         }
+
         .groupViewRight {
             // padding: 0;
             // border: 1px solid green;
             margin: 0;
+
             // width: 80%;
             // .groupMain {
             //     border: 1px solid red;
@@ -171,16 +197,19 @@ body {
                 border: red;
                 width: 100%;
                 display: flex;
+
                 #groupCardsAll {
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
+
                     .cardGroup {
                         margin: 10px;
                     }
                 }
             }
+
             .groupPhoneCardCarousel {
                 // border: 1px solid red;
                 height: 500px;
@@ -188,12 +217,14 @@ body {
                 // width: 80%;
                 margin-top: 40px;
                 margin-bottom: 40px;
+
                 .innerCardScheGroupPhoneSlide {
                     height: 450px;
                     // border: 10px solid red;
                     max-width: 300px;
                     margin: 0 auto;
                 }
+
                 // .innerCardScheGroupPhoneSlide>.carousel-item {
                 //     // border: 1px solid blue;
                 //     // margin-left: 20%;
@@ -204,10 +235,12 @@ body {
                     max-width: 300px;
                     height: 400px;
                     margin: 0 auto;
+
                     .fixHeight4others {
                         height: 700px;
                     }
                 }
+
                 .groupCarouselIcon {
                     background-color: $colorMain1;
                     width: 30px;
