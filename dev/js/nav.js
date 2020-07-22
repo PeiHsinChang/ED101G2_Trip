@@ -157,13 +157,22 @@ function cancelRegist(){
   $id('r_memEmail').value = '';
   $id('r_memTel').value = '';
   $id('r_memBirth').value = '';
-  $id('male').checked = false;
+  $id('male').checked = true;
   $id('female').checked = false;
-  $id('other').checked = false;
   $id('accountCheck').innerText = '';
   $id('passwordCheck').innerText = '';
   $id('passwordCheck2').innerText = '';
   $id('emailCheck').innerText = '';
+}
+
+//註冊，點擊性別選擇器
+function radioMale(){
+  $id('male').checked = true;
+  $id('female').checked = false;
+}
+function radioFemale(){
+  $id('male').checked = false;
+  $id('female').checked = true;
 }
 
 //登入，點擊取消後清空已輸入的資料
@@ -222,6 +231,9 @@ function init(){
   $id('registrightbutton').onclick = cancelRegist;
   //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
   $id('loginrightbutton').onclick = cancelLogin;
+  //註冊，點擊性別選擇器
+  $id('maleradio').onclick = radioMale;
+  $id('femaleradio').onclick = radioFemale;
   //手機版登出
   document.querySelector('.navSmallRight').onclick = phoneLogout;
   //點擊會員專區，判斷是否已登入
