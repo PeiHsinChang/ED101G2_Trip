@@ -27,7 +27,7 @@ body {
 
 .blogViewSearchBar {
     // border: 1px solid blue;
-    width: 100%;
+    width: 70%;
     margin-top: 120px;
     height: 32px;
     margin: 120px 50px auto auto;
@@ -93,6 +93,14 @@ body {
     .blogCardsBlockView {
         // border: 1px solid red;
         margin-bottom: 40px;
+        margin-top: 50px;
+
+        #blogCardsAll {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            justify-content: center;
+        }
 
     }
 

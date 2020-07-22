@@ -33,7 +33,7 @@ body {
 
     .groupViewSearchBar {
         // border: none;
-        width: 80%;
+        width: 70%;
         margin-top: 120px;
         height: 32px;
         margin: 120px 50px auto auto;
@@ -88,6 +88,11 @@ body {
                 margin-top: 10px;
             }
 
+            .phoneFilter_p_option {
+                color: $colorSecondary3;
+                margin-right: 10px;
+            }
+
             .btnPhoneFilterBlock {
                 // border: 1px solid red;
                 width: 100px;
@@ -104,6 +109,7 @@ body {
 
         .groupFBtn {
             border: none;
+            // border: 1px solid red;
 
             &:hover {
                 color: $colorMain1;
