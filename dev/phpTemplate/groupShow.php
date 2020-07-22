@@ -531,13 +531,18 @@
     $("#btnsActBtn1").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
-            if(xhr.status==200){
-                console.log(xhr.responseText);
-                alert('已成功報名');
-                $("#btnsActBtn1").css("display","none");
-                $("#btnsActBtn1_1").css("display","inline-block");
+            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+            if(member==''){
+                alert('請先登入');
             }else{
-                alert(xhr.status);
+                if(xhr.status==200){
+                    console.log(xhr.responseText);
+                    alert('已成功報名');
+                    $("#btnsActBtn1").css("display","none");
+                    $("#btnsActBtn1_1").css("display","inline-block");
+                }else{
+                    alert(xhr.status);
+                }
             }
         }
         xhr.open("post", "iWantToSignUp.php", true);
@@ -574,13 +579,18 @@
     $("#btnsActBtn2").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
-            if(xhr.status==200){
-                $("#btnsActBtn2").css("display","none");
-                $("#btnsActBtn2_2").css("display","inline-block");
-                alert('已收藏此團');
+            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+            if(member==''){
+                alert('請先登入')
             }else{
-                alert(xhr.status);
-            }
+                if(xhr.status==200){
+                    $("#btnsActBtn2").css("display","none");
+                    $("#btnsActBtn2_2").css("display","inline-block");
+                    alert('已收藏此團');
+                }else{
+                    alert(xhr.status);
+                }
+            }          
         }
         xhr.open("post", "keepThisGroup.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
