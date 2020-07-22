@@ -380,7 +380,6 @@ $("#btnGroupFilter").click(function () {
             alert(xhr.status);
         }
     }
-
     xhr.open("post", "groupViewFilter.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     let data_info = `filter=${$("#groupView_FliterPpl :selected").val()} ${$("#groupView_FliterSex :selected").val()} ${$("#groupView_FliterDay :selected").val()} ${$("#groupView_FliterMonth :selected").val()}`;
@@ -388,6 +387,7 @@ $("#btnGroupFilter").click(function () {
     // 指令串接
     console.log(data_info); //檢查送出的指令
     xhr.send(data_info);
+
 });
 
 $("#btnPhoneFilter").click(function () {

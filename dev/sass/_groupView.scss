@@ -46,15 +46,17 @@ body {
             border-radius: 5px 5px 5px 5px;
         }
 
-        button {
-            width: 30px;
-            padding: 0;
-            margin: 0;
-            border: none;
-            background-color: lightgray;
-            border-radius: 0px 5px 5px 0px;
-            height: 0px;
+        .groupSearch {
+            // width: 100px;
+            // padding: 0;
+            // margin: 0;
+            // border: none;
+            // background-color: lightgray;
+            // border-radius: 0px 5px 5px 0px;
+            // height: 0px;
             font-size: $s_content;
+            margin-left: 10px;
+            @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
 
             img {
                 width: 25px;
