@@ -9,7 +9,8 @@
         <!-- <form action="groupSearch.php" method="GET"> -->
         <input type="text" name="search_text" id="search_text" placeholder="來看看有哪些揪團" class="col col-md-5" />
         <button type="button" id="groupSearch" class="groupSearch">
-            <img src="./images/iconSearch.png" />
+            <!-- <img src="./images/iconSearch.png" /> -->
+            搜尋
         </button>
         <!-- </form> -->
     </div>
@@ -130,12 +131,9 @@
                                 <select name="groupView_FliterPpl" id="groupView_FliterPpl">
                                     <option value="" selected>任意</option>
                                     <option value="and Group_Ppl<=5">1-5人</option>
-                                    <option value="and Group_Ppl between 5 and
-                                        10">6-10人</option>
-                                    <option value="and Group_Ppl between 10 and
-                                        15">10-15人</option>
-                                    <option value="and Group_Ppl between 15 and
-                                        20">15-20人</option>
+                                    <option value="and Group_Ppl between 5 and 10">6-10人</option>
+                                    <option value="and Group_Ppl between 10 and 15">10-15人</option>
+                                    <option value="and Group_Ppl between 15 and 20">15-20人</option>
                                     <option value="and 20<Group_Ppl">20人以上</option>
                                 </select>
                             </td>
@@ -159,18 +157,14 @@
                             <td>
                                 <select name="groupView_FliterDay" id="groupView_FliterDay">
                                     <option value="" selected>任意</option>
-                                    <option value="and
-                                        datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
-                                    <option value="and
-                                        datediff(Group_EndDate,Group_StartDate)+1
-                                        between 1 and 5">1-5
+                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
+                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">1-5
                                     </option>
-                                    <option value="and
-                                        datediff(Group_EndDate,Group_StartDate)+1
-                                        between 5 and 10">5-10
+                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1 between 5 and 10">5-10
                                     </option>
-                                    <option value="and 10<datediff(Group_EndDate,Group_StartDate)+1">10以上</option>
+                                    <option value=" and 10<datediff(Group_EndDate,Group_StartDate)+1">10以上</option>
                                 </select>
+
                             </td>
                         </tr>
                         <tr>
