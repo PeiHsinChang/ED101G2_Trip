@@ -3,7 +3,9 @@
   <div  class="closedBtn" onclick="closespotLightBox();"><img src="./images/icon/cross_b.png" alt="關閉"></div>
   <div class="spotLightBoxImg">
     <!-- <img src="./images/area/Changhua.jpg" > -->
-    <img :src="QueryCards.Attrac_PicURL" >  
+    <!-- <img :src="QueryCards.Attrac_PicURL" > -->
+    <img v-if="QueryCards.Attrac_PicURL == ''" :src="output" class="card-img-top">
+    <img  v-else :src="QueryCards.Attrac_PicURL" class="card-img-top">  
   </div>
   <div class="spotLightBox1stCol">
     <div>{{QueryCards.Attrac_Region}}</div>

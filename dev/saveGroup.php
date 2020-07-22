@@ -63,6 +63,27 @@ try {
             $setupGroup->bindValue(":group_13", 1);
             $setupGroup->bindValue(":group_14", $_POST["Group_Com"]);
             $setupGroup->execute();
+
+            $sql_getgroupno = 
+            "Select Group_NO from grouptable g
+            where Mem_NO=:Mem_NO
+            order by group_no desc limit 1";
+            $setupGroupNO = $pdo->prepare($sql_getgroupno);
+            $setupGroupNO->bindValue(":Mem_NO", $mem_NO);
+            $setupGroupNO->execute();
+            $setupGroupNORow=$setupGroupNO->fetch(PDO::FETCH_ASSOC);
+           
+
+            $sql_groupHost = 
+                "Insert into Mem_Par 
+                (Mem_NO, Group_NO, Mem_Par_Status)
+                VALUES (:groupHost1, :groupHost2, :groupHost3);";
+            $setupGroupHost = $pdo->prepare($sql_groupHost);
+            $setupGroupHost->bindValue(":groupHost1", $mem_NO);
+            $setupGroupHost->bindValue(":groupHost2", $setupGroupNORow["Group_NO"]);
+            $setupGroupHost->bindValue(":groupHost3", 1);
+            $setupGroupHost->execute();
+
             echo "<script>alert('開團成功！');location.href='groupView.html'</script>";
     
         }else{
