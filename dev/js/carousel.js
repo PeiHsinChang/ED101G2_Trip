@@ -387,6 +387,7 @@ $("#btnGroupFilter").click(function () {
     // 指令串接
     console.log(data_info); //檢查送出的指令
     xhr.send(data_info);
+
 });
 
 $("#btnPhoneFilter").click(function () {
