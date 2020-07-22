@@ -251,9 +251,9 @@
         evt.currentTarget.className += " active ";
 
 
-        let memberNo = <?php echo $_SESSION["Mem_NO"]; ?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"]; ?>';
         let isUsrLeader = false;
-        if (memberNo == <?php echo $groupShowInfo["Mem_NO"]?>) {
+        if (memberNo == '<?php echo $groupShowInfo["Mem_NO"]?>') {
             isUsrLeader = true;
         }
         if (cityName=='chat'){
@@ -297,7 +297,7 @@
                             console.log(blockChat[keyName]);
                             let block =  (blockChat[keyName])[0];
                             let tableid = block["Group_NO"]+'_'+block["main_mem"]+'_'+block["Block_NO"];
-                            let memberNo = <?php echo $_SESSION["Mem_NO"]; ?>;
+                            let memberNo = '<?php echo $_SESSION["Mem_NO"]; ?>';
                             let isUsrLeader = false;
                             if (memberNo == block["main_mem"]) {
                                 isUsrLeader = true;
@@ -378,8 +378,8 @@
     };
     function guestSubmitRep() {
         let msgObj = {};
-        let guestid = <?php echo $_SESSION["Mem_NO"]; ?>;
-        let groupno = <?php echo $_GET["Group_NO"]?>;
+        let guestid = '<?php echo $_SESSION["Mem_NO"]; ?>';
+        let groupno = '<?php echo $_GET["Group_NO"]?>';
         var guestMsgContent  = $('#guestInputx').val();
         msgObj.guestid = guestid;
         msgObj.groupno = groupno;
@@ -419,8 +419,8 @@
     function myFunction(formInfo) {
         var msg = prompt("請說明舉報原因");
         let msgObj = {};
-        let guestid = <?php echo $_SESSION["Mem_NO"]; ?>;
-        let groupno = <?php echo $_GET["Group_NO"]?>;
+        let guestid = '<?php echo $_SESSION["Mem_NO"]; ?>';
+        let groupno = '<?php echo $_GET["Group_NO"]?>';
         let formdata = formInfo.toString().split('_');
         let block_no = formdata[2].toString();
         console.log(block_no);
@@ -455,7 +455,7 @@
 
     //loading之後判斷是否為團主，呈現不同畫面
     function checkGroupLeader(){
-        let memberNo = <?php echo $_SESSION["Mem_NO"];?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
         if(memberNo == <?php echo $groupShowInfo["Mem_NO"];?>){
             document.getElementById('btnsAct').style.display = 'none';
             document.getElementById('goingToJoin').style.display = 'inline-block';
@@ -519,8 +519,8 @@
         xhr.open("post", "iWantToSignUp.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = <?php echo $_SESSION["Mem_NO"];?>;
-        let groupNo = <?php echo $groupShowInfo["Group_NO"];?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let groupNo = '<?php echo $groupShowInfo["Group_NO"];?>';
         // alert(groupNo);
         xhr.send('SignUpMemberNo='+memberNo +'&SignUpGroupNo='+groupNo);   
     });
@@ -541,8 +541,8 @@
         xhr.open("post", "cancelSignUp.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = <?php echo $_SESSION["Mem_NO"];?>;
-        let groupNo = <?php echo $groupShowInfo["Group_NO"];?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let groupNo = '<?php echo $groupShowInfo["Group_NO"];?>';
         xhr.send('cancelSignUpMemberNo='+memberNo +'&cancelSignUpGroupNo='+groupNo);   
     });
 
@@ -561,8 +561,8 @@
         xhr.open("post", "keepThisGroup.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = <?php echo $_SESSION["Mem_NO"];?>;
-        let groupNo = <?php echo $groupShowInfo["Group_NO"];?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let groupNo = '<?php echo $groupShowInfo["Group_NO"];?>';
         xhr.send('keepMemberNo='+memberNo +'&keepGroupNo='+groupNo);   
     });
 
@@ -581,8 +581,8 @@
         xhr.open("post", "cancelKeepThisGroup.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = <?php echo $_SESSION["Mem_NO"];?>;
-        let groupNo = <?php echo $groupShowInfo["Group_NO"];?>;
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let groupNo = '<?php echo $groupShowInfo["Group_NO"];?>';
         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepGroupNo='+groupNo);   
     });
 
