@@ -172,7 +172,7 @@ try {
             $setupGroupHost = $pdo->prepare($sql_groupHost);
             $setupGroupHost->bindValue(":groupHost1", $mem_NO);
             $setupGroupHost->bindValue(":groupHost2", $setupGroupNO["Group_NO"]);
-            $setupGroupHost->bindValue(":groupHost3", 0);
+            $setupGroupHost->bindValue(":groupHost3", 1);
             $setupGroupHost->execute();
 
             echo "<script>alert('開團成功！');location.href='groupView.html'</script>";
