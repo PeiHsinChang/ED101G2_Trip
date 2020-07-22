@@ -1,7 +1,15 @@
 <?php   
     try {
         require_once("connectMemberTable.php");
-        $mem_NO = $_SESSION["Mem_NO"];
+        // $mem_NO = $_SESSION["Mem_NO"];
+        if(isset($_SESSION["Mem_NO"])){
+            $_SESSION["Mem_NO"]=$_SESSION["Mem_NO"];
+        }else{
+            $_SESSION["Mem_NO"]=null;
+            $_SESSION["Mem_Photo"]=null;
+            $_SESSION["Mem_Id"]=null;
+           
+        }
 
         $sql_g = 
             "select * 
@@ -51,7 +59,7 @@
 <!-- 上半部 -->
 <div class="containerGroupTop">
     <div class="containerGroupTitle"><?php echo $groupShowInfo["Group_title"];?></div>
-    <div class="containerGroupPhoto"><img src="<?php echo $groupShowInfo["Group_Pic"];?>"></div>  
+    <div class="containerGroupPhoto"><img src='<?php echo $groupShowInfo["Group_Pic"];?>'></div>  
 </div>
 
 <div class="container">
@@ -295,8 +303,8 @@
                         }
                         keyArray.sort((x,y) => x - y);
                         //取得key值排序
-                        let memPhoto = "<?php echo $groupShowInfo["Mem_Photo"]?>";
-                        let memidx = "<?php echo $groupShowInfo["Mem_Id"]?>";
+                        let memPhoto = '<?php echo $groupShowInfo["Mem_Photo"]?>';
+                        let memidx = '<?php echo $groupShowInfo["Mem_Id"]?>';
                         console.log(keyArray);
                         for (i = 0;i<keyArray.length;i++){
                             let keyName =  keyArray[i];
@@ -325,7 +333,7 @@
                                 msgBook.append(blockTable);
 
                             }
-                            let memPhoto = "<?php echo $groupShowInfo["Mem_Photo"]?>";
+                            let memPhoto = '<?php echo $groupShowInfo["Mem_Photo"]?>';
                             if (!replied && isUsrLeader){
                                 //團主回覆用
                                 let leaderTable = $('<table>').prop('id',tableid+'repliedTable');
@@ -473,10 +481,14 @@
             document.getElementById('goingToJoin').style.display = 'none';
         }
     }
+    
+
+
 
     //loading之後判斷是否已經報名此團
     function checkSignUpStatus(){
-        let status = "<?php echo $signUpStatusResult['Mem_Par_Status'];?>";
+        let status = '<?php echo $signUpStatusResult['Mem_Par_Status'];?>';
+        
         if(status == 3 || status == ''){
             //取消報名或尚未報名
             $("#btnsActBtn1").css("display","inline-block");
@@ -495,7 +507,7 @@
 
     //loading之後判斷是否已經收藏此團
     function checkKeepThisGroup(){
-        let keepStatus = "<?php echo $keepGroupStatusResult['Keep_Group_NO'];?>";
+        let keepStatus = '<?php echo $keepGroupStatusResult['Keep_Group_NO'];?>';
         if(keepStatus == ''){
             $("#btnsActBtn2").css("display","inline-block");
             $("#btnsActBtn2_2").css("display","none");
@@ -506,8 +518,11 @@
     }
     function groupShow(){
         checkGroupLeader();
-        checkSignUpStatus();
-        checkKeepThisGroup();
+        if('<?php echo $_SESSION["Mem_NO"]?>'){
+            checkSignUpStatus();
+            checkKeepThisGroup();
+        }
+        
     }
     //window.onload
     window.addEventListener("load",groupShow,false); 
