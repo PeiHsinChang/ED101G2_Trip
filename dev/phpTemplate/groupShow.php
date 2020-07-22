@@ -62,8 +62,8 @@
     </div>
     <div class="tabAll">
         <div class="tab">
-            <button class="tabs1" data-type="activity">活動說明</button>
-            <button class="tabs2" data-type="chat">留言板</button>
+            <button class="tabs1" data-type="activity" onclick="openCity(event, 'activity')">活動說明</button>
+            <button class="tabs2" data-type="chat" onclick="openCity(event, 'chat')">留言板</button>
         </div>
         <div id="activity" class="tabcontent" style="display:block;">
             <div class="actAll">

@@ -92,7 +92,7 @@
 <?php
 try {
     require_once("connectMemberTable.php");
-    session_start();
+    // session_start();
     $mem_NO = $_SESSION["Mem_NO"];
     if(isset($_POST['submitButton'])){
         if($_SESSION["Mem_NO"]){
