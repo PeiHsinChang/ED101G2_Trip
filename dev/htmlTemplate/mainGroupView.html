@@ -71,16 +71,16 @@
                     <input type="radio" name="groupView_FliterDay_phone" id="" value="" checked>
                     <label class="phoneFilter_p_option" for="">任意</label>
                     <input type="radio" name="groupView_FliterDay_phone" id=""
-                        value="and datediff(Group_EndDate,Group_StartDate)+1=1">
+                        value="and datediff(Group_EndDate,Group_StartDate)=0">
                     <label class="phoneFilter_p_option" for="">1</label>
                     <input type="radio" name="groupView_FliterDay_phone" id=""
-                        value="and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">
+                        value="and datediff(Group_EndDate,Group_StartDate) between 0 and 4">
                     <label class="phoneFilter_p_option" for="">1-5</label>
                     <input type="radio" name="groupView_FliterDay_phone" id=""
-                        value="and datediff(Group_EndDate,Group_StartDate)+1 between 5 and 10">
+                        value="and datediff(Group_EndDate,Group_StartDate) between 4 and 9">
                     <label class="phoneFilter_p_option" for="">5-10</label>
                     <input type="radio" name="groupView_FliterDay_phone" id=""
-                        value="and 10<datediff(Group_EndDate,Group_StartDate)+1">
+                        value="and 10<datediff(Group_EndDate,Group_StartDate)">
                     <label class="phoneFilter_p_option" for="">10以上</label>
                 </div>
             </div>
@@ -157,12 +157,12 @@
                             <td>
                                 <select name="groupView_FliterDay" id="groupView_FliterDay">
                                     <option value="" selected>任意</option>
-                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1=1">1</option>
-                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1 between 1 and 5">1-5
+                                    <option value="and datediff(Group_EndDate,Group_StartDate) = 0">1</option>
+                                    <option value="and datediff(Group_EndDate,Group_StartDate) between 0 and 4">1-5
                                     </option>
-                                    <option value=" and datediff(Group_EndDate,Group_StartDate)+1 between 5 and 10">5-10
+                                    <option value="and datediff(Group_EndDate,Group_StartDate) between 4 and 9">5-10
                                     </option>
-                                    <option value=" and 10<datediff(Group_EndDate,Group_StartDate)+1">10以上</option>
+                                    <option value="and 10<datediff(Group_EndDate,Group_StartDate)">10以上</option>
                                 </select>
 
                             </td>
