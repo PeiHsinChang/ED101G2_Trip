@@ -374,7 +374,6 @@ $("#btnGroupFilter").click(function () {
             let filterResult = JSON.parse(xhr.responseText);
             console.log(filterResult);
             //檢查搜尋內容有沒有進網頁
-
             groupCardsAllsVue.$data.groupCardsAlls = filterResult;
             // 原本的資料名稱＋$data+後面引入的新搜尋資料
         } else {
