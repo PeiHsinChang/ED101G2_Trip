@@ -2,18 +2,20 @@
 try{
     require_once("connectMemberTable.php");
     //把資訊塞進去sql裡面
-    $sql="select Group_title, Group_Pic, 
-    Mem_name,Group_StartDate, Group_Deadline, 
-    round(Mem_LikeAmount/Mem_LikeSum) hostlike,Group_NO
-    FROM grouptable g 
+    $sql="select Blog_Name, Blog_PicURL, 
+    Mem_name,Blog_Date, Blog_Setdate, 
+    Blog_Views,Blog_NO
+    FROM blog b 
     inner join membertable m
-    on g.mem_no = m.mem_no
-    where g.mem_no
-    And g.Group_title like :search_text
-    OR g.Group_Place like :search_text
-    OR g.Group_Com like :search_text
-    OR m.Mem_name like :search_text";
-    //在有效團裡面要團名 集合地點 團備註包含相關字詞
+    on b.mem_no = m.mem_no
+    where b.mem_no
+    And b.Blog_Name like :search_text
+    OR b.Blog_Content like :search_text
+    OR m.Mem_name Like :search_text
+    ";
+    //OR a.Attrac_Name like :search_text
+    //遊記裡面的景點要不要做考慮一下 如果等等還沒天亮ＸＤ
+    //在有效遊記包含相關字詞
     $result = $pdo->prepare($sql);
     $result->bindValue(":search_text",'%'.$_POST['search_text'].'%');
     $result->execute();
