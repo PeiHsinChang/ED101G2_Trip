@@ -12,6 +12,7 @@
 
     //將被檢舉留言在留言表格中更改狀態
     $sql = "update `Message` set Msg_Status=0 where Msg_NO=:msgNum";
+   //  $sql = "delete from `Message` where Msg_NO=:msgNum";
     $deleteReport = $pdo->prepare($sql);
     $deleteReport->bindValue(":msgNum", $report->Msg_NO);
     $deleteReport->execute();

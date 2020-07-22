@@ -106,7 +106,16 @@ function openTab(obj, index, tabName) {
       el: '#spotLightBox', 
       data: {      
           QueryCards:{}
-      }, 
+      },
+      computed: {
+        output(){
+            // if(keepAttras.Attrac_PicURL == "")
+            console.log( keepAttras.Attrac_PicURL);
+            s ="./images/lake.jpg"
+            return s;  
+        }
+      },
+       
   })
 
 function openCardLightBox(obj){
