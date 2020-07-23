@@ -276,12 +276,30 @@
         
         // evt.currentTarget.className += "active";
 
+        <?php
+        $isLogin = false;
+        $sessionMemno = '';
+        $sessionMemid = '';
+        $sessionMemPhoto = '';
+        $sessionMemStatus = '';
 
-        let memberNo = '<?php echo $_SESSION["Mem_NO"]; ?>';
+        if(isset($_SESSION['Mem_NO']) && !empty($_SESSION['Mem_NO'])) {
+            $sessionMemno = $_SESSION['Mem_NO'];
+            $sessionMemPhoto = $_SESSION['Mem_Photo'];
+            $sessionMemStatus = $_SESSION['Mem_Status'];
+            $isLogin = true;
+            $sessionMemid = $_SESSION['Mem_Id'];
+        }
+        ?>
+
+
+        let sessionMemno = '<?php echo $sessionMemno; ?>';
+        let isban = <?php echo $sessionMemStatus; ?>=='0'?true:false;
         let isUsrLeader = false;
-        if (memberNo == '<?php echo $groupShowInfo["Mem_NO"]?>') {
+        if (sessionMemno == '<?php echo $groupShowInfo["Mem_NO"];?>') {
             isUsrLeader = true;
         }
+        let isLogin = '<?php echo $isLogin; ?>';
         if (cityName=='chat'){
             let chatArray = [];
             $.ajax({
@@ -417,7 +435,7 @@
 
     function guestSubmitRep() {
         let msgObj = {};
-        let guestid = '<?php echo $_SESSION["Mem_NO"]; ?>';
+        let guestid = '<?php echo $sessionMemno; ?>';;
         let groupno = '<?php echo $_GET["Group_NO"]?>';
         var guestMsgContent  = $('#guestInputx').val();
         msgObj.guestid = guestid;
@@ -460,7 +478,11 @@
     function myFunction(formInfo) {
         var msg = prompt("請說明舉報原因");
         let msgObj = {};
-        let guestid = '<?php echo $_SESSION["Mem_NO"]; ?>';
+        let guestid = '<?php echo $sessionMemno; ?>';
+        if (guestid ==''){
+            alert('請登入');
+            return false;
+        }
         let groupno = '<?php echo $_GET["Group_NO"]?>';
         let formdata = formInfo.toString().split('_');
         let block_no = formdata[2].toString();
