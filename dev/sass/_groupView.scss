@@ -15,11 +15,44 @@ body {
 }
 
 .container {
+    .openGroupBTN {
+        z-index: 5;
+        position: fixed;
+        top: 50vh;
+        right: 0;
+        @include button(50px, 150px, $colorSecondary2, $colorMain1, $colorMain1);
+
+        @media (max-width:768px) {
+            // border: 1px solid red;
+            @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
+        }
+
+        @media (max-width:320px) {
+            right: 25px;
+        }
+
+
+        p {
+            font-size: $subtitle;
+            color: $colorMain2;
+            writing-mode: vertical-lr;
+            margin: 0;
+
+            @media (max-width:768px) {
+                font-size: $s_content;
+            }
+        }
+
+        p:hover {
+            color: $colorMain1;
+        }
+    }
+
     .openNewGroup {
         position: fixed;
         // right: -5%;
         z-index: 10;
-        top: 300px;
+        top: 40%;
         right: 0;
 
         a {
@@ -33,17 +66,24 @@ body {
 
     .groupViewSearchBar {
         // border: none;
-        width: 70%;
+        width: 600px;
         margin-top: 120px;
         height: 32px;
         margin: 120px 50px auto auto;
         display: flex;
         justify-content: flex-end;
 
+        @media (max-width:768px) {
+            // border: 1px solid red;
+            width: 250px;
+        }
+
         input {
             background-color: lightgray;
             border: none;
             border-radius: 5px 5px 5px 5px;
+
+
         }
 
         .groupSearch {
@@ -56,13 +96,19 @@ body {
             // height: 0px;
             font-size: $s_content;
             margin-left: 10px;
+            margin-right: 20px;
             @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
 
-            img {
-                width: 25px;
-                height: 25px;
+            @media (max-width:768px) {
                 // border: 1px solid red;
+                margin-right: 10px;
             }
+
+            // img {
+            //     width: 25px;
+            //     height: 25px;
+            //     // border: 1px solid red;
+            // }
         }
     }
 
@@ -110,12 +156,23 @@ body {
         }
 
         .groupFBtn {
-            border: none;
+            // border: none;
             // border: 1px solid red;
+
 
             &:hover {
                 color: $colorMain1;
             }
+        }
+
+        .groupFBtn2 {
+            margin-right: 65px;
+
+            @media (max-width:768px) {
+                // border: 1px solid red;
+                margin-right: 10px;
+            }
+
         }
     }
 
@@ -127,6 +184,8 @@ body {
         // width: 50vw;
         .groupViewLeft {
             padding: 0;
+            // border: 1px solid red;
+            margin-top: 10px;
 
             .fliterBlock {
                 border-radius: 5px;
@@ -174,7 +233,7 @@ body {
 
                             .btn1111 {
                                 margin-left: 90px;
-                                @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
+                                @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
                             }
                         }
                     }
@@ -230,17 +289,21 @@ body {
             //     // height: 100px;
             // }
             .groupViewPCcardBlock {
-                width: 100px;
-                // border: red;
-                width: 100%;
-                display: flex;
-                margin-left: 50px;
+                // width: 100px;
+                // border: 1px solid red;
+                // width: 100%;
+                // display: flex;
+                // justify-content: center;
+                // margin-left: 30px;
+                padding: 0;
 
                 #groupCardsAll {
-                    width: 100%;
+                    // margin: 0 auto;
+                    // width: 100%;
                     display: flex;
                     flex-wrap: wrap;
-                    justify-content: center;
+                    justify-content: space-around;
+
 
                     .cardGroup {
                         margin: 10px;

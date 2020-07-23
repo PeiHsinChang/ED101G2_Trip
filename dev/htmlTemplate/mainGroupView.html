@@ -1,9 +1,12 @@
 <div class="container">
-    <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
-        <a onclick="openNewGroup();">
-            <img src="./images/openNewGroup.png" class="d-md-block" />
-        </a>
-    </div>
+    <a onclick="openNewGroup();">
+        <!-- <img src="./images/openNewGroup.png" class="d-md-block" /> -->
+        <button class="openGroupBTN">
+            <p>
+                開 團
+            </p>
+        </button>
+    </a>
     <!-- search bar -->
     <div class="groupViewSearchBar row">
         <!-- <form action="groupSearch.php" method="GET"> -->
@@ -17,10 +20,10 @@
     <hr />
     <div class="chooseBlock row">
 
-        <button class="groupFBtn col-6 col-md-2" onclick="sortByLatest()">
+        <button class="groupFBtn " onclick="sortByLatest()">
             最新刊登 &darr;
         </button>
-        <button class="groupFBtn col-6 col-md-2" onclick="SortByLike()">
+        <button class="groupFBtn groupFBtn2" onclick="SortByLike()">
             最高評價 &darr;
         </button>
 
@@ -121,7 +124,7 @@
                 <div class="fliterBlock">
                     <table>
                         <tr>
-                            <th colspan="2">縮小範圍顯示</th>
+                            <th colspan="2">篩選揪團</th>
                         </tr>
                         <tr>
                             <td>
@@ -246,7 +249,7 @@
         <div class="groupViewRight col-9 d-block">
             <!-- Group Main Start -->
             <!-- pc version start  -->
-            <div class="groupViewPCcardBlock d-flex">
+            <div class="groupViewPCcardBlock col-12 d-flex">
                 <!-- 揪團卡片 -->
                 <div id="groupCardsAll">
                     <!-- <input type="text" v-model="search" placeholder="Search title.." /> -->
