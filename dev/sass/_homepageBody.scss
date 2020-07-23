@@ -158,6 +158,10 @@
         right: 0;
         background-color: $colorMain1;
         padding-top: 150px;
+        padding-left: 150px;
+        img{
+            width: 700px;
+        }
     }
 
     .right-background-content {
@@ -209,7 +213,7 @@
     }
 
     .left-background-content {
-        /* border: 1px solid red; */
+        // border: 1px solid red;
         position: absolute;
         display: inline-block;
         width: 25%;
@@ -221,13 +225,13 @@
             display: inline-block;
             margin-top: 0px;
             font-size: 28px;
-            color: $colorSecondary2;
+            color: $colorMain1;
             // margin-bottom: 400px;
             margin-bottom: 80%;
         }
 
         button {
-            @include button(160px, 60px, $colorMain1, $colorSecondary2, $colorSecondary2);
+            @include button(160px, 60px, $colorSecondary2, $colorMain1, $colorMain1);
             padding: 10px;
             font-size: $content;
         }
@@ -780,7 +784,10 @@
             color: $colorMain1;
             font-size: 18px;
         }
-
+        img{
+            width: 400px;
+            margin-bottom: 20px;
+        }
         button {
             margin: 20px;
         }
