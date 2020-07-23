@@ -18,19 +18,19 @@ body {
     .openGroupBTN {
         z-index: 5;
         position: fixed;
-        top: 50vh;
+        top: 300px;
         right: 0;
-        @include button(50px, 150px, $colorSecondary2, $colorMain1, $colorMain1);
+        @include button(50px, 150px, $colorSecondary2, $colorMain1, $colorSecondary2);
 
         @media (max-width:768px) {
             // border: 1px solid red;
-            @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
+            @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorSecondary2);
         }
 
         .openGroupBTNin {
             @media (max-width:320px) {
                 right: 0px;
-                @include button(50px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
+                @include button(50px, 100px, $colorSecondary2, $colorMain1, $colorSecondary2);
             }
         }
 
@@ -69,25 +69,21 @@ body {
     }
 
     .groupViewSearchBar {
-        // border: none;
         width: 600px;
-        margin-top: 120px;
         height: 32px;
-        margin: 120px 50px auto auto;
+        margin: 80px 50px auto auto;
         display: flex;
         justify-content: flex-end;
-
         @media (max-width:768px) {
             // border: 1px solid red;
             width: 250px;
+            margin: 0 auto;
+            margin-top: 30px;
         }
-
         input {
             background-color: lightgray;
             border: none;
             border-radius: 5px 5px 5px 5px;
-
-
         }
 
         .groupSearch {
@@ -107,7 +103,6 @@ body {
                 // border: 1px solid red;
                 margin-right: 10px;
             }
-
             // img {
             //     width: 25px;
             //     height: 25px;
@@ -124,59 +119,60 @@ body {
         margin: 0;
         display: flex;
         justify-content: flex-end;
-
         .checkBox4phone {
             //手機版篩選器
-            border: 1px solid $borderLine;
+            // border: 1px solid $borderLine;
             box-shadow: 0px 0px 1px 2px lightgray;
             margin: 10px 0px 10px 0px;
             margin: 15px auto;
             width: 80%;
             position: relative;
-
+            padding-left: 30px;
             .phoneFilter_p {
+                // border: 1px solid red;
                 font-size: $subtitle;
                 color: $colorMain1;
                 margin-top: 10px;
             }
-
             .phoneFilter_p_option {
                 color: $colorSecondary3;
                 margin-right: 10px;
             }
-
             .btnPhoneFilterBlock {
                 // border: 1px solid red;
                 width: 100px;
                 margin: 0 auto;
                 margin-top: 10px;
-
-
                 .btnPhoneFilter {
                     // margin: 0 200px;
+                    margin-bottom: 10px;
                     @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
                 }
             }
         }
-
         .groupFBtn {
             // border: none;
             // border: 1px solid red;
-
-
             &:hover {
                 color: $colorMain1;
             }
+            @media (max-width:768px) {
+                transform: translateX(100%);
+            }
         }
-
         .groupFBtn2 {
-            margin-right: 65px;
-
+            margin-right: 50px;
             @media (max-width:768px) {
                 // border: 1px solid red;
-                margin-right: 10px;
+                // margin-right: 50px;
+                margin-right: 50%;
+                transform: translateX(100%);
             }
-
+        }
+        @media (max-width:576px) {
+            // border: 1px solid red;
+            width: 90%;
+            margin-left: 5%;
         }
     }
 
@@ -184,59 +180,52 @@ body {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-
-        // width: 50vw;
         .groupViewLeft {
             padding: 0;
             // border: 1px solid red;
             margin-top: 10px;
-
             .fliterBlock {
                 border-radius: 5px;
                 margin-bottom: 50px;
-
+                margin-top: 10px;
+                width: 261px;
                 table {
                     border: 1px solid $borderLine;
                     margin-bottom: 50px;
                     border-radius: 5px;
                     overflow: hidden;
-
                     tr {
                         th {
                             text-align: center;
-                            font-size: $subtitle;
-                            height: 50px;
+                            font-size: $content;
+                            height: 45px;
                             color: $colorMain1;
                             background-color: $colorSecondary1;
                             border-bottom: 1px solid $borderLine;
                         }
-
                         td {
-                            background-color: rgb(245, 245, 245);
+                            background-color: rgb(245,245,245);
                             width: 50%;
-
                             .dropdown-toggle {
                                 width: 100%;
                             }
-
                             .fliterBlock_p {
                                 width: 100px;
                                 // border: 1px solid red;
                             }
-
                             p {
+                                // border: 1px solid red;
                                 font-size: $s_content;
                                 margin-top: 13px;
                                 margin-left: 20px;
                             }
-
                             select {
                                 margin-right: 20px;
                                 width: 80px;
                             }
-
                             .btn1111 {
-                                margin-left: 90px;
+                                margin-left: 80px;
+                                margin-bottom: 10px;
                                 @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
                             }
                         }
@@ -247,18 +236,16 @@ body {
             .hotScheBlock {
                 border-radius: 5px;
                 margin-bottom: 50px;
-
                 table {
                     border: 1px solid $borderLine;
                     margin-bottom: 50px;
                     border-radius: 5px;
                     overflow: hidden;
-
                     tr {
                         th {
                             text-align: center;
-                            font-size: $subtitle;
-                            height: 50px;
+                            font-size: $content;
+                            height: 45px;
                             color: $colorMain1;
                             background-color: $colorSecondary1;
                             border-bottom: 1px solid $borderLine;
@@ -302,13 +289,13 @@ body {
                 padding: 0;
 
                 #groupCardsAll {
-                    // margin: 0 auto;
                     // width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
-
-
+                    margin-left: 50px;
+                    margin-top: 10px;
+                    margin-bottom: 30px;
                     .cardGroup {
                         margin: 10px;
                     }
@@ -353,6 +340,10 @@ body {
                     width: 30px;
                     height: 50px;
                 }
+            }
+            @media (max-width:768px) {
+                // border: 1px solid red;
+                transform: translateX(25px);
             }
         }
     }
