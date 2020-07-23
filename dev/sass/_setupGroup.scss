@@ -68,11 +68,10 @@ input[type="file"] {
     width: 500px;
     color: $colorSecondary3;
 }
-.setgroupadd .setgroupsave .setgroupcancel{
-    @include button(90px, 35px, $colorSecondary2, $colorMain1, $colorSecondary2);
-    cursor: pointer;
-}
+
 .threestatus{
+    display: flex;
+    justify-content: space-around;;
     margin-left: 150px;
     margin-top: 30px;
     padding: 5px;
@@ -80,6 +79,7 @@ input[type="file"] {
 @media screen and (max-width: $breakpoint-sm){
     .startgroupall{
         width: 100%;
+        min-width: 300px;
     }
     .plusfile{
         width: 87%;
@@ -95,9 +95,6 @@ input[type="file"] {
         margin: 0px 120px 0px 0px;
         width: 85%;
     }
-    .setgroupadd .setgroupsave .setgroupcancel {
-        display: block;
-        width:100%;
-    }
+
 }
 
