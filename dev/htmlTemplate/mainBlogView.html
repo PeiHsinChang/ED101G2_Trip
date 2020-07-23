@@ -1,9 +1,13 @@
 <div class="container px-lg-0">
-    <div class="writeNewBlog col-4 col-l-2 col-md-2 col-lg-2">
-        <a href="./writeBlog.html">
-            <img src="./images/writeBlog.png" alt="" class="d-md-block" />
-        </a>
-    </div>
+
+    <a href="./writeBlog.html">
+        <!-- <img src="./images/writeBlog.png" alt="" class="d-md-block" /> -->
+        <button class="addBlogBTN">
+            <p>
+                撰寫遊記
+            </p>
+        </button>
+    </a>
     <!-- search bar -->
     <div class="blogViewSearchBar row">
         <input type="text" name="search_text" id="search_text" placeholder="來看看有哪些遊記" class="col col-md-5" />
@@ -13,10 +17,10 @@
     </div>
     <hr>
     <div class="chooseBlock row">
-        <button class="groupFBtn col-6 col-md-2" onclick="sortByLatest()">
+        <button class="blogFBtn" onclick="sortByLatest()">
             最新刊登 &darr;
         </button>
-        <button class="groupFBtn col-6 col-md-2" onclick="SortByLike()">
+        <button class="blogFBtn blogFBtn3" onclick="SortByLike()">
             最高評價 &darr;
         </button>
     </div>
