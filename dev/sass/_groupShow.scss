@@ -7,7 +7,6 @@ body {
 }
 
 .containerGroupTop{
-    // border: 1px solid red;
     width: 85%;
     margin: 0 auto;
     margin-top: 100px;
@@ -65,19 +64,16 @@ body {
     }
     #activity {
         .actAll {
-            // border: 1px solid red;
             display: flex;          
             .actCont {
-                // border: 1px solid black;
                 width: 100%;
                 margin-bottom: 10px;
                 letter-spacing: 1.5px;
                 line-height: 30px;
                 font-size: 16px;
                 .prodTable{
-                    // border: 1px solid red;
                     margin: 30px;
-                    margin-left: 100px;
+                    margin-left: 50px;
                     li{
                         span{
                             font-weight: 500;
@@ -87,8 +83,7 @@ body {
                 }
             }
             .btnsAct {
-                // max-width: 130px;
-                // border: 1px solid blue;
+            
                 display: inline-block;
                 margin: 5px;
                 margin-top: 60px;
@@ -133,11 +128,12 @@ body {
                     padding-top: 10px;
                     padding-bottom: 10px;
                     li.goingToJoinLi{
-                        // border: 1px solid red;
+                        min-width: 235px;
                         position: relative;
                         list-style: none; 
                         margin-bottom: 10px;
-                        border-bottom: 1px solid rgba(57,57,57,.5);
+                        border-bottom: 1px solid rgba(57,57,57,.5);                     
+                        display: block;
                         .pic{
                             width: 70px;
                             height: 70px;
@@ -145,6 +141,7 @@ body {
                             display: inline-block;
                             overflow: hidden; 
                             margin-bottom: 10px;
+                            margin: 5px;                           
                             .memPic{
                                 width: 100%;
                                 height: 100%;
@@ -154,17 +151,26 @@ body {
                         .name{
                             display: inline-block;
                             margin-left: 5px;
+                            height: 30px;
+                            vertical-align: top ;
+                            margin-top: 35px;  
                         }
                         .accept{
                             border: 1px solid $colorMain1;
-                            margin-left: 20px;
+                            margin-left: 10px;
                             background-color: $colorMain1;
                             color: $colorSecondary2;
+                            height: 30px;
+                            vertical-align: top ;
+                            margin-top: 35px;  
                         }
                         .refuse{
                             border: 1px solid $colorMain1;
                             background-color: $colorSecondary2;
                             color: $colorMain1;
+                            height: 30px;
+                            vertical-align: top ;
+                            margin-top: 35px;  
                         }
                         .showInfo{
                             color: $colorMain1;
@@ -175,10 +181,9 @@ body {
                                 cursor: pointer;
                             }
                             position: absolute;
-                            top: 55px;
+                            top: 90px;
                         }
                         .info{
-                            // border: 1px solid red;
                             display: none;
                             padding-left: 80px;
                             transform: translateY(-15px);
@@ -199,7 +204,6 @@ body {
             }          
         }
         .joined{
-            // width: 450px;
             display: inline-block;
             border: 1px solid rgb(204,204,204);
             border-radius: 5px;
@@ -214,13 +218,15 @@ body {
             ul{
                 li{
                     list-style: none; 
-                    display: inline-block;
+                    display: inline-flex;
                     margin-left: 10px;
+                    min-width: 160px;
+                    flex-direction: column;
+                    align-items: center;
                     .pic{
                         width: 70px;
                         height: 70px;
                         border-radius: 50%;
-                        display: inline-block;
                         overflow: hidden; 
                         margin-bottom: 5px;                      
                         .memPic{
@@ -230,8 +236,8 @@ body {
                         }          
                     }
                     .name{
-                        display: inline-block;
-                        margin-left: 5px;
+                        // display: inline-block;
+                        // margin-left: 5px;
                     }
                     .showInfo{
                         color: $colorMain1;
@@ -243,17 +249,23 @@ body {
                         }
                     }
                     .info{
+                        min-width: 160px;
                         display: none;
                         border-bottom: 1px solid rgba(57,57,57,.5);
                         margin-bottom: 10px;
                         padding-bottom: 5px;
                         padding-top: 5px;
+                        transform: translateY(-15px);
+                        ul{
+                            padding: 0;
+                        }
                         .closeInfo{
                             border: 1px solid $colorMain1;
                             background-color: $colorSecondary2;
                             color: $colorMain1;
                             display: block;
                         }
+                    
                     }
                 }
             }
@@ -317,7 +329,6 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     .openGroup {
-        // border: 1px solid blue;
         background-color: #fefefe;
         border-radius: 5px;
         margin: 0 auto;
@@ -358,4 +369,260 @@ body {
     // border: 1px solid green;
     width: 80%;
     text-align: right;
+}
+
+@media screen and (max-width: $breakpoint-sm){
+    .containerGroupTop{
+        width: 100%;
+        min-width: 320px;
+        .containerGroupTitle{
+            display: none;
+            margin: 0;
+            min-width: 320px;
+
+        }
+        .containerGroupPhoto{
+            margin: 0;
+            min-width: 320px;
+            background-repeat: no-repeat;
+            background-position:center center;
+            background-size: cover;
+            min-height: 200px;          
+            img{
+                min-height: 200px;
+                width: 100%;
+            }
+        }
+    }
+
+    .tabAll {
+        width:calc(100% - 20px);
+        margin: 0;;
+        .tab {
+            overflow: hidden;       
+        }
+       //
+        #activity {
+            .actAll {
+                display: flex;
+                flex-direction: column;
+                .actCont {
+                    // border: 1px solid black;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    letter-spacing: 1.5px;
+                    line-height: 30px;
+                    font-size: 16px;
+                    .prodTable{
+                        // border: 1px solid green;
+                        margin: 10px;
+                        li{
+                            span{
+                                font-weight: 500;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+                .btnsAct {
+                    margin-top: 60px;
+                    button{
+                        margin: 5px;
+                        margin-bottom: 15px;
+                        @include button(160px, 50px, $colorSecondary2, $colorMain1, $colorMain1);
+                        font-size: $content;
+                    }
+                    .btnsActBtn1_1{
+                        // border: 1px solid green;
+
+                        @include button(160px, 50px, $colorMain1, $colorSecondary2, $colorMain1);
+                        font-size: $content;
+                        display: none;
+                    }
+                    .btnsActBtn1_2{
+                        @include button(160px, 50px, lightgray, $colorSecondary2, lightgray);
+                        font-size: $content;
+                        display: none;
+                    }
+                    .btnsActBtn2_2{
+                        @include button(160px, 50px, $colorMain1, $colorSecondary2, $colorMain1);
+                        font-size: $content;
+                        display: none;
+                    }
+                }
+                .goingToJoin{
+                    width: 100%;
+
+                    .goingToJoinH5{
+                        text-align: center;
+                        font-size: $content;
+                        color: $colorMain1;
+                        background-color: $colorSecondary1;
+                        padding: 10px;
+                    }
+                    ul{
+                        padding: 20px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        li.goingToJoinLi{
+                            min-width: 235px;
+                            position: relative;
+                            list-style: none; 
+                            margin-bottom: 10px;
+                            border-bottom: 1px solid rgba(57,57,57,.5);
+                            display: block;                      
+                            .pic{
+                                margin: 5px;
+                                width: 70px;
+                                height: 70px;
+                                border-radius: 50%;
+                                overflow: hidden; 
+                            }
+                            .name{
+                                height: 50px;
+                                margin-left: 5px;
+                                vertical-align: top ;
+                                margin-top: 40px; 
+ 
+                            }
+                            .accept{
+                                border: 1px solid $colorMain1;
+                                margin-left: 10px;
+                                background-color: $colorMain1;
+                                color: $colorSecondary2;
+                                height: 30px;
+                                vertical-align: top ;
+                                margin-top: 35px;  
+                            }
+                         
+                            .refuse{
+                                border: 1px solid $colorMain1;
+                                background-color: $colorSecondary2;
+                                color: $colorMain1;
+                                height: 30px;
+                                vertical-align: top ;
+                                margin-top: 35px;
+                            }
+                            .showInfo{
+                                color: $colorMain1;
+                                opacity: .8;
+                                font-size: 14px;  
+                                           
+                                &:hover{
+                                    cursor: pointer;
+                                }
+                                position: absolute;
+                                top: 90px;
+                            }
+                            .info{
+                                // border: 1px solid red;
+                                display: none;
+                                padding-left: 30px;
+                                transform: translateY(-15px);
+                                ul{
+                                    padding: 0;
+                                }
+                                .closeInfo{
+                                    margin-left: calc(50% - 55px);
+                                    margin-top: 5px;
+                                    border: 1px solid $colorMain1;
+                                    background-color: $colorSecondary2;
+                                    color: $colorMain1;
+                                }
+                            }
+                        }
+                    }
+
+                }          
+            }
+            .joined{
+                width: 100%;
+                ul{
+                    li{
+                        min-width: 100px;
+                        display: inline-flex;
+                        list-style: none;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-left: 10px;
+                        .pic{
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            overflow: hidden; 
+                            margin-bottom: 5px;                           
+                        }
+                        
+                        .showInfo{
+                            color: $colorMain1;
+                            font-size: 14px;
+                            opacity: .8;
+                            margin-left: 5px;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                        .info{
+                            display: none;
+                            border-bottom: 1px solid rgba(57,57,57,.5);
+                            margin-bottom: 10px;
+                            padding-bottom: 5px;
+                            padding-top: 5px;
+                            .closeInfo{
+                                border: 1px solid $colorMain1;
+                                background-color: $colorSecondary2;
+                                color: $colorMain1;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #chat {
+            .chatCont {
+                padding: 6px 12px;
+                background-color: white;
+                table {
+                    // border: 1px solid red;
+                    margin-bottom: 50px;
+                    .replies {
+                        background-color: rgb(255, 210, 217);
+                        width: 90%;
+                        padding: 5px;
+                        border-radius: 5px;
+                    }
+                    td {
+                        time {
+                            color: gray;
+                        }
+                    }
+                }
+            }
+            .commentor {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            input {
+                // width: calc(100% - 50px);
+                height: 35px;
+                background-color: rgb(255, 210, 217);
+                border-style: hidden;
+                border-radius: 5px 0 0 5px;
+                vertical-align: top;
+                outline: none;
+                &[type=button] {
+                    width: 50px;
+                    height: 35px;
+                    background: url(../images/btnSend.png) no-repeat;
+                    background-size: cover;
+                    background-position: center center;
+                    border-radius: 0 2px 2px 0;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
 }

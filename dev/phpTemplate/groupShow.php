@@ -57,7 +57,7 @@
 ?>
 
 <!-- 上半部 -->
-<div class="containerGroupTop">
+<div class="containerGroupTop" >
     <div class="containerGroupTitle"><?php echo $groupShowInfo["Group_title"];?></div>
     <div class="containerGroupPhoto"><img src='<?php echo $groupShowInfo["Group_Pic"];?>'></div>  
 </div>
@@ -70,8 +70,8 @@
     </div>
     <div class="tabAll">
         <div class="tab">
-            <button class="tabs1" data-type="activity" onclick="openCity(event, 'activity')">活動說明</button>
-            <button class="tabs2" data-type="chat" onclick="openCity(event, 'chat')">留言板</button>
+            <button class="tabButtonFirst tabButtonFocus" data-type="activity" onclick="openCity(this, 'activity')">活動說明</button>
+            <button class="tabButtonForth tabButton" data-type="chat" onclick="openCity(this, 'chat')">留言板</button>
         </div>
         <div id="activity" class="tabcontent" style="display:block;">
             <div class="actAll">
@@ -114,7 +114,7 @@
                             <button class="accept">接受</button>
                             <div class="memNo" style="display:none"><?=$goingToJpinRow["Mem_NO"];?></div>
                             <button class="refuse">拒絕</button>
-                            <br><a class="showInfo">查看會員資料</a>
+                            <br><br><a class="showInfo">查看會員資料</a>
                             <div class="info">
                                 <ul>
                                     <li>性別：<?php if($goingToJpinRow["Mem_Sex"]==0){echo "男";}else{echo "女";} ?></li>
@@ -142,7 +142,7 @@
                     <li class="joinedLi">
                         <div class="pic"><img class="memPic" src="<?=$joinedRow["Mem_Photo"];?>">
                         </div><div class="name"><?=$joinedRow["Mem_Name"];?></div>
-                        <br><a class="showInfo">查看會員資料</a>
+                        <a class="showInfo">查看會員資料</a>
                         <div class="info">
                             <ul>
                                 <li>性別：<?php if($joinedRow["Mem_Sex"]==0){echo "男";}else{echo "女";} ?></li>
@@ -237,10 +237,12 @@
                 </table>
 
             </div>
-             <div class ="chatCont" id="guestRepBlock"></div>
-         </div>
+            <div class ="chatCont" id="guestRepBlock"></div>
+        </div>
     </div>
 
+</div>
+    
 <script>
     $(function () {
         $('body').on('click', '.tabs[data-type]', function (e) {
@@ -251,18 +253,22 @@
     });
 
     function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
+        var i ,tabcontent;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
-        tabs = document.getElementsByClassName("tabs");
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace("active", " ");
-        }
-
+        // tabs = document.getElementsByClassName("tabs");
+        // for (i = 0; i < tabs.length; i++) {
+        //     tabs[i].className = tabs[i].className.replace("active", " ");
+        // }
+        document.getElementsByClassName("tabButtonFocus")[0].classList.add("tabButton");
+        document.getElementsByClassName("tabButtonFocus")[0].classList.remove("tabButtonFocus");
+        evt.classList.add("tabButtonFocus");
+        evt.classList.remove("tabButton");
         document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += "active";
+        
+        // evt.currentTarget.className += "active";
 
 
         let memberNo = '<?php echo $_SESSION["Mem_NO"]; ?>';
