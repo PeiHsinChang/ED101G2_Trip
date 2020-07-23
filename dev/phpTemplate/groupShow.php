@@ -84,6 +84,7 @@
                 <aside class="actCont">
                     <h4>活動說明</h4>					
 					<ul class="prodTable">
+                        <li><span>團&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主:</span> <img src="<?php echo $groupShowInfo["Mem_Photo"];?>" style="width:40px;height:40px;border-radius:50%;margin-right:10px;object-fit:cover;"><?php echo $groupShowInfo["Mem_Name"];?></li>
 						<li><span>團&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span> <?php echo $groupShowInfo["Group_title"];?></li>
 						<li><span>出發日期:</span> <?php echo $groupShowInfo["Group_StartDate"];?></li>
 						<li><span>結束日期:</span> <?php echo $groupShowInfo["Group_EndDate"];?></li>
