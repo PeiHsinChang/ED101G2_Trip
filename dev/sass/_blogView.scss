@@ -24,7 +24,7 @@ a {
         }
 
         @media (max-width:320px) {
-            right: 15px;
+            right: 0px;
         }
 
 
@@ -153,7 +153,8 @@ a {
             display: flex;
             flex-wrap: wrap;
             margin: 0 auto;
-            justify-content: center;
+            justify-content: space-around;
+            // justify-content: center;
         }
 
     }
