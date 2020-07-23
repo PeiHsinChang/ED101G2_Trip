@@ -24,7 +24,7 @@
                 //新增資料進資料庫語法
                 $sql = "insert into MemberTable(Mem_Name, Mem_Id, Mem_Psw, Mem_Email, 
                 Mem_Status, Mem_LikeSum, Mem_LikeAmount, Mem_Tel, Mem_Sex, Mem_Birth, Mem_Photo) values ('$r_memName',
-                '$r_memId', '$r_memPsw', '$r_memEmail', 1, 0, 0, '$r_memTel', $r_memSex, '$r_memBirth', '')";
+                '$r_memId', '$r_memPsw', '$r_memEmail', 1, 0, 0, '$r_memTel', $r_memSex, '$r_memBirth', 'images/memberphoto/fakeHead.png')";
                 $addmembersql = $pdo->exec($sql);
                 echo "<script>alert('註冊成功');location.href='main.html';</script>";
 
