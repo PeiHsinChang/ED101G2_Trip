@@ -18,13 +18,14 @@ body {
     .openGroupBTN {
         z-index: 5;
         position: fixed;
-        top: 50vh;
+        top: 300px;
         right: 0;
         @include button(50px, 150px, $colorSecondary2, $colorMain1, $colorMain1);
 
         @media (max-width:768px) {
             // border: 1px solid red;
             @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
+            top: 50vh;
         }
 
         .openGroupBTNin {
