@@ -89,15 +89,10 @@
                       <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
                       <div id="passwordCheck2" style="font-size:12px;"></div>
                       <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
-                          <label for="male" >
-                            <input type="radio" id="male" name="r_memSex" value="1" checked="checked" />男
-                          </label>
-                          <label for="female" >    
-                            <input type="radio" id="female" name="r_memSex" value="2" />女
-                          </label>
-                          <label for="other" >
-                            <input type="radio" id="other" name="r_memSex" value="3" />其他            
-                          </label>
+                          <input type="radio" id="male" name="r_memSex" value="1">
+                          <label id="maleradio" for="male">男</label>
+                          <input type="radio" id="female" name="r_memSex" value="2">
+                          <label id="femaleradio" for="female">女</label>     
                       </div>
                       <div class="enrollmail">聯絡信箱：<input type="email" class="emailbox" id="r_memEmail" name="r_memEmail" size="10" style="margin: 1px;" autocomplete="off"></div>
                       <div id="emailCheck" style="font-size:12px;"></div>

@@ -1,13 +1,18 @@
-// @import "./variables";
 .startgroupa{
     background-color: $colorSecondary1;
     margin: 0 0 -1 0;
     font-weight: 500;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
 }
 .startgroupcont{
+    border:1px solid red;
     background-color: $colorMain2;
-    padding: 20px 0px 0px 35px;
+    padding: 20px 10px 20px 10px;
     font-size: $content;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 .startgtitle{
     color: $colorMain1;
