@@ -30,7 +30,7 @@
     <?php require_once("./phpTemplate/groupShow.php");?> 
     <?php require_once("./phpTemplate/footer.php");?>
 
-    <div id="setupGroup" class="lightBoxWall" style="overflow-y: scroll;">
+    <div id="setupGroup" class="lightBoxWall" style=" overflow-y: scroll;">
         <?php require_once("./phpTemplate/setupGroup.php");?> 
     </div>
 </body>

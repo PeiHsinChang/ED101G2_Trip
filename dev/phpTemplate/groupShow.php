@@ -2,14 +2,14 @@
     try {
         require_once("connectMemberTable.php");
         // $mem_NO = $_SESSION["Mem_NO"];
-        if(isset($_SESSION["Mem_NO"])){
-            $_SESSION["Mem_NO"]=$_SESSION["Mem_NO"];
-        }else{
-            $_SESSION["Mem_NO"]=null;
-            $_SESSION["Mem_Photo"]=null;
-            $_SESSION["Mem_Id"]=null;
+        // if(isset($_SESSION["Mem_NO"])){
+        //     $_SESSION["Mem_NO"]=$_SESSION["Mem_NO"];
+        // }else{
+        //     $_SESSION["Mem_NO"]=null;
+        //     $_SESSION["Mem_Photo"]=null;
+        //     $_SESSION["Mem_Id"]=null;
            
-        }
+        // }
 
         $sql_g = 
             "select * 
@@ -249,13 +249,13 @@
 </div>
     
 <script>
-    $(function () {
-        $('body').on('click', '.tabs[data-type]', function (e) {
-            let $obj = $(this);
-            let type = $obj.data('type');
-            openCity(e, type);
-        });
-    });
+    // $(function () {
+    //     $('body').on('click', '.tabs[data-type]', function (e) {
+    //         let $obj = $(this);
+    //         let type = $obj.data('type');
+    //         openCity(e, type);
+    //     });
+    // });
 
     function openCity(evt, cityName) {
         var i ,tabcontent;
@@ -529,10 +529,8 @@
     }
     function groupShow(){
         checkGroupLeader();
-        if('<?php echo $_SESSION["Mem_NO"]?>'){
-            checkSignUpStatus();
-            checkKeepThisGroup();
-        }
+        checkSignUpStatus();
+        checkKeepThisGroup();
         
     }
     //window.onload
