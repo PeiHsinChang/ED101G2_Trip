@@ -200,14 +200,17 @@ function openScheCardLightBox(obj){
     xhr.send("keepScheInfo=" + JSON.stringify(keepScheInfo));   
     xhr.onload = function(){
         if(xhr.status==200){
-            let QueryScheCards = JSON.parse(xhr.responseText);
-            console.log(QueryScheCards)
+        
+             QueryScheCards = JSON.parse(xhr.responseText);
+            console.log()
+
             keepSche1 = {
                 Sche_Img:QueryScheCards[0].Sche_Img,
                 Sche_Name:QueryScheCards[0].Sche_Name
             };
             sche.$data.QueryScheCards = QueryScheCards;
             sche.$data.keepSche1 = keepSche1;
+
         }else{
             alert(xhr.status);
         }

@@ -97,6 +97,14 @@
         $('body').css('position','initial');
     };
 
+
+    var sche = new Vue({
+    el: '#scheLightBox', 
+    data: {      
+        keepSche1:{},
+        QueryScheCards:{}    
+    }, 
+})
     //sche card open
     function openScheCardLightBox(obj){
     scheLightBox.style.display = "block";
