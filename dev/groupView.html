@@ -41,7 +41,9 @@
     <div id="setupGroup" class="lightBoxWall" style="z-index:10; overflow-y: scroll;">
         @@include('./htmlTemplate/setupGroup.html')
     </div>
-   
+    <div id="scheLightBox" class="lightBoxWall" >
+        @@include('./htmlTemplate/ScheLightBox.html')
+    </div>   
 </body>
 <script src="./js/carousel.js"></script>
 <!-- <script src="./js/GroupFilter.js"></script> -->
@@ -94,6 +96,44 @@
         $("body").css({'overflow-y':'visible'});
         $('body').css('position','initial');
     };
+
+    //sche card open
+    function openScheCardLightBox(obj){
+    scheLightBox.style.display = "block";
+    myScheName = obj.dataset.id;
+    console.log(myScheName);
+    keepScheInfo = {
+        Sche_Id:myScheName
+    };
+    console.log(keepScheInfo);
+    let xhr = new XMLHttpRequest();
+    xhr.open("post", "./openQueryScheCard.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //把資料往後傳
+
+    xhr.send("keepScheInfo=" + JSON.stringify(keepScheInfo)); 
+    console.log("keepScheInfo=" + JSON.stringify(keepScheInfo));
+  
+    xhr.onload = function(){
+        if(xhr.status==200){
+            let QueryScheCards = JSON.parse(xhr.responseText);
+            console.log(QueryScheCards)
+            keepSche1 = {
+                Sche_Img:QueryScheCards[0].Sche_Img,
+                Sche_Name:QueryScheCards[0].Sche_Name
+            };
+            sche.$data.QueryScheCards = QueryScheCards;
+            sche.$data.keepSche1 = keepSche1;
+        }else{
+            alert(xhr.status);
+        }
+    }
+  }
+ 
+function closescheLightBox(){
+    scheLightBox.style.display = "none";
+  }
+
 
 </script>
 

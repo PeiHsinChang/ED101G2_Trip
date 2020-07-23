@@ -21,8 +21,8 @@
         $keepOneSche1 -> bindValue(":scheName",$keepScheInfo->Sche_Id);
         $keepOneSche1 -> execute();
         $keepOneScheTnP = $keepOneSche1->fetchAll(PDO::FETCH_ASSOC); 
-        // print_r($keepOneScheTnP);
-        // die;
+        print_r($keepOneScheTnP);
+        die;
     
         //送出景點資料  
         echo json_encode($keepOneScheTnP);
