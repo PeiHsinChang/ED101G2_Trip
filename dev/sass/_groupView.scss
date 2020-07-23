@@ -27,7 +27,7 @@ body {
             @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
         }
 
-        .groupSearchOut {
+        .openGroupBTNin {
             @media (max-width:320px) {
                 right: 0px;
                 @include button(50px, 100px, $colorSecondary2, $colorMain1, $colorMain1);

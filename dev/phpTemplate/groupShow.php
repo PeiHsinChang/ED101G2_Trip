@@ -66,7 +66,7 @@
     <div class="openNewGroup col-4 col-l-2 col-md-2 col-lg-2">
         <a onclick="openNewGroup();">
             <!-- <img src="./images/openNewGroup.png" class="d-md-block" /> -->
-            <button class="openGroupBTN">
+            <button class="openGroupBTNin openGroupBTN">
             <p>
                 開 團
             </p>
