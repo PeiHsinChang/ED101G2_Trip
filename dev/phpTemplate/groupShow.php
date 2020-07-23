@@ -332,10 +332,18 @@
                             let replied = false;
                             if((blockChat[keyName])[0]){
                                 for (j=0;j<(blockChat[keyName]).length;j++){
+                                    // blockTable.append(
+                                    //     $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img onclick=\"myFunction(\''+tableid+'\')">').attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
+                                    //         .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id)).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
+                                    
                                     blockTable.append(
-                                        $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img onclick=\"myFunction(\''+tableid+'\')">').attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
-                                            .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id)).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
-                                    blockTable.append($('<tr>').append($('<td>').attr('class','replies').html(((blockChat[keyName])[j]).Msg_Cont)));
+                                    $('<tr></tr>').append($('<td>').attr('rowspan',3)
+                                    .append($('<img onclick=\"myFunction(\''+tableid+'\')">')
+                                    .attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
+                                    .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id))
+                                    ));
+
+                                    blockTable.append($('<tr>').append($('<td>').attr('class','replies').html(((blockChat[keyName])[j]).Msg_Cont).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
                                     if (((blockChat[keyName])[j]).Msg_Re && ((blockChat[keyName])[j]).Msg_Re_Date){
                                         blockTable.append($('<tr>').append($('<td>').attr({class:'replies',id:tableid+'leaderReAppend'}).text('答覆： '+((blockChat[keyName])[j]).Msg_Re).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Re_Date))));
                                         replied = true
@@ -394,7 +402,9 @@
                     let appendMainTable = '#'+ msgFrom;
                     let now = new Date();
                     let timenow = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
-                    $(appendMainTable).append($('<tr>').append($('<td>').attr({class:'replies'}).text('答覆： '+msg).append($('<time>').text(' '+timenow))));
+                    $(appendMainTable).append($('<tr>')
+                        .append($('<td>').attr({class:'replies'})
+                        .text('答覆： '+msg).append($('<time>').text(' '+timenow))));
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
@@ -426,6 +436,8 @@
                         $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img>').attr({'class':'commentor','src':'<?php echo $_SESSION["Mem_Photo"]?>'})))
                             .append($('<td>').append($('<span>').html('<?php echo $_SESSION["Mem_Id"]?>')).append($('<time>').text(' '+timenow))));
                     postByGuest.append($('<tr>').append($('<td>').attr('class','replies').html(guestMsgContent)));
+
+                   
                     $('#msgBook').append(postByGuest);
                     $('#guestInputx').val('');
                    /* let deltableid = '#'+msgFrom+'repliedTable';

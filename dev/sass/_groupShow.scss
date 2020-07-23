@@ -276,19 +276,38 @@ body {
             padding: 6px 12px;
             background-color: white;
             table {
-                // border: 1px solid red;
                 margin-bottom: 50px;
-                .replies {
-                    background-color: rgb(255, 210, 217);
-                    width: 90%;
-                    padding: 5px;
-                    border-radius: 5px;
-                }
-                td {
-                    time {
-                        color: gray;
+                tr{                    
+                    border: 5px solid white;
+                    td {
+                        // display: flex;
+                        
+                        #guestInputx{
+                            width: calc(100% - 50px);
+                        }
+                        
                     }
+                    .replies {
+                        position: relative;
+                        background-color: rgb(255, 210, 217);
+                        width: 100%;
+                        padding: 5px;
+                        margin: 10px;
+                        border-radius: 15px;
+                        overflow: hidden;
+                        padding-bottom: 30px;
+                        time {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            width: 90px;
+                            color: gray;
+                        }
+                    }
+                   
                 }
+                
+              
             }
         }
         .commentor {
@@ -298,7 +317,7 @@ body {
             margin-right: 10px;
         }
         input {
-            // width: calc(100% - 50px);
+            width: calc(100% - 50px);
             height: 35px;
             background-color: rgb(255, 210, 217);
             border-style: hidden;
@@ -426,7 +445,7 @@ body {
                 }
                 .btnsAct {
                     margin-top: 60px;
-                    border:1px solid red;
+                    // border:1px solid red;
                     display: flex;
                     text-align: center;
                     button{
@@ -587,29 +606,32 @@ body {
                 padding: 6px 12px;
                 background-color: white;
                 table {
-                    // border: 1px solid red;
                     margin-bottom: 50px;
                     .replies {
                         background-color: rgb(255, 210, 217);
                         width: 90%;
                         padding: 5px;
+                        margin: 10px;
                         border-radius: 5px;
                     }
-                    td {
-                        time {
-                            color: gray;
+                    
+                        margin:10px;
+                        td {
+                            time {
+                                color: gray;
+                            }
                         }
-                    }
+                   
                 }
             }
             .commentor {
-                width: 80px;
-                height: 80px;
+                border:1px solid green;
+                width: 60px;
+                height: 60px;
                 border-radius: 50%;
                 margin-right: 10px;
             }
             input {
-                // width: calc(100% - 50px);
                 height: 35px;
                 background-color: rgb(255, 210, 217);
                 border-style: hidden;
