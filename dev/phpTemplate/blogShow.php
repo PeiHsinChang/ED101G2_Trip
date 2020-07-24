@@ -80,7 +80,7 @@ try {
             </table>
             <div class="btnKeep">
                 <button class="btnMid" id="blogkeepBtn">收藏</button>
-                <!-- <button class="btnMid" id="blogkeepBtn_1">取消收藏</button> -->
+                <button class="btnMid" id="blogkeepBtn_1">取消收藏</button>
             </div>
         </div>
     </div>
@@ -123,25 +123,8 @@ try {
     // }
 
 
-
-
-    function keepThisBlog(){
-        if('<?php echo $_SESSION["Mem_NO"]?>'){
-        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
-            if(keepStatus == ''){
-                $("#blogkeepBtn").css("display","inline-block");
-                $("#blogkeepBtn_1").css("display","none");
-            }else{
-                $("#blogkeepBtn").css("display","none");
-                $("#blogkeepBtn_1").css("display","inline-block");
-            }
-         }
-    }
-
-    
-
-    //點擊收藏遊記
-    $("#blogkeepBtn").click(function(){
+       //點擊收藏遊記
+       $("#blogkeepBtn").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
             let member = '<?php echo $_SESSION["Mem_NO"];?>';
@@ -167,9 +150,7 @@ try {
     });
 
 
-  
-
-  //點擊取消收藏遊記
+      //點擊取消收藏遊記
   $("#blogkeepBtn_1").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -189,6 +170,20 @@ try {
         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
   });
 
+
+
+    function keepThisBlog(){
+        if('<?php echo $_SESSION["Mem_NO"]?>'){   
+        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
+        if(keepStatus == ''){
+                $("#blogkeepBtn").css("display","inline-block");
+                $("#blogkeepBtn_1").css("display","none");
+            }else{
+                $("#blogkeepBtn").css("display","none");
+                $("#blogkeepBtn_1").css("display","inline-block");
+            }
+         }
+    }
 
 
   window.addEventListener("load",keepThisBlog,false); 
