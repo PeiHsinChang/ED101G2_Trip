@@ -6,7 +6,7 @@ try {
     $mem_NO = $_SESSION["Mem_NO"];
    
   
-   //部落格內文
+   //遊記內文
     $sql_b = 
         "select * 
         from blog b,membertable m
@@ -19,7 +19,7 @@ try {
     $blogArticleInfo = $blogArticle->fetch(PDO::FETCH_ASSOC);
 
 
-    //部落格照片
+    //遊記照片
     $sql_bPic=
     "select * 
     from blog_pic bp
@@ -29,7 +29,7 @@ try {
     $blogPic->execute();
     $blogPicInfo = $blogPic->fetch(PDO::FETCH_ASSOC);
 
-    //部落格廣告
+    //遊記廣告
     $sql_bPop=
     "select * 
     from blog
@@ -129,12 +129,12 @@ try {
 
 
     //檢查是否已收藏遊記
-    // function blogShow(){
-    //     if('<?php echo $_SESSION["Mem_NO"]?>'){
-    //         checkKeepThisBlog();
-    //     }
+    function blogShow(){
+        if('<?php echo $_SESSION["Mem_NO"]?>'){
+            checkKeepThisBlog();
+        }
         
-    // }
+    }
 
     function KeepThisBlog(){
         let keepStatus = '<?php echo $_SESSION['Keep_Blog_NO'];?>';
@@ -150,59 +150,59 @@ try {
     
 
     //點擊收藏遊記
-    // $("#blogkeepBtn").click(function(){
-    //     let xhr = new XMLHttpRequest();
-    //     xhr.onload = function(){
-    //         let member = '<?php echo $_SESSION["Mem_NO"];?>';
-    //         if(member==''){
-    //             alert('請先登入')
-    //         }else{
-    //             if(xhr.status==200){
-    //                 $("#blogkeepBtn").css("display","none");
-    //                 $("#blogkeepBtn_1").css("display","inline-block");
-    //                 alert('已收藏此遊記');
-    //             }else{
-    //                 alert(xhr.status);
-    //             }
-    //         }          
-    //     }
-    //     xhr.open("post", "keepThisBlog.php", true);
-    //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    $("#blogkeepBtn").click(function(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+            if(member==''){
+                alert('請先登入')
+            }else{
+                if(xhr.status==200){
+                    $("#blogkeepBtn").css("display","none");
+                    $("#blogkeepBtn_1").css("display","inline-block");
+                    alert('已收藏此遊記');
+                }else{
+                    alert(xhr.status);
+                }
+            }          
+        }
+        xhr.open("post", "keepThisBlog.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-    //     let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-    //     let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
-    //     xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
-    // });
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+        xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
+    });
 
 
   //點擊取消收藏遊記
-//   $("#blogkeepBtn_1").click(function(){
-//         let xhr = new XMLHttpRequest();
-//         xhr.onload = function(){
-//             let member = '<?php echo $_SESSION["Mem_NO"];?>';
-//             if(member==''){
-//                 alert('請先登入')
-//             }else{
-//             if(xhr.status==200){
-//                 $("#blogkeepBtn").css("display","inline-block");
-//                 $("#blogkeepBtn_1").css("display","none");
-//                 alert('已取消收藏此遊記');
-//             }else{
-//                 alert(xhr.status);
-//             }
-//         }
-//     }
-//         xhr.open("post", "cancelKeepThisBlog.php", true);
-//         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  $("#blogkeepBtn_1").click(function(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+            if(member==''){
+                alert('請先登入')
+            }else{
+            if(xhr.status==200){
+                $("#blogkeepBtn").css("display","inline-block");
+                $("#blogkeepBtn_1").css("display","none");
+                alert('已取消收藏此遊記');
+            }else{
+                alert(xhr.status);
+            }
+        }
+    }
+        xhr.open("post", "cancelKeepThisBlog.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-//         let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-//         let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
-//         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
-//   });
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+        xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
+  });
 
 
 
-//   window.addEventListener("load",blogShow,false); 
+  window.addEventListener("load",blogShow,false); 
 
    
 </script>
