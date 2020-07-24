@@ -35,3 +35,22 @@
 <script src="./js/carouselBlog.js"></script>
 
 </html>
+<script>
+  //點擊收藏此遊記
+  function checkKeepBlog(obj){
+  let blogNo = obj.dataset.blogno;
+  console.log(blogNo);
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+      if(xhr.status == 200){
+        alert(xhr.responseText);          
+      }
+    }
+    xhr.open("post", "checkThisBlog.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    xhr.send(`blogNo=${blogNo}`);              
+    
+  };
+
+ 
+</script>

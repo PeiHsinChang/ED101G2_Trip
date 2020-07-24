@@ -165,9 +165,7 @@ function keepLikeBtn(obj){
   xhr.open("post", "./likeBtnQuery.php", true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
   let sendif ="keepLikeInfo="+JSON.stringify(keepLikeInfo);
-  console.log(sendif);
   xhr.send(sendif);   
-  console.log(JSON.stringify(keepLikeInfo));
   xhr.onload = function(){
     if(xhr.status==200){
       console.log(xhr.responseText);

@@ -189,10 +189,10 @@
       /*# sourceMappingURL=style.css.map */
       /* nav */
 
-      .nav-linkplan::after{
+      .nav-linkplan::after {
         width: 100% !important;
       }
-      .nav-linkMember:hover{
+      .nav-linkMember:hover {
         cursor: pointer;
       }
 
@@ -982,18 +982,38 @@
             });
           },
           getSearchedKeepAttractionsFromPHP() {
-            // check if logged, if true, get and input MemNO:
-            if (true) {
-              this.MemNO = 1;
-            }
-            $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
-              if (JSON.parse(data) == 0) {
-                alert("尚無收藏任何景點");
+            $.get("getMemberInfo.php").then((data) => {
+              let memNOFromPHP = JSON.parse(data).Mem_NO;
+              console.log(`memno:${memNOFromPHP}`);
+              if (data == "{}") {
+                alert("請先登入會員");
               } else {
-                this.searchedAttractions = JSON.parse(data);
-                console.log(this.searchedAttractions);
+                this.MemNO = memNOFromPHP;
+                $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then(
+                  (data) => {
+                    if (JSON.parse(data) == 0) {
+                      alert("尚無收藏任何景點");
+                    } else {
+                      this.searchedAttractions = JSON.parse(data);
+                      console.log(this.searchedAttractions);
+                    }
+                  }
+                );
               }
             });
+
+            // check if logged, if true, get and input MemNO:
+            // if (true) {
+            //   this.MemNO = 1;
+            // }
+            // $.get(`searchKeepAttrac.php?MemNO=${this.MemNO}`).then((data) => {
+            //   if (JSON.parse(data) == 0) {
+            //     alert("尚無收藏任何景點");
+            //   } else {
+            //     this.searchedAttractions = JSON.parse(data);
+            //     console.log(this.searchedAttractions);
+            //   }
+            // });
           },
           getSearchedRegionAttractionsFromPHP(x, y) {
             // console.log(typeof x);
@@ -1267,8 +1287,8 @@
         props: ["label2"],
         template: `
                           <div class="container my-3 py-3 pr-0 rounded shadow">
-                            <button @click="sendClosedAttractionToAttractionList" type="button"  class="close"   aria-label="Close" style="margin-top:-17px;margin-right:3px;">
-                              <span aria-hidden="true" style="font-size:1rem">&times;</span>
+                            <button @click="sendClosedAttractionToAttractionList" type="button"  class="close"   aria-label="Close" style="margin-top:-10px;margin-right:3px;">
+                              <span class="p-2" aria-hidden="true" style="font-size:1rem">&times;</span>
                             </button>
                             <div class="row">
                               <div class="left px-0 overflow-hidden col-4" style="height:100px">

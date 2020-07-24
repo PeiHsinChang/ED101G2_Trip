@@ -5,7 +5,7 @@ try{
     //揪團卡片指令
     $sql="select Blog_Name, Blog_PicURL, 
         Mem_name,Blog_Date, Blog_Setdate, 
-        Blog_Views
+        Blog_Views, Blog_NO
         FROM blog b ,membertable m
         where b.mem_no = m.mem_no 
         order by Blog_Views desc";
@@ -27,6 +27,8 @@ try{
                 "Blog_Date"=>$blogCardsLikeRows["Blog_Date"],
                 "Blog_Setdate"=>$blogCardsLikeRows["Blog_Setdate"],
                 "Blog_Views"=>$blogCardsLikeRows["Blog_Views"],
+                "Blog_NO"=>$blogCardsLikeRows["Blog_NO"],
+
             );	
         }   
     }
