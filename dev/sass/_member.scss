@@ -114,6 +114,9 @@ border-radius: 5px 0 0 0;
       border-radius: 5px;
       overflow: hidden;
       margin-bottom: 10px;
+      @media (max-width: 768px) {
+        margin-top: 30px;
+      }
       .memLeftHead{
         height: 50px;
         line-height: 50px;
