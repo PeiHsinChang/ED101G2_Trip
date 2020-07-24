@@ -1,11 +1,8 @@
 <?php
-
+  session_start();
 try {
     require_once("connectMemberTable.php");
-
-
-    session_start();
-    $memInfo = $_SESSION["Mem_NO"];
+    // $memInfo = $_SESSION["Mem_NO"];
    
   
    //遊記內文
@@ -44,12 +41,10 @@ try {
      //取得遊記收藏狀態
      $sql_keepStatus = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
      $keepBlogStatus = $pdo->prepare($sql_keepStatus);
-     $keepBlogStatus->bindValue(":memNo", $memInfo);
-     $keepBlogStatus->bindValue(":blogNo", $_GET["Blog_NO"]);
+     $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
+     $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
      $keepBlogStatus->execute();
      $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
-
-
    
      
 } catch (PDOException $e) {
@@ -84,8 +79,8 @@ try {
                 </tr>
             </table>
             <div class="btnKeep">
-                <button class="btnMid" id="blogkeepBtn" onclick="KeepThisBlog()">收藏</button>
-                <button class="btnMid" id="blogkeepBtn_1">取消收藏</button>
+                <button class="btnMid" id="blogkeepBtn">收藏</button>
+                <!-- <button class="btnMid" id="blogkeepBtn_1">取消收藏</button> -->
             </div>
         </div>
     </div>
@@ -129,23 +124,18 @@ try {
 
 
 
-    //檢查是否已收藏遊記
-    function blogShow(){
-        if('<?php echo $_SESSION["Mem_NO"]?>'){
-            checkKeepThisBlog();
-        }
-        
-    }
 
-    function KeepThisBlog(){
-        let keepStatus = '<?php echo $_SESSION['Keep_Blog_NO'];?>';
-        if(keepStatus == ''){
-            $("#blogkeepBtn").css("display","inline-block");
-            $("#blogkeepBtn_1").css("display","none");
-        }else{
-            $("#blogkeepBtn").css("display","none");
-            $("#blogkeepBtn_1").css("display","inline-block");
-        }
+    function keepThisBlog(){
+        if('<?php echo $_SESSION["Mem_NO"]?>'){
+        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
+            if(keepStatus == ''){
+                $("#blogkeepBtn").css("display","inline-block");
+                $("#blogkeepBtn_1").css("display","none");
+            }else{
+                $("#blogkeepBtn").css("display","none");
+                $("#blogkeepBtn_1").css("display","inline-block");
+            }
+         }
     }
 
     
@@ -155,8 +145,9 @@ try {
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
             let member = '<?php echo $_SESSION["Mem_NO"];?>';
+
             if(member==''){
-                alert('請先登入')
+                alert('請先登入');
             }else{
                 if(xhr.status==200){
                     $("#blogkeepBtn").css("display","none");
@@ -176,14 +167,12 @@ try {
     });
 
 
+  
+
   //點擊取消收藏遊記
   $("#blogkeepBtn_1").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
-            let member = '<?php echo $_SESSION["Mem_NO"];?>';
-            if(member==''){
-                alert('請先登入')
-            }else{
             if(xhr.status==200){
                 $("#blogkeepBtn").css("display","inline-block");
                 $("#blogkeepBtn_1").css("display","none");
@@ -192,7 +181,6 @@ try {
                 alert(xhr.status);
             }
         }
-    }
         xhr.open("post", "cancelKeepThisBlog.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
@@ -203,7 +191,7 @@ try {
 
 
 
-  window.addEventListener("load",blogShow,false); 
+  window.addEventListener("load",keepThisBlog,false); 
 
    
 </script>

@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
    $memberNo =  $_POST["cancelKeepMemberNo"];
    $blogNo =  $_POST["cancelKeepBlogNo"];
 

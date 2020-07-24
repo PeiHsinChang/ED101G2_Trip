@@ -1,4 +1,6 @@
 <?php
+
+
    $memberNo =  $_POST["cancelKeepMemberNo"];
    $groupNo =  $_POST["cancelKeepGroupNo"];
 
