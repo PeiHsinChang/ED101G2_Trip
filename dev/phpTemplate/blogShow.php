@@ -132,9 +132,9 @@ $("#blogkeepBtn").click(function(){
            }
         }
     }
-    xhr.open("post","keepThisBlog.php",true);
+    xhr.open("GET","keepThisBlog.php",true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
+    xhr.send();
 });
 
 
