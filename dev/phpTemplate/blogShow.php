@@ -2,7 +2,9 @@
 
 try {
     require_once("connectMemberTable.php");
-    
+
+
+    session_start();
     $memInfo = $_SESSION["Mem_NO"];
    
   
@@ -118,7 +120,6 @@ try {
 </div>
 
 <h5><?php print_r($blogArticleInfo);?></h5>
-<h5></h5><?php print_r($keepBlogStatusResult['Keep_Blog_NO']); ?></h5>
 
 <script>
     // var btnOpen = document.getElementById('btnOpen');
