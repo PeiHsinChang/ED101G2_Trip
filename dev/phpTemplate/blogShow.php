@@ -2,8 +2,10 @@
 
 try {
     require_once("connectMemberTable.php");
-    
-    $mem_NO = $_SESSION["Mem_NO"];
+
+
+    session_start();
+    $memInfo = $_SESSION["Mem_NO"];
    
   
    //遊記內文
@@ -42,7 +44,7 @@ try {
      //取得遊記收藏狀態
      $sql_keepStatus = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
      $keepBlogStatus = $pdo->prepare($sql_keepStatus);
-     $keepBlogStatus->bindValue(":memNo", $_GET["Mem_NO"]);
+     $keepBlogStatus->bindValue(":memNo", $memInfo);
      $keepBlogStatus->bindValue(":blogNo", $_GET["Blog_NO"]);
      $keepBlogStatus->execute();
      $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
@@ -118,7 +120,6 @@ try {
 </div>
 
 <h5><?php print_r($blogArticleInfo);?></h5>
-<h5></h5><?php print_r($keepBlogStatusResult['Keep_Blog_NO']); ?></h5>
 
 <script>
     // var btnOpen = document.getElementById('btnOpen');
