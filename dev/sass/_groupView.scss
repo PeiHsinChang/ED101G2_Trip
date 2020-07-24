@@ -25,16 +25,12 @@ body {
             // border: 1px solid red;
             @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorSecondary2);
         }
-
         .openGroupBTNin {
             @media (max-width:320px) {
                 right: 0px;
                 @include button(50px, 100px, $colorSecondary2, $colorMain1, $colorSecondary2);
             }
         }
-
-
-
         p {
             font-size: $subtitle;
             color: $colorMain2;
@@ -45,19 +41,16 @@ body {
                 font-size: $s_content;
             }
         }
-
         p:hover {
             color: $colorMain1;
         }
     }
-
     .openNewGroup {
         position: fixed;
         // right: -5%;
         z-index: 10;
         top: 40%;
         right: 0;
-
         a {
             img {
                 width: 50%;
@@ -66,8 +59,8 @@ body {
             }
         }
     }
-
     .groupViewSearchBar {
+        // border: 1px solid blue;
         width: 600px;
         height: 32px;
         margin: 80px 50px auto auto;
@@ -95,32 +88,24 @@ body {
             // height: 0px;
             font-size: $s_content;
             margin-left: 10px;
-            margin-right: 20px;
+            // margin-right: 20px;
             @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
 
             @media (max-width:768px) {
                 // border: 1px solid red;
                 margin-right: 10px;
             }
-            // img {
-            //     width: 25px;
-            //     height: 25px;
-            //     // border: 1px solid red;
-            // }
         }
     }
 
     .chooseBlock {
         // border: 1px solid red;
-        // display: flex;
-        // padding-left: 800px;
         width: 100%;
         margin: 0;
         display: flex;
         justify-content: flex-end;
         .checkBox4phone {
             //手機版篩選器
-            // border: 1px solid $borderLine;
             box-shadow: 0px 0px 1px 2px lightgray;
             margin: 10px 0px 10px 0px;
             margin: 15px auto;
@@ -143,31 +128,30 @@ body {
                 margin: 0 auto;
                 margin-top: 10px;
                 .btnPhoneFilter {
-                    // margin: 0 200px;
                     margin-bottom: 10px;
+                    margin-left: 10px;
                     @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
                 }
             }
         }
-        .groupFBtn {
-            // border: none;
+        .groupBtn{
             // border: 1px solid red;
-            &:hover {
-                color: $colorMain1;
+            .groupFBtn {
+                &:hover {
+                    color: $colorMain1;
+                }
+            }
+            .groupFBtn2 {
+                margin-right: 40px;
+                @media (max-width:768px) {
+                    margin: 0 auto;
+                    margin-right: 0px;
+                }
             }
             @media (max-width:768px) {
-                transform: translateX(100%);
+                margin: 0 auto;
             }
-        }
-        .groupFBtn2 {
-            margin-right: 50px;
-            @media (max-width:768px) {
-                // border: 1px solid red;
-                // margin-right: 50px;
-                margin-right: 50%;
-                transform: translateX(100%);
-            }
-        }
+        }      
         @media (max-width:576px) {
             // border: 1px solid red;
             width: 90%;
@@ -176,9 +160,11 @@ body {
     }
 
     .mainGroupView {
+        // border: 1px solid red;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        width: 100%;
         .groupViewLeft {
             padding: 0;
             // border: 1px solid red;
@@ -231,7 +217,6 @@ body {
                     }
                 }
             }
-
             .hotScheBlock {
                 border-radius: 5px;
                 margin-bottom: 50px;
@@ -249,11 +234,9 @@ body {
                             background-color: $colorSecondary1;
                             border-bottom: 1px solid $borderLine;
                         }
-
                         td {
                             background-color: rgb(245, 245, 245);
                             width: 250px;
-
                             a {
                                 img {
                                     width: 250px;
@@ -267,82 +250,55 @@ body {
                 }
             }
         }
-
         .groupViewRight {
-            // padding: 0;
             // border: 1px solid green;
-            margin: 0;
-
-            // width: 80%;
-            // .groupMain {
-            //     border: 1px solid red;
-            //     // height: 100px;
-            // }
+            margin: 0 auto;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
             .groupViewPCcardBlock {
-                // width: 100px;
-                // border: 1px solid red;
-                // width: 100%;
-                // display: flex;
-                // justify-content: center;
-                // margin-left: 30px;
+                // border: 1px solid green;
+                margin-top: 10px;
                 padding: 0;
-
                 #groupCardsAll {
-                    // width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
-                    margin-left: 50px;
-                    margin-top: 10px;
                     margin-bottom: 30px;
                     .cardGroup {
-                        margin: 10px;
+                        // border: 1px solid blue;
+                        margin-bottom: 10px;
+                        @media (max-width:480px) {
+                            transform: translateX(-18px);
+                        }
                     }
                 }
             }
-
-
-
             .groupPhoneCardCarousel {
                 // border: 1px solid red;
                 height: 500px;
                 max-width: 768px;
-                // width: 80%;
                 margin-top: 40px;
                 margin-bottom: 40px;
-
                 .innerCardScheGroupPhoneSlide {
                     height: 450px;
                     // border: 10px solid red;
                     max-width: 300px;
                     margin: 0 auto;
                 }
-
-                // .innerCardScheGroupPhoneSlide>.carousel-item {
-                //     // border: 1px solid blue;
-                //     // margin-left: 20%;
-                // }
                 .innerCardSchePhoneSlide {
-                    // border: 1px solid blue;
-                    // padding: 0 auto;
                     max-width: 300px;
                     height: 400px;
                     margin: 0 auto;
-
                     .fixHeight4others {
                         height: 700px;
                     }
                 }
-
                 .groupCarouselIcon {
                     background-color: $colorMain1;
                     width: 30px;
                     height: 50px;
                 }
-            }
-            @media (max-width:768px) {
-                // border: 1px solid red;
-                transform: translateX(25px);
             }
         }
     }
