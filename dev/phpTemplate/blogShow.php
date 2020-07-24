@@ -1,7 +1,12 @@
 <?php
-    require_once("connectMemberTable.php");
 
 try {
+    require_once("connectMemberTable.php");
+    
+    $mem_NO = $_SESSION["Mem_NO"];
+   
+  
+   //部落格內文
     $sql_b = 
         "select * 
         from blog b,membertable m
@@ -12,20 +17,54 @@ try {
 	$blogArticle->bindValue(":Blog_NO", $_GET["Blog_NO"]);
     $blogArticle->execute();
     $blogArticleInfo = $blogArticle->fetch(PDO::FETCH_ASSOC);
+
+
+    //部落格照片
+    $sql_bPic=
+    "select * 
+    from blog_pic bp
+    where Blog_NO=:Blog_NO;";
+    $blogPic = $pdo->prepare($sql_bPic);
+    $blogPic->bindValue(":Blog_NO", $_GET["Blog_NO"]);
+    $blogPic->execute();
+    $blogPicInfo = $blogPic->fetch(PDO::FETCH_ASSOC);
+
+    //部落格廣告
+    $sql_bPop=
+    "select * 
+    from blog
+    order by Blog_Views desc
+    limit 4;";
+    $blogPop = $pdo->prepare($sql_bPop);
+    $blogPop->execute();
+
+
+     //取得遊記收藏狀態
+     $sql_keepStatus = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
+     $keepBlogStatus = $pdo->prepare($sql_keepStatus);
+     $keepBlogStatus->bindValue(":memNo", $_GET["Mem_NO"]);
+     $keepBlogStatus->bindValue(":blogNo", $_GET["Blog_NO"]);
+     $keepBlogStatus->execute();
+     $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
+
+
+   
+     
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 }
-
 ?>
+
+
+
+
 <div class="containerBlog">
-    <div class="coverPhoto">
+    <div class="containerBlogPhoto">
         <img src="<?=$blogArticleInfo["Blog_PicURL"];?>">
     </div>
 
-
-    <h5><?php print_r( $blogArticleInfo);?> </h5>
     <a href="./writeBlog.html"><img src="./images/writeBlog.png"></a>
 
     <div class="writerBlog">
@@ -42,7 +81,10 @@ try {
                     <td><?=$blogArticleInfo["Blog_Views"];?>人氣</td>
                 </tr>
             </table>
-            <button class="btnSmall">收藏</button>
+            <div class="btnKeep">
+                <button class="btnMid" id="blogkeepBtn" onclick="KeepThisBlog()">收藏</button>
+                <button class="btnMid" id="blogkeepBtn_1">取消收藏</button>
+            </div>
         </div>
     </div>
     <div class="blogContent">
@@ -52,72 +94,115 @@ try {
                 <p><?=$blogArticleInfo["Blog_Content"];?></p>
             </div>
             &nbsp;
-            <div><span>What is Lorem Ipsum? </span><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type andscrambled
-                it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div><br>
-            <div id="imgSets">
-                <img src="https://picsum.photos/500/400">
-            </div>
-            &nbsp;
-            <div><span>Why do we use it? </span><br>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
-                of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div><br>
-            <div id="imgSets">
-                <img src="https://picsum.photos/200/200">
-                <img src="https://picsum.photos/400/200">
-            </div>
-            &nbsp;
-            <div><span>Where does it come from? </span><br>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
-                at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-                comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line
-                of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div><br>
-            <div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English
-                versions from the 1914 translation by H. Rackham.
-            </div>
-            <br>
-            <div id="imgSets">
-                <img src="https://picsum.photos/300/200?random=1">
-                <img src="https://picsum.photos/400/200?random=3">
-            </div>
-            &nbsp;
+            <img src="<?=$blogPicInfo["Blog_SubPicURL"];?>">
         </aside>
         <aside class="popular">
             <div class="popTitle">熱門行程</div>
+            <?php
+                while($blogPopInfo = $blogPop->fetch(PDO::FETCH_ASSOC)){
+            ?>
             <div class="blogAds">
-                <img src="https://picsum.photos/300/200?random=3" alt="..." style="width:100%;">
+                <img src="<?=$blogPopInfo["Blog_PicURL"];?>" alt="..." style="width:100%;">
                 <div class="adsMask">
-                    <p>九族文化村四日遊</p>
+                    <p><?=$blogPopInfo["Blog_Name"];?></p>
                 </div>
             </div>
-            <div class="blogAds">
-                <img src="https://picsum.photos/300/200?random=4" alt="..." style="width:100%;">
-                <div class="adsMask">
-                    <p>九族文化村四日遊</p>
-                </div>
-            </div>
-            <div class="blogAds">
-                <img src="https://picsum.photos/300/200?random=5" alt="..." style="width:100%;">
-                <div class="adsMask">
-                    <p>九族文化村四日遊</p>
-                </div>
-            </div>
-            <div class="blogAds">
-                <img src="https://picsum.photos/300/200?random=6" alt="..." style="width:100%;">
-                <div class="adsMask">
-                    <p>九族文化村四日遊</p>
-                </div>
-            </div>
+            <?php
+                }
+            ?>
+            
         </aside>
     </div>
-
 </div>
 
 </div>
+
+<h5><?php print_r($blogArticleInfo);?></h5>
+<h5></h5><?php print_r($keepBlogStatusResult['Keep_Blog_NO']); ?></h5>
 
 <script>
-    var btnOpen = document.getElementById('btnOpen');
-    btnOpen.onclick = function() {
-        myModal.style.display = "block ";
+    // var btnOpen = document.getElementById('btnOpen');
+    // btnOpen.onclick = function() {
+    //     myModal.style.display = "block ";
+    // }
+
+
+
+    //檢查是否已收藏遊記
+    // function blogShow(){
+    //     if('<?php echo $_SESSION["Mem_NO"]?>'){
+    //         checkKeepThisBlog();
+    //     }
+        
+    // }
+
+    function KeepThisBlog(){
+        let keepStatus = '<?php echo $_SESSION['Keep_Blog_NO'];?>';
+        if(keepStatus == ''){
+            $("#blogkeepBtn").css("display","inline-block");
+            $("#blogkeepBtn_1").css("display","none");
+        }else{
+            $("#blogkeepBtn").css("display","none");
+            $("#blogkeepBtn_1").css("display","inline-block");
+        }
     }
+
     
+
+    //點擊收藏遊記
+    // $("#blogkeepBtn").click(function(){
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload = function(){
+    //         let member = '<?php echo $_SESSION["Mem_NO"];?>';
+    //         if(member==''){
+    //             alert('請先登入')
+    //         }else{
+    //             if(xhr.status==200){
+    //                 $("#blogkeepBtn").css("display","none");
+    //                 $("#blogkeepBtn_1").css("display","inline-block");
+    //                 alert('已收藏此遊記');
+    //             }else{
+    //                 alert(xhr.status);
+    //             }
+    //         }          
+    //     }
+    //     xhr.open("post", "keepThisBlog.php", true);
+    //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+ 
+    //     let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+    //     let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+    //     xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
+    // });
+
+
+  //點擊取消收藏遊記
+//   $("#blogkeepBtn_1").click(function(){
+//         let xhr = new XMLHttpRequest();
+//         xhr.onload = function(){
+//             let member = '<?php echo $_SESSION["Mem_NO"];?>';
+//             if(member==''){
+//                 alert('請先登入')
+//             }else{
+//             if(xhr.status==200){
+//                 $("#blogkeepBtn").css("display","inline-block");
+//                 $("#blogkeepBtn_1").css("display","none");
+//                 alert('已取消收藏此遊記');
+//             }else{
+//                 alert(xhr.status);
+//             }
+//         }
+//     }
+//         xhr.open("post", "cancelKeepThisBlog.php", true);
+//         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+ 
+//         let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+//         let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+//         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
+//   });
+
+
+
+//   window.addEventListener("load",blogShow,false); 
+
+   
 </script>
