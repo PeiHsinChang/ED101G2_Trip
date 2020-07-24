@@ -107,7 +107,8 @@ try {
 </div>
 
 <h5><?php print_r($blogArticleInfo);?></h5>
-<?php print_($_SESSION["Mem_NO"]);?>
+
+
 
 <script>
     // var btnOpen = document.getElementById('btnOpen');
@@ -121,7 +122,7 @@ $("#blogkeepBtn").click(function(){
     xhr.onload=function(){
         let member = '<?php echo $_SESSION["Mem_NO"];?>';
         if(member== ''){
-            alert('請先登入')
+            alert('請先登入');
         }else{
            if(xhr.status==200){
             $("#blogkeepBtn").text("取消收藏");
@@ -133,7 +134,7 @@ $("#blogkeepBtn").click(function(){
     }
     xhr.open("post","keepThisBlog.php",true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send();
+
 });
 
 
