@@ -1,10 +1,11 @@
 .homepageBody {
     margin: 0;
-    // position: relative;
+    // border: 1px solid red;
 }
 
 .homepageBody576 {
     display: none;
+    margin: 0;
 }
 
 .select1of3 {
@@ -80,7 +81,7 @@
 
 // -------------------
 #sanjay {
-    /* border: 1px solid red; */
+    // border: 1px solid red; 
     background-image: url(../images/homepage.jpg);
     margin: 0;
     margin-bottom: 4000px;
@@ -115,7 +116,6 @@
     .scroll-down-button {
         /* border: 1px solid red; */
         transform: translateY(360px);
-
         img.scroll {
             width: 60px;
             margin-left: 50%;
@@ -138,7 +138,6 @@
             }
         }
     }
-
     .secondScreen_mainBody {
         // border: 1px solid red;
         position: fixed;
@@ -148,7 +147,6 @@
         right: 0;
         transform: translateY(-537px);
     }
-
     .right-background {
         // border: 2px solid green;
         width: 70%;
@@ -171,7 +169,6 @@
         margin: 3%;
         // margin-top: 180px;
         margin-top: 15%;
-
         p {
             display: inline-block;
             margin-top: 0px;
@@ -179,7 +176,6 @@
             color: $colorMain1;
             margin-bottom: 80%;
         }
-
         button {
             @include button(160px, 60px, $colorSecondary2, $colorMain1, $colorMain1);
             padding: 10px;
@@ -229,14 +225,12 @@
             // margin-bottom: 400px;
             margin-bottom: 80%;
         }
-
         button {
             @include button(160px, 60px, $colorSecondary2, $colorMain1, $colorMain1);
             padding: 10px;
             font-size: $content;
         }
     }
-
     .right-background2 {
         // border: 2px solid green;
         width: 70%;
@@ -264,7 +258,6 @@
         }
         //add for card end
     }
-
     .right-background2-content {
         // border: 2px solid blue; 
         display: inline-block;
@@ -726,6 +719,7 @@
 
         img.scroll {
             width: 40px;
+            // margin: 0 auto;
             margin-top: 35px;
             margin-left: 50%;
             transform: translateX(-50%);
@@ -785,7 +779,8 @@
             font-size: 18px;
         }
         img{
-            width: 400px;
+            width: 350px;
+            margin: 0 auto;
             margin-bottom: 20px;
         }
         button {
