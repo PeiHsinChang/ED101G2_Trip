@@ -27,6 +27,7 @@ try{
                 "Blog_Date"=>$blogCardsLatestRows["Blog_Date"],
                 "Blog_Setdate"=>$blogCardsLatestRows["Blog_Setdate"],
                 "Blog_Views"=>$blogCardsLatestRows["Blog_Views"],
+                "Blog_NO"=>$blogCardsLatestRows["Blog_NO"],
             );	
         }   
     }

@@ -13,20 +13,22 @@ a {
 }
 
 .containerBlog {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
     a {
         position: fixed;
         right: 5px;
         top: 350px;
         z-index: 99;
     }
-    .coverPhoto {
+    .containerBlogPhoto {
         width: 100%;
-        margin: 0 auto;
-        height: 40vh;
+        max-height: 550px;
         overflow: hidden;
-        margin: 0 auto;
-        margin-bottom: 50px;
-        img{
+        margin-bottom: 30px;
+        img {
             width: 100%;
         }
     }
@@ -34,7 +36,6 @@ a {
         width: 80%;
         min-height: 15vh;
         margin: 0 auto;
-
         .boxWriter {
             width: 70%;
         }
@@ -44,19 +45,27 @@ a {
             border-radius: 50%;
             display: inline-block;
             margin-right: 5px;
-            vertical-align : top;
-
+            vertical-align: top;
         }
         table {
             min-width: 100px;
             min-height: 50%;
             display: inline-block;
             margin-bottom: 10px;
-            vertical-align :top;
+            vertical-align: top;
         }
-        button {
-            float: right;
-            margin-top: 50px;
+        .btnKeep {
+            display: inline-block;
+            button {
+                margin-top: 50px;
+            }
+            #blogkeepBtn {
+                font-size: $content;
+            }
+            #blogkeepBtn_1 {
+                font-size: $content;
+                display: none;
+            }
         }
     }
     .blogContent {
@@ -64,12 +73,15 @@ a {
         margin: 0 auto;
         margin-top: 20px;
         display: flex;
-        .blogCont {        
+        .blogCont {
             width: 70%;
             margin-right: 5px;
             span {
                 display: block;
                 font-weight: bold;
+            }
+            p {
+                line-height: 25px;
             }
             #imgSets {
                 display: flex;
@@ -88,16 +100,16 @@ a {
                 text-align: center;
                 background-color: $colorSecondary1;
                 color: $colorMain1;
-                padding:5px;
+                padding: 5px;
             }
             .blogAds {
                 position: relative;
-                margin: 5px ;
+                margin: 5px;
                 .adsMask {
                     position: absolute;
                     bottom: 0;
                     background: rgba(0, 0, 0, 0.5);
-                    p{
+                    p {
                         color: $colorMain2;
                     }
                     width: 100%;
@@ -108,4 +120,3 @@ a {
         }
     }
 }
-
