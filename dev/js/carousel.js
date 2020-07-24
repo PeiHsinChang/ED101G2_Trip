@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     titleCarousel();
     hotSche();
     groupCard();
@@ -12,7 +12,7 @@ function titleCarousel() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             carouselPackage = JSON.parse(xhr.responseText);
@@ -142,7 +142,7 @@ function hotSche() {
     //點開頁面就要load
     var xhr = new XMLHttpRequest();
     //發出ajax請求要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             //如果資料傳送成功
             hotSchePackage = JSON.parse(xhr.responseText);
@@ -196,7 +196,7 @@ function hotSche() {
 
 function groupCard() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
 
             //desktop version
@@ -244,7 +244,7 @@ function groupCard() {
 function SortByLike() {
 
     let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
 
             //desktop version
@@ -266,7 +266,7 @@ function SortByLike() {
 
 function sortByLatest() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
 
             //desktop version
@@ -282,12 +282,12 @@ function sortByLatest() {
     xhr.open("post", "groupSortByLatest.php", true);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send();
-}
+};
 
 
 function groupShow() {
     let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
 
             //desktop version
@@ -334,13 +334,13 @@ function groupShow() {
     xhr.send();
 };
 
-$("#groupSearch").click(function () {
+$("#groupSearch").click(function() {
     //按好什麼按鈕觸發事件
     console.log($("#search_text").val())
-    //input內容有沒有進去網頁
+        //input內容有沒有進去網頁
     let xhr = new XMLHttpRequest();
     //跟後端要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) {
             let searchResult = JSON.parse(xhr.responseText);
             console.log(searchResult);
@@ -360,7 +360,7 @@ $("#groupSearch").click(function () {
 });
 
 
-$("#btnGroupFilter").click(function () {
+$("#btnGroupFilter").click(function() {
     //按好什麼按鈕觸發事件
     console.log($('#groupView_FliterPpl :selected').val());
     console.log($('#groupView_FliterSex :selected').val());
@@ -369,7 +369,7 @@ $("#btnGroupFilter").click(function () {
     //check if the selector value are sent
     let xhr = new XMLHttpRequest();
     //跟後端要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) { //當連線成功
             let filterResult = JSON.parse(xhr.responseText);
             console.log(filterResult);
@@ -390,7 +390,7 @@ $("#btnGroupFilter").click(function () {
 
 });
 
-$("#btnPhoneFilter").click(function () {
+$("#btnPhoneFilter").click(function() {
     //按好什麼按鈕觸發事件
     console.log($('input[name=groupView_FliterPpl_phone]:checked').val());
     console.log($('input[name=groupView_FliterSex_phone]:checked').val());
@@ -399,7 +399,7 @@ $("#btnPhoneFilter").click(function () {
     //check if the selector value are sent
     let xhr = new XMLHttpRequest();
     //跟後端要資料
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (xhr.status == 200) { //當連線成功
             let phoneFilterResult = JSON.parse(xhr.responseText);
             console.log(phoneFilterResult);

@@ -1,10 +1,8 @@
 @import "./variables";
-
 @media screen and (max-width: $breakpoint-md) {
     .popular {
         display: none;
     }
-
     .blogCont {
         min-width: 100%;
     }
@@ -27,34 +25,27 @@ a {
         top: 300px;
         right: 0;
         @include button(50px, 170px, $colorSecondary2, $colorMain1, $colorMain1);
-
         @media (max-width: 768px) {
             // border: 1px solid red;
             @include button(35px, 100px, $colorSecondary2, $colorMain1, $colorMain1);
             top: 50vh;
         }
-
-
         @media (max-width:320px) {
             right: 0px;
         }
-
         p {
             font-size: $subtitle;
             color: $colorMain2;
             writing-mode: vertical-lr;
             margin: 0;
-
             @media (max-width: 768px) {
                 font-size: $s_content;
             }
         }
-
         p:hover {
             color: $colorMain1;
         }
     }
-
     // img {
     //     width: 50%;
     //     margin-left: 60px;
@@ -77,18 +68,15 @@ a {
     margin: 120px 50px auto auto;
     display: flex;
     justify-content: flex-end;
-
     @media (max-width: 768px) {
         // border: 1px solid red;
         width: 250px;
     }
-
     input {
         background-color: lightgray;
         border: none;
         border-radius: 5px 5px 5px 5px;
     }
-
     .blogSearch {
         // width: 30px;
         // padding: 0;
@@ -101,7 +89,6 @@ a {
         font-size: $s_content;
         margin-left: 10px;
         @include button(70px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
-
         img {
             width: 25px;
             height: 25px;
@@ -113,20 +100,16 @@ a {
 .chooseBlock {
     // width: 100%;
     margin: 0;
-
     // display: flex;
     // justify-content: flex-end;
     .blogFBtn {
         border: none;
-
         &:hover {
             color: $colorMain1;
         }
     }
-
     .blogFBtn3 {
         margin-right: 40px;
-
         @media (max-width: 768px) {
             // border: 1px solid red;
             margin-right: 10px;
@@ -137,24 +120,20 @@ a {
 .container {
     padding: 0;
     margin: 0 auto;
-
     .mainBlogCardsArea {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-
         // border: 1px solid red;
         .cardBlogOnBlogView {
             margin: 20px;
             // border: 1px solid blue;
         }
     }
-
     .blogCardsBlockView {
         // border: 1px solid red;
         margin-bottom: 40px;
         // margin-top: 10px;
-
         #blogCardsAll {
             display: flex;
             flex-wrap: wrap;
@@ -163,14 +142,12 @@ a {
             // justify-content: center;
         }
     }
-
     // -------------手機版輪播
     .groupPhoneCardBlogCarousel {
         // border: 1px solid red;
         width: 100%;
         margin-top: 40px;
         margin-bottom: 40px;
-
         .innerBlog {
             // border: 1px solid blue;
             // padding: 0 auto;
@@ -178,7 +155,6 @@ a {
             margin: 0 auto;
             height: 500px;
         }
-
         .groupCarouselIcon {
             background-color: $colorMain1;
             width: 30px;
