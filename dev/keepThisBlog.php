@@ -1,5 +1,5 @@
 <?php
-//   session_start();
+  session_start();
 //   $memInfo = $_SESSION["Mem_NO"];
 
     $memberNo = $_POST["keepMemberNo"];
