@@ -37,6 +37,12 @@ try {
     $blogPop = $pdo->prepare($sql_bPop);
     $blogPop->execute();
 
+    //先確認是否有登入
+    $sql_login ="select * from membertable where Mem_NO =:memNo";
+    $loginstatus = $pdo->prepare($sql_login);
+    $loginstatus-> bindValue(":memNo",$_SESSION["Mem_NO"]);
+    $loginstatus->execute();
+
 
      //取得遊記收藏狀態
      $sql_keepStatus = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
@@ -124,69 +130,69 @@ try {
 
 
        //點擊收藏遊記
-       $("#blogkeepBtn").click(function(){
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+    //    $("#blogkeepBtn").click(function(){
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload = function(){
+    //         let member = '<?php echo $_SESSION["Mem_NO"];?>';
 
-            if(member==''){
-                alert('請先登入');
-            }else{
-                if(xhr.status==200){
-                    $("#blogkeepBtn").css("display","none");
-                    $("#blogkeepBtn_1").css("display","inline-block");
-                    alert('已收藏此遊記');
-                }else{
-                    alert(xhr.status);
-                }
-            }          
-        }
-        xhr.open("post", "keepThisBlog.php", true);
-        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    //         if(member==''){
+    //             alert('請先登入');
+    //         }else{
+    //             if(xhr.status==200){
+    //                 $("#blogkeepBtn").css("display","none");
+    //                 $("#blogkeepBtn_1").css("display","inline-block");
+    //                 alert('已收藏此遊記');
+    //             }else{
+    //                 alert(xhr.status);
+    //             }
+    //         }          
+    //     }
+    //     xhr.open("post", "keepThisBlog.php", true);
+    //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
-        xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
-    });
+    //     let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+    //     let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+    //     xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
+    // });
 
 
       //點擊取消收藏遊記
-  $("#blogkeepBtn_1").click(function(){
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if(xhr.status==200){
-                $("#blogkeepBtn").css("display","inline-block");
-                $("#blogkeepBtn_1").css("display","none");
-                alert('已取消收藏此遊記');
-            }else{
-                alert(xhr.status);
-            }
-        }
-        xhr.open("post", "cancelKeepThisBlog.php", true);
-        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+//   $("#blogkeepBtn_1").click(function(){
+//         let xhr = new XMLHttpRequest();
+//         xhr.onload = function(){
+//             if(xhr.status==200){
+//                 $("#blogkeepBtn").css("display","inline-block");
+//                 $("#blogkeepBtn_1").css("display","none");
+//                 alert('已取消收藏此遊記');
+//             }else{
+//                 alert(xhr.status);
+//             }
+//         }
+//         xhr.open("post", "cancelKeepThisBlog.php", true);
+//         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
-        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
-        xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
-  });
+//         let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+//         let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
+//         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
+//   });
 
 
 
-    function keepThisBlog(){
-        if('<?php echo $_SESSION["Mem_NO"]?>'){   
-        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
-        if(keepStatus == ''){
-                $("#blogkeepBtn").css("display","inline-block");
-                $("#blogkeepBtn_1").css("display","none");
-            }else{
-                $("#blogkeepBtn").css("display","none");
-                $("#blogkeepBtn_1").css("display","inline-block");
-            }
-         }
-    }
+    // function keepThisBlog(){
+    //     if('<?php echo $_SESSION["Mem_NO"]?>'){   
+    //     let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
+    //     if(keepStatus == ''){
+    //             $("#blogkeepBtn").css("display","inline-block");
+    //             $("#blogkeepBtn_1").css("display","none");
+    //         }else{
+    //             $("#blogkeepBtn").css("display","none");
+    //             $("#blogkeepBtn_1").css("display","inline-block");
+    //         }
+    //      }
+    // }
 
 
-  window.addEventListener("load",keepThisBlog,false); 
+//   window.addEventListener("load",keepThisBlog,false); 
 
    
 </script>
