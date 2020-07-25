@@ -118,27 +118,6 @@ try {
     // }
 
 
-// $("#blogkeepBtn").click(function(){
-//     let xhr = new XMLHttpRequest();
-//     xhr.onload=function(){
-//         let member = '<?php echo $_SESSION["Mem_NO"];?>';
-//         if(member== ''){
-//             alert('請先登入');
-//         }else{
-//            if(xhr.status==200){
-//             $("#blogkeepBtn").text("取消收藏");
-//             alert('已收藏此遊記');
-//            }else{
-//             alert(xhr.status);
-//            }
-//         }
-//     }
-//     xhr.open("get","keepThisBlog.php",true);
-//     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-//     xhr.send();
-// });
-
-
 //點擊遊記收藏
 function keepTheBlog(){
   let blogNo = <?=$blogArticleInfo["Blog_NO"];?>;
@@ -149,7 +128,7 @@ function keepTheBlog(){
         alert(xhr.responseText);          
       }
     }
-    xhr.open("post", "checkThisBlog.php", true);
+    xhr.open("post", "keepThisBlog.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     xhr.send(`blogNo=${blogNo}`);              
     
