@@ -63,6 +63,7 @@ a {
                 font-size: $content;
             }
             #blogkeepBtn_1 {
+                @include button(120px, 40px, $colorMain1, $colorSecondary2, $colorMain1);
                 font-size: $content;
                 display: none;
             }

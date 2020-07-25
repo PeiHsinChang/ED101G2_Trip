@@ -99,10 +99,10 @@ try {
                 while($blogPopInfo = $blogPop->fetch(PDO::FETCH_ASSOC)){
             ?>
             <div class="blogAds">
-                <img src="<?=$blogPopInfo["Blog_PicURL"];?>" alt="..." style="width:100%;">
-                <div class="adsMask">
-                    <p><?=$blogPopInfo["Blog_Name"];?></p>
-                </div>
+                   <img src="<?=$blogPopInfo["Blog_PicURL"];?>" alt="..." style="width:100%;">
+                    <div class="adsMask">
+                        <p><?=$blogPopInfo["Blog_Name"];?></p>
+                    </div>
             </div>
             <?php
                 }
@@ -129,7 +129,7 @@ try {
 
  //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
-        let keepStatus = '<?php echo $keepBlogStatusResult['Keep_Blog_NO'];?>';
+        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
         if(keepStatus == ''){
             $("#blogkeepBtn").css("display","inline-block");
             $("#btnsActBtn_1").css("display","none");
@@ -138,12 +138,8 @@ try {
             $("#btnsActBtn_1").css("display","inline-block");
     }
 
-    function blogShow(){
-        checkKeepThisBlog();
-        
-    }
     //window.onload
-    window.addEventListener("load",blogShow,false); 
+    window.addEventListener("load",checkKeepThisBlog,false); 
     
   //點擊收藏遊記
     $("#blogkeepBtn").click(function(){
@@ -181,7 +177,7 @@ try {
             }else{
                 alert(xhr.status);
             }
-        }
+        } 
         xhr.open("post", "cancelKeepThisBlog.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
