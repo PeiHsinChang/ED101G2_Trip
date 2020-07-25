@@ -1,10 +1,11 @@
 <?php  
 
-session_start();
+
     try {
         require_once("connectMemberTable.php");
-       
-
+        session_start();
+    
+    
 
         //遊記內文
         $sql_b = 
@@ -40,11 +41,11 @@ session_start();
 
         //check blog status
         $BlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
-        $keepBlogStatus = $pdo->prepare($BlogStatus_sql);
-        $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
-        $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
-        $keepBlogStatus->execute();
-        $keepBlogStatusResult = $keepBlogStatus->fetchAll(PDO::FETCH_ASSOC);
+        $BlogStatus = $pdo->prepare($BlogStatus_sql);
+        $BlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
+        $BlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
+        $BlogStatus->execute();
+        $BlogStatusResult = $BlogStatus->fetchAll(PDO::FETCH_ASSOC);
         
     } catch (PDOException $e) {
         // echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
@@ -126,7 +127,7 @@ session_start();
 
     //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
-        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
+        let keepStatus = '<?php echo $BlogStatusResult['keep_Blog_NO'];?>';
         if(keepStatus == ''){
             $("#blogkeepBtn").css("display","inline-block");
             $("#blogkeepBtn_1").css("display","none");
