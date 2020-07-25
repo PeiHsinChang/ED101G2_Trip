@@ -41,7 +41,7 @@ try {
     $getBlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
     $keepBlogStatus = $pdo->prepare($getBlogStatus_sql);
     $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
-    $keepBlogStatus->bindValue(":blogNo", $_POST["blogNo"]);
+    $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
     $keepBlogStatus->execute();
     $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
      
@@ -112,7 +112,7 @@ try {
 
 </div>
 
-<h5><?php print_r($blogArticleInfo);?></h5>
+<!-- <h5><?php print_r($blogArticleInfo);?></h5> -->
 
 
 
