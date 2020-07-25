@@ -2,7 +2,7 @@
 <div class="container1">
     <div class="carousel1">
         <div id="BlogCarousel_deskA" name="BlogCarousel_deskA">
-            <a href="">
+            <a :href="'blogInside.php?Blog_NO=' + BlogCarousel_As.Blog_NO">
                 <div v-for="BlogCarousel_A in BlogCarousel_As" class="item a" id="a">
                     <span class="mask">
                         <p>{{BlogCarousel_As.Blog_Name}}</p>
@@ -12,7 +12,7 @@
             </a>
         </div>
         <div id="BlogCarousel_deskB" name="BlogCarousel_deskB">
-            <a href="">
+            <a :href="'blogInside.php?Blog_NO=' + BlogCarousel_Bs.Blog_NO">
                 <div v-for="BlogCarousel_B in BlogCarousel_Bs" class="item b" id="b">
                     <!--增加名稱id for database-->
                     <span class="mask">
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div id="BlogCarousel_deskC" name="BlogCarousel_deskC">
-            <a href="">
+            <a :href="'blogInside.php?Blog_NO=' + BlogCarousel_Cs.Blog_NO">
                 <div v-for="BlogCarousel_C in BlogCarousel_Cs" class="item c" id="c">
                     <span class="mask">
                         <p>{{BlogCarousel_Cs.Blog_Name}}</p>
@@ -33,7 +33,7 @@
             </a>
         </div>
         <div id="BlogCarousel_deskD" name="BlogCarousel_deskD">
-            <a href="">
+            <a :href="'blogInside.php?Blog_NO=' + BlogCarousel_Ds.Blog_NO">
                 <div v-for="BlogCarousel_D in BlogCarousel_Ds" class="item d" id="d">
                     <span class="mask">
                         <p>{{BlogCarousel_Ds.Blog_Name}}</p>
@@ -43,7 +43,7 @@
             </a>
         </div>
         <div id="BlogCarousel_deskE" name="BlogCarousel_deskE">
-            <a href="">
+            <a :href="'blogInside.php?Blog_NO=' + BlogCarousel_Es.Blog_NO">
                 <div v-for="BlogCarousel_E in BlogCarousel_Es" class="item e" id="e">
                     <span class="mask">
                         <p>{{BlogCarousel_Es.Blog_Name}}</p>
@@ -92,7 +92,7 @@
 
         </div>
 
-        <div id="BlogCarousel_deskH" name="BlogCarousel_deskH" class="carousel-item " style="height: 500px;">
+        <div id="BlogCarousel_deskH" name="BlogCarousel_deskH" class="carousel-item" style="height: 500px;">
 
             <img :src="BlogCarousel_Hs.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
             <div class="carousel-caption d-none d-md-block carouselmask">
@@ -101,7 +101,7 @@
 
         </div>
 
-        <div id="BlogCarousel_deskI" name="BlogCarousel_deskI" class="carousel-item " style="height: 500px;">
+        <div id="BlogCarousel_deskI" name="BlogCarousel_deskI" class="carousel-item" style="height: 500px;">
 
             <img :src="BlogCarousel_Is.Blog_PicURL" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
             <div class="carousel-caption d-none d-md-block carouselmask">
@@ -110,7 +110,7 @@
 
         </div>
 
-        <div id="BlogCarousel_deskJ" name="BlogCarousel_deskJ" class="carousel-item " style="height: 500px;">
+        <div id="BlogCarousel_deskJ" name="BlogCarousel_deskJ" class="carousel-item" style="height: 500px;">
 
             <img :src="BlogCarousel_Js.Group_pic" class="d-block w-100 h-100" alt="..." style="object-fit: cover;">
             <div class="carousel-caption d-none d-md-block carouselmask">
@@ -155,14 +155,14 @@
     }
 
     //每五秒自動輪播一次
-    setInterval(function () {
+    setInterval(function() {
         var e = document.createEvent("MouseEvents");
         e.initEvent("click", true, true);
         document.getElementById("next").dispatchEvent(e);
     }, 5000);
 </script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         let imgCount = $('.carousel1>div').length;
         //依照div數量產生長方形
         //更動為依照div下一層的div數量產生方塊（避免多層影響）
@@ -174,7 +174,7 @@
     });
 
     let count = 0;
-    $('.next').click(function () {
+    $('.next').click(function() {
         if (count < 4) {
             $('.boxes div').removeClass('clickMe');
             count += 1;
@@ -185,7 +185,7 @@
             $(`.boxes div:nth-child(${count+1})`).addClass('clickMe');
         }
     });
-    $('.prev').click(function () {
+    $('.prev').click(function() {
         if (count > 0) {
             $('.boxes div').removeClass('clickMe');
             count -= 1;

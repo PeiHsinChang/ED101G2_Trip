@@ -1,5 +1,4 @@
-<?php
-  
+<?php  
 try {
     require_once("connectMemberTable.php");
     session_start();
@@ -48,7 +47,10 @@ try {
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    
+   
+
 }
 ?>
 
@@ -164,7 +166,7 @@ try {
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
         let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-        let blogNo = '<?=$blogArticleInfo["Blog_NO"];?>';
+        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
         xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
     });
 
@@ -184,7 +186,7 @@ try {
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
  
         let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
-        let blogNo = '<?=$blogArticleInfo["Blog_NO"];?>';
+        let blogNo = '<?php echo $blogArticleInfo["Blog_NO"];?>';
         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
     });
 
