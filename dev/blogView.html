@@ -3,54 +3,50 @@
 @@include('./htmlTemplate/head.html')
 
 <style>
-  .nav-linkblogView::after {
-    width: 100% !important;
-  }
-   /* scrollbar hidden */
-   html {
-    overflow: -moz-hidden-unscrollable;
-    height: 100%;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
-  }
-
-  body {
-    -ms-overflow-style: none;
-    height: 100%;
-	/* width: calc(100vw + 18px); */
-	overflow: auto;
-  }
+    .nav-linkblogView::after {
+        width: 100% !important;
+    }
+    /* scrollbar hidden */
+    
+    html {
+        overflow: -moz-hidden-unscrollable;
+        height: 100%;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    
+    body {
+        -ms-overflow-style: none;
+        height: 100%;
+        width: calc(100vw + 18px);
+        overflow: auto;
+    }
 </style>
 
 <body>
-  @@include('./htmlTemplate/nav.html')
-  @@include('./htmlTemplate/sliderBlog.html')
-  @@include('./htmlTemplate/mainBlogView.html')
-  @@include('./htmlTemplate/footer.html')
+    @@include('./htmlTemplate/nav.html') @@include('./htmlTemplate/sliderBlog.html') @@include('./htmlTemplate/mainBlogView.html') @@include('./htmlTemplate/footer.html')
 
 
 </body>
 <script src="./js/carouselBlog.js"></script>
 
+
 </html>
 <script>
-  //點擊收藏此遊記
-  function checkKeepBlog(obj){
-  let blogNo = obj.dataset.blogno;
-  console.log(blogNo);
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-      if(xhr.status == 200){
-        alert(xhr.responseText);          
-      }
-    }
-    xhr.open("post", "checkThisBlog.php", true);
-    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    xhr.send(`blogNo=${blogNo}`);              
-    
-  };
-
- 
+    //點擊收藏此遊記
+    function checkKeepBlog(obj) {
+        let blogNo = obj.dataset.blogno;
+        console.log(blogNo);
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        }
+        xhr.open("post", "checkThisBlog.php", true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        xhr.send(`blogNo=${blogNo}`);
+    };
 </script>

@@ -8,7 +8,7 @@ try{
     //change to require once after done 
     require_once("connectMemberTable.php");
     
-    $sql = "Select  Blog_Name , Blog_PicURL from Blog where Blog_Status=1 order by Blog_NO desc limit 5";
+    $sql = "Select Blog_NO, Blog_Name , Blog_PicURL from Blog where Blog_Status=1 order by Blog_NO desc limit 5";
     // $sql="select * from GroupTable limit 5";
     //畫面需要的sql
     $carouselBlog = $pdo->query($sql);
@@ -16,7 +16,7 @@ try{
     // $carouselGroupInfo=array();
 
     $carouselBlogRows=$carouselBlog->fetchAll(PDO::FETCH_ASSOC);
-    // print_r($carouselGroupRows);
+    //print_r($carouselGroupRows);
     // die;
 
     echo json_encode($carouselBlogRows,JSON_UNESCAPED_UNICODE);
