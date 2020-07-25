@@ -1,10 +1,12 @@
 <?php
-   $memberNo =  $_POST["keepMemberNo"];
-   $blogNo =  $_POST["keepBlogNo"];
+
+
+   $memberNo =  $_POST["cancelKeepMemberNo"];
+   $blogNo =  $_POST["cancelKeepBlogNo"];
 
    try{
         require_once("connectMemberTable.php");
-        $sql = "insert into Keep_Blog (Mem_NO, Blog_NO) values (:memNo, :blogNo);";
+        $sql = "delete from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
         $keepGroup = $pdo->prepare($sql);
         $keepGroup->bindValue(":memNo", $memberNo);
         $keepGroup->bindValue(":groupNo", $blogNo);

@@ -37,7 +37,13 @@ try {
     $blogPop = $pdo->prepare($sql_bPop);
     $blogPop->execute();
 
-
+    //check blog status
+    $getBlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
+    $keepBlogStatus = $pdo->prepare($getBlogStatus_sql);
+    $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
+    $keepBlogStatus->bindValue(":blogNo", $_POST["blogNo"]);
+    $keepBlogStatus->execute();
+    $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
      
 } catch (PDOException $e) {
 	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
@@ -71,8 +77,8 @@ try {
                 </tr>
             </table>
             <div class="btnKeep">
-                <button type="button" class="btnMid" id="blogkeepBtn" onclick="keepTheBlog()"> 收藏</button>
-                <!-- <button class="btnMid" id="blogkeepBtn_1">取消收藏</button> -->
+                <button class="btnMid" id="blogkeepBtn"> 收藏</button>
+                <button class="btnMid" id="blogkeepBtn_1">取消收藏</button>
             </div>
         </div>
     </div>
@@ -107,7 +113,7 @@ try {
 </div>
 
 <h5><?php print_r($blogArticleInfo);?></h5>
-<?php echo $_SESSION["Mem_NO"];?>
+
 
 
 
@@ -119,18 +125,84 @@ try {
 
 
 //點擊遊記收藏
-function keepTheBlog(){
-  let blogNo = <?=$blogArticleInfo["Blog_NO"];?>;
-  console.log(blogNo);
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-      if(xhr.status == 200){
-        alert(xhr.responseText);          
-      }
+// function keepTheBlog(obj){
+//   let blogNo = <?=$blogArticleInfo["Blog_NO"];?>;
+//   console.log(blogNo);
+//     let xhr = new XMLHttpRequest();
+//     xhr.onload = function(){
+//       if(xhr.status == 200){
+//         alert(xhr.responseText);          
+//       }
+//     }
+//     xhr.open("post", "keepThisBlog.php", true);
+//     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+//     xhr.send(`blogNo=${blogNo}`);   
+//   };
+
+
+ //loading之後判斷是否已經收藏此遊記
+    function checkKeepThisBlog(){
+        let keepStatus = '<?php echo $keepBlogStatusResult['Keep_Blog_NO'];?>';
+        if(keepStatus == ''){
+            $("#blogkeepBtn").css("display","inline-block");
+            $("#btnsActBtn_1").css("display","none");
+        }else{
+            $("#blogkeepBtn").css("display","none");
+            $("#btnsActBtn_1").css("display","inline-block");
     }
-    xhr.open("post", "checkThisBlog.php", true);
-    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    xhr.send(`blogNo=${blogNo}`);   
-  };
+
+    function blogShow(){
+        checkKeepThisBlog();
+        
+    }
+    //window.onload
+    window.addEventListener("load",blogShow,false); 
+    
+  //點擊收藏遊記
+    $("#blogkeepBtn").click(function(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            let member = '<?php echo $_SESSION["Mem_NO"];?>';
+            if(member==''){
+                alert('請先登入')
+            }else{
+                if(xhr.status==200){
+                    $("#blogkeepBtn").css("display","none");
+                    $("#btnsActBtn_1").css("display","inline-block");
+                    alert('已收藏此團');
+                }else{
+                    alert(xhr.status);
+                }
+            }          
+        }
+        xhr.open("post", "keepThisBlog.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let blogNo = '<?=$blogArticleInfo["Blog_NO"];?>';
+        xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
+    });
+
+//點擊刪除遊記
+    $("#blogkeepBtn_1").click(function(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status==200){
+                $("#blogkeepBtn").css("display","inline-block");
+                $("#blogkeepBtn_1").css("display","none");
+                alert('已取消收藏此團');
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("post", "cancelKeepThisBlog.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+ 
+        let memberNo = '<?php echo $_SESSION["Mem_NO"];?>';
+        let blogNo = '<?=$blogArticleInfo["Blog_NO"];?>';
+        xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
+    });
+
+
 
 </script>
