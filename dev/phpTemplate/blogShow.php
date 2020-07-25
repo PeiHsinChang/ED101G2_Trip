@@ -37,14 +37,14 @@ session_start();
         $blogPop = $pdo->prepare($sql_bPop);
         $blogPop->execute();
 
-        //check blog status
-        $BlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
-        $BlogStatus = $pdo->prepare($BlogStatus_sql);
-        $BlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
-        $BlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
-        $BlogStatus->execute();
-        $BlogStatusResult = $BlogStatus->fetchAll(PDO::FETCH_ASSOC);
-        
+        //取得收藏遊記狀態
+        $sql_bStatus = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
+        $keepBlogStatus = $pdo->prepare($sql_bStatus);
+        $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
+        $keepBlogStatus->bindValue(":blogNo", $_GET["Blog_NO"]);
+        $keepBlogStatus->execute();
+        $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
         // echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
         echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -110,6 +110,7 @@ session_start();
 
 
 <!-- <h5><?php print_r($blogArticleInfo);?></h5> -->
+<?php print_r($keepBlogStatusResult);?>
 
 
 
@@ -125,15 +126,16 @@ session_start();
 
     //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
-        let keepStatus = '<?php echo $BlogStatusResult['keep_Blog_NO'];?>';
+        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
         if(keepStatus == ''){
             $("#blogkeepBtn").css("display","inline-block");
             $("#blogkeepBtn_1").css("display","none");
         }else{
             $("#blogkeepBtn").css("display","none");
             $("#blogkeepBtn_1").css("display","inline-block");
-        };
-    };
+        }
+    }
+
 
        //window.onload
        window.addEventListener("load",checkKeepThisBlog,false); 
