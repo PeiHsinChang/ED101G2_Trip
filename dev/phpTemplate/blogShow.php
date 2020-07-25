@@ -1,11 +1,9 @@
 <?php  
 
-
+session_start();
     try {
         require_once("connectMemberTable.php");
-        session_start();
-    
-    
+
 
         //遊記內文
         $sql_b = 
