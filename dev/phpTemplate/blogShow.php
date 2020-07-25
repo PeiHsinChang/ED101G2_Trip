@@ -125,8 +125,6 @@ try {
     //     myModal.style.display = "block ";
     // }
 
-
-
  //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
         let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
@@ -152,7 +150,7 @@ try {
                 if(xhr.status==200){
                     $("#blogkeepBtn").css("display","none");
                     $("#btnsActBtn_1").css("display","inline-block");
-                    alert('已收藏此團');
+                    alert('已收藏此遊記');
                 }else{
                     alert(xhr.status);
                 }
@@ -173,7 +171,7 @@ try {
             if(xhr.status==200){
                 $("#blogkeepBtn").css("display","inline-block");
                 $("#blogkeepBtn_1").css("display","none");
-                alert('已取消收藏此團');
+                alert('已取消收藏此遊記');
             }else{
                 alert(xhr.status);
             }
