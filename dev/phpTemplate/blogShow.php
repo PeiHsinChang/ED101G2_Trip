@@ -1,60 +1,55 @@
 <?php  
-try {
-    require_once("connectMemberTable.php");
-    session_start();
-  
-
-   //遊記內文
-    $sql_b = 
-        "select * 
-        from blog b,membertable m
-        where b.mem_no = m.mem_no
-        and b.Blog_NO=:Blog_NO;";
-
-	$blogArticle = $pdo->prepare($sql_b);
-	$blogArticle->bindValue(":Blog_NO", $_GET["Blog_NO"]);
-    $blogArticle->execute();
-    $blogArticleInfo = $blogArticle->fetch(PDO::FETCH_ASSOC);
-
-
-    //遊記照片
-    $sql_bPic=
-    "select * 
-    from blog_pic bp
-    where Blog_NO=:Blog_NO;";
-    $blogPic = $pdo->prepare($sql_bPic);
-    $blogPic->bindValue(":Blog_NO", $_GET["Blog_NO"]);
-    $blogPic->execute();
-    $blogPicInfo = $blogPic->fetch(PDO::FETCH_ASSOC);
-
-    //遊記廣告
-    $sql_bPop=
-    "select * 
-    from blog
-    order by Blog_Views desc
-    limit 4;";
-    $blogPop = $pdo->prepare($sql_bPop);
-    $blogPop->execute();
-
-    //check blog status
-    $getBlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
-    $keepBlogStatus = $pdo->prepare($getBlogStatus_sql);
-    $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
-    $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
-    $keepBlogStatus->execute();
-    $keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC);
-     
-} catch (PDOException $e) {
-	// echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
-	echo "錯誤行號 : ", $e->getLine(), "<br>";
-    echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    try {
+        require_once("connectMemberTable.php");
+        session_start();
     
-   
 
-}
+        //遊記內文
+        $sql_b = 
+            "select * 
+            from blog b,membertable m
+            where b.mem_no = m.mem_no
+            and b.Blog_NO=:Blog_NO;";
+
+        $blogArticle = $pdo->prepare($sql_b);
+        $blogArticle->bindValue(":Blog_NO", $_GET["Blog_NO"]);
+        $blogArticle->execute();
+        $blogArticleInfo = $blogArticle->fetch(PDO::FETCH_ASSOC);
+
+
+        //遊記照片
+        $sql_bPic=
+        "select * 
+        from blog_pic bp
+        where Blog_NO=:Blog_NO;";
+        $blogPic = $pdo->prepare($sql_bPic);
+        $blogPic->bindValue(":Blog_NO", $_GET["Blog_NO"]);
+        $blogPic->execute();
+        $blogPicInfo = $blogPic->fetch(PDO::FETCH_ASSOC);
+
+        //遊記廣告
+        $sql_bPop=
+        "select * 
+        from blog
+        order by Blog_Views desc
+        limit 4;";
+        $blogPop = $pdo->prepare($sql_bPop);
+        $blogPop->execute();
+
+        //check blog status
+        $getBlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
+        $keepBlogStatus = $pdo->prepare($getBlogStatus_sql);
+        $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
+        $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
+        $keepBlogStatus->execute();
+        $keepBlogStatusResult = $keepBlogStatus->fetchAll(PDO::FETCH_ASSOC);
+        
+    } catch (PDOException $e) {
+        // echo "系統暫時無法提供服務, 請通知系統維護人員<br>";
+        echo "錯誤行號 : ", $e->getLine(), "<br>";
+        echo "錯誤原因 : ", $e->getMessage(), "<br>";
+    }
 ?>
-
-
 
 
 <div class="containerBlog">
@@ -112,20 +107,35 @@ try {
     </div>
 </div>
 
-</div>
 
 <!-- <h5><?php print_r($blogArticleInfo);?></h5> -->
 
 
 
-
 <script>
-    // var btnOpen = document.getElementById('btnOpen');
+
+     // var btnOpen = document.getElementById('btnOpen');
     // btnOpen.onclick = function() {
     //     myModal.style.display = "block ";
     // }
 
- //loading之後判斷是否已經收藏此遊記
+
+     function checkKeepThisBlog(){
+        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
+        if(keepStatus == ''){
+            $("#blogkeepBtn").css("display","inline-block");
+            $("#btnsActBtn_1").css("display","none");
+        }else{
+            $("#blogkeepBtn").css("display","none");
+            $("#btnsActBtn_1").css("display","inline-block");
+        };
+    }
+
+    //window.onload
+    window.addEventListener("load",checkKeepThisBlog,false); 
+
+
+    //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
         let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
         if(keepStatus == ''){
@@ -134,12 +144,11 @@ try {
         }else{
             $("#blogkeepBtn").css("display","none");
             $("#btnsActBtn_1").css("display","inline-block");
-    }
+        };
+    };
 
-    //window.onload
-    window.addEventListener("load",checkKeepThisBlog,false); 
-    
-  //點擊收藏遊記
+
+    //點擊收藏遊記
     $("#blogkeepBtn").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -164,7 +173,8 @@ try {
         xhr.send('keepMemberNo='+memberNo +'&keepBlogNo='+blogNo);   
     });
 
-//點擊刪除遊記
+
+    //點擊刪除遊記
     $("#blogkeepBtn_1").click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -184,6 +194,29 @@ try {
         xhr.send('cancelKeepMemberNo='+memberNo +'&cancelKeepBlogNo='+blogNo);   
     });
 
-
-
 </script>
+
+
+    
+
+     
+
+ 
+ 
+        
+    
+
+
+   
+
+
+   
+
+
+
+    
+ 
+
+
+
+
