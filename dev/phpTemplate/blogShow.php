@@ -124,21 +124,6 @@ try {
     // }
 
 
-//點擊遊記收藏
-// function keepTheBlog(obj){
-//   let blogNo = <?=$blogArticleInfo["Blog_NO"];?>;
-//   console.log(blogNo);
-//     let xhr = new XMLHttpRequest();
-//     xhr.onload = function(){
-//       if(xhr.status == 200){
-//         alert(xhr.responseText);          
-//       }
-//     }
-//     xhr.open("post", "keepThisBlog.php", true);
-//     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-//     xhr.send(`blogNo=${blogNo}`);   
-//   };
-
 
  //loading之後判斷是否已經收藏此遊記
     function checkKeepThisBlog(){
