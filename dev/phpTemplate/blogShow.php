@@ -1,8 +1,10 @@
 <?php  
+
+session_start();
     try {
         require_once("connectMemberTable.php");
-        session_start();
-    
+       
+
 
         //遊記內文
         $sql_b = 
@@ -37,8 +39,8 @@
         $blogPop->execute();
 
         //check blog status
-        $getBlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
-        $keepBlogStatus = $pdo->prepare($getBlogStatus_sql);
+        $BlogStatus_sql = "select * from Keep_Blog where Mem_NO=:memNo and Blog_NO=:blogNo";
+        $keepBlogStatus = $pdo->prepare($BlogStatus_sql);
         $keepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
         $keepBlogStatus->bindValue(":blogNo", $_POST["Blog_NO"]);
         $keepBlogStatus->execute();
@@ -119,20 +121,7 @@
     //     myModal.style.display = "block ";
     // }
 
-
-     function checkKeepThisBlog(){
-        let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
-        if(keepStatus == ''){
-            $("#blogkeepBtn").css("display","inline-block");
-            $("#btnsActBtn_1").css("display","none");
-        }else{
-            $("#blogkeepBtn").css("display","none");
-            $("#btnsActBtn_1").css("display","inline-block");
-        };
-    }
-
-    //window.onload
-    window.addEventListener("load",checkKeepThisBlog,false); 
+ 
 
 
     //loading之後判斷是否已經收藏此遊記
@@ -140,12 +129,15 @@
         let keepStatus = '<?php echo $keepBlogStatusResult['keep_Blog_NO'];?>';
         if(keepStatus == ''){
             $("#blogkeepBtn").css("display","inline-block");
-            $("#btnsActBtn_1").css("display","none");
+            $("#blogkeepBtn_1").css("display","none");
         }else{
             $("#blogkeepBtn").css("display","none");
-            $("#btnsActBtn_1").css("display","inline-block");
+            $("#blogkeepBtn_1").css("display","inline-block");
         };
     };
+
+       //window.onload
+       window.addEventListener("load",checkKeepThisBlog,false); 
 
 
     //點擊收藏遊記
@@ -158,7 +150,7 @@
             }else{
                 if(xhr.status==200){
                     $("#blogkeepBtn").css("display","none");
-                    $("#btnsActBtn_1").css("display","inline-block");
+                    $("#blogkeepBtn_1").css("display","inline-block");
                     alert('已收藏此遊記');
                 }else{
                     alert(xhr.status);
