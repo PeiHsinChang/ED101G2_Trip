@@ -276,7 +276,7 @@
         
         // evt.currentTarget.className += "active";
 
-        <?php
+    <?php
         $isLogin = false;
         $sessionMemno = '';
         $sessionMemid = '';
@@ -291,10 +291,8 @@
             $sessionMemid = $_SESSION['Mem_Id'];
         }
         ?>
-
-
         let sessionMemno = '<?php echo $sessionMemno; ?>';
-        let isban = <?php echo $sessionMemStatus; ?>=='0'?true:false;
+        let isban = '<?php echo $sessionMemStatus; ?>'=='0'?true:false;
         let isUsrLeader = false;
         if (sessionMemno == '<?php echo $groupShowInfo["Mem_NO"];?>') {
             isUsrLeader = true;
@@ -333,36 +331,23 @@
                         }
                         keyArray.sort((x,y) => x - y);
                         //取得key值排序
-                        let memPhoto = '<?php echo $groupShowInfo["Mem_Photo"]?>';
-                        let memidx = '<?php echo $groupShowInfo["Mem_Id"]?>';
+                        let memPhoto = "<?php echo $groupShowInfo["Mem_Photo"]?>";
+                        let memidx = "<?php echo $groupShowInfo["Mem_Id"]?>";
                         console.log(keyArray);
                         for (i = 0;i<keyArray.length;i++){
                             let keyName =  keyArray[i];
                             console.log(blockChat[keyName]);
                             let block =  (blockChat[keyName])[0];
                             let tableid = block["Group_NO"]+'_'+block["main_mem"]+'_'+block["Block_NO"];
-                            let memberNo = '<?php echo $_SESSION["Mem_NO"]; ?>';
-                            let isUsrLeader = false;
-                            if (memberNo == block["main_mem"]) {
-                                isUsrLeader = true;
-                            }
                             let msgBook = $('#msgBook');
                             let blockTable = $('<table>').prop('id',tableid);
                             let replied = false;
                             if((blockChat[keyName])[0]){
                                 for (j=0;j<(blockChat[keyName]).length;j++){
-                                    // blockTable.append(
-                                    //     $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img onclick=\"myFunction(\''+tableid+'\')">').attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
-                                    //         .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id)).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
-                                    
                                     blockTable.append(
-                                    $('<tr></tr>').append($('<td>').attr('rowspan',3)
-                                    .append($('<img onclick=\"myFunction(\''+tableid+'\')">')
-                                    .attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
-                                    .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id))
-                                    ));
-
-                                    blockTable.append($('<tr>').append($('<td>').attr('class','replies').html(((blockChat[keyName])[j]).Msg_Cont).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
+                                        $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img onclick=\"myFunction(\''+tableid+'\')">').attr({'class':'commentor','src':((blockChat[keyName])[j]).Mem_Photo})))
+                                            .append($('<td>').append($('<span>').html(((blockChat[keyName])[j]).Mem_Id)).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Date))));
+                                    blockTable.append($('<tr>').append($('<td>').attr('class','replies').html(((blockChat[keyName])[j]).Msg_Cont)));
                                     if (((blockChat[keyName])[j]).Msg_Re && ((blockChat[keyName])[j]).Msg_Re_Date){
                                         blockTable.append($('<tr>').append($('<td>').attr({class:'replies',id:tableid+'leaderReAppend'}).text('答覆： '+((blockChat[keyName])[j]).Msg_Re).append($('<time>').text(' '+((blockChat[keyName])[j]).Msg_Re_Date))));
                                         replied = true
@@ -371,7 +356,7 @@
                                 msgBook.append(blockTable);
 
                             }
-                            let memPhoto = '<?php echo $groupShowInfo["Mem_Photo"]?>';
+                            let memPhoto = "<?php echo $groupShowInfo["Mem_Photo"]?>";
                             if (!replied && isUsrLeader){
                                 //團主回覆用
                                 let leaderTable = $('<table>').prop('id',tableid+'repliedTable');
@@ -384,11 +369,11 @@
 
                         }
                     }
-                    if (!isUsrLeader){
+                    if (!isUsrLeader && isLogin && !isban){
                         $('#guestRepBlock').html('');
                         let gusetTable = $('<table>').prop('id','guestTable');
-                        gusetTable.append( $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img>').attr({'class':'commentor','src':'<?php echo $_SESSION["Mem_Photo"]?>'})))
-                            .append($('<td>').append($('<span>').text('<?php echo $_SESSION["Mem_Id"]?>'))));
+                        gusetTable.append( $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img>').attr({'class':'commentor','src':'<?php echo $sessionMemPhoto;?>'})))
+                            .append($('<td>').append($('<span>').text('<?php echo $sessionMemid?>'))));
                         gusetTable.append($('<td>').append($('<input type="text" id="guestInputx"/><input class="btnSend" onclick=guestSubmitRep() type="button" value="">')));
                         $('#guestRepBlock').append(gusetTable);
                     }
@@ -400,8 +385,6 @@
             });
         }
     }
-
-
     function submitRep(msgFrom) {
         let msg = $('#'+msgFrom+ 'inputMsg').val();
         let data = {};
@@ -413,7 +396,6 @@
             url: 'postMsg.php',
             data: {postData:data},
             success: function(response){
-                alert(response);
                 if (response=='新增留言成功'){
                     let deltableid = '#'+msgFrom+'repliedTable';
                     console.log(deltableid);
@@ -421,9 +403,7 @@
                     let appendMainTable = '#'+ msgFrom;
                     let now = new Date();
                     let timenow = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
-                    $(appendMainTable).append($('<tr>')
-                        .append($('<td>').attr({class:'replies'})
-                        .text('答覆： '+msg).append($('<time>').text(' '+timenow))));
+                    $(appendMainTable).append($('<tr>').append($('<td>').attr({class:'replies'}).text('答覆： '+msg).append($('<time>').text(' '+timenow))));
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
@@ -432,11 +412,10 @@
             }
         });
     };
-
     function guestSubmitRep() {
         let msgObj = {};
-        let guestid = '<?php echo $sessionMemno; ?>';;
-        let groupno = '<?php echo $_GET["Group_NO"]?>';
+        let guestid = '<?php echo $sessionMemno; ?>';
+        let groupno = <?php echo $_GET["Group_NO"]?>;
         var guestMsgContent  = $('#guestInputx').val();
         msgObj.guestid = guestid;
         msgObj.groupno = groupno;
@@ -446,17 +425,14 @@
             url: 'postGuestMsg.php',
             data: {msgObj:msgObj},
             success: function(response){
-                alert(response);
                 if (response=='新增留言成功'){
                     let now = new Date();
                     let timenow = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
                     let postByGuest = $('<table>');
                     postByGuest.append(
-                        $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img>').attr({'class':'commentor','src':'<?php echo $_SESSION["Mem_Photo"]?>'})))
-                            .append($('<td>').append($('<span>').html('<?php echo $_SESSION["Mem_Id"]?>')).append($('<time>').text(' '+timenow))));
+                        $('<tr></tr>').append($('<td>').attr('rowspan',3).append($('<img>').attr({'class':'commentor','src':'<?php echo $sessionMemPhoto?>'})))
+                            .append($('<td>').append($('<span>').html('<?php echo $sessionMemid?>')).append($('<time>').text(' '+timenow))));
                     postByGuest.append($('<tr>').append($('<td>').attr('class','replies').html(guestMsgContent)));
-
-                   
                     $('#msgBook').append(postByGuest);
                     $('#guestInputx').val('');
                    /* let deltableid = '#'+msgFrom+'repliedTable';
@@ -483,10 +459,10 @@
             alert('請登入');
             return false;
         }
-        let groupno = '<?php echo $_GET["Group_NO"]?>';
+        let groupno = <?php echo $_GET["Group_NO"]?>;
         let formdata = formInfo.toString().split('_');
         let block_no = formdata[2].toString();
-        console.log(block_no);
+
         let reportmsg = msg;
         msgObj.guestid = guestid;
         msgObj.groupno = groupno;
