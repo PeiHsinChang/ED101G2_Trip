@@ -130,9 +130,13 @@ function keepTheBlog(){
     }
     xhr.open("post", "keepThisBlog.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    xhr.send(`blogNo=${blogNo}`);              
-    
+    xhr.send(`blogNo=${blogNo}`);   
+
+       
   };
+
+
+
 
    
 </script>
