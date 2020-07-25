@@ -128,15 +128,9 @@ function keepTheBlog(){
         alert(xhr.responseText);          
       }
     }
-    xhr.open("post", "keepThisBlog.php", true);
+    xhr.open("post", "checkThisBlog.php", true);
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     xhr.send(`blogNo=${blogNo}`);   
-
-       
   };
 
-
-
-
-   
 </script>

@@ -30,12 +30,7 @@ if($keepBlogStatus -> rowCount()==0){
   echo "收藏成功";
 }else{
   while($keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC)){
-    echo " <script type=\"text/javascript\">
-    $('#blogkeepBtn').text('已收藏').css({
-        backgroundColor:'white',
-        color:rgb(188, 38, 84),
-        });
-    </script>";
+    echo "已收藏";
   }
 } 
 } catch (PDOException $e) {
@@ -46,3 +41,7 @@ if($keepBlogStatus -> rowCount()==0){
 ?>
 
 
+$('#blogkeepBtn').text('已收藏').css({
+        backgroundColor:'white',
+        color:rgb(188, 38, 84),
+        }); 
