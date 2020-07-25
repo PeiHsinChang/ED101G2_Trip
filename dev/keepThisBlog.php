@@ -3,10 +3,10 @@
 try{
     session_start();
     require_once("connectMemberTable.php");
-    $sql="insert into `Keep_Blog`(Mem_NO, Blog_NO) values (:memNO,:blogNo);";
+    $sql="insert into Keep_Blog(Mem_NO, Blog_NO) values (:memNO,:blogNo)";
     $keepBlog = $pdo->prepare($sql);
     $keepBlog->bindValue(":memNO",$_SESSION["Mem_NO"]);
-    $keepBlog->bindValue(":blogNo",$_POST["Blog_NO"]);
+    $keepBlog->bindValue(":blogNo",$_GET["Blog_NO"]);
     $keepBlog->execute();
     }catch(PDOException $e){
     // echo "錯誤行號:", $e->getLine(),"<br>";
@@ -16,3 +16,4 @@ try{
 ?>
 
 <?php echo $_SESSION["Mem_NO"];?>
+<?php echo $_GET["Blog_NO"]?>

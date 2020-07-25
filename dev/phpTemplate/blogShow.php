@@ -71,7 +71,7 @@ try {
                 </tr>
             </table>
             <div class="btnKeep">
-                <button type="button" class="btnMid" id="blogkeepBtn"> 收藏</button>
+                <button type="button" class="btnMid" id="blogkeepBtn" onclick="keepTheBlog()"> 收藏</button>
                 <!-- <button class="btnMid" id="blogkeepBtn_1">取消收藏</button> -->
             </div>
         </div>
@@ -107,6 +107,7 @@ try {
 </div>
 
 <h5><?php print_r($blogArticleInfo);?></h5>
+<?php echo $_SESSION["Mem_NO"];?>
 
 
 
@@ -117,26 +118,42 @@ try {
     // }
 
 
-$("#blogkeepBtn").click(function(){
-    let xhr = new XMLHttpRequest();
-    xhr.onload=function(){
-        let member = '<?php echo $_SESSION["Mem_NO"];?>';
-        if(member== ''){
-            alert('請先登入');
-        }else{
-           if(xhr.status==200){
-            $("#blogkeepBtn").text("取消收藏");
-            alert('已收藏此遊記');
-           }else{
-            alert(xhr.status);
-           }
-        }
-    }
-    xhr.open("post","keepThisBlog.php",true);
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send();
-});
+// $("#blogkeepBtn").click(function(){
+//     let xhr = new XMLHttpRequest();
+//     xhr.onload=function(){
+//         let member = '<?php echo $_SESSION["Mem_NO"];?>';
+//         if(member== ''){
+//             alert('請先登入');
+//         }else{
+//            if(xhr.status==200){
+//             $("#blogkeepBtn").text("取消收藏");
+//             alert('已收藏此遊記');
+//            }else{
+//             alert(xhr.status);
+//            }
+//         }
+//     }
+//     xhr.open("get","keepThisBlog.php",true);
+//     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+//     xhr.send();
+// });
 
+
+//點擊遊記收藏
+function keepTheBlog(){
+  let blogNo = <?=$blogArticleInfo["Blog_NO"];?>;
+  console.log(blogNo);
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+      if(xhr.status == 200){
+        alert(xhr.responseText);          
+      }
+    }
+    xhr.open("post", "checkThisBlog.php", true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    xhr.send(`blogNo=${blogNo}`);              
+    
+  };
 
    
 </script>
