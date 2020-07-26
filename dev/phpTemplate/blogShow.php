@@ -64,7 +64,7 @@
         <img src="<?=$blogArticleInfo["Blog_PicURL"];?>">
     </div>
 
-    <a href="./writeBlog.html"><img src="./images/writeBlog.png"></a>
+    <!-- <a href="./writeBlog.html"><img src="./images/writeBlog.png"></a> -->
 
     <div class="writerBlog">
         <div class="boxWriter">

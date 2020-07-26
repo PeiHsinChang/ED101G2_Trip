@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once("./phpTemplate/head.php");?> 
+<style>
+        .nav-linkblogView::after {
+        width: 100% !important;
+    }
+</style>
 
 <body>
     <?php require_once("./phpTemplate/nav.php");?> 

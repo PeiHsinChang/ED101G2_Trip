@@ -41,11 +41,7 @@
         </div>
       </div>
       <a class="navSmallCenter" href="main.html"><img src="./images/logo.png" alt=""></a>
-      <div>
-        <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a>
-        <a class="nav-link navSmallRight1" id="qwer" style="text-decoration:none;" data-toggle="modal" data-target="#registerForm">註冊</a> -->
-      </div>
-      <!-- <a class="nav-link navSmallRight" style="text-decoration:none;" data-toggle="modal" data-target="#loginForm">登入</a> -->
+      <div></div>
     </div>
     <div class="container">
       <div class="modal fade" id="loginForm" role="dialog">
@@ -59,7 +55,7 @@
                 </div>    
                     <div class="logincont">           
                         <div class="loginacc">帳號：<input type="text" name="loginacc" size="10" class="loginacc" id="memId" style="margin: 1px;"></div>
-                        <div class="loginpsdw">密碼：<input type="text" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
+                        <div class="loginpsdw">密碼：<input type="password" name="loginpsdw" size="10" class="loginpsdw" id="memPsw" style="margin: 1px;"></div>
                         <div class="logintwobtn">
                         <button type="button" value="Submit"  id="loginbutton" class="loginleftbutton">送出</button>
                         <button type="reset" value="Reset" class="loginrightbutton" id="loginrightbutton" data-dismiss="modal">取消</button>
@@ -84,9 +80,9 @@
                       <div class="enrollname">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稱：<input type="text" class="textbox" id="r_memName" name="r_memName" size="10" style="margin: 1px;" autocomplete="off"></div>                     
                       <div class="enrollacc">帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號：<input type="text" class="accbox" id="r_memId" name="r_memId" size="10" style="margin: 1px;" autocomplete="off"></div>  
                       <div id="accountCheck" style="font-size:12px;"></div>              
-                      <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="text" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div class="enrollpsdw">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼：<input type="password" class="psdwbox" id="r_memPsw" name="r_memPsw" size="10" style="margin: 1px;" autocomplete="off"></div>
                       <div id="passwordCheck" style="font-size:12px;"></div>
-                      <div class="psdwconf">確認密碼：<input type="text" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
+                      <div class="psdwconf">確認密碼：<input type="password" class="accconbox" id="r_memPsw2" name="r_memPsw2" size="10" style="margin: 1px;" autocomplete="off"></div>
                       <div id="passwordCheck2" style="font-size:12px;"></div>
                       <div class="enrollgend">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別：
                           <input type="radio" id="male" name="r_memSex" value="1">
