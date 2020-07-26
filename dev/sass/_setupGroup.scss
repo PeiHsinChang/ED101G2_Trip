@@ -1,10 +1,18 @@
+.AllFormContqainer{
+    // border: 1px solid red;
+    // min-width: 300px;
+    padding-left: 50px;
+    width: 100%;
+    max-width: 500px;
+}
 .startgroupa{
     background-color: $colorSecondary1;
     margin: 0 0 -1 0;
     font-weight: 500;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
-    max-width: 600px;
+    max-width: 500px;
+
 
 }
 .startgroupcont{
@@ -14,8 +22,9 @@
     font-size: $content;
     border-radius: 0 0 5px 5px;
     overflow: hidden;
+    // margin: 0 auto;
+    max-width: 500px;
     margin: 0 auto;
-    max-width: 600px;
 
 }
 .startgtitle{
@@ -63,26 +72,35 @@ input[type="file"] {
 }
 .noticetxthere{
     resize : none;
-    width:430px;
+    width: 300px;
     height:80px;
     vertical-align:top;
     margin-top:10px;
   } 
 .startgroupall{
-    width: 500px;
+    width: 400px;
     color: $colorSecondary3;
+    margin: 0 auto;
 }
 
 .threestatus{
-    display: flex;
-    justify-content: space-around;;
-    margin-left: 150px;
     margin-top: 30px;
     padding: 5px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    transform: translateX(-20px);
 }
+
 @media screen and (max-width: $breakpoint-sm){
+    .AllFormContqainer{
+        padding-left: 10px;
+    
+    }
     .startgroupall{
         width: 100%;
+        padding: 20px 10px 20px 10px;
         min-width: 300px;
     }
     .plusfile{
@@ -96,8 +114,13 @@ input[type="file"] {
         margin: 0px;
     }
     .threestatus{
-        margin: 0px 120px 0px 0px;
-        width: 85%;
+        // margin: 0px 120px 0px 0px;
+        // width: 85%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        width: 120px;
+
     }
 
 }
