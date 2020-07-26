@@ -4,15 +4,19 @@
     font-weight: 500;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+    max-width: 600px;
+
 }
 .startgroupcont{
     // border:1px solid red;
     background-color: $colorMain2;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px 20px 50px;
     font-size: $content;
     border-radius: 0 0 5px 5px;
     overflow: hidden;
     margin: 0 auto;
+    max-width: 600px;
+
 }
 .startgtitle{
     color: $colorMain1;

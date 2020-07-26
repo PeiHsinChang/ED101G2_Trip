@@ -37,7 +37,7 @@
             請選擇一張美麗的封面照片
             <label for="fileupload" class="custom-file-upload">選擇照片</label>
             <input id="fileupload" name="fileupload" type="file"/></br>
-            <img id="myImg" src="images/groupphoto/山1.jpg" alt="your image" style="width:250px;height:150px" />
+            <img id="myImg" src="src="images="/groupphoto/mountain1.jpg" alt="your image" style="width:250px;height:150px" />
             <div class="selectreq">設定參團條件</div>
             <div class="selectreqst">
                 <div class="reqpartend">報名期限：

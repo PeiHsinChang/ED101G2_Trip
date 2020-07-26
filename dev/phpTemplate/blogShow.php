@@ -1,6 +1,6 @@
 <?php  
 
-session_start();
+// session_start();
     try {
         require_once("connectMemberTable.php");
 
