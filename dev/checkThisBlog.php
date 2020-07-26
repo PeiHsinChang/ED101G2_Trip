@@ -26,8 +26,9 @@ if($keepBlogStatus -> rowCount()==0){
     $insertkeepBlogStatus->bindValue(":memNo", $_SESSION["Mem_NO"]);
     $insertkeepBlogStatus->bindValue(":blogNo", $_POST["blogNo"]);
     $insertkeepBlogStatus->execute();
+    echo "收藏成功";
   }
-  echo "收藏成功";
+  
 }else{
   while($keepBlogStatusResult = $keepBlogStatus->fetch(PDO::FETCH_ASSOC)){
     echo "已收藏";
