@@ -1,6 +1,12 @@
 <?php  
 
 // session_start();
+        if(isset($_SESSION["Mem_NO"])){
+            $_SESSION["Mem_NO"]=$_SESSION["Mem_NO"];
+        }else{
+            $_SESSION["Mem_NO"]=null;
+     
+        }
     try {
         require_once("connectMemberTable.php");
 

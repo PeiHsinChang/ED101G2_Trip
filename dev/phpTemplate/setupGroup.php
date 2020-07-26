@@ -23,7 +23,10 @@
         <div class="startgroupa">
             <div class="startgtitle">開始揪團</div>
         </div>    
-        <div class="startgroupcont">           
+        <div class="startgroupcont">
+            <div class="AllFormContqainer">
+
+                  
             <div class="startgroupn">選擇一個行程：
                 <select name="shedulename" id="grouplistSelect" class="schedulename">
                     <option value="1" class="set1"selected>行程一</option>
@@ -37,7 +40,7 @@
             請選擇一張美麗的封面照片
             <label for="fileupload" class="custom-file-upload">選擇照片</label>
             <input id="fileupload" name="fileupload" type="file"/></br>
-            <img id="myImg" src="src="images="/groupphoto/mountain1.jpg" alt="your image" style="width:250px;height:150px" />
+            <img id="myImg" src="./images/groupphoto/mountain1.jpg" alt="your image" style="width:250px;height:150px" />
             <div class="selectreq">設定參團條件</div>
             <div class="selectreqst">
                 <div class="reqpartend">報名期限：
@@ -77,13 +80,15 @@
             <div class="selectreq3">
                 <div class="noticetext" style="clear:both">備註：</div>
                 <div class="noticetexta"><textarea id="memogroup" name="Group_Com" class="noticetxthere"style="font-size:14px;"></textarea></div>
-                <div class="threestatus">
+                
+            </div>
+            <div class="threestatus">
                     <input type="submit" name="submitButton" id ="setgroupSubmit" class="btnSmall" value="發佈" />
                     <!-- <button id ="setgroupSave"class="setgroupsave">儲存</button> -->
                     <input type="button" onclick="closeNewGroup();" class="btnSmall" value="取消" />
                     <!-- <button onclick="closeNewGroup();" class="setgroupcancel">取消</button> -->
                 </div>
-            </div>
+            </div>     
         </div>
     </div>
  </form>
