@@ -5,8 +5,8 @@
 }
 
 .btnSmall {
-  width: 70px;
-  height: 25px;
+  width: 80px;
+  height: 30px;
   font-size: 1rem;
   color: white;
   background-color: #bc2654;
@@ -2281,8 +2281,8 @@ body {
 }
 
 .btnSmall {
-  width: 70px;
-  height: 25px;
+  width: 80px;
+  height: 30px;
   font-size: 1rem;
   color: white;
   background-color: #bc2654;
@@ -2840,12 +2840,13 @@ a .addBlogBTN p:hover {
 
 .startgroupcont {
   background-color: #ededed;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px 20px 50px;
   font-size: 1.25rem;
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   max-width: 500px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .startgtitle {
@@ -2925,6 +2926,9 @@ input[type="file"] {
   .AllFormContqainer {
     padding-left: 10px;
   }
+  .startgroupcont {
+    padding: 10px;
+  }
   .startgroupall {
     width: 100%;
     padding: 20px 10px 20px 10px;
@@ -2936,15 +2940,25 @@ input[type="file"] {
   .noticetxthere {
     width: 87%;
   }
+  .selectreqst {
+    padding-left: 20px;
+  }
   .selectreq2 {
     width: 100%;
     margin: 0px;
+    padding-left: 20px;
+  }
+  .selectreq3 {
+    padding-left: 20px;
   }
   .threestatus {
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
     width: 120px;
+    transform: translateX(0px);
+  }
+  .threestatus input {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 

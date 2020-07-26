@@ -38,7 +38,7 @@ $breakpoint-sm: 576px;
 }
 
 .btnSmall {
-    @include button(70px, 25px, $colorSecondary2, $colorMain1, $colorMain1);
+    @include button(80px, 30px, $colorSecondary2, $colorMain1, $colorMain1);
 }
 
 .btnMid {
